@@ -1,7 +1,5 @@
 package project.interline.report;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,25 +26,9 @@ public class MainController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String loginForm() {
+	public String home(Model model) {
 		
-		return "login";
+		return "Login";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(String login_id, String login_pw, HttpSession session) {
-		
-		logger.debug("id:{},pw:{}", login_id,login_pw);
-		
-		return null;
-	}
-	
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
-		logger.debug("logout");
-		session.removeAttribute("login_id");
-		session.invalidate();
-		
-		return "redirect:/";
-	}
 }
