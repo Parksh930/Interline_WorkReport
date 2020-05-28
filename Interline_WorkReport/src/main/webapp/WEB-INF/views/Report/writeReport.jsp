@@ -73,6 +73,39 @@
 		$('#absent').html(absent(chartData));
 		$('#sumWorkingTime').html(sumWorkingTime(chartData));
 	}
+
+	function saveReport(type){
+		var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+		chartData.workingDay = $('#workingDay').html();
+		chartData.holidayWorkingDay = $('#holidayWorkingDay').html();
+		chartData.absentDay = $('#absent').html();
+		chartData.sumWorkingTime = $('#sumWorkingTime').html();
+		chartData.state=type;
+
+		chartData.reportNum=111;
+		chartData.userNum=222;
+
+		submitReport(chartData,"tempSaveReport",type);
+	}
+
+	function test(){
+		var jsondata={dump2:"dump2",userNum:1,userMail:"adawd@afwe",userName:"name", dump:"dump"}
+		$.ajax(
+				{
+					url: "submitReport",
+					type: 'POST',
+					data: jsondata,
+					success: function(s){
+							alert('成功'+s);
+							//location.href="../";
+						},
+					error: function(e){
+							console.log(JSON.stringify(e));
+							alert('失敗');
+						}
+				}		
+			);
+	}
 </script>	
 	
 	
@@ -93,7 +126,6 @@
 		oz.sendToActionScript("connection.args3","row="+getDates(reportYear,reportMonth));	
 		oz.sendToActionScript("connection.args4","daDelay="+getDayDelay(reportYear,reportMonth)); 
 		oz.sendToActionScript("connection.args5","holiday="+JSON.stringify(holiday));
-		
 		return true;
 	}
 	start_ozjs("OZViewer","http://192.168.1.124:8888/oz80/ozhviewer/", true);
@@ -120,9 +152,9 @@
 				<tr>
 					<td style="text-align: right; font-size: 15px;">営業日 : </td><td id="salesDay" style=" font-size: 15px;"></td>
 					<td rowspan="5">
-						<input type="button" value="aaaaa">
-						<input type="button" value="aaaaa">
-						<input type="button" value="aaaaa">
+						<input type="button" value="aaaaa" onclick="">
+						<input type="button" value="aaaaa" onclick="saveReport(0)">
+						<input type="button" value="aaaaa" onclick="test()">
 					</td>
 				</tr>
 				<tr>

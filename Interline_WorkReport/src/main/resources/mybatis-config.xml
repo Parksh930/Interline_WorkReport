@@ -5,9 +5,11 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="project.interline.report.vo.UserVO" alias="user"/>
+		<typeAlias type="project.interline.report.vo.WorkReportVO" alias="WorkReportVO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="AdminMapper.xml" />
 		<mapper resource="UserMapper.xml" />
+		<mapper resource="WorkReportMapper.xml" />
 	</mappers>
 </configuration>

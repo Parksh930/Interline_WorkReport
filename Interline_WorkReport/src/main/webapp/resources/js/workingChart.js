@@ -64,7 +64,7 @@
 		var countHolidayWork=0;
 		var thisMonth=parseInt(jsonData.month);
 		for ( var i=1 ; i<=numberOfDate ; i++){
-			if( jsonData["content"+i] != "-" ){
+			if( jsonData["workContent"+i] != "-" ){
 				if( jsonData["day"+i]=="土" || jsonData["day"+i]=="日" || holiday.holiday[thisMonth].includes(parseInt(jsonData["date"+i])) ){
 					countHolidayWork++
 				}else{
@@ -82,7 +82,7 @@
 		var cnt=0;
 		var salesDayArray=jsonData.salesDayArray.split(",");
 		for( var i=0 ; i < salesDayArray.length ; i++ ){
-			if (jsonData["content"+salesDayArray[i]]=="-"){
+			if (jsonData["workContent"+salesDayArray[i]]=="-"){
 				cnt++
 			}
 		}
@@ -98,7 +98,7 @@
 		var hour=0;
 		var minute=0;
 		for ( var i=1 ; i<=numberOfDate ; i++){
-			if ( jsonData["content"+i] != "-" ){
+			if ( jsonData["workContent"+i] != "-" ){
 				var time = jsonData["netWorkingTime"+i].split(':');
 				hour=hour+parseInt(time[0]);
 				minute=minute+parseInt(time[1]);
@@ -114,20 +114,19 @@
 //Submit함수
 //paremeter: OZ로부터 추출한 데이터(JSON),url(string),type(int)
 //return:
-// type에는 0:save ,  1:submit
-//콘트롤러 logger에 보면 한글도 잘나옴.  근데 버튼2를 보면 한글이 깨져서 응답된다. 근데 ajax에서 text로 받으면 깨짐. 컨트롤러에서 리턴할때 utf-8로 인코딩 되지 않은 상태기때문에 success함수의 매개변수가 받을때 utf-8의 상태가 아닌 문자열이 된다.
-//따라서, 컨트롤러에서 다시 UTF-8로 지정해줘야함. 리퀘스트매핑 변수에  produces="appliction/json;charset=UTF-8" 를 추가해준다. 반대로 json으로 받을때는 produces="appliction/json;charset=UTF-8"가 충돌한다(?)
+// type에는 0:temporarySave ,  1:submit
 	function submitReport(jsonData,address,type){
+		console.log(JSON.stringify(jsonData));
 		if (type==1) confirm("提出すると修正できません。よろしいでしょうか。");
 		var text=["保存","提出"];
 		$.ajax(
 				{
 					url: address,
-					type: 'post',
-					data: jsonData,
-					success: function(){
-							alert(text[type]+'成功');
-							location.href="../";
+					type: 'POST',
+					data: JSON.parse(JSON.stringify(jsonData)),
+					success: function(s){
+							alert(text[type]+'成功'+s);
+							//location.href="../";
 						},
 					error: function(e){
 							console.log(JSON.stringify(e));
