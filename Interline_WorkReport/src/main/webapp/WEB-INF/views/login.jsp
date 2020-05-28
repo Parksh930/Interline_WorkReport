@@ -110,5 +110,18 @@ padding: 20px 0px 0px 0px;
 </form>
 </table>
 </div>
+<script>
+	function isMobile() {
+	    var filter = "win16|win32|win64|mac|macintel";
+	    if( navigator.platform  ){
+	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+	        return "1";
+	      }else{
+	        return "0";
+	      }
+	    }
+	  }
+	$('#mobileCheck').val(isMobile());
+</script> 
 </body>
 </html>

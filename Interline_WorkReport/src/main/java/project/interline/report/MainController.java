@@ -35,9 +35,28 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(String login_id, String login_pw, HttpSession session) {
+	public String login(String login_id, String login_pw, String mobileCheck
+					, HttpSession session,RedirectAttributes redirect) {
 		
-		return null;
+		logger.debug("login id:{}, pw:{}", login_id,login_pw);
+		
+		UserVO user = dao.getUser(login_id);
+		
+		if(user != null && user.getPassword().equals(login_pw)){
+			session.setAttribute("login_id", user.getUserMail());
+			session.setAttribute("user_inform", user);
+			session.setAttribute("mobileCheck", mobileCheck);
+			
+			return"redirect://admin/adminMain";
+
+		}
+		
+		if(user == null) {
+			redirect.addFlashAttribute("error","存在しないIDです。");
+		}else if(!user.getPassword().equals(login_pw)){
+			redirect.addFlashAttribute("error","パスワードが一致しません。");
+		}
+		return "redirect:/login";
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
