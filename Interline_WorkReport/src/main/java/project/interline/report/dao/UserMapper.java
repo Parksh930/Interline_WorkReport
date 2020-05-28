@@ -4,6 +4,6 @@ import project.interline.report.vo.UserVO;
 
 public interface UserMapper {
 
-	UserVO getUser(String login_id);
+	UserVO getUser_login(String login_id);
 	
 }

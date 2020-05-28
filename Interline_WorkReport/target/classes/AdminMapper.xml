@@ -4,6 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="project.interline.report.dao.AdminMapper">
-  
-  
+<select id="getUserlist" resultType="user">
+select * from user_inform 
+</select>
+
+<insert id="userRegister" parameterType="user">
+	insert into user_inform
+	(
+		userNum
+		,userMail
+		,userName
+		,password
+		,team
+		,position
+		<if test='startDate != null and startDate != ""'>
+			,startDate
+		</if>
+		,authority
+	)
+	values
+	(
+		#{userNum}
+		,#{userMail}
+		,#{userName}
+		,#{password}
+		,#{team}
+		,#{position}
+		<if test='startDate != null and startDate != ""'>
+			,#{startDate}
+		</if>
+		,#{authority}
+	)
+</insert>
+
+<select id="getUser_update" parameterType="int" resultType="user">
+select * from user_inform where usernum = #{num}
+</select>
+
 </mapper>
