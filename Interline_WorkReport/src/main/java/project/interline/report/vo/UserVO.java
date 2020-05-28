@@ -6,7 +6,7 @@ public class UserVO {
 	private String userName;
 	private String password;
 	private String team;
-	private String positon;
+	private String position;
 	private String startDate;
 	private String lastupdateDate;
 	private String finalreportDate;
@@ -17,7 +17,7 @@ public class UserVO {
 		super();
 	}
 
-	public UserVO(int userNum, String userMail, String userName, String password, String team, String positon,
+	public UserVO(int userNum, String userMail, String userName, String password, String team, String position,
 			String startDate, String lastupdateDate, String finalreportDate, String retirement, String authority) {
 		super();
 		this.userNum = userNum;
@@ -25,7 +25,7 @@ public class UserVO {
 		this.userName = userName;
 		this.password = password;
 		this.team = team;
-		this.positon = positon;
+		this.position = position;
 		this.startDate = startDate;
 		this.lastupdateDate = lastupdateDate;
 		this.finalreportDate = finalreportDate;
@@ -73,12 +73,12 @@ public class UserVO {
 		this.team = team;
 	}
 
-	public String getPositon() {
-		return positon;
+	public String getPosition() {
+		return position;
 	}
 
-	public void setPositon(String positon) {
-		this.positon = positon;
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 	public String getStartDate() {
@@ -124,7 +124,7 @@ public class UserVO {
 	@Override
 	public String toString() {
 		return "UserVO [userNum=" + userNum + ", userMail=" + userMail + ", userName=" + userName + ", password="
-				+ password + ", team=" + team + ", positon=" + positon + ", startDate=" + startDate
+				+ password + ", team=" + team + ", position=" + position + ", startDate=" + startDate
 				+ ", lastupdateDate=" + lastupdateDate + ", finalreportDate=" + finalreportDate + ", retirement="
 				+ retirement + ", authority=" + authority + "]";
 	}

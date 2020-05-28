@@ -40,15 +40,19 @@ public class MainController {
 		
 		logger.debug("login id:{}, pw:{}", login_id,login_pw);
 		
-		UserVO user = dao.getUser(login_id);
+		UserVO user = dao.getUser_login(login_id);
+		
 		
 		if(user != null && user.getPassword().equals(login_pw)){
 			session.setAttribute("login_id", user.getUserMail());
 			session.setAttribute("user_inform", user);
 			session.setAttribute("mobileCheck", mobileCheck);
 			
-			return"redirect://admin/adminMain";
-
+			if(user.getAuthority().equals("a")) {
+				return"redirect:/admin/adminMain";		
+			}else if(user.getAuthority().equals("u")) {
+				return "";	//userMainPage의 jsp등록
+			}
 		}
 		
 		if(user == null) {
@@ -56,7 +60,7 @@ public class MainController {
 		}else if(!user.getPassword().equals(login_pw)){
 			redirect.addFlashAttribute("error","パスワードが一致しません。");
 		}
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)

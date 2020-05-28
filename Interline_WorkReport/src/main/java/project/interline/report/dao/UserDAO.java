@@ -12,10 +12,10 @@ public class UserDAO {
 	@Autowired
 	SqlSession session;
 
-	public UserVO getUser(String login_id) {
+	public UserVO getUser_login(String login_id) {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		
-		UserVO user = mapper.getUser(login_id);
+		UserVO user = mapper.getUser_login(login_id);
 		return user;
 	}
 
