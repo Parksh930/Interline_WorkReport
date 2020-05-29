@@ -19,5 +19,7 @@ public interface WorkReportMapper {
 
 	ArrayList<ReportListVO> getReportList();
 
+	ArrayList<WorkReportVO> checkState2(HashMap<String, Integer> map);
+
 
 }

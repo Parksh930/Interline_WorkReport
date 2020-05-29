@@ -12,6 +12,9 @@
   	<select id="checkState" parameterType="int" resultType="int">
   		select state from work_report where reportNum=#{reportNum}
   	</select>
+  	<select id="checkState2" parameterType="hashmap" resultType="WorkReportVO">
+  		select * from work_report where userNum=#{userNum} and year=#{year} and month=#{month} 
+  	</select>
   
   
 	<insert id="insertReport" parameterType="WorkReportVO">
