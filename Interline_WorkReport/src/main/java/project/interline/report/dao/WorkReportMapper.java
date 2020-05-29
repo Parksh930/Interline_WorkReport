@@ -3,6 +3,7 @@ package project.interline.report.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import project.interline.report.vo.ReportListVO;
 import project.interline.report.vo.WorkReportVO;
 
 public interface WorkReportMapper {
@@ -15,5 +16,9 @@ public interface WorkReportMapper {
 
 	int checkState(Integer reportNum);
 
+<<<<<<< HEAD
+=======
+	ArrayList<ReportListVO> getReportList();
+>>>>>>> de9339f0d806eaf6cb0340ef3d07141f87cf3b68
 
 }

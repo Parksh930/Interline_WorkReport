@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.interline.report.dao.AdminDAO;
 import project.interline.report.dao.WorkReportDAO;
+import project.interline.report.vo.ReportListVO;
 import project.interline.report.vo.UserVO;
 import project.interline.report.vo.WorkReportVO;
 
@@ -75,4 +76,24 @@ public class WorkReportController {
 		return result;
 	}
 	
+<<<<<<< HEAD
+=======
+	//submit
+	@ResponseBody
+	@RequestMapping(value = "/user/submitReport", method = RequestMethod.POST)
+	public int submitReport(Model model, UserVO uservo) {
+		logger.debug(uservo.toString());
+		return 1;
+	}
+	
+	@RequestMapping(value="/admin/reportList", method = RequestMethod.GET)
+	public String reportList(Model model) {
+		ArrayList<ReportListVO> reportList = dao.getReportList();
+		
+		logger.debug("reportList:{}",reportList);
+		
+		model.addAttribute("report_all",reportList);
+		return "Report/workReportList";
+	}
+>>>>>>> de9339f0d806eaf6cb0340ef3d07141f87cf3b68
 }

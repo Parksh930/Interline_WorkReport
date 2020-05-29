@@ -1,6 +1,9 @@
 package project.interline.report.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +30,16 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/userList", method=RequestMethod.GET)
-	public String userList(Model model) {
+	public String userList(Model model) throws ParseException {
 		ArrayList<UserVO> userList=dao.getUserlist();
+		
+		SimpleDateFormat old_pattern = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat new_pattern = new SimpleDateFormat("yyyy.MM.dd");
+		
+		for(int n=0; n<userList.size();n++) {
+			Date format_date = old_pattern.parse(userList.get(n).getStartDate());
+			userList.get(n).setStartDate(new_pattern.format(format_date));
+		}
 		
 		model.addAttribute("user_all",userList);
 		
