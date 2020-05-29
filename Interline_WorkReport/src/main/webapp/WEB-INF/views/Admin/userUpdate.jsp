@@ -10,8 +10,8 @@
 <script>
 $(function(){
 
-	$("#insert_User_btn").click(update_user);
-	$("#delete_User_btn").click(delete_user);
+	$("#insert_User_btn").click(user_update);
+	$("#delete_User_btn").click(user_delete);
 	option_selected();
 	
 });
@@ -19,11 +19,11 @@ $(function(){
 function option_selected(){
 	
 	$("#retirement option[value="+"${user.retirement}"+"]").prop('selected','selected');
-	$("#Authority option[value="+"${user.authority}"+"]").prop('selected','selected');
+	$("#authority option[value="+"${user.authority}"+"]").prop('selected','selected');
 	
 }
 
-function update_user(){
+function user_update(){
 	
 	if(confirm("修正しましか？")){
 		return true;
@@ -32,12 +32,12 @@ function update_user(){
 	}
 }
 
-function delete_user(){
+function user_delete(){
 	
-	var num = $("#UserNum").val();
+	var num = $("#userNum").val();
 
 	if(confirm("削除しましか？")){
-		location.replace("../admin/deleteUser?UserNum="+num);
+		location.replace("../admin/userDelete?userNum="+num);
 	}
 	return false;
 }
@@ -96,18 +96,18 @@ cursor: pointer;
 <h1>社員情報修正</h1>
 
 <div id = "registerUser_contents">
-<form action="../admin/updateUser" method="post" id="updateUser_Form">
+<form action="../admin/userUpdate" method="post" id="userUpdate_Form">
 <table>
 <tr>
 <td>社員番号</td>
 <td><input type="number" id="userNum" name="userNum" value="${user.userNum}" readonly></td>
 </tr>
 <tr>
-<td>ID</td>
+<td>社員メール</td>
 <td><input type="text" id="userMail" name="userMail" value="${user.userMail}" readonly></td>
 </tr>
 <tr>
-<td>PW</td>
+<td>パスワード</td>
 <td><input type="password" id="password" name="password"></td>
 </tr>
 <tr>

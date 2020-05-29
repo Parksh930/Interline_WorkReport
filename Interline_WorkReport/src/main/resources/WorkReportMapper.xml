@@ -111,7 +111,7 @@
 	<select id="getReportList" resultType="ReportList">
 		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate
 			from work_Report as report join user_inform as user
-			on report.usernum = user.usernum
+			on report.usernum = user.usernum and state > 0
 			limit 100
 	</select>
 	

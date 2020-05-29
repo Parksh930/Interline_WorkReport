@@ -5,7 +5,25 @@
   
 <mapper namespace="project.interline.report.dao.AdminMapper">
 <select id="getUserlist" resultType="user">
-select * from user_inform 
+select user.*,max(report.updatedate)lastupdateDate
+	from 
+		user_inform as user left join work_Report as report
+	on 
+		report.usernum = user.usernum 
+	group by
+		user.usernum 
+</select>
+
+<select id = "check_Multiple" parameterType="map" resultType="user">
+	select * from user_inform where
+	<choose>
+		<when test='check_point != null and check_point == "check_num"'>
+			usernum = #{check_content}
+		</when>
+		<when test='check_point != null and check_point == "check_mail"'>
+			usermail = #{check_content}
+		</when>
+	</choose>
 </select>
 
 <insert id="userRegister" parameterType="user">
@@ -41,4 +59,25 @@ select * from user_inform
 select * from user_inform where usernum = #{num}
 </select>
 
+<update id="userUpdate" parameterType="user">
+update user_inform
+	set
+		authority = #{authority}
+		,retirement = #{retirement}
+	<if test='password != null and password != ""'>
+		,password = #{password}
+	</if>
+	<if test='position != null and position != ""'>
+		,position = #{position}
+	</if>
+	<if test='team != null and team != ""'>
+		,team = #{team}
+	</if>
+	where
+		usernum = #{userNum}
+</update>
+
+<delete id="userDelete" parameterType="int">
+delete from user_inform where userNum = #{userNum}
+</delete>
 </mapper>
