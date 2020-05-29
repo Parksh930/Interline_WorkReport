@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="project.interline.report.vo.UserVO" alias="user"/>
 		<typeAlias type="project.interline.report.vo.WorkReportVO" alias="WorkReportVO"/>
+		<typeAlias type="project.interline.report.vo.ReportListVO" alias="ReportList"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="AdminMapper.xml" />

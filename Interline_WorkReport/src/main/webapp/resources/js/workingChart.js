@@ -116,6 +116,14 @@
 //return:
 // type에는 0:temporarySave ,  1:submit
 	function submitReport(jsonData,address,type){
+		for (var i=parseInt(jsonData.numberOfDate)+1 ; i<=31 ; i++){
+			jsonData["attendHour"+i]=0
+			jsonData["attendMinute"+i]=0
+			jsonData["offHour"+i]=0
+			jsonData["offMinute"+i]=0
+			jsonData["restHour"+i]=0
+			jsonData["restMinute"+i]=0
+		}
 		console.log(JSON.stringify(jsonData));
 		if (type==1) confirm("提出すると修正できません。よろしいでしょうか。");
 		var text=["保存","提出"];

@@ -10,13 +10,20 @@
 <script>
 
 </script>	
+
+<style>
+#list_Box{
+height:600px;
+width:1000px;
+}
+</style>
 </head>
 <body>
-<a href="" target="list_Box">勤務表リスト</a>
+<a href="../admin/reportList" target="list_Box">勤務表リスト</a>
 <a href="../admin/userList" target="list_Box">社員リスト</a>
 <a href="../logout">ログアウト</a>
 <div id="_iframe">
-<iframe width="1000px" height="500px" name="list_Box" id="list_Box" src="../admin/userList"></iframe>
+<iframe name="list_Box" id="list_Box" src="../admin/reportList"></iframe>
 </div>
 </body>
 </html>

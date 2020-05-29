@@ -83,9 +83,10 @@
 		chartData.state=type;
 
 		chartData.reportNum=111;
-		chartData.userNum=222;
+		chartData.userNum=111;
+		chartData.userName="aaa";
 
-		submitReport(chartData,"tempSaveReport",type);
+		submitReport(chartData,"saveReport",type);
 	}
 
 	function test(){
