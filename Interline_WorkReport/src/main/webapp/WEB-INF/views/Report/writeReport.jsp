@@ -155,5 +155,12 @@
 		</div>
 	</div>	
 </div>
+
+<!-- model값을 불러오기위한 input -->
+
+<input id="userNum" type="hidden" value="${userNum}">
+<input id="month" type="hidden" value="${month}">
+<input id="year" type="hidden" value="${year}">
+<input id="reportJSON" type="hidden" value="${reportJSON}">
 </body>
 </html>

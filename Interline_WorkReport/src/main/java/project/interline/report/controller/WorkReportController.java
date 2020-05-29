@@ -38,6 +38,7 @@ public class WorkReportController {
 	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
 	public String writeReport(Model model,int month,int year,int userNum) { //int month,int year,int userNum을 POST로 받아와야한다. 메서드도 POST로 나중에 고칠것
 		logger.debug("writeReport");
+		model.addAttribute("userNum", userNum);
 		
 		//저번달 작성분 확인
 		HashMap<String, Integer> map= new HashMap<String, Integer>();
@@ -77,6 +78,7 @@ public class WorkReportController {
 				System.out.println("저번달 저장분이 제출이안되어 저번달껄 로딩합니다."+reportJSON);
 				model.addAttribute("reportJSON", reportJSON);
 			}else {//전달게 존재하나 이미 제출 상태임. 따라서 이번달껄 등록해야함. 
+				System.out.println("지난달 제출분 확인 완료.");
 				model.addAttribute("month", month);
 				model.addAttribute("year", year);
 				ArrayList<WorkReportVO> thisMonthReport = new ArrayList(); 
@@ -99,7 +101,6 @@ public class WorkReportController {
 				}else { //이번달 쓰던게 없으면
 					System.out.println("이번달 저장분이없어 새로 로딩합니다.");					
 				}
-					
 			}
 			break;
 		default:
