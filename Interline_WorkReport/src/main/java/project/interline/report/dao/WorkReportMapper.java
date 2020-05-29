@@ -16,9 +16,8 @@ public interface WorkReportMapper {
 
 	int checkState(Integer reportNum);
 
-<<<<<<< HEAD
-=======
+
 	ArrayList<ReportListVO> getReportList();
->>>>>>> de9339f0d806eaf6cb0340ef3d07141f87cf3b68
+
 
 }
