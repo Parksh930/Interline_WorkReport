@@ -65,6 +65,7 @@
         UPDATE work_Report
            SET 
            updateDate=sysdate(),
+           state=#{state},
 			salesDay=#{salesDay},
 			workingDay=#{workingDay},
 			holidayWorkingDay=#{holidayWorkingDay},

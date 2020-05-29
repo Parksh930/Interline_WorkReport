@@ -40,6 +40,8 @@ public class WorkReportDAO {
 	public int checkState(Integer reportNum) {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		int result= mapper.checkState(reportNum);
-		return 0;
+		return result;
 	}
+
+	
 }

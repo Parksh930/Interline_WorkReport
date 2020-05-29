@@ -82,31 +82,12 @@
 		chartData.sumWorkingTime = $('#sumWorkingTime').html();
 		chartData.state=type;
 
-		chartData.reportNum=111;
 		chartData.userNum=111;
 		chartData.userName="aaa";
 
 		submitReport(chartData,"saveReport",type);
 	}
-
-	function test(){
-		var jsondata={dump2:"dump2",userNum:1,userMail:"adawd@afwe",userName:"name", dump:"dump"}
-		$.ajax(
-				{
-					url: "submitReport",
-					type: 'POST',
-					data: jsondata,
-					success: function(s){
-							alert('成功'+s);
-							//location.href="../";
-						},
-					error: function(e){
-							console.log(JSON.stringify(e));
-							alert('失敗');
-						}
-				}		
-			);
-	}
+	
 </script>	
 	
 	
@@ -153,9 +134,9 @@
 				<tr>
 					<td style="text-align: right; font-size: 15px;">営業日 : </td><td id="salesDay" style=" font-size: 15px;"></td>
 					<td rowspan="5">
-						<input type="button" value="aaaaa" onclick="">
-						<input type="button" value="aaaaa" onclick="saveReport(0)">
-						<input type="button" value="aaaaa" onclick="test()">
+						<input type="button" value="取り消し" onclick="location.href='../'">
+						<input type="button" value="保存" onclick="saveReport(0)">
+						<input type="button" value="提出" onclick="saveReport(1)">
 					</td>
 				</tr>
 				<tr>

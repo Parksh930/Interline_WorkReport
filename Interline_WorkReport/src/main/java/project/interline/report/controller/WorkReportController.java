@@ -3,11 +3,15 @@ package project.interline.report.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,8 +31,10 @@ public class WorkReportController {
 	
 	//
 	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
-	public String writeReport(Model model) {
+	public String writeReport(Model model, HttpServletResponse response, HttpServletRequest request) {
 		logger.debug("writeReport");
+		//response.addHeader("Access-Control-Allow-Origin", "*");
+		//response.setHeader("Access-Control-Allow-Origin", "*");
 		return "Report/writeReport";
 	}
 	
@@ -50,29 +56,23 @@ public class WorkReportController {
 			if (reportNum.size()>1) {
 				return 2; //리포트가 2개이상 발견됨.
 			}
+			System.out.println("reportNum="+reportNum.get(0));
 			int state = dao.checkState(reportNum.get(0));
 			System.out.println("state="+state);
 			if (state != 0) {
 				return 3; //이미 제출된 상태라 변경 불가.
 			}
 			workReportVO.setReportNum(reportNum.get(0));
-			result=dao.updateReport(workReportVO);
+			result=dao.updateReport(workReportVO); //성공시0
 			return result;
 		}
 		
 		
 		
-		result=dao.insertReport(workReportVO);
+		result=dao.insertReport(workReportVO); //성공시1
 		System.out.println(result);
 		
 		return result;
 	}
 	
-	//submit
-	@ResponseBody
-	@RequestMapping(value = "/user/submitReport", method = RequestMethod.POST)
-	public int submitReport(Model model, UserVO uservo) {
-		logger.debug(uservo.toString());
-		return 1;
-	}
 }

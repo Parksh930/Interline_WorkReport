@@ -15,4 +15,5 @@ public interface WorkReportMapper {
 
 	int checkState(Integer reportNum);
 
+
 }

@@ -24,10 +24,6 @@
 	}
 	
 	
-
-
-
-
 //해당 달의 일수 구하는 합수
 //parameter: 년(int 4) ,월(int 1||2)
 //return: 해당월의 일수(int)
@@ -104,7 +100,7 @@
 				minute=minute+parseInt(time[1]);
 			}
 		}
-		hour=hour+(minute/60);
+		hour=hour+(parseInt(minute/60));
 		minute=minute%60;
 		return hour+":"+minute;
 	}
@@ -113,8 +109,9 @@
 	
 //Submit함수
 //paremeter: OZ로부터 추출한 데이터(JSON),url(string),type(int)
-//return:
-// type에는 0:temporarySave ,  1:submit
+//return:none
+// 저장을 시도하고 임시보존, 제출, 결과, 에러상황등을 화면에 표시해준다.
+// type에는 0:보존 ,  1:제출, 2:보고서 중복
 	function submitReport(jsonData,address,type){
 		for (var i=parseInt(jsonData.numberOfDate)+1 ; i<=31 ; i++){
 			jsonData["attendHour"+i]=0
@@ -126,19 +123,20 @@
 		}
 		console.log(JSON.stringify(jsonData));
 		if (type==1) confirm("提出すると修正できません。よろしいでしょうか。");
-		var text=["保存","提出"];
+		
 		$.ajax(
 				{
 					url: address,
 					type: 'POST',
 					data: JSON.parse(JSON.stringify(jsonData)),
 					success: function(s){
-							alert(text[type]+'成功'+s);
+							var text=["成功","成功","報告書重複 管理者にお問い合わせてください","提出したのは修正できません。"];
+							alert(text[s]);
 							//location.href="../";
 						},
 					error: function(e){
 							console.log(JSON.stringify(e));
-							alert(text[type]+'失敗');
+							alert('失敗 管理者にお問い合わせてください');
 						}
 				}		
 			);
