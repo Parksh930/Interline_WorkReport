@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import project.interline.report.vo.ReportListVO;
 import project.interline.report.vo.UserVO;
 import project.interline.report.vo.WorkReportVO;
 
@@ -41,5 +42,11 @@ public class WorkReportDAO {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		int result= mapper.checkState(reportNum);
 		return 0;
+	}
+
+	public ArrayList<ReportListVO> getReportList() {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		ArrayList<ReportListVO> list = mapper.getReportList();
+		return list;
 	}
 }
