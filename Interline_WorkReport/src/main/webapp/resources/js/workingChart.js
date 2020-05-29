@@ -111,15 +111,17 @@
 //paremeter: OZ로부터 추출한 데이터(JSON),url(string),type(int)
 //return:none
 // 저장을 시도하고 임시보존, 제출, 결과, 에러상황등을 화면에 표시해준다.
-// type에는 0:보존 ,  1:제출, 2:보고서 중복
+// type에는 0:보존 ,  1:제출
 	function submitReport(jsonData,address,type){
 		for (var i=parseInt(jsonData.numberOfDate)+1 ; i<=31 ; i++){
-			jsonData["attendHour"+i]=0
-			jsonData["attendMinute"+i]=0
-			jsonData["offHour"+i]=0
-			jsonData["offMinute"+i]=0
-			jsonData["restHour"+i]=0
-			jsonData["restMinute"+i]=0
+			jsonData["attendHour"+i]=0;
+			jsonData["attendMinute"+i]=0;
+			jsonData["offHour"+i]=0;
+			jsonData["offMinute"+i]=0;
+			jsonData["restHour"+i]=0;
+			jsonData["restMinute"+i]=0;
+			jsonData["netWorkingTime"+i]="0:00";
+			jsonData["workContent"+i]="-";
 		}
 		console.log(JSON.stringify(jsonData));
 		if (type==1) confirm("提出すると修正できません。よろしいでしょうか。");

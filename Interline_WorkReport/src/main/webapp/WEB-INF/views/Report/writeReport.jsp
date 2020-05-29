@@ -33,13 +33,18 @@
 
 </head>
 <body style="height:100%; overscroll-behavior:none;">
-
+<!-- model값을 불러오기위한 input -->
+<input id="userNum" type="hidden" value="${userNum}">
+<input id="month" type="hidden" value="${month}">
+<input id="year" type="hidden" value="${year}">
+<input id="reportJSON" type="hidden" value="${reportJSON}">
+<!-- /model값을 불러오기위한 input -->
 <script src="/report/resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
 <script type="text/javascript">  
 	//페이지에 들어오기위한 필요 초기값
 	session="";
-	reportYear=2020;
-	reportMonth=5;
+	var reportYear=parseInt($('#year').val());
+	var reportMonth=parseInt($('#month').val());
 	var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
 	alternativeHoliday(reportYear);
 	console.log(JSON.stringify(holiday));
@@ -81,8 +86,7 @@
 		chartData.absentDay = $('#absent').html();
 		chartData.sumWorkingTime = $('#sumWorkingTime').html();
 		chartData.state=type;
-
-		chartData.userNum=111;
+		chartData.userNum=parseInt($('#userNum').val());
 		chartData.userName="aaa";
 
 		submitReport(chartData,"saveReport",type);
@@ -90,11 +94,15 @@
 	
 </script>	
 	
-	
+
 
 <div id="OZViewer" style="width:100%;height:100%;overflow:hidden"></div>
 <script type="text/javascript" >
 	function SetOZParamters_OZViewer(){
+		
+		console.log(reportYear);
+		console.log(reportMonth);
+		
 		var oz;
 		oz = document.getElementById("OZViewer");
 		oz.sendToActionScript("connection.servlet","http://192.168.1.124:8888/oz80/server");
@@ -156,11 +164,6 @@
 	</div>	
 </div>
 
-<!-- model값을 불러오기위한 input -->
 
-<input id="userNum" type="hidden" value="${userNum}">
-<input id="month" type="hidden" value="${month}">
-<input id="year" type="hidden" value="${year}">
-<input id="reportJSON" type="hidden" value="${reportJSON}">
 </body>
 </html>
