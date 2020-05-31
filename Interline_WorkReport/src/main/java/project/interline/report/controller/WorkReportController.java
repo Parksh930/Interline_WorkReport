@@ -170,7 +170,7 @@ public class WorkReportController {
 		model.addAttribute("report_all",reportList);
 		return "Report/workReportList";
 	}
-<<<<<<< HEAD
+
 	
 	
 	
@@ -218,7 +218,5 @@ public class WorkReportController {
 	}
 	
 	
-=======
 
->>>>>>> da87e0dfe61776ffc94393c94d55f5387ecdd241
 }

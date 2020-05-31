@@ -96,7 +96,7 @@ a {
   
     //var arrNumber = new Array();
 
-    var arrNumber = [];
+    var arrNumber = new Array();
     var chk_obj = document.getElementsByName("selectValue");
   	var chk_leng = chk_obj.length;
 

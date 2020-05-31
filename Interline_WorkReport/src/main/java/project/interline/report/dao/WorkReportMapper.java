@@ -22,4 +22,6 @@ public interface WorkReportMapper {
 
 	int deleteReport(WorkReportVO vo);
 
+	ArrayList<WorkReportVO> checkState2(HashMap<String, Integer> map);
+
 }

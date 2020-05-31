@@ -51,7 +51,7 @@ public class WorkReportDAO {
 		return list;
 	}
 
-<<<<<<< HEAD
+
 	public WorkReportVO getWorkReportVO(WorkReportVO vo) {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		return mapper.getWorkReportVO(vo);
@@ -63,12 +63,12 @@ public class WorkReportDAO {
 	}
 
 
-=======
+
 	public ArrayList<WorkReportVO> checkState2(HashMap<String, Integer> map) {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		ArrayList<WorkReportVO> result = mapper.checkState2(map);
 		return result;
 	}
 
->>>>>>> da87e0dfe61776ffc94393c94d55f5387ecdd241
+
 }
