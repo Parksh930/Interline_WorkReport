@@ -26,23 +26,21 @@
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<script> 
+		 
+			//var year = ${vo.year};
+			//var month = ${vo.month};
+			//	var day = "01";
+			//var fullDate = "'"+year+"-"+month+"-"+day+"'"; 	
+			//var weekDay = new Date(fullDate);
+			//var dayOfTheWeekValue = weekDay.getDay();
+			// alert(dayOfTheWeekValue);
+			//var dayOfTheWeek = "dayOfTheWeek="+dayOfTheWeekValue;
+			
+			var array = "array="+"${vo.reportNum}";
+	
 
-	var array = "array="+"${vo.reprotNum}";
-	var dayOfTheWeekValue ="";
-	var dayOfTheWeek = "dayOfTheWeek="+dayOfTheWeekValue;
-
-		$(function() {
-		var year = ${vo.Year};
-		var month = ${vo.month};
-		var day = "01";
-		var fullDate = "'"+year+"-"+month+"-"+day+"'"; 	
-		var weekDay = new Date(fullDate);
-		dayOfTheWeekValue = weekDay;
-
-		alert(weekDay);
-
-			});
-
+		
+		
 		function SetOZParamters_OZViewer() {
 			var oz;
 			oz = document.getElementById("OZViewer");
@@ -52,9 +50,9 @@
 					"OSA/workReport.ozr");
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
-			oz.sendToActionScript("odi.interlineTest.pcount", "2");
-			oz.sendToActionScript("odi.interlineTest.args1", array);
-			oz.sendToActionScript("odi.interlineTest.args2", dayOfTheWeek);
+			oz.sendToActionScript("odi.workTest.pcount", "1");
+			oz.sendToActionScript("odi.workTest.args1", array);
+			//oz.sendToActionScript("odi.workTest.args2", dayOfTheWeek);
 			return true;
 		}
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");

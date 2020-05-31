@@ -49,4 +49,16 @@ public class WorkReportDAO {
 		ArrayList<ReportListVO> list = mapper.getReportList();
 		return list;
 	}
+
+	public WorkReportVO getWorkReportVO(WorkReportVO vo) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.getWorkReportVO(vo);
+	}
+
+	public int deleteReport(WorkReportVO vo) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.deleteReport(vo);
+	}
+
+
 }

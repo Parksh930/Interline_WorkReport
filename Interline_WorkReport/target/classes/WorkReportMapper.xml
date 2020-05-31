@@ -111,5 +111,13 @@
 			limit 100
 	</select>
 	
+	<select id="getWorkReportVO" resultType="WorkReportVO">
+		select * from work_Report where reportNum=#{reportNum};
+	</select>
+	
+	<delete id="deleteReport" parameterType="int">
+		delete from work_Report where reportNum=#{reportNum};
+	</delete>
+	
 	
 </mapper>

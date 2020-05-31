@@ -18,4 +18,8 @@ public interface WorkReportMapper {
 
 	ArrayList<ReportListVO> getReportList();
 
+	WorkReportVO getWorkReportVO(WorkReportVO vo);
+
+	int deleteReport(WorkReportVO vo);
+
 }
