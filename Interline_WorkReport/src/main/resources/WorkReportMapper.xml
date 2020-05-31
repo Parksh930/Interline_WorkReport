@@ -12,6 +12,9 @@
   	<select id="checkState" parameterType="int" resultType="int">
   		select state from work_report where reportNum=#{reportNum}
   	</select>
+  	<select id="checkState2" parameterType="hashmap" resultType="WorkReportVO">
+  		select * from work_report where userNum=#{userNum} and year=#{year} and month=#{month} 
+  	</select>
   
   
 	<insert id="insertReport" parameterType="WorkReportVO">
@@ -65,6 +68,7 @@
         UPDATE work_Report
            SET 
            updateDate=sysdate(),
+           state=#{state},
 			salesDay=#{salesDay},
 			workingDay=#{workingDay},
 			holidayWorkingDay=#{holidayWorkingDay},
@@ -107,7 +111,7 @@
 	<select id="getReportList" resultType="ReportList">
 		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate
 			from work_Report as report join user_inform as user
-			on report.usernum = user.usernum
+			on report.usernum = user.usernum and state > 0
 			limit 100
 	</select>
 	
