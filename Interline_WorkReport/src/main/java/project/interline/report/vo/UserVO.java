@@ -9,7 +9,7 @@ public class UserVO {
 	private String position;
 	private String startDate;
 	private String lastupdateDate;
-	private String finalreportDate;
+	private String lastreportDate;
 	private String retirement;
 	private String authority;
 	
@@ -18,7 +18,7 @@ public class UserVO {
 	}
 
 	public UserVO(int userNum, String userMail, String userName, String password, String team, String position,
-			String startDate, String lastupdateDate, String finalreportDate, String retirement, String authority) {
+			String startDate, String lastupdateDate, String lastreportDate, String retirement, String authority) {
 		super();
 		this.userNum = userNum;
 		this.userMail = userMail;
@@ -28,7 +28,7 @@ public class UserVO {
 		this.position = position;
 		this.startDate = startDate;
 		this.lastupdateDate = lastupdateDate;
-		this.finalreportDate = finalreportDate;
+		this.lastreportDate = lastreportDate;
 		this.retirement = retirement;
 		this.authority = authority;
 	}
@@ -97,12 +97,12 @@ public class UserVO {
 		this.lastupdateDate = lastupdateDate;
 	}
 
-	public String getFinalreportDate() {
-		return finalreportDate;
+	public String getLastreportDate() {
+		return lastreportDate;
 	}
 
-	public void setFinalreportDate(String finalreportDate) {
-		this.finalreportDate = finalreportDate;
+	public void setLastreportDate(String lastreportDate) {
+		this.lastreportDate = lastreportDate;
 	}
 
 	public String getRetirement() {
@@ -125,7 +125,7 @@ public class UserVO {
 	public String toString() {
 		return "UserVO [userNum=" + userNum + ", userMail=" + userMail + ", userName=" + userName + ", password="
 				+ password + ", team=" + team + ", position=" + position + ", startDate=" + startDate
-				+ ", lastupdateDate=" + lastupdateDate + ", finalreportDate=" + finalreportDate + ", retirement="
+				+ ", lastupdateDate=" + lastupdateDate + ", lastreportDate=" + lastreportDate + ", retirement="
 				+ retirement + ", authority=" + authority + "]";
 	}
 

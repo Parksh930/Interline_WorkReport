@@ -3,16 +3,21 @@ package project.interline.report.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 import project.interline.report.dao.AdminDAO;
 import project.interline.report.vo.UserVO;
@@ -20,6 +25,10 @@ import project.interline.report.vo.UserVO;
 @Controller
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	
+	SimpleDateFormat old_pattern = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+	SimpleDateFormat new_pattern = new SimpleDateFormat("yyyy.MM.dd");
+	SimpleDateFormat report_pattern = new SimpleDateFormat("yyyy.MM");
 	
 	@Autowired
 	AdminDAO dao;
@@ -31,20 +40,59 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin/userList", method=RequestMethod.GET)
-	public String userList(Model model) throws ParseException {
-		ArrayList<UserVO> userList=dao.getUserlist();
-		
-		SimpleDateFormat old_pattern = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		SimpleDateFormat new_pattern = new SimpleDateFormat("yyyy.MM.dd");
-		
-		for(int n=0; n<userList.size();n++) {
-			Date format_date = old_pattern.parse(userList.get(n).getStartDate());
-			userList.get(n).setStartDate(new_pattern.format(format_date));
-		}
-		
-		model.addAttribute("user_all",userList);
+	public String userListForm(){
 		
 		return "Admin/userList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/userList", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ArrayList<UserVO> userList() throws ParseException {
+
+		ArrayList<UserVO> list = dao.getUserlist();
+		logger.debug("list:{}", list);
+		
+		for(int n=0; n<list.size();n++) {
+			Date Start_Date = old_pattern.parse(list.get(n).getStartDate());
+			list.get(n).setStartDate(new_pattern.format(Start_Date ));
+			
+			if(list.get(n).getLastreportDate() != null) {
+				Date report_Date = old_pattern.parse(list.get(n).getLastreportDate());
+				list.get(n).setLastreportDate(report_pattern.format(report_Date ));
+			}
+		}
+		
+		return list;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/statusFilter", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ArrayList<UserVO> statusFilter(String status) throws ParseException {
+		logger.debug("filter:{}",status);
+		ArrayList<UserVO> list = dao.statusFilter(status);
+		
+		for(int n=0; n<list.size();n++) {
+			Date Start_Date = old_pattern.parse(list.get(n).getStartDate());
+			list.get(n).setStartDate(new_pattern.format(Start_Date ));
+			
+			if(list.get(n).getLastreportDate() != null) {
+				Date report_Date = old_pattern.parse(list.get(n).getLastreportDate());
+				list.get(n).setLastreportDate(report_pattern.format(report_Date ));
+			}
+		}
+		
+		return list;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/userList_Sort", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public String userList_sort(UserVO[] List, String Measure) {
+		
+		 Arrays.sort(List);
+		logger.debug("User_Sort:{}", List);
+		logger.debug("Measure:{}",Measure);
+		
+		return "接続";
 	}
 	
 	@ResponseBody

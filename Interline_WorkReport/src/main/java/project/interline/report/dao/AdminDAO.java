@@ -60,4 +60,14 @@ public class AdminDAO {
 		
 		return vo;
 	}
+
+	public ArrayList<UserVO> statusFilter(String status) {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		HashMap<String, String> map = new HashMap<>();
+		
+		map.put("status", status);
+		ArrayList<UserVO> list = mapper.statusFilter(map);
+		
+		return list;
+	}
 }
