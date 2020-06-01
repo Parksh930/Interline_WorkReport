@@ -19,7 +19,7 @@
   
 	<insert id="insertReport" parameterType="WorkReportVO">
 		insert into work_report values (
-		get_seq('seq_report'),
+		get_seq('seq_work_report'),
 		#{userNum},
 		#{userName},
 		#{year},

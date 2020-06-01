@@ -37,14 +37,20 @@
 <input id="userNum" type="hidden" value="${userNum}">
 <input id="month" type="hidden" value="${month}">
 <input id="year" type="hidden" value="${year}">
-<input id="reportJSON" type="hidden" value="${reportJSON}">
+<div id="reportJSON" style="display: none;">${reportJSON}</div>
 <!-- /model값을 불러오기위한 input -->
 <script src="/report/resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
-<script type="text/javascript">  
+<script type="text/javascript">
 	//페이지에 들어오기위한 필요 초기값
 	session="";
 	var reportYear=parseInt($('#year').val());
 	var reportMonth=parseInt($('#month').val());
+	var reportJSON=$('#reportJSON').html();
+	if (reportJSON=="submitted"){
+		alert("今月の勤務表はすでに提出しました。修正したかったら修正要請してください。");
+		//location.href="../";
+	}
+	console.log(reportJSON);
 	var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
 	alternativeHoliday(reportYear);
 	console.log(JSON.stringify(holiday));
@@ -110,6 +116,8 @@
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
 		oz.sendToActionScript("connection.reportname","phonetest.ozr");
 		oz.sendToActionScript("connection.clientcachetype","none");
+		oz.sendToActionScript("connection.inputjson", reportJSON);
+		
 		oz.sendToActionScript("connection.pcount","5");
 		oz.sendToActionScript("connection.args1","year="+reportYear);	
 		oz.sendToActionScript("connection.args2","month="+reportMonth);	

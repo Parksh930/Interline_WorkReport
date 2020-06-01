@@ -22,10 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import project.interline.report.dao.AdminDAO;
 import project.interline.report.dao.WorkReportDAO;
 import project.interline.report.vo.ReportListVO;
-import project.interline.report.vo.UserVO;
 import project.interline.report.vo.WorkReportVO;
 
 @Controller
@@ -88,19 +86,22 @@ public class WorkReportController {
 				map.put("year", year);
 				map.put("month", month);
 				thisMonthReport=dao.checkState2(map);
-				if (thisMonthReport.size()==1) { //이번달 쓰던게 있으면
+				if (thisMonthReport.size()==1) { //이번달 쓰던게 있고 보존상태면 이번달 저장분을 로딩
 					//저장내용 JSON스트링파이
 					ObjectMapper objectMapper= new ObjectMapper();
 					String reportJSON="";
 					try {
-						reportJSON = objectMapper.writeValueAsString(lastMonthReport.get(0));
+						reportJSON = objectMapper.writeValueAsString(thisMonthReport.get(0));
 					} catch (JsonProcessingException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					System.out.println("이번달 저장분이있어 로딩합니다."+reportJSON);
 					model.addAttribute("reportJSON", reportJSON);
-				}else { //이번달 쓰던게 없으면
+				}else if (thisMonthReport.size()==1 && thisMonthReport.get(0).getState()!=0) { //이번달 쓰던게 있고 제출이상의 상태면 로딩불가
+					model.addAttribute("reportJSON", "submitted");
+					System.out.println("이번달 근무표는 이미 제출 완료되었습니다.");
+				}else {                                                            //이번달 쓰던게 없으면 이번달걸 새로 작성
 					System.out.println("이번달 저장분이없어 새로 로딩합니다.");					
 				}
 			}
