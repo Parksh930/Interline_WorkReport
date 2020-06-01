@@ -86,7 +86,7 @@ public class WorkReportController {
 				map.put("year", year);
 				map.put("month", month);
 				thisMonthReport=dao.checkState2(map);
-				if (thisMonthReport.size()==1) { //이번달 쓰던게 있고 보존상태면 이번달 저장분을 로딩
+				if (thisMonthReport.size()==1 && thisMonthReport.get(0).getState()==0) { //이번달 쓰던게 있고 보존상태면 이번달 저장분을 로딩
 					//저장내용 JSON스트링파이
 					ObjectMapper objectMapper= new ObjectMapper();
 					String reportJSON="";
