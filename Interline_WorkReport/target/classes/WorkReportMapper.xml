@@ -19,7 +19,7 @@
   
 	<insert id="insertReport" parameterType="WorkReportVO">
 		insert into work_report values (
-		get_seq('seq_report'),
+		get_seq('seq_work_report'),
 		#{userNum},
 		#{userName},
 		#{year},
@@ -105,8 +105,13 @@
 			,attendHour30=	#{attendHour30}	,attendMinute30=	#{attendMinute30}	,offHour30=	#{offHour30}	,offMinute30=	#{offMinute30}	,restHour30=	#{restHour30}	,restMinute30=	#{restMinute30}	,netWorkingTime30=	#{netWorkingTime30}	,workContent30=	#{workContent30}
 			,attendHour31=	#{attendHour31}	,attendMinute31=	#{attendMinute31}	,offHour31=	#{offHour31}	,offMinute31=	#{offMinute31}	,restHour31=	#{restHour31}	,restMinute31=	#{restMinute31}	,netWorkingTime31=	#{netWorkingTime31}	,workContent31=	#{workContent31}
            ,sumWorkingTime=#{sumWorkingTime}
-           where reportNum = #{reportNum};
+           where reportNum = #{reportNum}
 	</update>		
+	
+	<update id="lastUpdateDate" parameterType="int">
+		update user_inform set LastReportDate=(select max(updateDate) from work_report where userNum=#{userNum});
+	</update>
+	
 	
 	<select id="getReportList" resultType="ReportList">
 		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate

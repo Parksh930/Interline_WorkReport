@@ -22,10 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import project.interline.report.dao.AdminDAO;
 import project.interline.report.dao.WorkReportDAO;
 import project.interline.report.vo.ReportListVO;
-import project.interline.report.vo.UserVO;
 import project.interline.report.vo.WorkReportVO;
 
 @Controller
@@ -88,19 +86,22 @@ public class WorkReportController {
 				map.put("year", year);
 				map.put("month", month);
 				thisMonthReport=dao.checkState2(map);
-				if (thisMonthReport.size()==1) { //이번달 쓰던게 있으면
+				if (thisMonthReport.size()==1 && thisMonthReport.get(0).getState()==0) { //이번달 쓰던게 있고 보존상태면 이번달 저장분을 로딩
 					//저장내용 JSON스트링파이
 					ObjectMapper objectMapper= new ObjectMapper();
 					String reportJSON="";
 					try {
-						reportJSON = objectMapper.writeValueAsString(lastMonthReport.get(0));
+						reportJSON = objectMapper.writeValueAsString(thisMonthReport.get(0));
 					} catch (JsonProcessingException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					System.out.println("이번달 저장분이있어 로딩합니다."+reportJSON);
 					model.addAttribute("reportJSON", reportJSON);
-				}else { //이번달 쓰던게 없으면
+				}else if (thisMonthReport.size()==1 && thisMonthReport.get(0).getState()!=0) { //이번달 쓰던게 있고 제출이상의 상태면 로딩불가
+					model.addAttribute("reportJSON", "submitted");
+					System.out.println("이번달 근무표는 이미 제출 완료되었습니다.");
+				}else {                                                            //이번달 쓰던게 없으면 이번달걸 새로 작성
 					System.out.println("이번달 저장분이없어 새로 로딩합니다.");					
 				}
 			}
@@ -128,20 +129,18 @@ public class WorkReportController {
 		ArrayList<Integer> reportNum = new ArrayList(); 
 		reportNum=dao.isItNew(map);
 		if (reportNum.size()!=0) {
-			if (reportNum.size()>1) {
-				return 2; //由ы룷�듃媛� 2媛쒖씠�긽 諛쒓껄�맖.
-			}
 			System.out.println("reportNum="+reportNum.get(0));
 			int state = dao.checkState(reportNum.get(0));
 			System.out.println("state="+state);
 			if (state != 0) {
-				return 3; //�씠誘� �젣異쒕맂 �긽�깭�씪 蹂�寃� 遺덇�.
+				System.out.println("aleady submitted");
+				return 3; //aleady submitted!
 			}
 			workReportVO.setReportNum(reportNum.get(0));
 			result=dao.updateReport(workReportVO); //성공시0
 			
-			if (workReportVO.getState()==1) {
-				//유저의 최종 보고일 업데이트 해주기
+			if (workReportVO.getState()==1) { 
+				dao.lastUpdateDate(workReportVO.getUserNum());
 			}
 			
 			
