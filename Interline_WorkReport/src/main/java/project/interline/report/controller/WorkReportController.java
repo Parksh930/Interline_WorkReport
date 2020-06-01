@@ -129,20 +129,18 @@ public class WorkReportController {
 		ArrayList<Integer> reportNum = new ArrayList(); 
 		reportNum=dao.isItNew(map);
 		if (reportNum.size()!=0) {
-			if (reportNum.size()>1) {
-				return 2; //由ы룷�듃媛� 2媛쒖씠�긽 諛쒓껄�맖.
-			}
 			System.out.println("reportNum="+reportNum.get(0));
 			int state = dao.checkState(reportNum.get(0));
 			System.out.println("state="+state);
 			if (state != 0) {
-				return 3; //�씠誘� �젣異쒕맂 �긽�깭�씪 蹂�寃� 遺덇�.
+				System.out.println("aleady submitted");
+				return 3; //aleady submitted!
 			}
 			workReportVO.setReportNum(reportNum.get(0));
 			result=dao.updateReport(workReportVO); //성공시0
 			
-			if (workReportVO.getState()==1) {
-				//유저의 최종 보고일 업데이트 해주기
+			if (workReportVO.getState()==1) { 
+				dao.lastUpdateDate(workReportVO.getUserNum());
 			}
 			
 			

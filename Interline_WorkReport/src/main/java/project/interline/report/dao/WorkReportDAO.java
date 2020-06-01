@@ -70,5 +70,12 @@ public class WorkReportDAO {
 		return result;
 	}
 
+	public int lastUpdateDate(int userNum) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		int result = 0;
+		result=	mapper.lastUpdateDate(userNum);
+		return result;
+	}
+
 
 }
