@@ -27,20 +27,6 @@
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<script> 
 		 
-			//var year = ${vo.year};
-			//var month = ${vo.month};
-			//	var day = "01";
-			//var fullDate = "'"+year+"-"+month+"-"+day+"'"; 	
-			//var weekDay = new Date(fullDate);
-			//var dayOfTheWeekValue = weekDay.getDay();
-			// alert(dayOfTheWeekValue);
-			//var dayOfTheWeek = "dayOfTheWeek="+dayOfTheWeekValue;
-			
-			//var arrayValue;
-			//arrayValue = ${arrNumber};
-			//var	array = "array="+arrayValue;
-	
-			//var	array = "array="+"1010,1011,1012";
 		
 		function SetOZParamters_OZViewer() {
 			var oz;
@@ -51,9 +37,8 @@
 					"OSA/workReport.ozr");
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
-			oz.sendToActionScript("odi.workTest.pcount", "1");
-			oz.sendToActionScript("odi.workTest.args1", array);
-			//oz.sendToActionScript("odi.workTest.args2", dayOfTheWeek);
+			//oz.sendToActionScript("odi.workTest.pcount", "1");
+			//oz.sendToActionScript("odi.workTest.args1", array);
 			return true;
 		}
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");

@@ -96,7 +96,8 @@ a {
   
     //var arrNumber = new Array();
 
-    var arrNumber = new Array();
+   	//var arrNumber = [];
+   	var arrNumber="";
     var chk_obj = document.getElementsByName("selectValue");
   	var chk_leng = chk_obj.length;
 
@@ -104,15 +105,23 @@ a {
 		alert("閲覧する勤務表を選択してください。");
 		return false;
 		}
-
+	
   	for(i=0;i<chk_leng;i++){
-  		if(chk_obj[i].checked==true){
-  			arrNumber.push(chk_obj[i].value);
-  		}
-  	}
-  			alert(arrNumber);
-  		location.href = "../admin/getReadReport2?arrNumber="+arrNumber;
-  
+  		//if(chk_obj[i].checked==true){
+  			//arrNumber.push(chk_obj[i].value);
+  		if(chk_obj[i].checked==true){	
+  	  		arrNumber += chk_obj[i].value+",";
+  			  	  	}
+  	  	}
+  	 
+  		//str = str.substr(0, str.length -1)
+  		//list = list.slice(0, -1);
+  	
+  		var arr = arrNumber.substr(0, arrNumber.length -1);
+  		
+  		//var jsonData={"array":arrNumber};
+  		//var jsonData2 = JSON.stringify(jsonData);
+  	   	location.href = "../admin/getReadReport2?arrNumber="+arr;
   };
 
 /*   $(function(){

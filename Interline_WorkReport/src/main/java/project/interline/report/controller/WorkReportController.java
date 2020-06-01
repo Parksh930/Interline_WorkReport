@@ -170,9 +170,6 @@ public class WorkReportController {
 		model.addAttribute("report_all",reportList);
 		return "Report/workReportList";
 	}
-
-	
-	
 	
 	
 	@RequestMapping(value="/admin/getReadReport", method = RequestMethod.GET)
@@ -185,7 +182,6 @@ public class WorkReportController {
 	
 	@RequestMapping(value="/admin/getReadReport2", method = RequestMethod.GET)
 	public String workReadReport(Model model, String arrNumber) {
-		System.out.println("배열  " + arrNumber);
 		model.addAttribute("arrNumber",arrNumber);
 		return "Report/readWorkReport2";
 	}
