@@ -142,10 +142,10 @@
 	}
 </script>
 
-<div style="text-align:left; position:absolute; bottom:0;">
-	<img id="bt1" src="/report/resources/image/popupButton.PNG" style="display: block;">
-	<div id="summary" style="text-align:left; background-color:rgb(217,217,217,0.8); display: block; border-radius: 3px;">
-		<div style="background-color:rgb(217,217,217,0.8);">
+<div style="text-align:left; position:absolute; bottom:-2px;">
+	<div><img id="bt1" src="/report/resources/image/popupButton.PNG" style="display: block;"></div>
+	<div id="summary" style="text-align:left; background-color:rgb(217,217,217,0.8); border-radius: 3px;">
+		<div style="background-color:rgb(217,217,217,0.8); display: block;">
 			<table>
 				<tr>
 					<td style="text-align: right; font-size: 15px;">営業日 : </td><td id="salesDay" style=" font-size: 15px;"></td>

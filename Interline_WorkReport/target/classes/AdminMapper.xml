@@ -4,6 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="project.interline.report.dao.AdminMapper">
+
+<select id="statusFilter" parameterType="map" resultType="user">
+select user.*,max(report.updatedate)lastupdateDate
+	from 
+		user_inform as user left join work_Report as report
+	on
+		report.usernum = user.usernum 
+	group by
+		user.usernum
+	<if test='status != null and status == "submitted"'>
+		having
+			date_format(user.LastReportDate, "%Y-%m") = date_format(date_add(now(), interval -1 month), "%Y-%m")
+	</if>
+	<if test='status != null and status == "writing"'>
+		having
+			date_format(user.LastReportDate, "%Y-%m") != date_format(date_add(now(), interval -1 month), "%Y-%m")
+		or 
+    		user.LastReportDate is null
+	</if>
+</select>
 <select id="getUserlist" resultType="user">
 select user.*,max(report.updatedate)lastupdateDate
 	from 
@@ -12,6 +32,8 @@ select user.*,max(report.updatedate)lastupdateDate
 		report.usernum = user.usernum 
 	group by
 		user.usernum 
+	order by 
+		user.usernum asc
 </select>
 
 <select id = "check_Multiple" parameterType="map" resultType="user">

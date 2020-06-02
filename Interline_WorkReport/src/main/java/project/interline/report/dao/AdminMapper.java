@@ -18,4 +18,6 @@ public interface AdminMapper {
 	int userDelete(int userNum);
 
 	UserVO check_Multiple(HashMap<String, Object> map);
+
+	ArrayList<UserVO> statusFilter(HashMap<String, String> map);
 }
