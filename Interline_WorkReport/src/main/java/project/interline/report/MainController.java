@@ -51,7 +51,7 @@ public class MainController {
 			if(user.getAuthority().equals("a")) {
 				return"redirect:/admin/adminMain";		
 			}else if(user.getAuthority().equals("u")) {
-				return "";	//userMainPage의 jsp등록
+				return "redirect:/user/userMain";	//userMainPage의 jsp등록
 			}
 		}
 		

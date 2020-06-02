@@ -54,5 +54,7 @@ font-size: 23px;
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
 	<iframe name="list_Box" id="list_Box" src="../admin/reportList" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
 </div>
+
+
 </body>
 </html>
