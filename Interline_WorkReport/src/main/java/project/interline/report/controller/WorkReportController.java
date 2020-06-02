@@ -1,6 +1,8 @@
 package project.interline.report.controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -212,6 +216,37 @@ public class WorkReportController {
 		return "redirect:/admin/reportList";
 	}
 	
+	
+	
+	@RequestMapping(value = "/admin/updateReport", method = RequestMethod.GET)
+	public String submitReport(Model model, String updateJsonReport,
+			/* String updateJsonContents, */ HttpSession session) {
+		JSONObject jsonReport= new JSONObject(updateJsonReport);
+//		JSONObject jsonContents= new JSONObject(updateJsonContents);
+	
+		WorkReportVO vo = new WorkReportVO();
+		vo.setReportNum(Integer.parseInt(jsonReport.getString("ReportNum")));
+		vo.setUserNum(Integer.parseInt(jsonReport.getString("UserNum")));  // setReportNum 을 setUser_Num 으로 고침 ohsaeam
+		vo.setYear(Integer.parseInt(jsonReport.getString("Year")));
+		vo.setMonth(Integer.parseInt(jsonReport.getString("Month")));
+		vo.setUserName(jsonReport.getString("UserName"));
+		
+		//vo.setAttendHour1(attendHour1);
+
+		
+		
+		
+		System.out.println("jsonReport는? "+jsonReport);
+//		System.out.println("jsonContents는? "+jsonContents);
+		System.out.println("set 해서 어떤 VO가 됐나? "+vo);
+		//여기까지 Update VO 만들어짐.
+		
+//		boolean result = dao.UpdateWorkReport(vo);
+//		System.out.println("업데이트result: "+result);
+		
+
+		return "redirect:/admin/reportList";
+	}
 	
 
 }

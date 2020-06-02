@@ -27,17 +27,7 @@
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<script> 
 		 
- 			//var years = ${vo.year};
- 			//var year = String(years);
-			//var months = ${vo.month};
-			//var month = String(months);
-			//var zero = "0";
-			//var date = year+zero+month; 	
-			
-			//var dayOfTheWeek = "dayOfTheWeek="+dayOfTheWeekValue2;
-			//var dayOfTheWeek = "dayOfTheWeek="+date;
-			
-			 //alert(date);
+
 			
 			var array = "array="+"${vo.reportNum}";
 		
