@@ -218,34 +218,40 @@ public class WorkReportController {
 	
 	
 	
-	@RequestMapping(value = "/admin/updateReport", method = RequestMethod.GET)
-	public String submitReport(Model model, String updateJsonReport,
-			/* String updateJsonContents, */ HttpSession session) {
-		JSONObject jsonReport= new JSONObject(updateJsonReport);
+	@RequestMapping(value = "/admin/adminUpdateReport", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public String submitReport(
+			Model model, /* String updateJsonReport, */
+			 HttpSession session,WorkReportVO workReportVO) {
+		
+		System.out.println("어드민으로 왔습니까? VO : "+workReportVO);
+		
+//		JSONObject jsonReport= new JSONObject(updateJsonReport);
 //		JSONObject jsonContents= new JSONObject(updateJsonContents);
 	
-		WorkReportVO vo = new WorkReportVO();
-		vo.setReportNum(Integer.parseInt(jsonReport.getString("ReportNum")));
-		vo.setUserNum(Integer.parseInt(jsonReport.getString("UserNum")));  // setReportNum 을 setUser_Num 으로 고침 ohsaeam
-		vo.setYear(Integer.parseInt(jsonReport.getString("Year")));
-		vo.setMonth(Integer.parseInt(jsonReport.getString("Month")));
-		vo.setUserName(jsonReport.getString("UserName"));
+		/*
+		 * WorkReportVO vo = new WorkReportVO();
+		 * vo.setReportNum(Integer.parseInt(jsonReport.getString("ReportNum")));
+		 * vo.setUserNum(Integer.parseInt(jsonReport.getString("UserNum"))); //
+		 * setReportNum 을 setUser_Num 으로 고침 ohsaeam
+		 * vo.setYear(Integer.parseInt(jsonReport.getString("Year")));
+		 * vo.setMonth(Integer.parseInt(jsonReport.getString("Month")));
+		 * vo.setUserName(jsonReport.getString("UserName"));
+		 */
 		
 		//vo.setAttendHour1(attendHour1);
-
 		
-		
-		
-		System.out.println("jsonReport는? "+jsonReport);
+//		System.out.println("jsonReport는? "+jsonReport);
 //		System.out.println("jsonContents는? "+jsonContents);
-		System.out.println("set 해서 어떤 VO가 됐나? "+vo);
-		//여기까지 Update VO 만들어짐.
+//		System.out.println("set 해서 어떤 VO가 됐나? "+vo);
+	
 		
-//		boolean result = dao.UpdateWorkReport(vo);
-//		System.out.println("업데이트result: "+result);
-		
+		int result = dao.updateReport(workReportVO);
+		System.out.println("어드민 업데이트result: "+result); // 0 이 성공
 
-		return "redirect:/admin/reportList";
+		
+		
+		return "success";
 	}
 	
 

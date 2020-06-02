@@ -4,7 +4,7 @@
  * eform에서 일률적으로 들어오는 1차원 제이슨 배열의 자료를 
  * report테이블과 report_main테이블의 형식으로 변환해 준다.
  * */
-function makeJsonForUpdate(oriJson){
+/*function makeJsonForUpdate(oriJson){
 	var reportJson={
 			"ReportNum":"",  
 			  "UserNum":"",  
@@ -534,5 +534,80 @@ function makeJsonForUpdate(oriJson){
 	
 	
 	return reportJson;
+}*/
+
+
+
+//해당 달의 일수 구하는 합수
+//parameter: 년(int 4) ,월(int 1||2)
+//return: 해당월의 일수(int)
+	function getDates(year,month){  
+		var start = new Date(year+"-"+month+"-01");  
+		if(month==12){
+			var end = new Date((Number(start.getFullYear())+1)+"-01-01");
+		}else{
+			var end = new Date(start.getFullYear()+"-"+(month+1)+"-01");
+		}
+		
+		var dates = (end.getTime() - start.getTime())/1000/60/60/24;  
+		return dates;
+	}		
+
+
+
+function adminUpdateReport(jsonData,address){
+	for (var i=1 ; i<=31 ; i++){
+		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null||["attendHour"+i]=='""'){
+		jsonData["attendHour"+i]=0;
+		}
+		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null){
+		jsonData["attendMinute"+i]=0;
+		}
+		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null){
+		jsonData["offHour"+i]=0;
+		}
+		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null){
+		jsonData["offMinute"+i]=0;
+		}
+		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null){
+		jsonData["restHour"+i]=0;
+		}
+		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null){
+		jsonData["restMinute"+i]=0;
+		}
+	}
+	
+	for (var i=getDates(jsonData.year,jsonData.month)+1 ; i<=31 ; i++){
+		jsonData["attendHour"+i]=0;
+		jsonData["attendMinute"+i]=0;
+		jsonData["offHour"+i]=0;
+		jsonData["offMinute"+i]=0;
+		jsonData["restHour"+i]=0;
+		jsonData["restMinute"+i]=0;
+		jsonData["netWorkingTime"+i]="0:00";
+		jsonData["workContent"+i]="-";
+	}
+	console.log(JSON.stringify(jsonData));
+	
+	$.ajax(
+			{
+				url: address,
+				type: 'POST',
+				data: JSON.parse(JSON.stringify(jsonData)),
+				success: function(data){
+						//var text=["成功","成功","報告書重複 管理者にお問い合わせてください","提出したのは修正できません。"];
+						//alert(text[s]);
+						//location.href="../";
+						alert("修正を完了しました。")
+						location.href="reportList";
+					},
+				error: function(e){
+						console.log(JSON.stringify(e));
+						alert('修正にできませんでした。もう一度試して下さい。');
+						//location.href="../Report/workReportList";
+					}
+			}		
+		);
 }
+
 

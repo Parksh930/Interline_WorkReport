@@ -29,7 +29,7 @@
 	src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js"
 	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
-
+<script src="/report/resources/js/workingChart.js" type="text/javascript"></script> 
 
 <title>updateReport</title>
 </head>
@@ -38,6 +38,7 @@
 <script>
 		var array = "array=" + "${vo.reportNum}";
 
+		
 		function SetOZParamters_OZViewer() {
 			var oz;
 			oz = document.getElementById("OZViewer");
@@ -55,21 +56,24 @@
 
 		function OZUserEvent_OZViewer(param1, param2, param3) {
 			if(param3=="update"){
-				var jsonSet=makeJsonForUpdate(JSON.parse(param1));
-				$('#updateJsonReport').val(JSON.stringify(jsonSet));
+				//var jsonSet=makeJsonForUpdate(JSON.parse(param1));
+				//$('#updateJsonReport').val(JSON.stringify(jsonSet));
 				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
-				var submitConfirm=confirm("修正しますか？");
-				if(submitConfirm==true){
-					document.getElementById('updateReport').submit();
+				var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+				console.log(chartData);
+				var uConfirm=confirm("修正しますか？");
+				if(uConfirm==true){
+				chartData.state=1;
+				adminUpdateReport(chartData,"adminUpdateReport");
 				}
-		}
+			}
 		}
 </script>
 
-	<form id="updateReport" action="updateReport">
+<!-- 	<form id="updateReport" action="updateReport">
 		<input id="updateJsonReport" type="hidden" name="updateJsonReport" value="">
-		<!-- <input id="updateJsonContents" type="hidden" name="updateJsonContents" value=""> -->
-	</form>
+		<input id="updateJsonContents" type="hidden" name="updateJsonContents" value=""> 
+	</form>-->
 </body>
 </html>
 
