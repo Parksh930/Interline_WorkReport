@@ -11,33 +11,33 @@
 	}
 </script>
 
-<meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge"/>
-<script src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
-<link rel="stylesheet" href="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
+<meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge" />
+<script src="../resources/js/updateReport.js"></script>
+<script
+	src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
+<link rel="stylesheet"
+	href="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.css"
+	type="text/css" />
 <script src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="http://192.168.1.34:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-<script type="text/javascript" src="http://192.168.1.34:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+<link rel="stylesheet"
+	href="http://192.168.1.34:8888/oz80/ozhviewer/ui.dynatree.css"
+	type="text/css" />
+<script type="text/javascript"
+	src="http://192.168.1.34:8888/oz80/ozhviewer/jquery.dynatree.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js"
+	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
+<script src="/report/resources/js/workingChart.js" type="text/javascript"></script> 
 
-
-<title>ReadReport</title>
+<title>updateReport</title>
 </head>
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
-	<script> 
-		 
-			//var year = ${vo.year};
-			//var month = ${vo.month};
-			//	var day = "01";
-			//var fullDate = "'"+year+"-"+month+"-"+day+"'"; 	
-			//var weekDay = new Date(fullDate);
-			//var dayOfTheWeekValue = weekDay.getDay();
-			// alert(dayOfTheWeekValue);
-			//var dayOfTheWeek = "dayOfTheWeek="+dayOfTheWeekValue;
-			
-			var array = "array="+"${vo.reportNum}";
-		
+<script>
+		var array = "array=" + "${vo.reportNum}";
+
 		
 		function SetOZParamters_OZViewer() {
 			var oz;
@@ -50,13 +50,30 @@
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
 			oz.sendToActionScript("odi.workTest.args1", array);
-			//oz.sendToActionScript("odi.workTest.args2", dayOfTheWeek);
 			return true;
 		}
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");
-	</script>
 
+		function OZUserEvent_OZViewer(param1, param2, param3) {
+			if(param3=="update"){
+				//var jsonSet=makeJsonForUpdate(JSON.parse(param1));
+				//$('#updateJsonReport').val(JSON.stringify(jsonSet));
+				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
+				var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+				console.log(chartData);
+				var uConfirm=confirm("修正しますか？");
+				if(uConfirm==true){
+				chartData.state=1;
+				adminUpdateReport(chartData,"adminUpdateReport");
+				}
+			}
+		}
+</script>
 
+<!-- 	<form id="updateReport" action="updateReport">
+		<input id="updateJsonReport" type="hidden" name="updateJsonReport" value="">
+		<input id="updateJsonContents" type="hidden" name="updateJsonContents" value=""> 
+	</form>-->
 </body>
 </html>
 
