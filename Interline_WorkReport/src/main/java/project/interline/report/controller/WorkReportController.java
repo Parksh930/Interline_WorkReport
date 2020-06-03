@@ -1,8 +1,6 @@
 package project.interline.report.controller;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -162,16 +160,21 @@ public class WorkReportController {
 		return result;
 	}
 	
-
-	
 	@RequestMapping(value="/admin/reportList", method = RequestMethod.GET)
-	public String reportList(Model model) {
+	public String reportListForm(Model model) {
+
+		return "Report/workReportList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/reportList", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ArrayList<ReportListVO> reportList(){
+		
 		ArrayList<ReportListVO> reportList = dao.getReportList();
 		
 		logger.debug("reportList:{}",reportList);
-		
-		model.addAttribute("report_all",reportList);
-		return "Report/workReportList";
+
+		return reportList;
 	}
 	
 	

@@ -69,6 +69,103 @@ a {
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+$(function(){
+	var report_table_title;
+	var report_sort;
+	var report_Measure = ["updateDate","descending"];
+
+	first_reportList();
+	$("#Reportlist_sort").change(report_List_Sort);
+
+	function first_reportList(){
+		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
+		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
+		report_table_title	+='<th class="Reportlist_userName">社員名</th><th class="Reportlist_team">チーム名</th>';
+		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th></tr>';
+
+		var report_com = report_table_title;
+
+		$.ajax({
+			type:"post",
+			url:"reportList",
+			async:false,
+			traditional: true,
+			dataType:"json",
+			success:function(list){
+
+				list.forEach(function(report){
+					report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="${report_List.reportNum}"></td>';
+					report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
+					report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
+					report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
+					report_com += '<td class="Reportlist_team">'+report.team+'</td>';
+					report_com += '<td class="Reportlist_reportDays">'+report.year+'年'+report.month+'月</td>';
+					report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
+					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
+					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
+				});
+				
+				report_com += "</table>";
+				 $("#report_List").html(report_com); 
+				 report_sort = list;
+			}	
+		});
+	}
+
+	function report_List_Sort(){
+		var report_com = report_table_title;
+
+		if($(this)[0].id == "Reportlist_sort"){
+			report_Measure = ($(this).val()).split('_');
+		}
+
+		if(report_Measure[0] == "reportDays" && report_Measure[1] == "ascending"){
+			report_sort.sort(function(a,b){
+				var ab = a["year"] - b["year"];
+				if (ab == 0){
+					return  a["month"] - b["month"];
+				}
+				return ab});
+		}else if (report_Measure[0] == "reportDays" && report_Measure[1] == "descending"){
+			report_sort.sort(function(a,b){
+				var ba = b["year"] - a["year"];
+				if (ba == 0){
+					return  b["month"] - a["month"];
+				}
+				return ba});
+		}
+
+		if(report_Measure[0] == "userNum" && report_Measure[1] == "ascending"){
+			report_sort.sort(function(a,b){return a[report_Measure[0]] - b[report_Measure[0]]});
+		}else if(report_Measure[0] == "userNum" && report_Measure[1] == "descending"){
+			report_sort.sort(function(a,b){return b[report_Measure[0]] - a[report_Measure[0]]});
+		}
+
+		if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "ascending"){
+			report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
+		}else if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "descending"){
+			report_sort.sort(function(a, b) {return a[report_Measure[0]] > b[report_Measure[0]] ? -1 : a[report_Measure[0]] < b[report_Measure[0]] ? 1 : 0;});
+		} 
+
+
+		report_sort.forEach(function(report){
+			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="${report_List.reportNum}"></td>';
+			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
+			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
+			report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
+			report_com += '<td class="Reportlist_team">'+report.team+'</td>';
+			report_com += '<td class="Reportlist_reportDays">'+report.year+'年'+report.month+'月</td>';
+			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
+			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
+			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
+		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
+		});
+		
+		report_com += "</table>";
+		 $("#report_List").html(report_com); 
+	}
+});
 
 
 
@@ -149,40 +246,65 @@ a {
 
 <body>
 	<h1>報告書リスト</h1>
-	<div id="report_List">
-		<table>
-			<tr>
-				<th class="Reportlist_checkBox"><input type="checkbox"
-					id="allCheck" onclick="Acheck()"></th>
-				<th class="Reportlist_userNum">社員番号</th>
-				<th class="Reportlist_userMail">社員メール</th>
-				<th class="Reportlist_userName">社員名</th>
-				<th class="Reportlist_team">チーム名</th>
-				<th class="Reportlist_reportDays">年月分</th>
-				<th class="Reportlist_updateDate">最終保存日時</th>
-			</tr>
-			<c:forEach var="report_List" items="${report_all}">
+<!-- 	<div id="report_list_filter">
+	<label for="user_num">社員番号</label><input type="text" id = "user_num">
+	<br>
+	<label for="user_name">社員名</label><input type="text" id = "user_name">
+	<br>
+	<input type="checkbox" id ="team_tokyo" name ="user_team" value="東京"><label for="team_tokyo">東京</label>
+	<input type="checkbox" id ="team_yokohama" name ="user_team" value="横浜"><label for="team_yokohama">横浜</label>
+	<input type="checkbox" id ="team_saitama" name ="user_team" value="埼玉"><label for="team_saitama">埼玉</label>
+	<input type="checkbox" id ="team_others" name ="user_team" value="その他"><label for="team_others">その他</label>
+	<br>
+	勤務票の期間
+	<select id ="" name="">
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+	</select>
+	~
+	<select id ="" name="">
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+		<option value=""></option>
+	</select>
 
-
-				<tr>
-					<td><input type="checkbox" name="selectValue" class="check"
-						value="${report_List.reportNum}"></td>
-					<td class="Reportlist_userNum">${report_List.userNum}</td>
-					<td class="Reportlist_userMail">${report_List.userMail}</td>
-					<td class="Reportlist_userName">${report_List.userName}</td>
-					<td class="Reportlist_team">${report_List.team}</td>
-					<td class="Reportlist_reportDays">${report_List.year}年${report_List.month}月</td>
-					<td class="Reportlist_updateDate">${report_List.updateDate}</td>
-					<td class="Reportlist_reportBtn"><button class="Read_Btn"
-							onclick="getReadReport(${report_List.reportNum})">閲覧</button>
-					<td class="Reportlist_reportBtn"><button class="Read_Btn"
-							onclick="getUpdateReport(${report_List.reportNum})">修正</button>
-					<td class="Reportlist_reportBtn"><button class="Read_Btn"
-							onclick="DeleteReport(${report_List.reportNum})">削除</button>
-				</tr>
-			</c:forEach>
-		</table>
+	</div> -->
+	<div id="report_list_sort">
+		<select id ="Reportlist_sort" name="Userlist_sort">
+			<option value="userNum_ascending">社員番号の昇順</option>
+			<option value="userNum_descending">社員番号の降順</option>
+			<option value="userMail_ascending">社員メールの昇順</option>
+			<option value="userMail_descending">社員メールの降順</option>
+			<option value="userName_ascending">社員名の昇順</option>
+			<option value="userName_descending">社員名の降順</option>
+			<option value="team_ascending">チーム名の昇順</option>
+			<option value="team_descending">チーム名の降順</option>
+			<option value="reportDays_ascending">年月分の昇順</option>
+			<option value="reportDays_descending">年月分の降順</option>
+			<option value="updateDate_ascending">最終保存日時の昇順</option>
+			<option value="updateDate_descending">最終保存日時の降順</option>
+		</select>
 	</div>
+	<div id="report_List"></div>
 
 	<div>
 		<button class="Read_Btn" onclick="getAllReport()">全体閲覧</button>

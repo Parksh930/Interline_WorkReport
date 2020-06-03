@@ -10,35 +10,40 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
 $(function(){
-	var team=[];
-	var list_sort;
-	var table_title;
+	var user_team=[];
+	var user_sort;
+	var user_table_title;
 	var status = "all";
-	var others;
+	var team_others;
+	var user_Measure = ["userNum","ascending"];
 
-	first_list();
-	$('input[name="user_team"]').click(team_Filter);
-	$("input[name='user_status']").click(status_Filter);
-	$("#Userlist_sort").change(List_Sort);
+	first_userList();
+	
+	$('input[name="user_team"]').click(user_Team_Filter);
+	$("input[name='user_status']").click(user_Status_Filter);
+	$("#Userlist_sort").change(user_List_Sort);
 
 	
-	function List_Sort(){
-		var con = table_title;
-		var measure = ($(this).val()).split('_');
+	function user_List_Sort(){
+		var con = user_table_title;
 
-		if(measure[0] == "userNum" && measure[1] == "ascending"){
-			list_sort.sort(function(a,b){return a[measure[0]] - b[measure[0]]});
-		}else if(measure[0] == "userNum" && measure[1] == "descending"){
-			list_sort.sort(function(a,b){return b[measure[0]] - a[measure[0]]});
+		if($(this)[0].id == "Userlist_sort"){
+			user_Measure = ($(this).val()).split('_');
+		}
+		
+		if(user_Measure[0] == "userNum" && user_Measure[1] == "ascending"){
+			user_sort.sort(function(a,b){return a[user_Measure[0]] - b[user_Measure[0]]});
+		}else if(user_Measure[0] == "userNum" && user_Measure[1] == "descending"){
+			user_sort.sort(function(a,b){return b[user_Measure[0]] - a[user_Measure[0]]});
 		}
 
-		if(measure[0] != "userNum" && measure[1] == "ascending"){
-			list_sort.sort(function(a,b){return a[measure[0]] < b[measure[0]] ? -1 : a[measure[0]] > b[measure[0]] ? 1 : 0})
-		}else if(measure[0] != "userNum" && measure[1] == "descending"){
-			list_sort.sort(function(a, b) {return a[measure[0]] > b[measure[0]] ? -1 : a[measure[0]] < b[measure[0]] ? 1 : 0;});
+		if(user_Measure[0] != "userNum" && user_Measure[1] == "ascending"){
+			user_sort.sort(function(a,b){return a[user_Measure[0]] < b[user_Measure[0]] ? -1 : a[user_Measure[0]] > b[user_Measure[0]] ? 1 : 0})
+		}else if(user_Measure[0] != "userNum" && user_Measure[1] == "descending"){
+			user_sort.sort(function(a, b) {return a[user_Measure[0]] > b[user_Measure[0]] ? -1 : a[user_Measure[0]] < b[user_Measure[0]] ? 1 : 0;});
 		} 
 		
-		list_sort.forEach(function(item){
+		user_sort.forEach(function(item){
 				con +='<tr><td class="Userlist_userNum">'+item.userNum+'</td>';
 				con +='<td class="Userlist_userMail">'+item.userMail+'</td>';
 				con +='<td class="Userlist_userName">'+item.userName+'</td>';
@@ -65,15 +70,15 @@ $(function(){
 			$("#user_List").html(con);
 	}
 
-	function first_list(){
+	function first_userList(){
 
-		table_title= '<tr><table id = "list_table"><th class="Userlist_userNum">社員番号</th>';
-		table_title	+='<th class="Userlist_userMail">社員メール</th><th class="Userlist_userName">社員名</th>';
-		table_title	+='<th class="Userlist_team">チーム名</th><th class="Userlist_position">職級</th>';
-		table_title	+='<th class="Userlist_startDate">入社日</th><th class="Userlist_lastupdateDate">最新更新日</th>';
-		table_title	+='<th class="Userlist_finalreportDate">最終提出分</th><th class="Userlist_retirement">退職区分</th></tr>';
+		user_table_title= '<tr><table id = "list_table"><th class="Userlist_userNum">社員番号</th>';
+		user_table_title	+='<th class="Userlist_userMail">社員メール</th><th class="Userlist_userName">社員名</th>';
+		user_table_title	+='<th class="Userlist_team">チーム名</th><th class="Userlist_position">職級</th>';
+		user_table_title	+='<th class="Userlist_startDate">入社日</th><th class="Userlist_lastupdateDate">最新更新日</th>';
+		user_table_title	+='<th class="Userlist_finalreportDate">最終提出分</th><th class="Userlist_retirement">退職区分</th></tr>';
 
-		var con = table_title;
+		var con = user_table_title;
 
 			$.ajax({
 			type:"post",
@@ -108,34 +113,33 @@ $(function(){
 				
 				con += "</table>";
 				$("#user_List").html(con);
-				list_sort = list;
+				user_sort = list;
 			}	
 		});
 	}
 
-	function team_Filter(){
-		team = [];
+	function user_Team_Filter(){
+		user_team = [];
+
+		$('input[name="user_team"]').each(function(){
+			if($(this)[0].value != "その他"){
+				user_team.push($(this).val());
+			}
+		});
 		
 		if($('#team_others').prop("checked")){
-			others = "not";
-			$('input[name="user_team"]').each(function(){				
+			team_others = "not";
+			$('input[name="user_team"]').each(function(){
 				if($(this).prop("checked") && $(this)[0].value != "その他"){
-						team.splice(team.indexOf($(this).val()),1);
-				}else if($(this)[0].value != "その他"){
-					team.push($(this).val());
+					user_team.splice(user_team.indexOf($(this).val()),1);
 				}
 			});
 		}
 		else{
-			others = null;
-
+			team_others = null;
 			$('input[name="user_team"]').each(function(){
-	
-				if($(this).prop("checked")){
-					team.push($(this).val());
-				}else if(team.indexOf($(this).val())>0){
-					
-					team.splice(team.indexOf($(this).val()),1);
+				if($(this).prop("checked") == false && $(this)[0].value != "その他"){
+					user_team.splice(user_team.indexOf($(this).val()),1);
 				}
 			});
 		}
@@ -143,58 +147,32 @@ $(function(){
 		reslut_Filter();
 	}
 
-	function status_Filter(){
+	function user_Status_Filter(){
 		status = $(this).val();
 
 		reslut_Filter();
 	}
 
 	function reslut_Filter(){
-		var con = table_title;
 		
-		if(team == "" || team == null){
-			team.push("team_all");
-		}else if(team.indexOf("team_all") > -1 && team.length >= 2){
-			team.splice(team.indexOf("team_all"),1);
+		if(user_team == "" || user_team == null){
+			user_team.push("team_all");
+		}else if(user_team.indexOf("team_all") > -1 && user_team.length >= 2){
+			user_team.splice(user_team.indexOf("team_all"),1);
 		}
-		
+
 		$.ajax({
 		type:"get",
 		url:"user_Filter",
-		data:{team:team,status:status,others:others},
+		data:{team:user_team,status:status,team_others:team_others},
 		async:false,
 		traditional: true,
 		dataType:"json",
 		success:function(list){
-
-			list.forEach(function(item){
-				con +='<tr><td class="Userlist_userNum">'+item.userNum+'</td>';
-				con +='<td class="Userlist_userMail">'+item.userMail+'</td>';
-				con +='<td class="Userlist_userName">'+item.userName+'</td>';
-				con +='<td class="Userlist_team">'+item.team+'</td>';
-				con +='<td class="Userlist_position">'+item.position+'</td>';
-				con +='<td class="Userlist_startDate">'+item.startDate+'</td>';
-
-				if(item.lastupdateDate != null){
-					con +='<td class="Userlist_lastupdateDate">'+item.lastupdateDate+'</td>';
-				}else {
-					con +='<td class="Userlist_lastupdateDate"></td>'
-					}
-				if(item.lastreportDate != null){
-					con +='<td class="Userlist_lastreportDate">'+item.lastreportDate+'</td>';
-				}else {
-					con +='<td class="Userlist_lastreportDate"></td>'
-					}
-
-				con +='<td class="Userlist_retirement">'+item.retirement+'</td>';
-				con +='<td class="Userlist_updateBtn"><a class="Update_Btn" href="userUpdate?Num='+item.userNum+'">修正</a></td>';
-			});
-			
-				con += "</table>";
-				$("#user_List").html(con);
-				list_sort = list;
+				user_sort = list;
 			}	
 		});
+		user_List_Sort();
 	}
 });
 
