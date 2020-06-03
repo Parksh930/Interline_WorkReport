@@ -100,6 +100,9 @@
 
 		submitReport(chartData,"saveReport",type);
 	}
+	function redirect(){
+		location.href='userMain';
+	}
 	
 </script>	
 	
@@ -143,7 +146,7 @@
 				<tr>
 					<td style="text-align: right; font-size: 15px;">営業日 : </td><td id="salesDay" style=" font-size: 15px;"></td>
 					<td rowspan="5">
-						<input type="button" value="取り消し" onclick="location.href='../'">
+						<input type="button" value="取り消し" onclick="redirect()">
 						<input type="button" value="保存" onclick="saveReport(0)">
 						<input type="button" value="提出" onclick="saveReport(1)">
 					</td>
