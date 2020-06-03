@@ -61,12 +61,15 @@ public class AdminDAO {
 		return vo;
 	}
 
-	public ArrayList<UserVO> statusFilter(String status) {
+	public ArrayList<UserVO> userFilter(String[] team, String status, String others) {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
-		HashMap<String, String> map = new HashMap<>();
 		
+		HashMap<String, Object> map = new HashMap<>();
+		System.out.println("others:"+others);
+		map.put("others",others);
+		map.put("team",team);
 		map.put("status", status);
-		ArrayList<UserVO> list = mapper.statusFilter(map);
+		ArrayList<UserVO> list = mapper.userFilter(map);
 		
 		return list;
 	}

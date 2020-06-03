@@ -9,4 +9,15 @@
 select * from user_inform where usermail =#{login_id}
 </select>
 
+	<update id="updateMp" parameterType="user">
+		update 
+			user_inform 
+		set 
+			<if test='Password != null and Password != ""'>
+			,password = #{Password}
+			</if>
+		where usernum = #{UserNum}
+	</update>
+	
+	
 </mapper>

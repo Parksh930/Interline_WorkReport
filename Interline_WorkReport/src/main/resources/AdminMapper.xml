@@ -5,19 +5,31 @@
   
 <mapper namespace="project.interline.report.dao.AdminMapper">
 
-<select id="statusFilter" parameterType="map" resultType="user">
+<select id="userFilter" parameterType="map" resultType="user">
 select user.*,max(report.updatedate)lastupdateDate
 	from 
 		user_inform as user left join work_Report as report
 	on
 		report.usernum = user.usernum 
+	<if test='team != null and team[0] != "team_all"'>
+		where team 
+	<if test ='others != null and others == "not"'>	
+		not in
+	</if>	
+	<if test ='others == null or others == ""'>	
+		in
+	</if>	
+	<foreach collection="team" item="team" index="num"  open="(" close=")" separator=",">
+        	#{team}
+    	</foreach> 
+     </if>
 	group by
 		user.usernum
-	<if test='status != null and status == "submitted"'>
+	<if test='status != null and status == "status_submitted"'>
 		having
 			date_format(user.LastReportDate, "%Y-%m") = date_format(date_add(now(), interval -1 month), "%Y-%m")
 	</if>
-	<if test='status != null and status == "writing"'>
+	<if test='status != null and status == "status_writing"'>
 		having
 			date_format(user.LastReportDate, "%Y-%m") != date_format(date_add(now(), interval -1 month), "%Y-%m")
 		or 

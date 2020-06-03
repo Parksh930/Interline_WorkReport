@@ -39,7 +39,7 @@ public class WorkReportController {
 	
 	
 	//
-	@RequestMapping(value = "/user/writeReport", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/writeReport", method = RequestMethod.POST)
 	public String writeReport(Model model,int month,int year,int userNum) { //int month,int year,int userNum을 POST로 받아와야한다. 메서드도 POST로 나중에 고칠것
 		logger.debug("writeReport");
 		model.addAttribute("userNum", userNum);
