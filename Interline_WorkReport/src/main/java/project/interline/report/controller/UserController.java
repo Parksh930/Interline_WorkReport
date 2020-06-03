@@ -21,14 +21,24 @@ private static final Logger logger = LoggerFactory.getLogger(UserController.clas
 
 	@Autowired
 	UserDAO dao;
-
+	
+	@RequestMapping(value="/user/userMain", method=RequestMethod.GET)
+	public String userMain(HttpSession session) {
+		
+		return "User/userMain";
+	}
+	
 	
 	@RequestMapping(value="/user/profile", method=RequestMethod.GET)
-
 	public String updatemyPage(HttpSession session){
 
 		return "User/changePW";
 	}
 	
+	@RequestMapping(value="/user/myReportList", method=RequestMethod.GET)
+	public String myReportList(HttpSession session){
+
+		return "User/myreportList";
+	}
 	
 }

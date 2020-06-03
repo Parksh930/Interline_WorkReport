@@ -130,21 +130,11 @@
 	
 	
 	$('#bt1').css('bottom', '0');		//제어창 팝업 하단 고정
-	
-	//모바일 피씨 접속 구분후 피씨면 뷰어창 넓이 줄이기
-	var filter = "win16|win32|win64|mac|macintel"; 
-	if ( navigator.platform ) { 
-		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
-			//alert('mobile 접속'); 
-		} else { 
-			$('#OZViewer').css('width', '30%');
-		} 
-	}
 </script>
 
-<div style="text-align:left; position:absolute; bottom:-2px;">
-	<div><img id="bt1" src="/report/resources/image/popupButton.PNG" style="display: block;"></div>
-	<div id="summary" style="text-align:left; background-color:rgb(217,217,217,0.8); border-radius: 3px;">
+<div style="position: absolute; bottom: -2px; left: 0;">
+	<img id="bt1" src="/report/resources/image/popupButton.PNG" style="display: block; left: 20%;">
+	<div id="summary" style="text-align:left; background-color:rgb(217,217,217,0.8); border-radius: 3px; ">
 		<div style="background-color:rgb(217,217,217,0.8); display: block;">
 			<table>
 				<tr>
@@ -156,22 +146,36 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="text-align: right; font-size: 15px;">平日勤務 : </td><td id="workingDay" style=" font-size: 15px;"></td>
+					<td class="summary" style="text-align: right; font-size: 30px;">平日勤務 : </td><td id="workingDay" class="summary" style=" font-size: 30px;"></td>
 				</tr>
 				<tr>
-					<td style="text-align: right; font-size: 15px;">休日勤務 : </td><td id="holidayWorkingDay" style=" font-size: 15px;"></td>
+					<td class="summary" style="text-align: right; font-size: 30px;">休日勤務 : </td><td id="holidayWorkingDay" class="summary" style=" font-size: 30px;"></td>
 				</tr>
 				<tr>
-					<td style="text-align: right; font-size: 15px;">欠勤 : </td><td id="absent" style=" font-size: 15px;"></td>
+					<td class="summary" style="text-align: right; font-size: 30px;">欠勤 : </td><td id="absent" class="summary" style=" font-size: 30px;"></td>
 				</tr>
 				<tr>
-					<td style="text-align: right; font-size: 15px;">勤務時間 : </td><td id="sumWorkingTime" style=" font-size: 15px;"></td>
+					<td class="summary" style="text-align: right; font-size: 30px;">勤務時間 : </td><td id="sumWorkingTime" class="summary" style=" font-size: 30px;"></td>
 				</tr>
 			</table>
 		</div>
 	</div>	
 </div>
 
+<script type="text/javascript">
+	var filter = "win16|win32|win64|mac|macintel"; 
+	if ( navigator.platform ) { 
+		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+			//alert('mobile 접속'); 
+		} else { 
+			console.log("pc접속")
+			$('.summary').css('font-size', '15px');
+			$('#OZViewer').css('width', '30%');
+			
+		} 
+	}
+	
+</script>
 
 </body>
 </html>
