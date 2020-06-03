@@ -37,6 +37,7 @@
 <input id="userNum" type="hidden" value="${userNum}">
 <input id="month" type="hidden" value="${month}">
 <input id="year" type="hidden" value="${year}">
+<input id="userName" type="hidden" value="${sessionScope.user_inform.userName}">
 <div id="reportJSON" style="display: none;">${reportJSON}</div>
 <!-- /model값을 불러오기위한 input -->
 <script src="/report/resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
@@ -46,6 +47,8 @@
 	var reportYear=parseInt($('#year').val());
 	var reportMonth=parseInt($('#month').val());
 	var reportJSON=$('#reportJSON').html();
+	var name=$('#userName').val();
+	console.log("name="+name);
 	if (reportJSON=="submitted"){
 		alert("今月の勤務表はすでに提出しました。修正したかったら修正要請してください。");
 		//location.href="../";
@@ -93,7 +96,7 @@
 		chartData.sumWorkingTime = $('#sumWorkingTime').html();
 		chartData.state=type;
 		chartData.userNum=parseInt($('#userNum').val());
-		chartData.userName="aaa";
+		chartData.userName=name;
 
 		submitReport(chartData,"saveReport",type);
 	}

@@ -123,6 +123,17 @@
 			jsonData["netWorkingTime"+i]="0:00";
 			jsonData["workContent"+i]="-";
 		}
+		for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
+			if (jsonData["workContent"+i]=="-") {
+				jsonData["attendHour"+i]=0;
+				jsonData["attendMinute"+i]=0;
+				jsonData["offHour"+i]=0;
+				jsonData["offMinute"+i]=0;
+				jsonData["restHour"+i]=0;
+				jsonData["restMinute"+i]=0;
+				jsonData["netWorkingTime"+i]="0:00";
+			}
+		}
 		console.log(JSON.stringify(jsonData));
 		if (type==1) confirm("提出すると修正できません。よろしいでしょうか。");
 		
