@@ -3,21 +3,16 @@ package project.interline.report.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 import project.interline.report.dao.AdminDAO;
 import project.interline.report.vo.UserVO;
@@ -66,10 +61,10 @@ public class AdminController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/admin/statusFilter", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
-	public ArrayList<UserVO> statusFilter(String status) throws ParseException {
-		logger.debug("filter:{}",status);
-		ArrayList<UserVO> list = dao.statusFilter(status);
+	@RequestMapping(value="/admin/user_Filter", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ArrayList<UserVO> userFilter(String[] team,String status, String others) throws ParseException {
+		logger.debug("status:{}, team:{}",status,team);
+		ArrayList<UserVO> list = dao.userFilter(team,status,others);
 		
 		for(int n=0; n<list.size();n++) {
 			Date Start_Date = old_pattern.parse(list.get(n).getStartDate());
@@ -82,17 +77,6 @@ public class AdminController {
 		}
 		
 		return list;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/admin/userList_Sort", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
-	public String userList_sort(UserVO[] List, String Measure) {
-		
-		 Arrays.sort(List);
-		logger.debug("User_Sort:{}", List);
-		logger.debug("Measure:{}",Measure);
-		
-		return "接続";
 	}
 	
 	@ResponseBody
