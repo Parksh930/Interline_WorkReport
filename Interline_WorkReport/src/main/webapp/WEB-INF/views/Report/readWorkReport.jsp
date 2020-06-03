@@ -37,7 +37,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://192.168.1.34:8888/oz80/server");
 			oz.sendToActionScript("connection.reportname",
-					"OSA/workReport.ozr");
+					"OSA/workReport1.ozr");
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
