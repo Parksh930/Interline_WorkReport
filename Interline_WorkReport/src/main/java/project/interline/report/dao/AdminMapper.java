@@ -19,5 +19,5 @@ public interface AdminMapper {
 
 	UserVO check_Multiple(HashMap<String, Object> map);
 
-	ArrayList<UserVO> statusFilter(HashMap<String, String> map);
+	ArrayList<UserVO> userFilter(HashMap<String, Object> map);
 }

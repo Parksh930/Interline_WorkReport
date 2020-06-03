@@ -1,6 +1,6 @@
 package project.interline.report.vo;
 
-public class UserVO {
+public class UserVO{
 	private int userNum;
 	private String userMail;
 	private String userName;
@@ -128,5 +128,4 @@ public class UserVO {
 				+ ", lastupdateDate=" + lastupdateDate + ", lastreportDate=" + lastreportDate + ", retirement="
 				+ retirement + ", authority=" + authority + "]";
 	}
-
 }
