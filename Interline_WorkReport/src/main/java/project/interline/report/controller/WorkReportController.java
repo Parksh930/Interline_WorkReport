@@ -205,6 +205,8 @@ public class WorkReportController {
 
 	@RequestMapping(value="/admin/getAllReport", method = RequestMethod.GET)
 	public String getAllReport(WorkReportVO vo,Model model) {
+		WorkReportVO getReadVO = dao.getWorkReportVO(vo);
+		model.addAttribute("vo",getReadVO);
 		return "Report/readWorkReport3";
 	}
 	

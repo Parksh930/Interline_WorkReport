@@ -637,6 +637,10 @@ function adminUpdateReport(jsonData,address){
 	
 	console.log(JSON.stringify(jsonData));
 	
+	var reportNum = jsonData.reportNum;
+	
+	console.log(reportNum);
+	
 	$.ajax(
 			{
 				url: address,
@@ -647,7 +651,7 @@ function adminUpdateReport(jsonData,address){
 						//alert(text[s]);
 						//location.href="../";
 						alert("修正を完了しました。")
-						location.href="reportList";
+						location.href="getUpdateReport?reportNum="+reportNum;
 					},
 				error: function(e){
 						console.log(JSON.stringify(e));
