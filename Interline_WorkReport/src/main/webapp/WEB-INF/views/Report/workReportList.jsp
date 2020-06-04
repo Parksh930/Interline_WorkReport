@@ -92,7 +92,7 @@ a {
 				
 	
 
-  function selectRead(){
+  function selectRead(reportNum){
   
     //var arrNumber = new Array();
 
@@ -111,7 +111,7 @@ a {
   			//arrNumber.push(chk_obj[i].value);
   		if(chk_obj[i].checked==true){	
   	  		arrNumber += chk_obj[i].value+",";
-  			  	  	}
+		  	  	}
   	  	}
   	 
   		//str = str.substr(0, str.length -1)

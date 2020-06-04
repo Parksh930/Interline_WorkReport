@@ -35,9 +35,15 @@
 </head>
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
+	<div id="year" style="display: none;">${vo.year}</div>
 <script>
+		var holiday;
+		holiday = $('#year').html();
 		var array = "array=" + "${vo.reportNum}";
-
+		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[],[3,23],[]]}; 
+		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]};
+		//getSecondMondayOnOCT(2020);
+		//alternativeHoliday(holiday);
 		
 		function SetOZParamters_OZViewer() {
 			var oz;
@@ -46,6 +52,8 @@
 					"http://192.168.1.34:8888/oz80/server");
 			oz.sendToActionScript("connection.reportname",
 					"OSA/workReport2.ozr");
+			//oz.sendToActionScript("connection.pcount","1");
+			//oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
