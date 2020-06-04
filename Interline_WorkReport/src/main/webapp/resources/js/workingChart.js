@@ -61,7 +61,7 @@
 		var thisMonth=parseInt(jsonData.month);
 		for ( var i=1 ; i<=numberOfDate ; i++){
 			if( jsonData["workContent"+i] != "-" ){
-				if( jsonData["day"+i]=="土" || jsonData["day"+i]=="日" || holiday.holiday[thisMonth].includes(parseInt(jsonData["date"+i])) ){
+				if( jsonData["dateCondition"+i]=="休日" ){
 					countHolidayWork++
 				}else{
 					countNormalWork++					
