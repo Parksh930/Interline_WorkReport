@@ -14,37 +14,37 @@ public class WorkReportVO {
 	int absentDay;
 	String sumWorkingTime;
 	
-	int attendHour1;	int attendMinute1;	int offHour1;	int offMinute1;	int restHour1;	int restMinute1;	String netWorkingTime1;	String workContent1;
-	int attendHour2;	int attendMinute2;	int offHour2;	int offMinute2;	int restHour2;	int restMinute2;	String netWorkingTime2;	String workContent2;
-	int attendHour3;	int attendMinute3;	int offHour3;	int offMinute3;	int restHour3;	int restMinute3;	String netWorkingTime3;	String workContent3;
-	int attendHour4;	int attendMinute4;	int offHour4;	int offMinute4;	int restHour4;	int restMinute4;	String netWorkingTime4;	String workContent4;
-	int attendHour5;	int attendMinute5;	int offHour5;	int offMinute5;	int restHour5;	int restMinute5;	String netWorkingTime5;	String workContent5;
-	int attendHour6;	int attendMinute6;	int offHour6;	int offMinute6;	int restHour6;	int restMinute6;	String netWorkingTime6;	String workContent6;
-	int attendHour7;	int attendMinute7;	int offHour7;	int offMinute7;	int restHour7;	int restMinute7;	String netWorkingTime7;	String workContent7;
-	int attendHour8;	int attendMinute8;	int offHour8;	int offMinute8;	int restHour8;	int restMinute8;	String netWorkingTime8;	String workContent8;
-	int attendHour9;	int attendMinute9;	int offHour9;	int offMinute9;	int restHour9;	int restMinute9;	String netWorkingTime9;	String workContent9;
-	int attendHour10;	int attendMinute10;	int offHour10;	int offMinute10;	int restHour10;	int restMinute10;	String netWorkingTime10;	String workContent10;
-	int attendHour11;	int attendMinute11;	int offHour11;	int offMinute11;	int restHour11;	int restMinute11;	String netWorkingTime11;	String workContent11;
-	int attendHour12;	int attendMinute12;	int offHour12;	int offMinute12;	int restHour12;	int restMinute12;	String netWorkingTime12;	String workContent12;
-	int attendHour13;	int attendMinute13;	int offHour13;	int offMinute13;	int restHour13;	int restMinute13;	String netWorkingTime13;	String workContent13;
-	int attendHour14;	int attendMinute14;	int offHour14;	int offMinute14;	int restHour14;	int restMinute14;	String netWorkingTime14;	String workContent14;
-	int attendHour15;	int attendMinute15;	int offHour15;	int offMinute15;	int restHour15;	int restMinute15;	String netWorkingTime15;	String workContent15;
-	int attendHour16;	int attendMinute16;	int offHour16;	int offMinute16;	int restHour16;	int restMinute16;	String netWorkingTime16;	String workContent16;
-	int attendHour17;	int attendMinute17;	int offHour17;	int offMinute17;	int restHour17;	int restMinute17;	String netWorkingTime17;	String workContent17;
-	int attendHour18;	int attendMinute18;	int offHour18;	int offMinute18;	int restHour18;	int restMinute18;	String netWorkingTime18;	String workContent18;
-	int attendHour19;	int attendMinute19;	int offHour19;	int offMinute19;	int restHour19;	int restMinute19;	String netWorkingTime19;	String workContent19;
-	int attendHour20;	int attendMinute20;	int offHour20;	int offMinute20;	int restHour20;	int restMinute20;	String netWorkingTime20;	String workContent20;
-	int attendHour21;	int attendMinute21;	int offHour21;	int offMinute21;	int restHour21;	int restMinute21;	String netWorkingTime21;	String workContent21;
-	int attendHour22;	int attendMinute22;	int offHour22;	int offMinute22;	int restHour22;	int restMinute22;	String netWorkingTime22;	String workContent22;
-	int attendHour23;	int attendMinute23;	int offHour23;	int offMinute23;	int restHour23;	int restMinute23;	String netWorkingTime23;	String workContent23;
-	int attendHour24;	int attendMinute24;	int offHour24;	int offMinute24;	int restHour24;	int restMinute24;	String netWorkingTime24;	String workContent24;
-	int attendHour25;	int attendMinute25;	int offHour25;	int offMinute25;	int restHour25;	int restMinute25;	String netWorkingTime25;	String workContent25;
-	int attendHour26;	int attendMinute26;	int offHour26;	int offMinute26;	int restHour26;	int restMinute26;	String netWorkingTime26;	String workContent26;
-	int attendHour27;	int attendMinute27;	int offHour27;	int offMinute27;	int restHour27;	int restMinute27;	String netWorkingTime27;	String workContent27;
-	int attendHour28;	int attendMinute28;	int offHour28;	int offMinute28;	int restHour28;	int restMinute28;	String netWorkingTime28;	String workContent28;
-	int attendHour29;	int attendMinute29;	int offHour29;	int offMinute29;	int restHour29;	int restMinute29;	String netWorkingTime29;	String workContent29;
-	int attendHour30;	int attendMinute30;	int offHour30;	int offMinute30;	int restHour30;	int restMinute30;	String netWorkingTime30;	String workContent30;
-	int attendHour31;	int attendMinute31;	int offHour31;	int offMinute31;	int restHour31;	int restMinute31;	String netWorkingTime31;	String workContent31;
+	int attendHour1;	int attendMinute1;	int offHour1;	int offMinute1;	int restHour1;	int restMinute1;	String netWorkingTime1;	String workContent1;	String dateCondition1;
+	int attendHour2;	int attendMinute2;	int offHour2;	int offMinute2;	int restHour2;	int restMinute2;	String netWorkingTime2;	String workContent2;	String dateCondition2;
+	int attendHour3;	int attendMinute3;	int offHour3;	int offMinute3;	int restHour3;	int restMinute3;	String netWorkingTime3;	String workContent3;	String dateCondition3;
+	int attendHour4;	int attendMinute4;	int offHour4;	int offMinute4;	int restHour4;	int restMinute4;	String netWorkingTime4;	String workContent4;	String dateCondition4;
+	int attendHour5;	int attendMinute5;	int offHour5;	int offMinute5;	int restHour5;	int restMinute5;	String netWorkingTime5;	String workContent5;	String dateCondition5;
+	int attendHour6;	int attendMinute6;	int offHour6;	int offMinute6;	int restHour6;	int restMinute6;	String netWorkingTime6;	String workContent6;	String dateCondition6;
+	int attendHour7;	int attendMinute7;	int offHour7;	int offMinute7;	int restHour7;	int restMinute7;	String netWorkingTime7;	String workContent7;	String dateCondition7;
+	int attendHour8;	int attendMinute8;	int offHour8;	int offMinute8;	int restHour8;	int restMinute8;	String netWorkingTime8;	String workContent8;	String dateCondition8;
+	int attendHour9;	int attendMinute9;	int offHour9;	int offMinute9;	int restHour9;	int restMinute9;	String netWorkingTime9;	String workContent9;	String dateCondition9;
+	int attendHour10;	int attendMinute10;	int offHour10;	int offMinute10;	int restHour10;	int restMinute10;	String netWorkingTime10;	String workContent10;	String dateCondition10;
+	int attendHour11;	int attendMinute11;	int offHour11;	int offMinute11;	int restHour11;	int restMinute11;	String netWorkingTime11;	String workContent11;	String dateCondition11;
+	int attendHour12;	int attendMinute12;	int offHour12;	int offMinute12;	int restHour12;	int restMinute12;	String netWorkingTime12;	String workContent12;	String dateCondition12;
+	int attendHour13;	int attendMinute13;	int offHour13;	int offMinute13;	int restHour13;	int restMinute13;	String netWorkingTime13;	String workContent13;	String dateCondition13;
+	int attendHour14;	int attendMinute14;	int offHour14;	int offMinute14;	int restHour14;	int restMinute14;	String netWorkingTime14;	String workContent14;	String dateCondition14;
+	int attendHour15;	int attendMinute15;	int offHour15;	int offMinute15;	int restHour15;	int restMinute15;	String netWorkingTime15;	String workContent15;	String dateCondition15;
+	int attendHour16;	int attendMinute16;	int offHour16;	int offMinute16;	int restHour16;	int restMinute16;	String netWorkingTime16;	String workContent16;	String dateCondition16;
+	int attendHour17;	int attendMinute17;	int offHour17;	int offMinute17;	int restHour17;	int restMinute17;	String netWorkingTime17;	String workContent17;	String dateCondition17;
+	int attendHour18;	int attendMinute18;	int offHour18;	int offMinute18;	int restHour18;	int restMinute18;	String netWorkingTime18;	String workContent18;	String dateCondition18;
+	int attendHour19;	int attendMinute19;	int offHour19;	int offMinute19;	int restHour19;	int restMinute19;	String netWorkingTime19;	String workContent19;	String dateCondition19;
+	int attendHour20;	int attendMinute20;	int offHour20;	int offMinute20;	int restHour20;	int restMinute20;	String netWorkingTime20;	String workContent20;	String dateCondition20;
+	int attendHour21;	int attendMinute21;	int offHour21;	int offMinute21;	int restHour21;	int restMinute21;	String netWorkingTime21;	String workContent21;	String dateCondition21;
+	int attendHour22;	int attendMinute22;	int offHour22;	int offMinute22;	int restHour22;	int restMinute22;	String netWorkingTime22;	String workContent22;	String dateCondition22;
+	int attendHour23;	int attendMinute23;	int offHour23;	int offMinute23;	int restHour23;	int restMinute23;	String netWorkingTime23;	String workContent23;	String dateCondition23;
+	int attendHour24;	int attendMinute24;	int offHour24;	int offMinute24;	int restHour24;	int restMinute24;	String netWorkingTime24;	String workContent24;	String dateCondition24;
+	int attendHour25;	int attendMinute25;	int offHour25;	int offMinute25;	int restHour25;	int restMinute25;	String netWorkingTime25;	String workContent25;	String dateCondition25;
+	int attendHour26;	int attendMinute26;	int offHour26;	int offMinute26;	int restHour26;	int restMinute26;	String netWorkingTime26;	String workContent26;	String dateCondition26;
+	int attendHour27;	int attendMinute27;	int offHour27;	int offMinute27;	int restHour27;	int restMinute27;	String netWorkingTime27;	String workContent27;	String dateCondition27;
+	int attendHour28;	int attendMinute28;	int offHour28;	int offMinute28;	int restHour28;	int restMinute28;	String netWorkingTime28;	String workContent28;	String dateCondition28;
+	int attendHour29;	int attendMinute29;	int offHour29;	int offMinute29;	int restHour29;	int restMinute29;	String netWorkingTime29;	String workContent29;	String dateCondition29;
+	int attendHour30;	int attendMinute30;	int offHour30;	int offMinute30;	int restHour30;	int restMinute30;	String netWorkingTime30;	String workContent30;	String dateCondition30;
+	int attendHour31;	int attendMinute31;	int offHour31;	int offMinute31;	int restHour31;	int restMinute31;	String netWorkingTime31;	String workContent31;	String dateCondition31;
 
 	public int getReportNum() {
 		return reportNum;
@@ -2126,6 +2126,254 @@ public class WorkReportVO {
 		this.workContent31 = workContent31;
 	}
 
+	public String getDateCondition1() {
+		return dateCondition1;
+	}
+
+	public void setDateCondition1(String dateCondition1) {
+		this.dateCondition1 = dateCondition1;
+	}
+
+	public String getDateCondition2() {
+		return dateCondition2;
+	}
+
+	public void setDateCondition2(String dateCondition2) {
+		this.dateCondition2 = dateCondition2;
+	}
+
+	public String getDateCondition3() {
+		return dateCondition3;
+	}
+
+	public void setDateCondition3(String dateCondition3) {
+		this.dateCondition3 = dateCondition3;
+	}
+
+	public String getDateCondition4() {
+		return dateCondition4;
+	}
+
+	public void setDateCondition4(String dateCondition4) {
+		this.dateCondition4 = dateCondition4;
+	}
+
+	public String getDateCondition5() {
+		return dateCondition5;
+	}
+
+	public void setDateCondition5(String dateCondition5) {
+		this.dateCondition5 = dateCondition5;
+	}
+
+	public String getDateCondition6() {
+		return dateCondition6;
+	}
+
+	public void setDateCondition6(String dateCondition6) {
+		this.dateCondition6 = dateCondition6;
+	}
+
+	public String getDateCondition7() {
+		return dateCondition7;
+	}
+
+	public void setDateCondition7(String dateCondition7) {
+		this.dateCondition7 = dateCondition7;
+	}
+
+	public String getDateCondition8() {
+		return dateCondition8;
+	}
+
+	public void setDateCondition8(String dateCondition8) {
+		this.dateCondition8 = dateCondition8;
+	}
+
+	public String getDateCondition9() {
+		return dateCondition9;
+	}
+
+	public void setDateCondition9(String dateCondition9) {
+		this.dateCondition9 = dateCondition9;
+	}
+
+	public String getDateCondition10() {
+		return dateCondition10;
+	}
+
+	public void setDateCondition10(String dateCondition10) {
+		this.dateCondition10 = dateCondition10;
+	}
+
+	public String getDateCondition11() {
+		return dateCondition11;
+	}
+
+	public void setDateCondition11(String dateCondition11) {
+		this.dateCondition11 = dateCondition11;
+	}
+
+	public String getDateCondition12() {
+		return dateCondition12;
+	}
+
+	public void setDateCondition12(String dateCondition12) {
+		this.dateCondition12 = dateCondition12;
+	}
+
+	public String getDateCondition13() {
+		return dateCondition13;
+	}
+
+	public void setDateCondition13(String dateCondition13) {
+		this.dateCondition13 = dateCondition13;
+	}
+
+	public String getDateCondition14() {
+		return dateCondition14;
+	}
+
+	public void setDateCondition14(String dateCondition14) {
+		this.dateCondition14 = dateCondition14;
+	}
+
+	public String getDateCondition15() {
+		return dateCondition15;
+	}
+
+	public void setDateCondition15(String dateCondition15) {
+		this.dateCondition15 = dateCondition15;
+	}
+
+	public String getDateCondition16() {
+		return dateCondition16;
+	}
+
+	public void setDateCondition16(String dateCondition16) {
+		this.dateCondition16 = dateCondition16;
+	}
+
+	public String getDateCondition17() {
+		return dateCondition17;
+	}
+
+	public void setDateCondition17(String dateCondition17) {
+		this.dateCondition17 = dateCondition17;
+	}
+
+	public String getDateCondition18() {
+		return dateCondition18;
+	}
+
+	public void setDateCondition18(String dateCondition18) {
+		this.dateCondition18 = dateCondition18;
+	}
+
+	public String getDateCondition19() {
+		return dateCondition19;
+	}
+
+	public void setDateCondition19(String dateCondition19) {
+		this.dateCondition19 = dateCondition19;
+	}
+
+	public String getDateCondition20() {
+		return dateCondition20;
+	}
+
+	public void setDateCondition20(String dateCondition20) {
+		this.dateCondition20 = dateCondition20;
+	}
+
+	public String getDateCondition21() {
+		return dateCondition21;
+	}
+
+	public void setDateCondition21(String dateCondition21) {
+		this.dateCondition21 = dateCondition21;
+	}
+
+	public String getDateCondition22() {
+		return dateCondition22;
+	}
+
+	public void setDateCondition22(String dateCondition22) {
+		this.dateCondition22 = dateCondition22;
+	}
+
+	public String getDateCondition23() {
+		return dateCondition23;
+	}
+
+	public void setDateCondition23(String dateCondition23) {
+		this.dateCondition23 = dateCondition23;
+	}
+
+	public String getDateCondition24() {
+		return dateCondition24;
+	}
+
+	public void setDateCondition24(String dateCondition24) {
+		this.dateCondition24 = dateCondition24;
+	}
+
+	public String getDateCondition25() {
+		return dateCondition25;
+	}
+
+	public void setDateCondition25(String dateCondition25) {
+		this.dateCondition25 = dateCondition25;
+	}
+
+	public String getDateCondition26() {
+		return dateCondition26;
+	}
+
+	public void setDateCondition26(String dateCondition26) {
+		this.dateCondition26 = dateCondition26;
+	}
+
+	public String getDateCondition27() {
+		return dateCondition27;
+	}
+
+	public void setDateCondition27(String dateCondition27) {
+		this.dateCondition27 = dateCondition27;
+	}
+
+	public String getDateCondition28() {
+		return dateCondition28;
+	}
+
+	public void setDateCondition28(String dateCondition28) {
+		this.dateCondition28 = dateCondition28;
+	}
+
+	public String getDateCondition29() {
+		return dateCondition29;
+	}
+
+	public void setDateCondition29(String dateCondition29) {
+		this.dateCondition29 = dateCondition29;
+	}
+
+	public String getDateCondition30() {
+		return dateCondition30;
+	}
+
+	public void setDateCondition30(String dateCondition30) {
+		this.dateCondition30 = dateCondition30;
+	}
+
+	public String getDateCondition31() {
+		return dateCondition31;
+	}
+
+	public void setDateCondition31(String dateCondition31) {
+		this.dateCondition31 = dateCondition31;
+	}
+
 	@Override
 	public String toString() {
 		return "WorkReportVO [reportNum=" + reportNum + ", userNum=" + userNum + ", userName=" + userName + ", year="
@@ -2134,95 +2382,107 @@ public class WorkReportVO {
 				+ absentDay + ", sumWorkingTime=" + sumWorkingTime + ", attendHour1=" + attendHour1 + ", attendMinute1="
 				+ attendMinute1 + ", offHour1=" + offHour1 + ", offMinute1=" + offMinute1 + ", restHour1=" + restHour1
 				+ ", restMinute1=" + restMinute1 + ", netWorkingTime1=" + netWorkingTime1 + ", workContent1="
-				+ workContent1 + ", attendHour2=" + attendHour2 + ", attendMinute2=" + attendMinute2 + ", offHour2="
-				+ offHour2 + ", offMinute2=" + offMinute2 + ", restHour2=" + restHour2 + ", restMinute2=" + restMinute2
-				+ ", netWorkingTime2=" + netWorkingTime2 + ", workContent2=" + workContent2 + ", attendHour3="
+				+ workContent1 + ", dateCondition1=" + dateCondition1 + ", attendHour2=" + attendHour2
+				+ ", attendMinute2=" + attendMinute2 + ", offHour2=" + offHour2 + ", offMinute2=" + offMinute2
+				+ ", restHour2=" + restHour2 + ", restMinute2=" + restMinute2 + ", netWorkingTime2=" + netWorkingTime2
+				+ ", workContent2=" + workContent2 + ", dateCondition2=" + dateCondition2 + ", attendHour3="
 				+ attendHour3 + ", attendMinute3=" + attendMinute3 + ", offHour3=" + offHour3 + ", offMinute3="
 				+ offMinute3 + ", restHour3=" + restHour3 + ", restMinute3=" + restMinute3 + ", netWorkingTime3="
-				+ netWorkingTime3 + ", workContent3=" + workContent3 + ", attendHour4=" + attendHour4
-				+ ", attendMinute4=" + attendMinute4 + ", offHour4=" + offHour4 + ", offMinute4=" + offMinute4
-				+ ", restHour4=" + restHour4 + ", restMinute4=" + restMinute4 + ", netWorkingTime4=" + netWorkingTime4
-				+ ", workContent4=" + workContent4 + ", attendHour5=" + attendHour5 + ", attendMinute5=" + attendMinute5
-				+ ", offHour5=" + offHour5 + ", offMinute5=" + offMinute5 + ", restHour5=" + restHour5
-				+ ", restMinute5=" + restMinute5 + ", netWorkingTime5=" + netWorkingTime5 + ", workContent5="
-				+ workContent5 + ", attendHour6=" + attendHour6 + ", attendMinute6=" + attendMinute6 + ", offHour6="
+				+ netWorkingTime3 + ", workContent3=" + workContent3 + ", dateCondition3=" + dateCondition3
+				+ ", attendHour4=" + attendHour4 + ", attendMinute4=" + attendMinute4 + ", offHour4=" + offHour4
+				+ ", offMinute4=" + offMinute4 + ", restHour4=" + restHour4 + ", restMinute4=" + restMinute4
+				+ ", netWorkingTime4=" + netWorkingTime4 + ", workContent4=" + workContent4 + ", dateCondition4="
+				+ dateCondition4 + ", attendHour5=" + attendHour5 + ", attendMinute5=" + attendMinute5 + ", offHour5="
+				+ offHour5 + ", offMinute5=" + offMinute5 + ", restHour5=" + restHour5 + ", restMinute5=" + restMinute5
+				+ ", netWorkingTime5=" + netWorkingTime5 + ", workContent5=" + workContent5 + ", dateCondition5="
+				+ dateCondition5 + ", attendHour6=" + attendHour6 + ", attendMinute6=" + attendMinute6 + ", offHour6="
 				+ offHour6 + ", offMinute6=" + offMinute6 + ", restHour6=" + restHour6 + ", restMinute6=" + restMinute6
-				+ ", netWorkingTime6=" + netWorkingTime6 + ", workContent6=" + workContent6 + ", attendHour7="
-				+ attendHour7 + ", attendMinute7=" + attendMinute7 + ", offHour7=" + offHour7 + ", offMinute7="
-				+ offMinute7 + ", restHour7=" + restHour7 + ", restMinute7=" + restMinute7 + ", netWorkingTime7="
-				+ netWorkingTime7 + ", workContent7=" + workContent7 + ", attendHour8=" + attendHour8
-				+ ", attendMinute8=" + attendMinute8 + ", offHour8=" + offHour8 + ", offMinute8=" + offMinute8
-				+ ", restHour8=" + restHour8 + ", restMinute8=" + restMinute8 + ", netWorkingTime8=" + netWorkingTime8
-				+ ", workContent8=" + workContent8 + ", attendHour9=" + attendHour9 + ", attendMinute9=" + attendMinute9
-				+ ", offHour9=" + offHour9 + ", offMinute9=" + offMinute9 + ", restHour9=" + restHour9
-				+ ", restMinute9=" + restMinute9 + ", netWorkingTime9=" + netWorkingTime9 + ", workContent9="
-				+ workContent9 + ", attendHour10=" + attendHour10 + ", attendMinute10=" + attendMinute10
+				+ ", netWorkingTime6=" + netWorkingTime6 + ", workContent6=" + workContent6 + ", dateCondition6="
+				+ dateCondition6 + ", attendHour7=" + attendHour7 + ", attendMinute7=" + attendMinute7 + ", offHour7="
+				+ offHour7 + ", offMinute7=" + offMinute7 + ", restHour7=" + restHour7 + ", restMinute7=" + restMinute7
+				+ ", netWorkingTime7=" + netWorkingTime7 + ", workContent7=" + workContent7 + ", dateCondition7="
+				+ dateCondition7 + ", attendHour8=" + attendHour8 + ", attendMinute8=" + attendMinute8 + ", offHour8="
+				+ offHour8 + ", offMinute8=" + offMinute8 + ", restHour8=" + restHour8 + ", restMinute8=" + restMinute8
+				+ ", netWorkingTime8=" + netWorkingTime8 + ", workContent8=" + workContent8 + ", dateCondition8="
+				+ dateCondition8 + ", attendHour9=" + attendHour9 + ", attendMinute9=" + attendMinute9 + ", offHour9="
+				+ offHour9 + ", offMinute9=" + offMinute9 + ", restHour9=" + restHour9 + ", restMinute9=" + restMinute9
+				+ ", netWorkingTime9=" + netWorkingTime9 + ", workContent9=" + workContent9 + ", dateCondition9="
+				+ dateCondition9 + ", attendHour10=" + attendHour10 + ", attendMinute10=" + attendMinute10
 				+ ", offHour10=" + offHour10 + ", offMinute10=" + offMinute10 + ", restHour10=" + restHour10
 				+ ", restMinute10=" + restMinute10 + ", netWorkingTime10=" + netWorkingTime10 + ", workContent10="
-				+ workContent10 + ", attendHour11=" + attendHour11 + ", attendMinute11=" + attendMinute11
-				+ ", offHour11=" + offHour11 + ", offMinute11=" + offMinute11 + ", restHour11=" + restHour11
-				+ ", restMinute11=" + restMinute11 + ", netWorkingTime11=" + netWorkingTime11 + ", workContent11="
-				+ workContent11 + ", attendHour12=" + attendHour12 + ", attendMinute12=" + attendMinute12
-				+ ", offHour12=" + offHour12 + ", offMinute12=" + offMinute12 + ", restHour12=" + restHour12
-				+ ", restMinute12=" + restMinute12 + ", netWorkingTime12=" + netWorkingTime12 + ", workContent12="
-				+ workContent12 + ", attendHour13=" + attendHour13 + ", attendMinute13=" + attendMinute13
+				+ workContent10 + ", dateCondition10=" + dateCondition10 + ", attendHour11=" + attendHour11
+				+ ", attendMinute11=" + attendMinute11 + ", offHour11=" + offHour11 + ", offMinute11=" + offMinute11
+				+ ", restHour11=" + restHour11 + ", restMinute11=" + restMinute11 + ", netWorkingTime11="
+				+ netWorkingTime11 + ", workContent11=" + workContent11 + ", dateCondition11=" + dateCondition11
+				+ ", attendHour12=" + attendHour12 + ", attendMinute12=" + attendMinute12 + ", offHour12=" + offHour12
+				+ ", offMinute12=" + offMinute12 + ", restHour12=" + restHour12 + ", restMinute12=" + restMinute12
+				+ ", netWorkingTime12=" + netWorkingTime12 + ", workContent12=" + workContent12 + ", dateCondition12="
+				+ dateCondition12 + ", attendHour13=" + attendHour13 + ", attendMinute13=" + attendMinute13
 				+ ", offHour13=" + offHour13 + ", offMinute13=" + offMinute13 + ", restHour13=" + restHour13
 				+ ", restMinute13=" + restMinute13 + ", netWorkingTime13=" + netWorkingTime13 + ", workContent13="
-				+ workContent13 + ", attendHour14=" + attendHour14 + ", attendMinute14=" + attendMinute14
-				+ ", offHour14=" + offHour14 + ", offMinute14=" + offMinute14 + ", restHour14=" + restHour14
-				+ ", restMinute14=" + restMinute14 + ", netWorkingTime14=" + netWorkingTime14 + ", workContent14="
-				+ workContent14 + ", attendHour15=" + attendHour15 + ", attendMinute15=" + attendMinute15
-				+ ", offHour15=" + offHour15 + ", offMinute15=" + offMinute15 + ", restHour15=" + restHour15
-				+ ", restMinute15=" + restMinute15 + ", netWorkingTime15=" + netWorkingTime15 + ", workContent15="
-				+ workContent15 + ", attendHour16=" + attendHour16 + ", attendMinute16=" + attendMinute16
+				+ workContent13 + ", dateCondition13=" + dateCondition13 + ", attendHour14=" + attendHour14
+				+ ", attendMinute14=" + attendMinute14 + ", offHour14=" + offHour14 + ", offMinute14=" + offMinute14
+				+ ", restHour14=" + restHour14 + ", restMinute14=" + restMinute14 + ", netWorkingTime14="
+				+ netWorkingTime14 + ", workContent14=" + workContent14 + ", dateCondition14=" + dateCondition14
+				+ ", attendHour15=" + attendHour15 + ", attendMinute15=" + attendMinute15 + ", offHour15=" + offHour15
+				+ ", offMinute15=" + offMinute15 + ", restHour15=" + restHour15 + ", restMinute15=" + restMinute15
+				+ ", netWorkingTime15=" + netWorkingTime15 + ", workContent15=" + workContent15 + ", dateCondition15="
+				+ dateCondition15 + ", attendHour16=" + attendHour16 + ", attendMinute16=" + attendMinute16
 				+ ", offHour16=" + offHour16 + ", offMinute16=" + offMinute16 + ", restHour16=" + restHour16
 				+ ", restMinute16=" + restMinute16 + ", netWorkingTime16=" + netWorkingTime16 + ", workContent16="
-				+ workContent16 + ", attendHour17=" + attendHour17 + ", attendMinute17=" + attendMinute17
-				+ ", offHour17=" + offHour17 + ", offMinute17=" + offMinute17 + ", restHour17=" + restHour17
-				+ ", restMinute17=" + restMinute17 + ", netWorkingTime17=" + netWorkingTime17 + ", workContent17="
-				+ workContent17 + ", attendHour18=" + attendHour18 + ", attendMinute18=" + attendMinute18
-				+ ", offHour18=" + offHour18 + ", offMinute18=" + offMinute18 + ", restHour18=" + restHour18
-				+ ", restMinute18=" + restMinute18 + ", netWorkingTime18=" + netWorkingTime18 + ", workContent18="
-				+ workContent18 + ", attendHour19=" + attendHour19 + ", attendMinute19=" + attendMinute19
+				+ workContent16 + ", dateCondition16=" + dateCondition16 + ", attendHour17=" + attendHour17
+				+ ", attendMinute17=" + attendMinute17 + ", offHour17=" + offHour17 + ", offMinute17=" + offMinute17
+				+ ", restHour17=" + restHour17 + ", restMinute17=" + restMinute17 + ", netWorkingTime17="
+				+ netWorkingTime17 + ", workContent17=" + workContent17 + ", dateCondition17=" + dateCondition17
+				+ ", attendHour18=" + attendHour18 + ", attendMinute18=" + attendMinute18 + ", offHour18=" + offHour18
+				+ ", offMinute18=" + offMinute18 + ", restHour18=" + restHour18 + ", restMinute18=" + restMinute18
+				+ ", netWorkingTime18=" + netWorkingTime18 + ", workContent18=" + workContent18 + ", dateCondition18="
+				+ dateCondition18 + ", attendHour19=" + attendHour19 + ", attendMinute19=" + attendMinute19
 				+ ", offHour19=" + offHour19 + ", offMinute19=" + offMinute19 + ", restHour19=" + restHour19
 				+ ", restMinute19=" + restMinute19 + ", netWorkingTime19=" + netWorkingTime19 + ", workContent19="
-				+ workContent19 + ", attendHour20=" + attendHour20 + ", attendMinute20=" + attendMinute20
-				+ ", offHour20=" + offHour20 + ", offMinute20=" + offMinute20 + ", restHour20=" + restHour20
-				+ ", restMinute20=" + restMinute20 + ", netWorkingTime20=" + netWorkingTime20 + ", workContent20="
-				+ workContent20 + ", attendHour21=" + attendHour21 + ", attendMinute21=" + attendMinute21
-				+ ", offHour21=" + offHour21 + ", offMinute21=" + offMinute21 + ", restHour21=" + restHour21
-				+ ", restMinute21=" + restMinute21 + ", netWorkingTime21=" + netWorkingTime21 + ", workContent21="
-				+ workContent21 + ", attendHour22=" + attendHour22 + ", attendMinute22=" + attendMinute22
+				+ workContent19 + ", dateCondition19=" + dateCondition19 + ", attendHour20=" + attendHour20
+				+ ", attendMinute20=" + attendMinute20 + ", offHour20=" + offHour20 + ", offMinute20=" + offMinute20
+				+ ", restHour20=" + restHour20 + ", restMinute20=" + restMinute20 + ", netWorkingTime20="
+				+ netWorkingTime20 + ", workContent20=" + workContent20 + ", dateCondition20=" + dateCondition20
+				+ ", attendHour21=" + attendHour21 + ", attendMinute21=" + attendMinute21 + ", offHour21=" + offHour21
+				+ ", offMinute21=" + offMinute21 + ", restHour21=" + restHour21 + ", restMinute21=" + restMinute21
+				+ ", netWorkingTime21=" + netWorkingTime21 + ", workContent21=" + workContent21 + ", dateCondition21="
+				+ dateCondition21 + ", attendHour22=" + attendHour22 + ", attendMinute22=" + attendMinute22
 				+ ", offHour22=" + offHour22 + ", offMinute22=" + offMinute22 + ", restHour22=" + restHour22
 				+ ", restMinute22=" + restMinute22 + ", netWorkingTime22=" + netWorkingTime22 + ", workContent22="
-				+ workContent22 + ", attendHour23=" + attendHour23 + ", attendMinute23=" + attendMinute23
-				+ ", offHour23=" + offHour23 + ", offMinute23=" + offMinute23 + ", restHour23=" + restHour23
-				+ ", restMinute23=" + restMinute23 + ", netWorkingTime23=" + netWorkingTime23 + ", workContent23="
-				+ workContent23 + ", attendHour24=" + attendHour24 + ", attendMinute24=" + attendMinute24
-				+ ", offHour24=" + offHour24 + ", offMinute24=" + offMinute24 + ", restHour24=" + restHour24
-				+ ", restMinute24=" + restMinute24 + ", netWorkingTime24=" + netWorkingTime24 + ", workContent24="
-				+ workContent24 + ", attendHour25=" + attendHour25 + ", attendMinute25=" + attendMinute25
+				+ workContent22 + ", dateCondition22=" + dateCondition22 + ", attendHour23=" + attendHour23
+				+ ", attendMinute23=" + attendMinute23 + ", offHour23=" + offHour23 + ", offMinute23=" + offMinute23
+				+ ", restHour23=" + restHour23 + ", restMinute23=" + restMinute23 + ", netWorkingTime23="
+				+ netWorkingTime23 + ", workContent23=" + workContent23 + ", dateCondition23=" + dateCondition23
+				+ ", attendHour24=" + attendHour24 + ", attendMinute24=" + attendMinute24 + ", offHour24=" + offHour24
+				+ ", offMinute24=" + offMinute24 + ", restHour24=" + restHour24 + ", restMinute24=" + restMinute24
+				+ ", netWorkingTime24=" + netWorkingTime24 + ", workContent24=" + workContent24 + ", dateCondition24="
+				+ dateCondition24 + ", attendHour25=" + attendHour25 + ", attendMinute25=" + attendMinute25
 				+ ", offHour25=" + offHour25 + ", offMinute25=" + offMinute25 + ", restHour25=" + restHour25
 				+ ", restMinute25=" + restMinute25 + ", netWorkingTime25=" + netWorkingTime25 + ", workContent25="
-				+ workContent25 + ", attendHour26=" + attendHour26 + ", attendMinute26=" + attendMinute26
-				+ ", offHour26=" + offHour26 + ", offMinute26=" + offMinute26 + ", restHour26=" + restHour26
-				+ ", restMinute26=" + restMinute26 + ", netWorkingTime26=" + netWorkingTime26 + ", workContent26="
-				+ workContent26 + ", attendHour27=" + attendHour27 + ", attendMinute27=" + attendMinute27
-				+ ", offHour27=" + offHour27 + ", offMinute27=" + offMinute27 + ", restHour27=" + restHour27
-				+ ", restMinute27=" + restMinute27 + ", netWorkingTime27=" + netWorkingTime27 + ", workContent27="
-				+ workContent27 + ", attendHour28=" + attendHour28 + ", attendMinute28=" + attendMinute28
+				+ workContent25 + ", dateCondition25=" + dateCondition25 + ", attendHour26=" + attendHour26
+				+ ", attendMinute26=" + attendMinute26 + ", offHour26=" + offHour26 + ", offMinute26=" + offMinute26
+				+ ", restHour26=" + restHour26 + ", restMinute26=" + restMinute26 + ", netWorkingTime26="
+				+ netWorkingTime26 + ", workContent26=" + workContent26 + ", dateCondition26=" + dateCondition26
+				+ ", attendHour27=" + attendHour27 + ", attendMinute27=" + attendMinute27 + ", offHour27=" + offHour27
+				+ ", offMinute27=" + offMinute27 + ", restHour27=" + restHour27 + ", restMinute27=" + restMinute27
+				+ ", netWorkingTime27=" + netWorkingTime27 + ", workContent27=" + workContent27 + ", dateCondition27="
+				+ dateCondition27 + ", attendHour28=" + attendHour28 + ", attendMinute28=" + attendMinute28
 				+ ", offHour28=" + offHour28 + ", offMinute28=" + offMinute28 + ", restHour28=" + restHour28
 				+ ", restMinute28=" + restMinute28 + ", netWorkingTime28=" + netWorkingTime28 + ", workContent28="
-				+ workContent28 + ", attendHour29=" + attendHour29 + ", attendMinute29=" + attendMinute29
-				+ ", offHour29=" + offHour29 + ", offMinute29=" + offMinute29 + ", restHour29=" + restHour29
-				+ ", restMinute29=" + restMinute29 + ", netWorkingTime29=" + netWorkingTime29 + ", workContent29="
-				+ workContent29 + ", attendHour30=" + attendHour30 + ", attendMinute30=" + attendMinute30
-				+ ", offHour30=" + offHour30 + ", offMinute30=" + offMinute30 + ", restHour30=" + restHour30
-				+ ", restMinute30=" + restMinute30 + ", netWorkingTime30=" + netWorkingTime30 + ", workContent30="
-				+ workContent30 + ", attendHour31=" + attendHour31 + ", attendMinute31=" + attendMinute31
+				+ workContent28 + ", dateCondition28=" + dateCondition28 + ", attendHour29=" + attendHour29
+				+ ", attendMinute29=" + attendMinute29 + ", offHour29=" + offHour29 + ", offMinute29=" + offMinute29
+				+ ", restHour29=" + restHour29 + ", restMinute29=" + restMinute29 + ", netWorkingTime29="
+				+ netWorkingTime29 + ", workContent29=" + workContent29 + ", dateCondition29=" + dateCondition29
+				+ ", attendHour30=" + attendHour30 + ", attendMinute30=" + attendMinute30 + ", offHour30=" + offHour30
+				+ ", offMinute30=" + offMinute30 + ", restHour30=" + restHour30 + ", restMinute30=" + restMinute30
+				+ ", netWorkingTime30=" + netWorkingTime30 + ", workContent30=" + workContent30 + ", dateCondition30="
+				+ dateCondition30 + ", attendHour31=" + attendHour31 + ", attendMinute31=" + attendMinute31
 				+ ", offHour31=" + offHour31 + ", offMinute31=" + offMinute31 + ", restHour31=" + restHour31
 				+ ", restMinute31=" + restMinute31 + ", netWorkingTime31=" + netWorkingTime31 + ", workContent31="
-				+ workContent31 + "]";
+				+ workContent31 + ", dateCondition31=" + dateCondition31 + "]";
 	}
+
+	
 
 }

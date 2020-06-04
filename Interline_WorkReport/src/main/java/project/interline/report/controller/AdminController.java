@@ -55,6 +55,11 @@ public class AdminController {
 				Date report_Date = old_pattern.parse(list.get(n).getLastreportDate());
 				list.get(n).setLastreportDate(report_pattern.format(report_Date ));
 			}
+			
+			if(list.get(n).getLastupdateDate() != null) {
+				Date report_update_Date = old_pattern.parse(list.get(n).getLastupdateDate());
+				list.get(n).setLastupdateDate(new_pattern.format(report_update_Date ));
+			}
 		}
 		
 		return list;
@@ -62,9 +67,9 @@ public class AdminController {
 	
 	@ResponseBody
 	@RequestMapping(value="/admin/user_Filter", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
-	public ArrayList<UserVO> userFilter(String[] team,String status, String others) throws ParseException {
+	public ArrayList<UserVO> userFilter(String[] team,String status, String team_others) throws ParseException {
 		logger.debug("status:{}, team:{}",status,team);
-		ArrayList<UserVO> list = dao.userFilter(team,status,others);
+		ArrayList<UserVO> list = dao.userFilter(team,status,team_others);
 		
 		for(int n=0; n<list.size();n++) {
 			Date Start_Date = old_pattern.parse(list.get(n).getStartDate());

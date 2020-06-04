@@ -1,8 +1,6 @@
 package project.interline.report.controller;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -162,18 +160,33 @@ public class WorkReportController {
 		return result;
 	}
 	
-
-	
 	@RequestMapping(value="/admin/reportList", method = RequestMethod.GET)
-	public String reportList(Model model) {
-		ArrayList<ReportListVO> reportList = dao.getReportList();
-		
-		logger.debug("reportList:{}",reportList);
-		
-		model.addAttribute("report_all",reportList);
+	public String reportListForm(Model model) {
+
 		return "Report/workReportList";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/admin/reportList", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ArrayList<ReportListVO> reportList(){
+		
+		ArrayList<ReportListVO> reportList = dao.getReportList();
+		
+		logger.debug("reportList:{}",reportList);
+
+		return reportList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/report_Filter", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ArrayList<ReportListVO> reportFilter(String[] team, String team_others
+												,String report_userNum,String report_userName
+												,String report_FromReportDays,String report_ToReportDays){
+		logger.debug("from:{}, to:{}",report_FromReportDays,report_ToReportDays);
+		
+		ArrayList<ReportListVO> list = dao.reportFilter(team,team_others,report_userNum,report_userName,report_FromReportDays,report_ToReportDays);
+		return list;
+	}
 	
 	@RequestMapping(value="/admin/getReadReport", method = RequestMethod.GET)
 	public String workReadReport(WorkReportVO vo,Model model) {
@@ -253,6 +266,8 @@ public class WorkReportController {
 		
 		return "success";
 	}
+	
+	
 	
 
 }
