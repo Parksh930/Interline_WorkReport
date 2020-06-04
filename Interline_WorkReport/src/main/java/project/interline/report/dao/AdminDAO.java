@@ -65,8 +65,8 @@ public class AdminDAO {
 		AdminMapper mapper = session.getMapper(AdminMapper.class);
 		
 		HashMap<String, Object> map = new HashMap<>();
-		System.out.println("others:"+others);
-		map.put("others",others);
+		
+		map.put("team_others",others);
 		map.put("team",team);
 		map.put("status", status);
 		ArrayList<UserVO> list = mapper.userFilter(map);

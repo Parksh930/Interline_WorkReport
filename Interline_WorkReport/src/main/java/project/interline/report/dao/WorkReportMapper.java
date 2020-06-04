@@ -25,5 +25,7 @@ public interface WorkReportMapper {
 	ArrayList<WorkReportVO> checkState2(HashMap<String, Integer> map);
 
 	int lastUpdateDate(int userNum);
+	
+	ArrayList<ReportListVO> reportFilter(HashMap<String,Object> map);
 
 }

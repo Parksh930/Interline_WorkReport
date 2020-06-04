@@ -30,37 +30,37 @@
 		#{workingDay},
 		#{holidayWorkingDay},
 		#{absentDay},
-		#{attendHour1}	,#{attendMinute1}	,#{offHour1}	,#{offMinute1}	,#{restHour1}	,#{restMinute1}	,#{netWorkingTime1}	,#{workContent1}
-		,#{attendHour2}	,#{attendMinute2}	,#{offHour2}	,#{offMinute2}	,#{restHour2}	,#{restMinute2}	,#{netWorkingTime2}	,#{workContent2}
-		,#{attendHour3}	,#{attendMinute3}	,#{offHour3}	,#{offMinute3}	,#{restHour3}	,#{restMinute3}	,#{netWorkingTime3}	,#{workContent3}
-		,#{attendHour4}	,#{attendMinute4}	,#{offHour4}	,#{offMinute4}	,#{restHour4}	,#{restMinute4}	,#{netWorkingTime4}	,#{workContent4}
-		,#{attendHour5}	,#{attendMinute5}	,#{offHour5}	,#{offMinute5}	,#{restHour5}	,#{restMinute5}	,#{netWorkingTime5}	,#{workContent5}
-		,#{attendHour6}	,#{attendMinute6}	,#{offHour6}	,#{offMinute6}	,#{restHour6}	,#{restMinute6}	,#{netWorkingTime6}	,#{workContent6}
-		,#{attendHour7}	,#{attendMinute7}	,#{offHour7}	,#{offMinute7}	,#{restHour7}	,#{restMinute7}	,#{netWorkingTime7}	,#{workContent7}
-		,#{attendHour8}	,#{attendMinute8}	,#{offHour8}	,#{offMinute8}	,#{restHour8}	,#{restMinute8}	,#{netWorkingTime8}	,#{workContent8}
-		,#{attendHour9}	,#{attendMinute9}	,#{offHour9}	,#{offMinute9}	,#{restHour9}	,#{restMinute9}	,#{netWorkingTime9}	,#{workContent9}
-		,#{attendHour10}	,#{attendMinute10}	,#{offHour10}	,#{offMinute10}	,#{restHour10}	,#{restMinute10}	,#{netWorkingTime10}	,#{workContent10}
-		,#{attendHour11}	,#{attendMinute11}	,#{offHour11}	,#{offMinute11}	,#{restHour11}	,#{restMinute11}	,#{netWorkingTime11}	,#{workContent11}
-		,#{attendHour12}	,#{attendMinute12}	,#{offHour12}	,#{offMinute12}	,#{restHour12}	,#{restMinute12}	,#{netWorkingTime12}	,#{workContent12}
-		,#{attendHour13}	,#{attendMinute13}	,#{offHour13}	,#{offMinute13}	,#{restHour13}	,#{restMinute13}	,#{netWorkingTime13}	,#{workContent13}
-		,#{attendHour14}	,#{attendMinute14}	,#{offHour14}	,#{offMinute14}	,#{restHour14}	,#{restMinute14}	,#{netWorkingTime14}	,#{workContent14}
-		,#{attendHour15}	,#{attendMinute15}	,#{offHour15}	,#{offMinute15}	,#{restHour15}	,#{restMinute15}	,#{netWorkingTime15}	,#{workContent15}
-		,#{attendHour16}	,#{attendMinute16}	,#{offHour16}	,#{offMinute16}	,#{restHour16}	,#{restMinute16}	,#{netWorkingTime16}	,#{workContent16}
-		,#{attendHour17}	,#{attendMinute17}	,#{offHour17}	,#{offMinute17}	,#{restHour17}	,#{restMinute17}	,#{netWorkingTime17}	,#{workContent17}
-		,#{attendHour18}	,#{attendMinute18}	,#{offHour18}	,#{offMinute18}	,#{restHour18}	,#{restMinute18}	,#{netWorkingTime18}	,#{workContent18}
-		,#{attendHour19}	,#{attendMinute19}	,#{offHour19}	,#{offMinute19}	,#{restHour19}	,#{restMinute19}	,#{netWorkingTime19}	,#{workContent19}
-		,#{attendHour20}	,#{attendMinute20}	,#{offHour20}	,#{offMinute20}	,#{restHour20}	,#{restMinute20}	,#{netWorkingTime20}	,#{workContent20}
-		,#{attendHour21}	,#{attendMinute21}	,#{offHour21}	,#{offMinute21}	,#{restHour21}	,#{restMinute21}	,#{netWorkingTime21}	,#{workContent21}
-		,#{attendHour22}	,#{attendMinute22}	,#{offHour22}	,#{offMinute22}	,#{restHour22}	,#{restMinute22}	,#{netWorkingTime22}	,#{workContent22}
-		,#{attendHour23}	,#{attendMinute23}	,#{offHour23}	,#{offMinute23}	,#{restHour23}	,#{restMinute23}	,#{netWorkingTime23}	,#{workContent23}
-		,#{attendHour24}	,#{attendMinute24}	,#{offHour24}	,#{offMinute24}	,#{restHour24}	,#{restMinute24}	,#{netWorkingTime24}	,#{workContent24}
-		,#{attendHour25}	,#{attendMinute25}	,#{offHour25}	,#{offMinute25}	,#{restHour25}	,#{restMinute25}	,#{netWorkingTime25}	,#{workContent25}
-		,#{attendHour26}	,#{attendMinute26}	,#{offHour26}	,#{offMinute26}	,#{restHour26}	,#{restMinute26}	,#{netWorkingTime26}	,#{workContent26}
-		,#{attendHour27}	,#{attendMinute27}	,#{offHour27}	,#{offMinute27}	,#{restHour27}	,#{restMinute27}	,#{netWorkingTime27}	,#{workContent27}
-		,#{attendHour28}	,#{attendMinute28}	,#{offHour28}	,#{offMinute28}	,#{restHour28}	,#{restMinute28}	,#{netWorkingTime28}	,#{workContent28}
-		,#{attendHour29}	,#{attendMinute29}	,#{offHour29}	,#{offMinute29}	,#{restHour29}	,#{restMinute29}	,#{netWorkingTime29}	,#{workContent29}
-		,#{attendHour30}	,#{attendMinute30}	,#{offHour30}	,#{offMinute30}	,#{restHour30}	,#{restMinute30}	,#{netWorkingTime30}	,#{workContent30}
-		,#{attendHour31}	,#{attendMinute31}	,#{offHour31}	,#{offMinute31}	,#{restHour31}	,#{restMinute31}	,#{netWorkingTime31}	,#{workContent31}
+		#{dateCondition1},	#{attendHour1}	,#{attendMinute1}	,#{offHour1}	,#{offMinute1}	,#{restHour1}	,#{restMinute1}	,#{netWorkingTime1}	,#{workContent1}
+		,#{dateCondition2}	,#{attendHour2}	,#{attendMinute2}	,#{offHour2}	,#{offMinute2}	,#{restHour2}	,#{restMinute2}	,#{netWorkingTime2}	,#{workContent2} 
+		,#{dateCondition3}	,#{attendHour3}	,#{attendMinute3}	,#{offHour3}	,#{offMinute3}	,#{restHour3}	,#{restMinute3}	,#{netWorkingTime3}	,#{workContent3} 
+		,#{dateCondition4}	,#{attendHour4}	,#{attendMinute4}	,#{offHour4}	,#{offMinute4}	,#{restHour4}	,#{restMinute4}	,#{netWorkingTime4}	,#{workContent4} 
+		,#{dateCondition5}	,#{attendHour5}	,#{attendMinute5}	,#{offHour5}	,#{offMinute5}	,#{restHour5}	,#{restMinute5}	,#{netWorkingTime5}	,#{workContent5} 
+		,#{dateCondition6}	,#{attendHour6}	,#{attendMinute6}	,#{offHour6}	,#{offMinute6}	,#{restHour6}	,#{restMinute6}	,#{netWorkingTime6}	,#{workContent6} 
+		,#{dateCondition7}	,#{attendHour7}	,#{attendMinute7}	,#{offHour7}	,#{offMinute7}	,#{restHour7}	,#{restMinute7}	,#{netWorkingTime7}	,#{workContent7} 
+		,#{dateCondition8}	,#{attendHour8}	,#{attendMinute8}	,#{offHour8}	,#{offMinute8}	,#{restHour8}	,#{restMinute8}	,#{netWorkingTime8}	,#{workContent8} 
+		,#{dateCondition9}	,#{attendHour9}	,#{attendMinute9}	,#{offHour9}	,#{offMinute9}	,#{restHour9}	,#{restMinute9}	,#{netWorkingTime9}	,#{workContent9} 
+		,#{dateCondition10}	,#{attendHour10}	,#{attendMinute10}	,#{offHour10}	,#{offMinute10}	,#{restHour10}	,#{restMinute10}	,#{netWorkingTime10}	,#{workContent10}
+		,#{dateCondition11}	,#{attendHour11}	,#{attendMinute11}	,#{offHour11}	,#{offMinute11}	,#{restHour11}	,#{restMinute11}	,#{netWorkingTime11}	,#{workContent11}
+		,#{dateCondition12}	,#{attendHour12}	,#{attendMinute12}	,#{offHour12}	,#{offMinute12}	,#{restHour12}	,#{restMinute12}	,#{netWorkingTime12}	,#{workContent12}
+		,#{dateCondition13}	,#{attendHour13}	,#{attendMinute13}	,#{offHour13}	,#{offMinute13}	,#{restHour13}	,#{restMinute13}	,#{netWorkingTime13}	,#{workContent13}
+		,#{dateCondition14}	,#{attendHour14}	,#{attendMinute14}	,#{offHour14}	,#{offMinute14}	,#{restHour14}	,#{restMinute14}	,#{netWorkingTime14}	,#{workContent14}
+		,#{dateCondition15}	,#{attendHour15}	,#{attendMinute15}	,#{offHour15}	,#{offMinute15}	,#{restHour15}	,#{restMinute15}	,#{netWorkingTime15}	,#{workContent15}
+		,#{dateCondition16}	,#{attendHour16}	,#{attendMinute16}	,#{offHour16}	,#{offMinute16}	,#{restHour16}	,#{restMinute16}	,#{netWorkingTime16}	,#{workContent16}
+		,#{dateCondition17}	,#{attendHour17}	,#{attendMinute17}	,#{offHour17}	,#{offMinute17}	,#{restHour17}	,#{restMinute17}	,#{netWorkingTime17}	,#{workContent17}
+		,#{dateCondition18}	,#{attendHour18}	,#{attendMinute18}	,#{offHour18}	,#{offMinute18}	,#{restHour18}	,#{restMinute18}	,#{netWorkingTime18}	,#{workContent18}
+		,#{dateCondition19}	,#{attendHour19}	,#{attendMinute19}	,#{offHour19}	,#{offMinute19}	,#{restHour19}	,#{restMinute19}	,#{netWorkingTime19}	,#{workContent19}
+		,#{dateCondition20}	,#{attendHour20}	,#{attendMinute20}	,#{offHour20}	,#{offMinute20}	,#{restHour20}	,#{restMinute20}	,#{netWorkingTime20}	,#{workContent20}
+		,#{dateCondition21}	,#{attendHour21}	,#{attendMinute21}	,#{offHour21}	,#{offMinute21}	,#{restHour21}	,#{restMinute21}	,#{netWorkingTime21}	,#{workContent21}
+		,#{dateCondition22}	,#{attendHour22}	,#{attendMinute22}	,#{offHour22}	,#{offMinute22}	,#{restHour22}	,#{restMinute22}	,#{netWorkingTime22}	,#{workContent22}
+		,#{dateCondition23}	,#{attendHour23}	,#{attendMinute23}	,#{offHour23}	,#{offMinute23}	,#{restHour23}	,#{restMinute23}	,#{netWorkingTime23}	,#{workContent23}
+		,#{dateCondition24}	,#{attendHour24}	,#{attendMinute24}	,#{offHour24}	,#{offMinute24}	,#{restHour24}	,#{restMinute24}	,#{netWorkingTime24}	,#{workContent24}
+		,#{dateCondition25}	,#{attendHour25}	,#{attendMinute25}	,#{offHour25}	,#{offMinute25}	,#{restHour25}	,#{restMinute25}	,#{netWorkingTime25}	,#{workContent25}
+		,#{dateCondition26}	,#{attendHour26}	,#{attendMinute26}	,#{offHour26}	,#{offMinute26}	,#{restHour26}	,#{restMinute26}	,#{netWorkingTime26}	,#{workContent26}
+		,#{dateCondition27}	,#{attendHour27}	,#{attendMinute27}	,#{offHour27}	,#{offMinute27}	,#{restHour27}	,#{restMinute27}	,#{netWorkingTime27}	,#{workContent27}
+		,#{dateCondition28}	,#{attendHour28}	,#{attendMinute28}	,#{offHour28}	,#{offMinute28}	,#{restHour28}	,#{restMinute28}	,#{netWorkingTime28}	,#{workContent28}
+		,#{dateCondition29}	,#{attendHour29}	,#{attendMinute29}	,#{offHour29}	,#{offMinute29}	,#{restHour29}	,#{restMinute29}	,#{netWorkingTime29}	,#{workContent29}
+		,#{dateCondition30}	,#{attendHour30}	,#{attendMinute30}	,#{offHour30}	,#{offMinute30}	,#{restHour30}	,#{restMinute30}	,#{netWorkingTime30}	,#{workContent30}
+		,#{dateCondition31}	,#{attendHour31}	,#{attendMinute31}	,#{offHour31}	,#{offMinute31}	,#{restHour31}	,#{restMinute31}	,#{netWorkingTime31}	,#{workContent31}	
 		,#{sumWorkingTime}
 		)
 	</insert>
@@ -73,55 +73,86 @@
 			workingDay=#{workingDay},
 			holidayWorkingDay=#{holidayWorkingDay},
 			absentDay=#{absentDay},
-           attendHour1=	#{attendHour1}	,attendMinute1=	#{attendMinute1}	,offHour1=	#{offHour1}	,offMinute1=	#{offMinute1}	,restHour1=	#{restHour1}	,restMinute1=	#{restMinute1}	,netWorkingTime1=	#{netWorkingTime1}	,workContent1=	#{workContent1}
-			,attendHour2=	#{attendHour2}	,attendMinute2=	#{attendMinute2}	,offHour2=	#{offHour2}	,offMinute2=	#{offMinute2}	,restHour2=	#{restHour2}	,restMinute2=	#{restMinute2}	,netWorkingTime2=	#{netWorkingTime2}	,workContent2=	#{workContent2}
-			,attendHour3=	#{attendHour3}	,attendMinute3=	#{attendMinute3}	,offHour3=	#{offHour3}	,offMinute3=	#{offMinute3}	,restHour3=	#{restHour3}	,restMinute3=	#{restMinute3}	,netWorkingTime3=	#{netWorkingTime3}	,workContent3=	#{workContent3}
-			,attendHour4=	#{attendHour4}	,attendMinute4=	#{attendMinute4}	,offHour4=	#{offHour4}	,offMinute4=	#{offMinute4}	,restHour4=	#{restHour4}	,restMinute4=	#{restMinute4}	,netWorkingTime4=	#{netWorkingTime4}	,workContent4=	#{workContent4}
-			,attendHour5=	#{attendHour5}	,attendMinute5=	#{attendMinute5}	,offHour5=	#{offHour5}	,offMinute5=	#{offMinute5}	,restHour5=	#{restHour5}	,restMinute5=	#{restMinute5}	,netWorkingTime5=	#{netWorkingTime5}	,workContent5=	#{workContent5}
-			,attendHour6=	#{attendHour6}	,attendMinute6=	#{attendMinute6}	,offHour6=	#{offHour6}	,offMinute6=	#{offMinute6}	,restHour6=	#{restHour6}	,restMinute6=	#{restMinute6}	,netWorkingTime6=	#{netWorkingTime6}	,workContent6=	#{workContent6}
-			,attendHour7=	#{attendHour7}	,attendMinute7=	#{attendMinute7}	,offHour7=	#{offHour7}	,offMinute7=	#{offMinute7}	,restHour7=	#{restHour7}	,restMinute7=	#{restMinute7}	,netWorkingTime7=	#{netWorkingTime7}	,workContent7=	#{workContent7}
-			,attendHour8=	#{attendHour8}	,attendMinute8=	#{attendMinute8}	,offHour8=	#{offHour8}	,offMinute8=	#{offMinute8}	,restHour8=	#{restHour8}	,restMinute8=	#{restMinute8}	,netWorkingTime8=	#{netWorkingTime8}	,workContent8=	#{workContent8}
-			,attendHour9=	#{attendHour9}	,attendMinute9=	#{attendMinute9}	,offHour9=	#{offHour9}	,offMinute9=	#{offMinute9}	,restHour9=	#{restHour9}	,restMinute9=	#{restMinute9}	,netWorkingTime9=	#{netWorkingTime9}	,workContent9=	#{workContent9}
-			,attendHour10=	#{attendHour10}	,attendMinute10=	#{attendMinute10}	,offHour10=	#{offHour10}	,offMinute10=	#{offMinute10}	,restHour10=	#{restHour10}	,restMinute10=	#{restMinute10}	,netWorkingTime10=	#{netWorkingTime10}	,workContent10=	#{workContent10}
-			,attendHour11=	#{attendHour11}	,attendMinute11=	#{attendMinute11}	,offHour11=	#{offHour11}	,offMinute11=	#{offMinute11}	,restHour11=	#{restHour11}	,restMinute11=	#{restMinute11}	,netWorkingTime11=	#{netWorkingTime11}	,workContent11=	#{workContent11}
-			,attendHour12=	#{attendHour12}	,attendMinute12=	#{attendMinute12}	,offHour12=	#{offHour12}	,offMinute12=	#{offMinute12}	,restHour12=	#{restHour12}	,restMinute12=	#{restMinute12}	,netWorkingTime12=	#{netWorkingTime12}	,workContent12=	#{workContent12}
-			,attendHour13=	#{attendHour13}	,attendMinute13=	#{attendMinute13}	,offHour13=	#{offHour13}	,offMinute13=	#{offMinute13}	,restHour13=	#{restHour13}	,restMinute13=	#{restMinute13}	,netWorkingTime13=	#{netWorkingTime13}	,workContent13=	#{workContent13}
-			,attendHour14=	#{attendHour14}	,attendMinute14=	#{attendMinute14}	,offHour14=	#{offHour14}	,offMinute14=	#{offMinute14}	,restHour14=	#{restHour14}	,restMinute14=	#{restMinute14}	,netWorkingTime14=	#{netWorkingTime14}	,workContent14=	#{workContent14}
-			,attendHour15=	#{attendHour15}	,attendMinute15=	#{attendMinute15}	,offHour15=	#{offHour15}	,offMinute15=	#{offMinute15}	,restHour15=	#{restHour15}	,restMinute15=	#{restMinute15}	,netWorkingTime15=	#{netWorkingTime15}	,workContent15=	#{workContent15}
-			,attendHour16=	#{attendHour16}	,attendMinute16=	#{attendMinute16}	,offHour16=	#{offHour16}	,offMinute16=	#{offMinute16}	,restHour16=	#{restHour16}	,restMinute16=	#{restMinute16}	,netWorkingTime16=	#{netWorkingTime16}	,workContent16=	#{workContent16}
-			,attendHour17=	#{attendHour17}	,attendMinute17=	#{attendMinute17}	,offHour17=	#{offHour17}	,offMinute17=	#{offMinute17}	,restHour17=	#{restHour17}	,restMinute17=	#{restMinute17}	,netWorkingTime17=	#{netWorkingTime17}	,workContent17=	#{workContent17}
-			,attendHour18=	#{attendHour18}	,attendMinute18=	#{attendMinute18}	,offHour18=	#{offHour18}	,offMinute18=	#{offMinute18}	,restHour18=	#{restHour18}	,restMinute18=	#{restMinute18}	,netWorkingTime18=	#{netWorkingTime18}	,workContent18=	#{workContent18}
-			,attendHour19=	#{attendHour19}	,attendMinute19=	#{attendMinute19}	,offHour19=	#{offHour19}	,offMinute19=	#{offMinute19}	,restHour19=	#{restHour19}	,restMinute19=	#{restMinute19}	,netWorkingTime19=	#{netWorkingTime19}	,workContent19=	#{workContent19}
-			,attendHour20=	#{attendHour20}	,attendMinute20=	#{attendMinute20}	,offHour20=	#{offHour20}	,offMinute20=	#{offMinute20}	,restHour20=	#{restHour20}	,restMinute20=	#{restMinute20}	,netWorkingTime20=	#{netWorkingTime20}	,workContent20=	#{workContent20}
-			,attendHour21=	#{attendHour21}	,attendMinute21=	#{attendMinute21}	,offHour21=	#{offHour21}	,offMinute21=	#{offMinute21}	,restHour21=	#{restHour21}	,restMinute21=	#{restMinute21}	,netWorkingTime21=	#{netWorkingTime21}	,workContent21=	#{workContent21}
-			,attendHour22=	#{attendHour22}	,attendMinute22=	#{attendMinute22}	,offHour22=	#{offHour22}	,offMinute22=	#{offMinute22}	,restHour22=	#{restHour22}	,restMinute22=	#{restMinute22}	,netWorkingTime22=	#{netWorkingTime22}	,workContent22=	#{workContent22}
-			,attendHour23=	#{attendHour23}	,attendMinute23=	#{attendMinute23}	,offHour23=	#{offHour23}	,offMinute23=	#{offMinute23}	,restHour23=	#{restHour23}	,restMinute23=	#{restMinute23}	,netWorkingTime23=	#{netWorkingTime23}	,workContent23=	#{workContent23}
-			,attendHour24=	#{attendHour24}	,attendMinute24=	#{attendMinute24}	,offHour24=	#{offHour24}	,offMinute24=	#{offMinute24}	,restHour24=	#{restHour24}	,restMinute24=	#{restMinute24}	,netWorkingTime24=	#{netWorkingTime24}	,workContent24=	#{workContent24}
-			,attendHour25=	#{attendHour25}	,attendMinute25=	#{attendMinute25}	,offHour25=	#{offHour25}	,offMinute25=	#{offMinute25}	,restHour25=	#{restHour25}	,restMinute25=	#{restMinute25}	,netWorkingTime25=	#{netWorkingTime25}	,workContent25=	#{workContent25}
-			,attendHour26=	#{attendHour26}	,attendMinute26=	#{attendMinute26}	,offHour26=	#{offHour26}	,offMinute26=	#{offMinute26}	,restHour26=	#{restHour26}	,restMinute26=	#{restMinute26}	,netWorkingTime26=	#{netWorkingTime26}	,workContent26=	#{workContent26}
-			,attendHour27=	#{attendHour27}	,attendMinute27=	#{attendMinute27}	,offHour27=	#{offHour27}	,offMinute27=	#{offMinute27}	,restHour27=	#{restHour27}	,restMinute27=	#{restMinute27}	,netWorkingTime27=	#{netWorkingTime27}	,workContent27=	#{workContent27}
-			,attendHour28=	#{attendHour28}	,attendMinute28=	#{attendMinute28}	,offHour28=	#{offHour28}	,offMinute28=	#{offMinute28}	,restHour28=	#{restHour28}	,restMinute28=	#{restMinute28}	,netWorkingTime28=	#{netWorkingTime28}	,workContent28=	#{workContent28}
-			,attendHour29=	#{attendHour29}	,attendMinute29=	#{attendMinute29}	,offHour29=	#{offHour29}	,offMinute29=	#{offMinute29}	,restHour29=	#{restHour29}	,restMinute29=	#{restMinute29}	,netWorkingTime29=	#{netWorkingTime29}	,workContent29=	#{workContent29}
-			,attendHour30=	#{attendHour30}	,attendMinute30=	#{attendMinute30}	,offHour30=	#{offHour30}	,offMinute30=	#{offMinute30}	,restHour30=	#{restHour30}	,restMinute30=	#{restMinute30}	,netWorkingTime30=	#{netWorkingTime30}	,workContent30=	#{workContent30}
-			,attendHour31=	#{attendHour31}	,attendMinute31=	#{attendMinute31}	,offHour31=	#{offHour31}	,offMinute31=	#{offMinute31}	,restHour31=	#{restHour31}	,restMinute31=	#{restMinute31}	,netWorkingTime31=	#{netWorkingTime31}	,workContent31=	#{workContent31}
-           ,sumWorkingTime=#{sumWorkingTime}
+          	dateCondition1=	#{dateCondition1}	,attendHour1=	#{attendHour1}	,attendMinute1=	#{attendMinute1}	,offHour1=	#{offHour1}	,offMinute1=	#{offMinute1}	,restHour1=	#{restHour1}	,restMinute1=	#{restMinute1}	,netWorkingTime1=	#{netWorkingTime1}	,workContent1=	#{workContent1},
+			dateCondition2=	#{dateCondition2}	,attendHour2=	#{attendHour2}	,attendMinute2=	#{attendMinute2}	,offHour2=	#{offHour2}	,offMinute2=	#{offMinute2}	,restHour2=	#{restHour2}	,restMinute2=	#{restMinute2}	,netWorkingTime2=	#{netWorkingTime2}	,workContent2=	#{workContent2},
+			dateCondition3=	#{dateCondition3}	,attendHour3=	#{attendHour3}	,attendMinute3=	#{attendMinute3}	,offHour3=	#{offHour3}	,offMinute3=	#{offMinute3}	,restHour3=	#{restHour3}	,restMinute3=	#{restMinute3}	,netWorkingTime3=	#{netWorkingTime3}	,workContent3=	#{workContent3},
+			dateCondition4=	#{dateCondition4}	,attendHour4=	#{attendHour4}	,attendMinute4=	#{attendMinute4}	,offHour4=	#{offHour4}	,offMinute4=	#{offMinute4}	,restHour4=	#{restHour4}	,restMinute4=	#{restMinute4}	,netWorkingTime4=	#{netWorkingTime4}	,workContent4=	#{workContent4},
+			dateCondition5=	#{dateCondition5}	,attendHour5=	#{attendHour5}	,attendMinute5=	#{attendMinute5}	,offHour5=	#{offHour5}	,offMinute5=	#{offMinute5}	,restHour5=	#{restHour5}	,restMinute5=	#{restMinute5}	,netWorkingTime5=	#{netWorkingTime5}	,workContent5=	#{workContent5},
+			dateCondition6=	#{dateCondition6}	,attendHour6=	#{attendHour6}	,attendMinute6=	#{attendMinute6}	,offHour6=	#{offHour6}	,offMinute6=	#{offMinute6}	,restHour6=	#{restHour6}	,restMinute6=	#{restMinute6}	,netWorkingTime6=	#{netWorkingTime6}	,workContent6=	#{workContent6},
+			dateCondition7=	#{dateCondition7}	,attendHour7=	#{attendHour7}	,attendMinute7=	#{attendMinute7}	,offHour7=	#{offHour7}	,offMinute7=	#{offMinute7}	,restHour7=	#{restHour7}	,restMinute7=	#{restMinute7}	,netWorkingTime7=	#{netWorkingTime7}	,workContent7=	#{workContent7},
+			dateCondition8=	#{dateCondition8}	,attendHour8=	#{attendHour8}	,attendMinute8=	#{attendMinute8}	,offHour8=	#{offHour8}	,offMinute8=	#{offMinute8}	,restHour8=	#{restHour8}	,restMinute8=	#{restMinute8}	,netWorkingTime8=	#{netWorkingTime8}	,workContent8=	#{workContent8},
+			dateCondition9=	#{dateCondition9}	,attendHour9=	#{attendHour9}	,attendMinute9=	#{attendMinute9}	,offHour9=	#{offHour9}	,offMinute9=	#{offMinute9}	,restHour9=	#{restHour9}	,restMinute9=	#{restMinute9}	,netWorkingTime9=	#{netWorkingTime9}	,workContent9=	#{workContent9},
+			dateCondition10=	#{dateCondition10}	,attendHour10=	#{attendHour10}	,attendMinute10=	#{attendMinute10}	,offHour10=	#{offHour10}	,offMinute10=	#{offMinute10}	,restHour10=	#{restHour10}	,restMinute10=	#{restMinute10}	,netWorkingTime10=	#{netWorkingTime10}	,workContent10=	#{workContent10},
+			dateCondition11=	#{dateCondition11}	,attendHour11=	#{attendHour11}	,attendMinute11=	#{attendMinute11}	,offHour11=	#{offHour11}	,offMinute11=	#{offMinute11}	,restHour11=	#{restHour11}	,restMinute11=	#{restMinute11}	,netWorkingTime11=	#{netWorkingTime11}	,workContent11=	#{workContent11},
+			dateCondition12=	#{dateCondition12}	,attendHour12=	#{attendHour12}	,attendMinute12=	#{attendMinute12}	,offHour12=	#{offHour12}	,offMinute12=	#{offMinute12}	,restHour12=	#{restHour12}	,restMinute12=	#{restMinute12}	,netWorkingTime12=	#{netWorkingTime12}	,workContent12=	#{workContent12},
+			dateCondition13=	#{dateCondition13}	,attendHour13=	#{attendHour13}	,attendMinute13=	#{attendMinute13}	,offHour13=	#{offHour13}	,offMinute13=	#{offMinute13}	,restHour13=	#{restHour13}	,restMinute13=	#{restMinute13}	,netWorkingTime13=	#{netWorkingTime13}	,workContent13=	#{workContent13},
+			dateCondition14=	#{dateCondition14}	,attendHour14=	#{attendHour14}	,attendMinute14=	#{attendMinute14}	,offHour14=	#{offHour14}	,offMinute14=	#{offMinute14}	,restHour14=	#{restHour14}	,restMinute14=	#{restMinute14}	,netWorkingTime14=	#{netWorkingTime14}	,workContent14=	#{workContent14},
+			dateCondition15=	#{dateCondition15}	,attendHour15=	#{attendHour15}	,attendMinute15=	#{attendMinute15}	,offHour15=	#{offHour15}	,offMinute15=	#{offMinute15}	,restHour15=	#{restHour15}	,restMinute15=	#{restMinute15}	,netWorkingTime15=	#{netWorkingTime15}	,workContent15=	#{workContent15},
+			dateCondition16=	#{dateCondition16}	,attendHour16=	#{attendHour16}	,attendMinute16=	#{attendMinute16}	,offHour16=	#{offHour16}	,offMinute16=	#{offMinute16}	,restHour16=	#{restHour16}	,restMinute16=	#{restMinute16}	,netWorkingTime16=	#{netWorkingTime16}	,workContent16=	#{workContent16},
+			dateCondition17=	#{dateCondition17}	,attendHour17=	#{attendHour17}	,attendMinute17=	#{attendMinute17}	,offHour17=	#{offHour17}	,offMinute17=	#{offMinute17}	,restHour17=	#{restHour17}	,restMinute17=	#{restMinute17}	,netWorkingTime17=	#{netWorkingTime17}	,workContent17=	#{workContent17},
+			dateCondition18=	#{dateCondition18}	,attendHour18=	#{attendHour18}	,attendMinute18=	#{attendMinute18}	,offHour18=	#{offHour18}	,offMinute18=	#{offMinute18}	,restHour18=	#{restHour18}	,restMinute18=	#{restMinute18}	,netWorkingTime18=	#{netWorkingTime18}	,workContent18=	#{workContent18},
+			dateCondition19=	#{dateCondition19}	,attendHour19=	#{attendHour19}	,attendMinute19=	#{attendMinute19}	,offHour19=	#{offHour19}	,offMinute19=	#{offMinute19}	,restHour19=	#{restHour19}	,restMinute19=	#{restMinute19}	,netWorkingTime19=	#{netWorkingTime19}	,workContent19=	#{workContent19},
+			dateCondition20=	#{dateCondition20}	,attendHour20=	#{attendHour20}	,attendMinute20=	#{attendMinute20}	,offHour20=	#{offHour20}	,offMinute20=	#{offMinute20}	,restHour20=	#{restHour20}	,restMinute20=	#{restMinute20}	,netWorkingTime20=	#{netWorkingTime20}	,workContent20=	#{workContent20},
+			dateCondition21=	#{dateCondition21}	,attendHour21=	#{attendHour21}	,attendMinute21=	#{attendMinute21}	,offHour21=	#{offHour21}	,offMinute21=	#{offMinute21}	,restHour21=	#{restHour21}	,restMinute21=	#{restMinute21}	,netWorkingTime21=	#{netWorkingTime21}	,workContent21=	#{workContent21},
+			dateCondition22=	#{dateCondition22}	,attendHour22=	#{attendHour22}	,attendMinute22=	#{attendMinute22}	,offHour22=	#{offHour22}	,offMinute22=	#{offMinute22}	,restHour22=	#{restHour22}	,restMinute22=	#{restMinute22}	,netWorkingTime22=	#{netWorkingTime22}	,workContent22=	#{workContent22},
+			dateCondition23=	#{dateCondition23}	,attendHour23=	#{attendHour23}	,attendMinute23=	#{attendMinute23}	,offHour23=	#{offHour23}	,offMinute23=	#{offMinute23}	,restHour23=	#{restHour23}	,restMinute23=	#{restMinute23}	,netWorkingTime23=	#{netWorkingTime23}	,workContent23=	#{workContent23},
+			dateCondition24=	#{dateCondition24}	,attendHour24=	#{attendHour24}	,attendMinute24=	#{attendMinute24}	,offHour24=	#{offHour24}	,offMinute24=	#{offMinute24}	,restHour24=	#{restHour24}	,restMinute24=	#{restMinute24}	,netWorkingTime24=	#{netWorkingTime24}	,workContent24=	#{workContent24},
+			dateCondition25=	#{dateCondition25}	,attendHour25=	#{attendHour25}	,attendMinute25=	#{attendMinute25}	,offHour25=	#{offHour25}	,offMinute25=	#{offMinute25}	,restHour25=	#{restHour25}	,restMinute25=	#{restMinute25}	,netWorkingTime25=	#{netWorkingTime25}	,workContent25=	#{workContent25},
+			dateCondition26=	#{dateCondition26}	,attendHour26=	#{attendHour26}	,attendMinute26=	#{attendMinute26}	,offHour26=	#{offHour26}	,offMinute26=	#{offMinute26}	,restHour26=	#{restHour26}	,restMinute26=	#{restMinute26}	,netWorkingTime26=	#{netWorkingTime26}	,workContent26=	#{workContent26},
+			dateCondition27=	#{dateCondition27}	,attendHour27=	#{attendHour27}	,attendMinute27=	#{attendMinute27}	,offHour27=	#{offHour27}	,offMinute27=	#{offMinute27}	,restHour27=	#{restHour27}	,restMinute27=	#{restMinute27}	,netWorkingTime27=	#{netWorkingTime27}	,workContent27=	#{workContent27},
+			dateCondition28=	#{dateCondition28}	,attendHour28=	#{attendHour28}	,attendMinute28=	#{attendMinute28}	,offHour28=	#{offHour28}	,offMinute28=	#{offMinute28}	,restHour28=	#{restHour28}	,restMinute28=	#{restMinute28}	,netWorkingTime28=	#{netWorkingTime28}	,workContent28=	#{workContent28},
+			dateCondition29=	#{dateCondition29}	,attendHour29=	#{attendHour29}	,attendMinute29=	#{attendMinute29}	,offHour29=	#{offHour29}	,offMinute29=	#{offMinute29}	,restHour29=	#{restHour29}	,restMinute29=	#{restMinute29}	,netWorkingTime29=	#{netWorkingTime29}	,workContent29=	#{workContent29},
+			dateCondition30=	#{dateCondition30}	,attendHour30=	#{attendHour30}	,attendMinute30=	#{attendMinute30}	,offHour30=	#{offHour30}	,offMinute30=	#{offMinute30}	,restHour30=	#{restHour30}	,restMinute30=	#{restMinute30}	,netWorkingTime30=	#{netWorkingTime30}	,workContent30=	#{workContent30},
+			dateCondition31=	#{dateCondition31}	,attendHour31=	#{attendHour31}	,attendMinute31=	#{attendMinute31}	,offHour31=	#{offHour31}	,offMinute31=	#{offMinute31}	,restHour31=	#{restHour31}	,restMinute31=	#{restMinute31}	,netWorkingTime31=	#{netWorkingTime31}	,workContent31=	#{workContent31},
+			sumWorkingTime=#{sumWorkingTime}
            where reportNum = #{reportNum}
 	</update>		
 	
 	<update id="lastUpdateDate" parameterType="int">
-		update user_inform set LastReportDate=(select max(updateDate) from work_report where userNum=#{userNum});
+		update user_inform set LastReportDate=(select max(updateDate) from work_report where userNum=#{userNum})  where userNum = #{userNum}
 	</update>
 	
 	
 	<select id="getReportList" resultType="ReportList">
 		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate
 			from work_Report as report join user_inform as user
-			on report.usernum = user.usernum and state > 0
+			on report.usernum = user.usernum and state > 0 
+			order by report.updateDate desc
 			limit 100
 	</select>
 	
 	<select id="getWorkReportVO" resultType="WorkReportVO">
 		select * from work_Report where reportNum=#{reportNum};
+	</select>
+	
+	<select id="reportFilter" parameterType="map" resultType="ReportList">
+		select 
+			report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month
+			,report.updatedate
+		from 
+			work_Report as report join user_inform as user
+		on 
+			report.usernum = user.usernum 
+		where 
+			state > 0 
+		<if test='team != null and team[0] != "report_teamAll"'>
+			and user.team 
+			${team_others} in
+		<foreach collection="team" item="team" index="num"  open="(" close=")" separator=",">
+        	#{team}
+    	</foreach> 
+     	</if>
+     	<if test='userNum != null and userNum != ""'>
+     		and user.usernum like concat(#{userNum},'%')
+     	</if>
+     	<if test='userName !=null and userName != ""'>
+     		and user.usernum like concat('%',#{userName},'%')
+     	</if>
+     		and
+     			(date_format(concat(year,'-0',month,'-01'), '%Y-%m') between #{From_ReportDays} and #{To_ReportDays})
+		order by 
+			report.updateDate desc
+		limit 100
 	</select>
 	
 	<delete id="deleteReport" parameterType="int">
