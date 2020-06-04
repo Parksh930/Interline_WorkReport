@@ -109,7 +109,7 @@
 	</update>		
 	
 	<update id="lastUpdateDate" parameterType="int">
-		update user_inform set LastReportDate=(select max(updateDate) from work_report where userNum=#{userNum});
+		update user_inform set LastReportDate=(select max(updateDate) from work_report where userNum=#{userNum})  where userNum = #{userNum}
 	</update>
 	
 	
@@ -123,6 +123,36 @@
 	
 	<select id="getWorkReportVO" resultType="WorkReportVO">
 		select * from work_Report where reportNum=#{reportNum};
+	</select>
+	
+	<select id="reportFilter" parameterType="map" resultType="ReportList">
+		select 
+			report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month
+			,report.updatedate
+		from 
+			work_Report as report join user_inform as user
+		on 
+			report.usernum = user.usernum 
+		where 
+			state > 0 
+		<if test='team != null and team[0] != "report_teamAll"'>
+			and user.team 
+			${team_others} in
+		<foreach collection="team" item="team" index="num"  open="(" close=")" separator=",">
+        	#{team}
+    	</foreach> 
+     	</if>
+     	<if test='userNum != null and userNum != ""'>
+     		and user.usernum like concat(#{userNum},'%')
+     	</if>
+     	<if test='userName !=null and userName != ""'>
+     		and user.usernum like concat('%',#{userName},'%')
+     	</if>
+     		and
+     			(date_format(concat(year,'-0',month,'-01'), '%Y-%m') between #{From_ReportDays} and #{To_ReportDays})
+		order by 
+			report.updateDate desc
+		limit 100
 	</select>
 	
 	<delete id="deleteReport" parameterType="int">

@@ -177,6 +177,16 @@ public class WorkReportController {
 		return reportList;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/admin/report_Filter", method=RequestMethod.GET, produces="application/json;charset=UTF-8")
+	public ArrayList<ReportListVO> reportFilter(String[] team, String team_others
+												,String report_userNum,String report_userName
+												,String report_FromReportDays,String report_ToReportDays){
+		logger.debug("from:{}, to:{}",report_FromReportDays,report_ToReportDays);
+		
+		ArrayList<ReportListVO> list = dao.reportFilter(team,team_others,report_userNum,report_userName,report_FromReportDays,report_ToReportDays);
+		return list;
+	}
 	
 	@RequestMapping(value="/admin/getReadReport", method = RequestMethod.GET)
 	public String workReadReport(WorkReportVO vo,Model model) {
@@ -256,6 +266,8 @@ public class WorkReportController {
 		
 		return "success";
 	}
+	
+	
 	
 
 }

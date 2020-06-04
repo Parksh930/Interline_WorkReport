@@ -77,5 +77,23 @@ public class WorkReportDAO {
 		return result;
 	}
 
+	public ArrayList<ReportListVO> reportFilter(String[] team, String team_others
+												,String userNum,String userName
+												,String From_ReportDays,String To_ReportDays) {
+		
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("From_ReportDays",From_ReportDays);
+		map.put("To_ReportDays",To_ReportDays);
+		map.put("userNum", userNum);
+		map.put("userName", userName);
+		map.put("team", team);
+		map.put("team_others", team_others);
+		ArrayList<ReportListVO> list = mapper.reportFilter(map);
+		
+		return list;
+	}
+
 
 }

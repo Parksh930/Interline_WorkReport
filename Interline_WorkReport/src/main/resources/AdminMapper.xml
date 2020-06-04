@@ -13,12 +13,7 @@ select user.*,max(report.updatedate)lastupdateDate
 		report.usernum = user.usernum 
 	<if test='team != null and team[0] != "team_all"'>
 		where team 
-	<if test ='team_others != null and team_others == "not"'>	
-		not in
-	</if>	
-	<if test ='team_others == null or team_others == ""'>	
-		in
-	</if>	
+		${team_others} in
 	<foreach collection="team" item="team" index="num"  open="(" close=")" separator=",">
         	#{team}
     	</foreach> 

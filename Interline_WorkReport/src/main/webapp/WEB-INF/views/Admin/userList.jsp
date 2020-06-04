@@ -144,16 +144,16 @@ $(function(){
 			});
 		}
 
-		reslut_Filter();
+		user_reslut_Filter();
 	}
 
 	function user_Status_Filter(){
 		status = $(this).val();
 
-		reslut_Filter();
+		user_reslut_Filter();
 	}
 
-	function reslut_Filter(){
+	function user_reslut_Filter(){
 		
 		if(user_team == "" || user_team == null){
 			user_team.push("team_all");

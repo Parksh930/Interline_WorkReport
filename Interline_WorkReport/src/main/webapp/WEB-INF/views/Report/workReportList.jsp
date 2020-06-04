@@ -15,7 +15,7 @@ body {
 }
 
 #report_List {
-	margin: 50px auto;
+	margin: 20px auto;
 	width: fit-content;
 }
 
@@ -66,17 +66,37 @@ a {
 .Main_logOut {
 	margin: 0px 0px 0px 20px;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#reportDays_Filter{
+	border: 0;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(function(){
 	var report_table_title;
 	var report_sort;
+	var team_others;
+	var report_userTeam=[];
 	var report_Measure = ["updateDate","descending"];
+	var from_ReportDays_value;
+	var to_ReportDays_value;
 
 	first_reportList();
 	$("#Reportlist_sort").change(report_List_Sort);
+	$('input[name="report_userTeam"]').click(report_Team_Filter);
+	$('#report_userNum_btn').click(report_Text_Filter);
+	$('#report_userName_btn').click(report_Text_Filter);
+	$("#reportDays_Filter").change(report_Days_Filter);
 
+	
 	function first_reportList(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
 		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
@@ -111,6 +131,105 @@ $(function(){
 				 report_sort = list;
 			}	
 		});
+
+		var date = new Date();
+		var now_year = date.getFullYear();
+
+		$("#from_ReportDays").prepend("<option value='"+now_year+"-01'>下限なし</option>");
+		$("#to_ReportDays").prepend("<option value='"+now_year+"-12'>上限なし</option>");
+		
+		for(var n = 1; n<=12 ; n++){
+			if(n<10){
+				$("#from_ReportDays").append("<option value='"+now_year+"-0"+n+"'>"+now_year+"年"+n+"月</option>");
+				$("#to_ReportDays").append("<option value='"+now_year+"-0"+n+"'>"+now_year+"年"+n+"月</option>");
+			}else{
+				$("#from_ReportDays").append("<option value='"+now_year+"-"+n+"'>"+now_year+"年"+n+"月</option>");
+				$("#to_ReportDays").append("<option value='"+now_year+"-"+n+"'>"+now_year+"年"+n+"月</option>");
+			}
+		}
+
+		from_ReportDays_value = $("#from_ReportDays option:selected").val();
+		to_ReportDays_value= $("#to_ReportDays option:selected").val();
+	}
+	function report_Team_Filter(){
+		report_userTeam = [];
+
+		$('input[name="report_userTeam"]').each(function(){
+			if($(this)[0].value != "その他"){
+				report_userTeam.push($(this).val());
+			}
+		});
+		
+		if($('#team_others').prop("checked")){
+			team_others = "not";
+			$('input[name="report_userTeam"]').each(function(){
+				if($(this).prop("checked") && $(this)[0].value != "その他"){
+					report_userTeam.splice(report_userTeam.indexOf($(this).val()),1);
+				}
+			});
+		}
+		else{
+			team_others = null;
+			$('input[name="report_userTeam"]').each(function(){
+				if($(this).prop("checked") == false && $(this)[0].value != "その他"){
+					report_userTeam.splice(report_userTeam.indexOf($(this).val()),1);
+				}
+			});
+		}
+
+		report_result_Filter();
+	}
+
+	function report_Text_Filter(){
+		if($(this)[0].id == "report_userNum_btn"){
+			var report_userNum = $("#report_userNum").val();
+			report_result_Filter("report_userNum",report_userNum);
+		}
+		else if($(this)[0].id == "report_userName_btn"){
+			var report_userName = $("#report_userName").val();
+			report_result_Filter("report_userName",report_userName);
+		};
+
+		$("#report_userNum").val("");
+		$("#report_userName").val("");
+	}
+
+	function report_Days_Filter(){
+		from_ReportDays_value = $("#from_ReportDays option:selected").val();
+		to_ReportDays_value= $("#to_ReportDays option:selected").val();
+		
+		report_result_Filter();
+	}
+
+	function report_result_Filter(Filter,val){
+		var report_userNum;
+		var report_userName;
+		if(Filter == "report_userNum"){
+			report_userNum = val;
+		}else if(Filter == "report_userName"){
+			report_userName = val;
+		}
+		
+		if(report_userTeam == "" || report_userTeam == null){
+			report_userTeam.push("report_teamAll");
+		}else if(report_userTeam.indexOf("report_teamAll") > -1 && report_userTeam.length >= 2){
+			report_userTeam.splice(report_userTeam.indexOf("report_teamAll"),1);
+		}
+
+		$.ajax({
+			type:"get",
+			url:"report_Filter",
+			data:{team:report_userTeam,team_others:team_others
+				,report_userNum:report_userNum,report_userName:report_userName
+				,report_FromReportDays:from_ReportDays_value,report_ToReportDays:to_ReportDays_value},
+			async:false,
+			traditional: true,
+			dataType:"json",
+			success:function(list){
+				report_sort=list;
+			}
+		});
+		report_List_Sort();
 	}
 
 	function report_List_Sort(){
@@ -246,48 +365,27 @@ $(function(){
 
 <body>
 	<h1>報告書リスト</h1>
-<!-- 	<div id="report_list_filter">
-	<label for="user_num">社員番号</label><input type="text" id = "user_num">
+	<div id="report_list_filter">
+	<label for="user_num">社員番号</label><input type="number" name = "report_userNum" id = "report_userNum">
+	<button id="report_userNum_btn">検索</button>
 	<br>
-	<label for="user_name">社員名</label><input type="text" id = "user_name">
+	<label for="user_name">社員名</label><input type="text" name="report_userName" id = "report_userName">
+	<button id="report_userName_btn">検索</button>
 	<br>
-	<input type="checkbox" id ="team_tokyo" name ="user_team" value="東京"><label for="team_tokyo">東京</label>
-	<input type="checkbox" id ="team_yokohama" name ="user_team" value="横浜"><label for="team_yokohama">横浜</label>
-	<input type="checkbox" id ="team_saitama" name ="user_team" value="埼玉"><label for="team_saitama">埼玉</label>
-	<input type="checkbox" id ="team_others" name ="user_team" value="その他"><label for="team_others">その他</label>
+	<input type="checkbox" id ="team_tokyo" name ="report_userTeam" value="東京"><label for="team_tokyo">東京</label>
+	<input type="checkbox" id ="team_yokohama" name ="report_userTeam" value="横浜"><label for="team_yokohama">横浜</label>
+	<input type="checkbox" id ="team_saitama" name ="report_userTeam" value="埼玉"><label for="team_saitama">埼玉</label>
+	<input type="checkbox" id ="team_others" name ="report_userTeam" value="その他"><label for="team_others">その他</label>
 	<br>
+	<fieldset id = "reportDays_Filter">
 	勤務票の期間
-	<select id ="" name="">
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
+	<select id ="from_ReportDays" name="from_ReportDays">
 	</select>
 	~
-	<select id ="" name="">
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
-		<option value=""></option>
+	<select id ="to_ReportDays" name="to_ReportDays">
 	</select>
-
-	</div> -->
+	</fieldset>
+	</div>
 	<div id="report_list_sort">
 		<select id ="Reportlist_sort" name="Userlist_sort">
 			<option value="userNum_ascending">社員番号の昇順</option>
