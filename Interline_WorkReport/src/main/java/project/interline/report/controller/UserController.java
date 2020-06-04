@@ -54,8 +54,7 @@ private static final int pagePerGroup=10;
 		int user_num = vo.getUserNum();
 		int total = dao.getTotal(user_num);
 		
-		int countPerPage;
-		int pagePerGroup;
+		
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
 		
 		ArrayList<ReportListVO> my_list = dao.getMy_List(navi.getStartRecord(), navi.getCountPerPage(),user_num);
