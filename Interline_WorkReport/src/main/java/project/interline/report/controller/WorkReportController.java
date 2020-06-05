@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import project.interline.report.dao.WorkReportDAO;
 import project.interline.report.vo.ReportListVO;
+import project.interline.report.vo.UserVO;
 import project.interline.report.vo.WorkReportVO;
 
 @Controller
@@ -271,6 +272,33 @@ public class WorkReportController {
 		return "success";
 	}
 	
+	@RequestMapping(value="/user/myReport", method = RequestMethod.GET)
+	public String myReport(Model model, HttpSession session ,int reportNum) {
+		
+		UserVO userVO=(UserVO)session.getAttribute("user_inform");
+		WorkReportVO workReport=new WorkReportVO();
+		workReport.setUserNum(userVO.getUserNum());
+		workReport.setReportNum(reportNum);
+		
+		workReport=dao.getMyReport(workReport);
+		
+		//저장내용 JSON스트링파이
+		ObjectMapper objectMapper= new ObjectMapper();
+		String reportJSON="";
+		if (workReport.getUserName()==null||workReport.getUserName().equals("")) {
+			model.addAttribute("reportJSON", "none");
+			return "Report/readMyReport";
+		}
+		try {
+			reportJSON = objectMapper.writeValueAsString(workReport);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("reportJSON", reportJSON);
+		
+		return "Report/readMyReport";
+	}
 	
 	@RequestMapping(value="/admin/submitApproval", method = {RequestMethod.GET,RequestMethod.POST})
 	public String submitApproval(WorkReportVO vo,Model model) {

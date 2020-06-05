@@ -159,6 +159,9 @@
 		delete from work_Report where reportNum=#{reportNum};
 	</delete>
 	
+	<select id="getMyReport" parameterType="WorkReportVO"  resultType="WorkReportVO">
+		select * from work_Report where userNum=#{userNum} and reportNum=#{reportNum}
+	</select>
 	
 	<update id="updateState" parameterType="WorkReportVO">
 		UPDATE work_Report 

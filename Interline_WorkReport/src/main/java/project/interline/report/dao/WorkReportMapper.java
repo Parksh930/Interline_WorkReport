@@ -28,7 +28,6 @@ public interface WorkReportMapper {
 	
 	ArrayList<ReportListVO> reportFilter(HashMap<String,Object> map);
 
-	int updateState(WorkReportVO vo);
-	
-	
+	WorkReportVO getMyReport(WorkReportVO workReport);
+
 }
