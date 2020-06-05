@@ -60,16 +60,26 @@ th, td {
 }
 
 .Read_Btn2 {
-	border: solid 2px rgb(255 255 0);
+	border: solid 2px rgb(154,205,50);
 	border-radius: 9px;
 	padding: 2px 5px;
-	background-color: rgb(255 255 0);
-	color: black;
+	background-color: rgb(154,205,50);
+	color: white;
 	cursor: pointer;
 	width: 68px;
 }
+/*  255 255 0 */
 
 .Read_Btn3 {
+	border: solid 2px rgb(255, 0, 0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255, 0, 0);
+	color: black;
+	cursor: pointer;
+}
+
+.Read_Btn4 {
 	border: solid 2px rgb(0, 112, 192);
 	border-radius: 9px;
 	padding: 2px 5px;
@@ -78,6 +88,25 @@ th, td {
 	cursor: pointer;
 	width: 68px;
 }
+.Read_Btn5 {
+	border: solid 2px rgb(255 255 0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255 255 0);
+	color: black;
+	cursor: pointer;
+	width: 68px;
+}
+.Read_Btn6 {
+	border: solid 2px rgb(255,127,0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255,127,0);
+	color: black;
+	cursor: pointer;
+	width: 68px;
+}
+
 
 a {
 	text-decoration: none;
@@ -144,13 +173,23 @@ $(function(){
 					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
 				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button>';
-				if(report.state==3){
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="updateRequest('+report.reportNum+')">修正要請</button>';
+				if(report.state==1){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="submitCancel('+report.reportNum+')">取消</button></td>';
+					}
+				else if(report.state==2){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認完了</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="approvaledCancel('+report.reportNum+')">取消</button></td>';
+					}
+				else if(report.state==3){
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval('+report.reportNum+')">修正承認</button></td>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel('+report.reportNum+')">取消</button></td>';
 				}
 				else if(report.state==4){
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateCancel('+report.reportNum+')">修正承認</button>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel('+report.reportNum+')">取消</button></td>';
 				}
-				report_com +='</td></tr>';
+				report_com +='</tr>';
 				});
 				
 				report_com += "</table>";
@@ -332,40 +371,78 @@ $(function(){
   function getAllReport() { 
 	location.href = "../admin/getAllReport";
 	};
-  function updateRequest(reportNum) { 
-			location.href = "../admin/updateRequest?reportNum="+reportNum;
-	};
-	function updateCencel(reportNum) { 
-		location.href = "../admin/updateCencel?reportNum"+reportNum;
+
+	
+  function submitApproval(reportNum) { 
+	  if(confirm("提出された勤務表を承認されますか？"))
+			location.href = "../admin/submitApproval?reportNum="+reportNum;
+			};
+	function submitCancel(reportNum) { 
+		 if(confirm("提出された勤務表を拒絶されますか？"))
+		location.href = "../admin/submitCancel?reportNum="+reportNum;
+	};	
+	function approvaledCancel(reportNum) { 
+		 if(confirm("すでに承認した勤務表を取消されますか？"))
+		location.href = "../admin/approvaledCancel?reportNum="+reportNum;
+	};		
+	function updateApproval(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を承認されますか？"))
+		location.href = "../admin/updateApproval?reportNum="+reportNum;
+		 };
+	
+	function updateApprovalCancel(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を拒絶されますか？"))
+		location.href = "../admin/updateApprovalCancel?reportNum="+reportNum;
+		 };				
+
+	function updateApprovaledCancel(reportNum) { 
+		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
+		location.href = "../admin/updateApprovaledCancel?reportNum="+reportNum;
 	};				
+			
 	
 
   function selectRead(reportNum){
-  
+
+		var arrNumber="";
+      $('input[name="selectValue"]').each(function(){
+          if($(this).prop("checked")){
+        	 arrNumber += $(this).value+",";
+          }
+       });
+
+
+	  
     //var arrNumber = new Array();
 
    	//var arrNumber = [];
-   	var arrNumber="";
-    var chk_obj = document.getElementsByName("selectValue");
-  	var chk_leng = chk_obj.length;
+  // 	var arrNumber="";
+    //var chk_obj = document.getElementsByName("selectValue");
+ // 	var chk_obj = $("input[name=selectValue]").val();
+  	
+  	//var chk_leng = chk_obj.length;
+//	var chk_leng = $(".check").is(':checked').length;
+	
 
+  	
 	if(!$(".check").is(':checked')){
 		alert("閲覧する勤務表を選択してください。");
 		return false;
 		}
 	
-  	for(i=0;i<chk_leng;i++){
+ // 	for(i=0;i<chk_leng;i++){
   		//if(chk_obj[i].checked==true){
   			//arrNumber.push(chk_obj[i].value);
-  		if(chk_obj[i].checked==true){	
-  	  		arrNumber += chk_obj[i].value+",";
-		  	  	}
-  	  	}
-  	 
+ // 		if(chk_obj[i].checked==true){	
+  //	  		arrNumber += chk_obj[i].value+",";
+//		  	  	}
+//  	  	}
+
   		//str = str.substr(0, str.length -1)
   		//list = list.slice(0, -1);
   	
   		var arr = arrNumber.substr(0, arrNumber.length -1);
+  	  	 alert(arr);
   		
   		//var jsonData={"array":arrNumber};
   		//var jsonData2 = JSON.stringify(jsonData);

@@ -95,5 +95,12 @@ public class WorkReportDAO {
 		return list;
 	}
 
+	public int updateState(WorkReportVO vo) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.updateState(vo);
+	}
+
+
+
 
 }

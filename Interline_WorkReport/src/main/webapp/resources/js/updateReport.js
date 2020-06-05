@@ -576,8 +576,52 @@
 	
 	}
 	
-	
-
+/*	  function submitApproval(jsonData,address) { 
+		  //var reportNum = jsonData.reportNum;
+		  
+			$.ajax(
+					{
+						url: address,
+						type: 'POST',
+						data: JSON.parse(JSON.stringify(jsonData)),
+						success: function(data){
+								//var text=["成功","成功","報告書重複 管理者にお問い合わせてください","提出したのは修正できません。"];
+								//alert(text[s]);
+								//location.href="../";
+								alert("承認を完了しました。")
+							},
+						error: function(e){
+								console.log(JSON.stringify(e));
+								alert('承認されませんでした。もう一度試して下さい。');
+								//location.href="../Report/workReportList";
+							}
+					}		
+				);
+		  
+	  }
+				
+				
+		function submitCancel(jsonData,address) { 
+			$.ajax(
+					{
+						url: address,
+						type: 'POST',
+						data: JSON.parse(JSON.stringify(jsonData)),
+						success: function(data){
+								//var text=["成功","成功","報告書重複 管理者にお問い合わせてください","提出したのは修正できません。"];
+								//alert(text[s]);
+								//location.href="../";
+								alert("承認を完了しました。")
+							},
+						error: function(e){
+								console.log(JSON.stringify(e));
+								alert('承認されませんでした。もう一度試して下さい。');
+								//location.href="../Report/workReportList";
+							}
+					}		
+				);
+		}*/
+				
 function adminUpdateReport(jsonData,address){
 	for (var i=1 ; i<=31 ; i++){
 		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null||["attendHour"+i]==undefined||["attendHour"+i]=='\"\"'){	
