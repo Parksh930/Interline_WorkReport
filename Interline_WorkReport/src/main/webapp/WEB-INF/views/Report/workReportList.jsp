@@ -404,62 +404,27 @@ $(function(){
 
   function selectRead(reportNum){
 
-		var arrNumber="";
+  	
+	if(!$(".check").is(':checked')){
+		alert("閲覧する勤務表を選択してください。");
+		return false;
+		}
+
+
+	var arrNumber="";
       $('input[name="selectValue"]').each(function(){
           if($(this).prop("checked")){
         	 arrNumber += $(this)[0].value+",";
           }
        });
 
-
-	  
-    //var arrNumber = new Array();
-
-   	//var arrNumber = [];
-  // 	var arrNumber="";
-    //var chk_obj = document.getElementsByName("selectValue");
- // 	var chk_obj = $("input[name=selectValue]").val();
-  	
-  	//var chk_leng = chk_obj.length;
-//	var chk_leng = $(".check").is(':checked').length;
-	
-
-  	
-	if(!$(".check").is(':checked')){
-		alert("閲覧する勤務表を選択してください。");
-		return false;
-		}
-	
- // 	for(i=0;i<chk_leng;i++){
-  		//if(chk_obj[i].checked==true){
-  			//arrNumber.push(chk_obj[i].value);
- // 		if(chk_obj[i].checked==true){	
-  //	  		arrNumber += chk_obj[i].value+",";
-//		  	  	}
-//  	  	}
-
-  		//str = str.substr(0, str.length -1)
-  		//list = list.slice(0, -1);
   	
   		var arr = arrNumber.substr(0, arrNumber.length -1);
   	  	 alert(arr);
   		
-  		//var jsonData={"array":arrNumber};
-  		//var jsonData2 = JSON.stringify(jsonData);
   	   	location.href = "../admin/getReadReport2?arrNumber="+arr;
   };
 
-/*   $(function(){
-	$("#allCheck").click(function(){
-		if($("#allCheck").is(":checked")){ 
-			$(".check").attr("checked","checked")  
-			}
-		else{
-			$(".check").removeAttr("checked")
-			}
-	});
-
-  }); */
 
   function Acheck(){
       if($("#allCheck").is(':checked')){
