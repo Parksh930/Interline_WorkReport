@@ -62,23 +62,23 @@ cursor: pointer;
 <body>
 <h1>パスワード変更</h1>
 
-<div id = "profileUd">
+<div id = "profileUd" style="font-size: 30px;">
 <form action="../user/profile" method="post" id="profileUpdate">
 <table>
-<tr>
+<tr></tr>
 
 <tr>
-<td>PW</td>
-<td><input type="password" id="Password" name="Password"></td>
+	<td>PW</td>
+	<td><input type="password" id="Password" class="passwordButton" name="Password" style="font-size: 30px;"></td>
 </tr>
-
+<tr><td>&nbsp</td></tr>
 <tr>
-<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn">確認</button>
-<div align="right">
-
-<input type = "hidden" name="page" id="page" value="1"/>
-</div>
-</td>
+	<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn" style="font-size: 30px;">確認</button>
+	<div align="right">
+	
+	<input type = "hidden" name="page" id="page" value="1"/>
+	</div>
+	</td>
 </tr>
 
 </table>
