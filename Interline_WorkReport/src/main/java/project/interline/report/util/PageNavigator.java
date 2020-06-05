@@ -1,11 +1,11 @@
 package project.interline.report.util;
 
-/**
- * 報告書リストのページング処理
- */
+
+ // �젿�몜�쎑�꺁�궧�깉�겗�깪�꺖�궦�꺍�궛�눇�릤
+ 
 public class PageNavigator {
 
-	//ページの情報
+	//�깪�꺖�궦�겗�깄�젿
 	private int countPerPage;		
 	private int pagePerGroup;		
 	private int currentPage;		
