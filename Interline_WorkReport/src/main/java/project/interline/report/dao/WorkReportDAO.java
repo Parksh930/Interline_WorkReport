@@ -95,5 +95,10 @@ public class WorkReportDAO {
 		return list;
 	}
 
+	public WorkReportVO getMyReport(WorkReportVO workReport) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.getMyReport(workReport);
+	}
+
 
 }
