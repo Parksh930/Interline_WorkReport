@@ -30,4 +30,6 @@ public interface WorkReportMapper {
 
 	WorkReportVO getMyReport(WorkReportVO workReport);
 
+	int updateState(WorkReportVO vo);
+
 }
