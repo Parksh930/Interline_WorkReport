@@ -172,6 +172,8 @@ public class WorkReportController {
 		
 		ArrayList<ReportListVO> reportList = dao.getReportList();
 		
+		System.out.println("reportList 의 결과값 !!!  "+reportList);
+		
 		logger.debug("reportList:{}",reportList);
 
 		return reportList;

@@ -59,6 +59,26 @@ th, td {
 	cursor: pointer;
 }
 
+.Read_Btn2 {
+	border: solid 2px rgb(255 255 0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255 255 0);
+	color: black;
+	cursor: pointer;
+	width: 68px;
+}
+
+.Read_Btn3 {
+	border: solid 2px rgb(0, 112, 192);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(0, 112, 192);
+	color: white;
+	cursor: pointer;
+	width: 68px;
+}
+
 a {
 	text-decoration: none;
 }
@@ -123,7 +143,14 @@ $(function(){
 					report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
 					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button>';
+				if(report.state==3){
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="updateRequest('+report.reportNum+')">修正要請</button>';
+				}
+				else if(report.state==4){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateCancel('+report.reportNum+')">修正承認</button>';
+				}
+				report_com +='</td></tr>';
 				});
 				
 				report_com += "</table>";
@@ -278,7 +305,7 @@ $(function(){
 			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
 		});
 		
 		report_com += "</table>";
@@ -305,7 +332,12 @@ $(function(){
   function getAllReport() { 
 	location.href = "../admin/getAllReport";
 	};
-				
+  function updateRequest(reportNum) { 
+			location.href = "../admin/updateRequest?reportNum="+reportNum;
+	};
+	function updateCencel(reportNum) { 
+		location.href = "../admin/updateCencel?reportNum"+reportNum;
+	};				
 	
 
   function selectRead(reportNum){

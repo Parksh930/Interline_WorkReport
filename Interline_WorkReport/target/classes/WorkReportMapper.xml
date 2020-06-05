@@ -114,7 +114,7 @@
 	
 	
 	<select id="getReportList" resultType="ReportList">
-		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate
+		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate,report.state  
 			from work_Report as report join user_inform as user
 			on report.usernum = user.usernum and state > 0 
 			order by report.updateDate desc
