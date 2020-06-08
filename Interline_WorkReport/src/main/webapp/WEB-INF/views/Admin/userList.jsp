@@ -10,6 +10,7 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
 $(function(){
+	
 	var user_team=[];
 	var user_sort;
 	var user_table_title;
@@ -72,7 +73,7 @@ $(function(){
 
 	function first_userList(){
 
-		user_table_title= '<tr><table id = "list_table"><th class="Userlist_userNum">社員番号</th>';
+		user_table_title= '<table id = "user_list_table"><tr><th class="Userlist_userNum">社員番号</th>';
 		user_table_title	+='<th class="Userlist_userMail">社員メール</th><th class="Userlist_userName">社員名</th>';
 		user_table_title	+='<th class="Userlist_team">チーム名</th><th class="Userlist_position">職級</th>';
 		user_table_title	+='<th class="Userlist_startDate">入社日</th><th class="Userlist_lastupdateDate">最新更新日</th>';
@@ -87,35 +88,12 @@ $(function(){
 			traditional: true,
 			dataType:"json",
 			success:function(list){
-
-				list.forEach(function(item){
-					con +='<tr><td class="Userlist_userNum">'+item.userNum+'</td>';
-					con +='<td class="Userlist_userMail">'+item.userMail+'</td>';
-					con +='<td class="Userlist_userName">'+item.userName+'</td>';
-					con +='<td class="Userlist_team">'+item.team+'</td>';
-					con +='<td class="Userlist_position">'+item.position+'</td>';
-					con +='<td class="Userlist_startDate">'+item.startDate+'</td>';
-
-					if(item.lastupdateDate != null){
-						con +='<td class="Userlist_lastupdateDate">'+item.lastupdateDate+'</td>';
-					}else {
-						con +='<td class="Userlist_lastupdateDate"></td>'
-						}
-					if(item.lastreportDate != null){
-						con +='<td class="Userlist_lastreportDate">'+item.lastreportDate+'</td>';
-					}else {
-						con +='<td class="Userlist_lastreportDate"></td>'
-						}
-
-					con +='<td class="Userlist_retirement">'+item.retirement+'</td>';
-					con +='<td class="Userlist_updateBtn"><a class="Update_Btn" href="userUpdate?Num='+item.userNum+'">修正</a></td>';
-				});
 				
-				con += "</table>";
-				$("#user_List").html(con);
 				user_sort = list;
 			}	
 		});
+
+		user_List_Sort();
 	}
 
 	function user_Team_Filter(){
@@ -177,6 +155,7 @@ $(function(){
 });
 
 </script>
+
 <style>
 body{
 text-align:center;
@@ -198,13 +177,8 @@ th,td{
 border: 1px solid black;
 }
 
-#navigator{
-text-align: center;
-margin: 20px 0px 0px 0px;
-}
-
 #user_List{
-margin: 50px auto 0px;
+margin: 20px auto;
 width: fit-content;
 }
 
@@ -222,29 +196,66 @@ color: white;
 cursor: pointer;
 }
 
-th[class^="Userlist"]{
-width: 100px;
+.Userlist_userNum, .Userlist_team,.Userlist_position,.Userlist_retirement
+,.Userlist_startDate,.Userlist_finalreportDate,.Userlist_lastupdateDate {
+	width: 100px;
+}
+.Userlist_userMail{
+	width: 200px;
+}
+
+.Userlist_userName  {
+	width: 150px;
 }
 
 .Admin_userRegister{
 text-align: right;
 margin: 10px 60px 0px 0px;
 }
+
+fieldset{
+	border: 0;
+	padding:5px 12px 5px 12px;	
+}
+
+#user_list_sort{
+text-align: left;
+margin:20px 0px 0px 0px;
+}
+
+#Userlist_sort{
+margin: auto;
+height: 24px;
+}
+
+#user_status_span{
+margin: 0px 0px 0px -86px;
+}
+
+.Update_Btn{
+font-size: 14px;
+}
+
 </style>
 </head>
 <body>
 <h1>社員リスト</h1>
 <div id = "user_filter">
+<fieldset id = "">
+<span id="user_team_span">チーム名：</span>
 <input type="checkbox" id ="team_tokyo" name ="user_team" value="東京"><label for="team_tokyo">東京</label>
 <input type="checkbox" id ="team_yokohama" name ="user_team" value="横浜"><label for="team_yokohama">横浜</label>
 <input type="checkbox" id ="team_saitama" name ="user_team" value="埼玉"><label for="team_saitama">埼玉</label>
 <input type="checkbox" id ="team_others" name ="user_team" value="その他"><label for="team_others">その他</label>
-<br>
+</fieldset>
+<fieldset id = "">
+<span id="user_status_span">前月分の提出状況：</span>
 <input type="radio" id="status_all" name="user_status" value="status_all" checked="checked"><label for="status_all">全員</label>
 <input type="radio" id="status_submitted" name="user_status" value="status_submitted"><label for="status_submitted">提出済み</label>
 <input type="radio" id="status_writing" name="user_status" value="status_writing"><label for="status_writing">未提出</label>
+</fieldset>
 </div>
-<div id="list_sort">
+<div id="user_list_sort">
 <select id ="Userlist_sort" name="Userlist_sort">
 <option value="userNum_ascending">社員番号の昇順</option>
 <option value="userNum_descending">社員番号の降順</option>

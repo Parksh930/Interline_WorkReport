@@ -8,14 +8,20 @@
 <title>Admin Page</title>
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
+$(function(){
+	$('#list_Box').css('min-height',window.innerHeight-100+'px');
+});
 
+function contents_size(obj){
+	obj.style.height=obj.contentWindow.document.body.scrollHeight+40+'px';
+}
 </script>	
 
 <style>
 #list_Box{
-height:600px;
-width:1000px;
+width:1100px;
 }
+
 a[class*="_Btn"]{
 border: solid 2px rgb(0, 112, 192);
 border-radius: 9px;
@@ -24,6 +30,10 @@ background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
 text-decoration: none;
+}
+
+#_iframe{
+margin:20px 0px 0px 0px;
 }
 </style>
 </head>
@@ -37,7 +47,7 @@ text-decoration: none;
 	<a class="_Btn" href="../logout">ログアウト</a>
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
-<iframe name="list_Box" id="list_Box" src="../admin/reportList" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+<iframe name="list_Box" id="list_Box" src="../admin/reportList" onload="contents_size(this)" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
 </div>
 
 
