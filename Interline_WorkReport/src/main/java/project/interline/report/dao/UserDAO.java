@@ -49,6 +49,11 @@ public class UserDAO {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		return mapper.readReportList(report);
 	}
+
+	public int changePW(UserVO userVO) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		return mapper.changePW(userVO);
+	}
 	
 	
 }

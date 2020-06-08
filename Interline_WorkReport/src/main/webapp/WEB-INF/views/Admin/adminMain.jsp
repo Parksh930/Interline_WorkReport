@@ -10,11 +10,12 @@
 <script>
 $(function(){
 	$('#list_Box').css('min-height',window.innerHeight-100+'px');
+	$('#list_Box').attr("src","../admin/reportList");
+	
+	$('#list_Box').load(function(){
+         $(this).css('height',($(this).contents().find('body')[0].scrollHeight)+50+'px');
+	});
 });
-
-function contents_size(obj){
-	obj.style.height=obj.contentWindow.document.body.scrollHeight+40+'px';
-}
 </script>	
 
 <style>
@@ -47,7 +48,7 @@ margin:20px 0px 0px 0px;
 	<a class="_Btn" href="../logout">ログアウト</a>
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
-<iframe name="list_Box" id="list_Box" src="../admin/reportList" onload="contents_size(this)" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
+<iframe name="list_Box" id="list_Box" src="" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
 </div>
 
 

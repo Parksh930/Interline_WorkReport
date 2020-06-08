@@ -44,10 +44,10 @@ private static final int pagePerGroup=10;
 	}
 	
 	
-	@RequestMapping(value="/user/myreportList", method=RequestMethod.GET)
+	@RequestMapping(value="/user/myReportList", method=RequestMethod.GET)
 	public String myreportList(Model model, @RequestParam(value="page", defaultValue="1") int page, HttpSession session) {
 		logger.debug("pageNum:{}", page);
-		UserVO vo = (UserVO)session.getAttribute("User_inform");
+		UserVO vo=(UserVO)session.getAttribute("user_inform");
 		if(vo == null) {
 			return "login";
 		}
@@ -57,14 +57,26 @@ private static final int pagePerGroup=10;
 		
 		PageNavigator navi = new PageNavigator(countPerPage, pagePerGroup, page, total);
 		
-		ArrayList<ReportListVO> my_list = dao.getMy_List(navi.getStartRecord(), navi.getCountPerPage(),user_num);
 		
+		
+		ArrayList<ReportListVO> my_list = dao.getMy_List(navi.getStartRecord(), navi.getCountPerPage(),user_num);
+		System.out.println("여기까지1111111111111111111111111111111111111111111111111");
 		model.addAttribute("pn", navi);
 		model.addAttribute("report_my",my_list);
+		System.out.println("여기까지222222222222222222222222222222222222222222222222");
 		
 		
-		
-		return "User/myreportList";
+		return "User/myReportList";
+	}
+	
+	
+	//유진씨 수정할거있음 하세요. 비번 변경받아주는 곳입니다.
+	@RequestMapping(value="/user/changePW", method=RequestMethod.POST)
+	public String changePW(Model model, HttpSession session ,String password){
+		UserVO userVO=(UserVO)session.getAttribute("user_inform");
+		userVO.setPassword(password);
+		dao.changePW(userVO);
+		return "User/changePW";
 	}
 	
 }

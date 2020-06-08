@@ -171,6 +171,14 @@ margin: 0px 0px 0px 35px;
 font-size: 14.8px;
 }
 
+#report_ReadAll_Btn{
+margin:0px 0px 0px 310px;
+}
+
+#report_ReadSelect_Btn{
+margin:0px 0px 0px 20px;
+}
+
 </style>
 <script>
 $(function(){
@@ -266,6 +274,12 @@ $(function(){
 		
 		report_com += "</table>";
 		 $("#report_List").html(report_com); 
+
+
+         if($('#list_Box',parent.document)[0] != null){
+             $('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
+         }
+         
 	}
 	
 	function first_reportList(){
@@ -537,8 +551,8 @@ $(function(){
 	<div id="report_List"></div>
 
 	<div>
-		<button class="Read_Btn" onclick="getAllReport()">全体閲覧</button>
-		<button class="Read_Btn" onclick="selectRead()">選択閲覧</button>
+		<button id="report_ReadAll_Btn" class="Read_Btn" onclick="getAllReport()">全体閲覧</button>
+		<button id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
 	</div>
 </body>
 </html>

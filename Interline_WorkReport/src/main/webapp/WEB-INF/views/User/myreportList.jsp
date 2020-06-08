@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>myreportList</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 
 
@@ -91,7 +94,7 @@ text-decoration: none;
 
 <c:forEach var = "work_report" items="${report_my}">
 <tr>
-<td class="Reportlist_Days"><fmt:formatDate pattern="yyyy.MM.dd" value="${work_report.updateDate}"/></td>
+<td class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
 <td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}">閲覧</a></td>
 <td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}">修正依頼</a></td>
 </tr>
