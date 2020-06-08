@@ -308,6 +308,7 @@ public class WorkReportController {
 		
 		System.out.println("vo   :" + vo );
 		
+		
 		int result = dao.updateState(vo);
 		
 		logger.debug("getVO:{}",result);
