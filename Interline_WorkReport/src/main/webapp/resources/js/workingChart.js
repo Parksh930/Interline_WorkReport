@@ -76,10 +76,11 @@
 //return: int
 	function absent(jsonData){
 		var cnt=0;
-		var salesDayArray=jsonData.salesDayArray.split(",");
-		for( var i=0 ; i < salesDayArray.length ; i++ ){
-			if (jsonData["workContent"+salesDayArray[i]]=="-"){
-				cnt++
+		//var salesDayArray=jsonData.salesDayArray.split(",");
+		//for( var i=0 ; i < salesDayArray.length ; i++ ){
+		for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
+			if (jsonData["dateCondition"+salesDayArray[i]]=="無休"){
+				cnt++;
 			}
 		}
 		return cnt;
@@ -94,7 +95,7 @@
 		var hour=0;
 		var minute=0;
 		for ( var i=1 ; i<=numberOfDate ; i++){
-			if ( jsonData["workContent"+i] != "-" ){
+			if ( jsonData["workContent"+i] != "-" && (jsonData["dateCondition"+i]=="" || jsonData["dateCondition"+i]=="休日") ){
 				var time = jsonData["netWorkingTime"+i].split(':');
 				hour=hour+parseInt(time[0]);
 				minute=minute+parseInt(time[1]);
@@ -113,6 +114,7 @@
 // 저장을 시도하고 임시보존, 제출, 결과, 에러상황등을 화면에 표시해준다.
 // type에는 0:보존 ,  1:제출
 	function submitReport(jsonData,address,type){
+		//없는날짜에 0으로 채워서
 		for (var i=parseInt(jsonData.numberOfDate)+1 ; i<=31 ; i++){
 			jsonData["attendHour"+i]=0;
 			jsonData["attendMinute"+i]=0;
@@ -123,9 +125,10 @@
 			jsonData["netWorkingTime"+i]="0:00";
 			jsonData["workContent"+i]="-";
 		}
+		//보존의경우는 default값 그대로 들어가있도록. 보존이 아닌경우는 결근이나 근무내용이없는경우 시간을 전부 0으로
 		if(type==1){
 			for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
-				if (jsonData["workContent"+i]=="-") {
+				if (jsonData["workContent"+i]=="-" || jsonData["dateCondition"+i]=="無休" ) {
 					jsonData["attendHour"+i]=0;
 					jsonData["attendMinute"+i]=0;
 					jsonData["offHour"+i]=0;

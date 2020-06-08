@@ -109,7 +109,7 @@
 	</update>		
 	
 	<update id="lastUpdateDate" parameterType="int">
-		update user_inform set LastReportDate=(select max(updateDate) from work_report where userNum=#{userNum})  where userNum = #{userNum}
+		update user_inform set LastReportDate=(select concat(max(year),'-',max(month),'-01') from work_report where userNum=#{userNum})  where userNum = #{userNum}
 	</update>
 	
 	
