@@ -51,7 +51,7 @@
 	console.log("name="+name);
 	if (reportJSON=="submitted"){
 		alert("今月の勤務表はすでに提出しました。修正したかったら修正要請してください。");
-		//location.href="../";
+		location.href="userMain";
 	}
 	console.log(reportJSON);
 	var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
@@ -135,7 +135,7 @@
 	start_ozjs("OZViewer","http://192.168.1.124:8888/oz80/ozhviewer/", true);
 	
 	
-	$('#bt1').css('bottom', '0');		//제어창 팝업 하단 고정
+	$('#bt1').css('bottom', '-2px');		//제어창 팝업 하단 고정
 </script>
 
 <div style="position: absolute; bottom: -2px; left: 0;">

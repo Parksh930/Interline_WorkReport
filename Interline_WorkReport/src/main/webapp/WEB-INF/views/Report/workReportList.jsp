@@ -59,6 +59,55 @@ th, td {
 	cursor: pointer;
 }
 
+.Read_Btn2 {
+	border: solid 2px rgb(154,205,50);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(154,205,50);
+	color: white;
+	cursor: pointer;
+	width: 68px;
+}
+/*  255 255 0 */
+
+.Read_Btn3 {
+	border: solid 2px rgb(255, 0, 0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255, 0, 0);
+	color: black;
+	cursor: pointer;
+}
+
+.Read_Btn4 {
+	border: solid 2px rgb(0, 112, 192);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(0, 112, 192);
+	color: white;
+	cursor: pointer;
+	width: 68px;
+}
+.Read_Btn5 {
+	border: solid 2px rgb(255 255 0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255 255 0);
+	color: black;
+	cursor: pointer;
+	width: 68px;
+}
+.Read_Btn6 {
+	border: solid 2px rgb(255,127,0);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(255,127,0);
+	color: black;
+	cursor: pointer;
+	width: 68px;
+}
+
+
 a {
 	text-decoration: none;
 }
@@ -101,7 +150,10 @@ $(function(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
 		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
 		report_table_title	+='<th class="Reportlist_userName">社員名</th><th class="Reportlist_team">チーム名</th>';
-		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th></tr>';
+		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th>';
+		report_table_title	+='<td class="Reportlist_reportBtn" colspan="5"><button class="Read_Btn4" disabled="disabled">承認完了</button>';
+		report_table_title	+='<class="Reportlist_reportBtn"><button class="Read_Btn6" disabled="disabled">修正可能</button>はクリックする<br>ことができません。</td>'
+		report_table_title	+='</tr>';
 
 		var report_com = report_table_title;
 
@@ -114,7 +166,7 @@ $(function(){
 			success:function(list){
 
 				list.forEach(function(report){
-					report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="${report_List.reportNum}"></td>';
+					report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="'+report.reportNum+'"></td>';
 					report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
 					report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
 					report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
@@ -123,7 +175,33 @@ $(function(){
 					report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
 					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button>';
+				if(report.state==1){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="submitCancel('+report.reportNum+')">取消</button></td>';
+					}
+				else if(report.state==2){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認完了</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="approvaledCancel('+report.reportNum+')">取消</button></td>';
+					}
+				else if(report.state==3){
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval1('+report.reportNum+')">修正承認</button></td>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel1('+report.reportNum+')">取消</button></td>';
+				}
+				else if(report.state==4){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval2('+report.reportNum+')">修正承認</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel2('+report.reportNum+')">取消</button></td>';
+				}
+				else if(report.state==5){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled1('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel1('+report.reportNum+')">取消</button></td>';
+				}
+				else if(report.state==6){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled2('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel2('+report.reportNum+')">取消</button></td>';
+				}
+			
+				report_com +='</tr>';
 				});
 				
 				report_com += "</table>";
@@ -278,7 +356,7 @@ $(function(){
 			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
 		});
 		
 		report_com += "</table>";
@@ -305,52 +383,73 @@ $(function(){
   function getAllReport() { 
 	location.href = "../admin/getAllReport";
 	};
-				
+
+	
+  function submitApproval(reportNum) { 
+	  if(confirm("提出された勤務表を承認されますか？"))
+			location.href = "../admin/submitApproval?reportNum="+reportNum;
+			};
+	function submitCancel(reportNum) { 
+		 if(confirm("提出された勤務表を取消されますか？"))
+		location.href = "../admin/submitCancel?reportNum="+reportNum;
+	};	
+	function approvaledCancel(reportNum) { 
+		 if(confirm("すでに承認した勤務表を取消されますか？"))
+		location.href = "../admin/approvaledCancel?reportNum="+reportNum;
+	};		
+	function updateApproval1(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を承認されますか？"))
+		location.href = "../admin/updateApproval1?reportNum="+reportNum;
+		 };
+
+	function updateApproval2(reportNum) { 
+				 if(confirm("勤務表の修正許可要請を承認されますか？"))
+				location.href = "../admin/updateApproval2?reportNum="+reportNum;
+			};
+	
+	function updateApprovalCancel1(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を取消されますか？"))
+		location.href = "../admin/updateApprovalCancel1?reportNum="+reportNum;
+		 };
+	function updateApprovalCancel2(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を取消されますか？"))
+		location.href = "../admin/updateApprovalCancel2?reportNum="+reportNum;
+	 };				
+
+	function updateApprovaledCancel1(reportNum) { 
+		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
+		location.href = "../admin/updateApprovaledCancel1?reportNum="+reportNum;
+	};	
+	function updateApprovaledCancel2(reportNum) { 
+		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
+		location.href = "../admin/updateApprovaledCancel2?reportNum="+reportNum;
+	};					
+			
 	
 
   function selectRead(reportNum){
-  
-    //var arrNumber = new Array();
 
-   	//var arrNumber = [];
-   	var arrNumber="";
-    var chk_obj = document.getElementsByName("selectValue");
-  	var chk_leng = chk_obj.length;
-
+  	
 	if(!$(".check").is(':checked')){
 		alert("閲覧する勤務表を選択してください。");
 		return false;
 		}
-	
-  	for(i=0;i<chk_leng;i++){
-  		//if(chk_obj[i].checked==true){
-  			//arrNumber.push(chk_obj[i].value);
-  		if(chk_obj[i].checked==true){	
-  	  		arrNumber += chk_obj[i].value+",";
-		  	  	}
-  	  	}
-  	 
-  		//str = str.substr(0, str.length -1)
-  		//list = list.slice(0, -1);
+
+
+	var arrNumber="";
+      $('input[name="selectValue"]').each(function(){
+          if($(this).prop("checked")){
+        	 arrNumber += $(this)[0].value+",";
+          }
+       });
+
   	
   		var arr = arrNumber.substr(0, arrNumber.length -1);
+  	  	 alert(arr);
   		
-  		//var jsonData={"array":arrNumber};
-  		//var jsonData2 = JSON.stringify(jsonData);
   	   	location.href = "../admin/getReadReport2?arrNumber="+arr;
   };
 
-/*   $(function(){
-	$("#allCheck").click(function(){
-		if($("#allCheck").is(":checked")){ 
-			$(".check").attr("checked","checked")  
-			}
-		else{
-			$(".check").removeAttr("checked")
-			}
-	});
-
-  }); */
 
   function Acheck(){
       if($("#allCheck").is(':checked')){

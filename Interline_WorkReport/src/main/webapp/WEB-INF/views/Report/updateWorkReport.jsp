@@ -36,10 +36,16 @@
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<div id="year" style="display: none;">${vo.year}</div>
+	<div id="state" style="display: none;">${vo.state}</div>
 <script>
 		var holiday;
 		holiday = $('#year').html();
 		var array = "array=" + "${vo.reportNum}";
+
+		var stateNum;
+		stateNum = $('#state').html();
+
+		
 		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[],[3,23],[]]}; 
 		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]};
 		//getSecondMondayOnOCT(2020);
@@ -69,9 +75,9 @@
 				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
 				var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
 				console.log(chartData);
-				var uConfirm=confirm("修正しますか？");
+				var uConfirm=confirm("修正されますか？");
 				if(uConfirm==true){
-				chartData.state=1;
+				chartData.state=stateNum;
 				adminUpdateReport(chartData,"adminUpdateReport");
 				}
 			}

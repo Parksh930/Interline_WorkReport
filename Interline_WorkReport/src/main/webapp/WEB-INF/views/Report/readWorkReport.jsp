@@ -11,31 +11,42 @@
 	}
 </script>
 
-<meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge"/>
-<script src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
-<link rel="stylesheet" href="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.css" type="text/css"/>
+<meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge" />
+<script
+	src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
+<link rel="stylesheet"
+	href="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.css"
+	type="text/css" />
 <script src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="http://192.168.1.34:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-<script type="text/javascript" src="http://192.168.1.34:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+<link rel="stylesheet"
+	href="http://192.168.1.34:8888/oz80/ozhviewer/ui.dynatree.css"
+	type="text/css" />
+<script type="text/javascript"
+	src="http://192.168.1.34:8888/oz80/ozhviewer/jquery.dynatree.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js"
+	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
-<script src="/report/resources/js/workingChart.js" type="text/javascript"></script> 
+<script src="/report/resources/js/workingChart.js"
+	type="text/javascript"></script>
+<script src="../resources/js/updateReport.js"></script>
 
 <title>ReadReport</title>
 </head>
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<div id="year" style="display: none;">${vo.year}</div>
-	<script> 
-			var holiday;
-			holiday = $('#year').html();
-			var array = "array=" + "${vo.reportNum}";
-			var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]}; 
-			//getSecondMondayOnOCT(2020);
-			alternativeHoliday(holiday);
-			
-			var array = "array="+"${vo.reportNum}";
+	<script>
+		var holiday;
+		holiday = $('#year').html();
+		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]}; 
+		//getSecondMondayOnOCT(2020);
+		//alternativeHoliday(holiday);
+
 		
+		var array = "array=" + "${vo.reportNum}";
+
 		function SetOZParamters_OZViewer() {
 			var oz;
 			oz = document.getElementById("OZViewer");
@@ -43,8 +54,8 @@
 					"http://192.168.1.34:8888/oz80/server");
 			oz.sendToActionScript("connection.reportname",
 					"OSA/workReport1.ozr");
-			oz.sendToActionScript("connection.pcount","1");
-			oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
+			//oz.sendToActionScript("connection.pcount","1");
+			//oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
@@ -52,6 +63,56 @@
 			return true;
 		}
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");
+
+
+		function OZUserEvent_OZViewer(param1, param2, param3) {
+			if(param3=="submitApproval"){
+				//var jsonSet=makeJsonForUpdate(JSON.parse(param1));
+				//$('#updateJsonReport').val(JSON.stringify(jsonSet));
+				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
+				var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+				console.log(chartData);
+				var sConfirm=confirm("提出された勤務表を承認されますか？");
+				if(sConfirm==true){
+				adminUpdateReport(chartData,"submitApproval");
+				}
+			}
+			if(param3=="submitCancel"){
+
+
+			}
+			if(param3=="approvaledCancel"){
+
+
+			}
+			if(param3=="updateApproval1"){
+
+
+			}
+			if(param3=="updateApproval2"){
+
+
+			}
+			if(param3=="updateApprovalCancel1"){
+
+
+			}
+			if(param3=="updateApprovalCancel2"){
+
+
+			}
+			if(param3=="updateApprovaledCancel1"){
+
+
+			}
+			if(param3=="updateApprovaledCancel2"){
+
+
+			}
+
+
+		}
+
 	</script>
 
 

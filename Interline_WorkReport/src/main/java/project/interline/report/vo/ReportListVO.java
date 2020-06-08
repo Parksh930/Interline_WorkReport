@@ -9,13 +9,17 @@ public class ReportListVO {
 	private int year;
 	private int month;
 	private String updateDate;
+	private int state;
 	
 	public ReportListVO() {
 		super();
 	}
 
+	
+	
+	
 	public ReportListVO(int reportNum, int userNum, String userMail, String userName, String team, int year, int month,
-			String updateDate) {
+			String updateDate, int state) {
 		super();
 		this.reportNum = reportNum;
 		this.userNum = userNum;
@@ -25,7 +29,11 @@ public class ReportListVO {
 		this.year = year;
 		this.month = month;
 		this.updateDate = updateDate;
+		this.state = state;
 	}
+
+
+
 
 	public int getReportNum() {
 		return reportNum;
@@ -91,10 +99,24 @@ public class ReportListVO {
 		this.updateDate = updateDate;
 	}
 
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "ReportListVO [reportNum=" + reportNum + ", userNum=" + userNum + ", userMail=" + userMail
 				+ ", userName=" + userName + ", team=" + team + ", year=" + year + ", month=" + month + ", updateDate="
-				+ updateDate + "]";
+				+ updateDate + ", state=" + state + "]";
 	}
+
+	
+	
 }
