@@ -10,7 +10,8 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
  $(function(){
-	 $('#startDate').val(new Date().toISOString().substring(0, 10))	;	
+	 
+	$('#startDate').val(new Date().toISOString().substring(0, 10))	;
 	 
 	$("#insert_User_btn").click(function(){
 		var user_num = $("#userNum").val();
@@ -89,7 +90,7 @@ cursor: pointer;
 }
 
 #registerUser_contents{
-margin: 30px auto;
+margin: 70px auto;
 width: fit-content;
 }
 
@@ -100,9 +101,21 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #tr_btn{
-height: 50px;
+height: 55px;
 }
 
+td{
+height: 28px;
+}
+
+#authority{
+height: 24px;
+width: 70px;
+}
+
+input[type="number"],input[type="text"],input[type="password"]{
+height: 18px;
+}
 </style>
 <body>
 <h1>社員登録</h1>
@@ -111,35 +124,35 @@ height: 50px;
 <form action="../admin/userRegister" method="post" id="userRegister_Form">
 <table>
 <tr>
-<td>社員番号</td>
+<td><label for="userNum">社員番号</label></td>
 <td><input type="number" id="userNum" name="userNum"></td>
 </tr>
 <tr>
-<td>社員メール</td>
+<td><label for="userMail">社員メール</label></td>
 <td><input type="text" id="userMail" name="userMail"></td>
 </tr>
 <tr>
-<td>パスワード</td>
+<td><label for="password">パスワード</label></td>
 <td><input type="password" id="password" name="password"></td>
 </tr>
 <tr>
-<td>社員名</td>
+<td><label for="userName">社員名</label></td>
 <td><input type="text" id="userName" name="userName"></td>
 </tr>
 <tr>
-<td>職級</td>
+<td><label for="position">職級</label></td>
 <td><input type="text" id="position" name="position"></td>
 </tr>
 <tr>
-<td>チーム名</td>
+<td><label for="team">チーム名</label></td>
 <td><input type="text" id="team" name="team"></td>
 </tr>
 <tr>
-<td>入社日</td>
-<td><input type="date" id="startDate" name="startDate"></td>
+<td><label for="startDate">入社日</label></td>
+<td style="text-align: left;"><input type="date"  id="startDate" name="startDate"></td>
 </tr>
 <tr>
-<td>権限</td>
+<td><label for="authority">権限</label></td>
 <td style="text-align: left;"><select name="authority" id="authority">
 	<option value="a">管理者</option>
 	<option value="u" selected="selected">社員</option>

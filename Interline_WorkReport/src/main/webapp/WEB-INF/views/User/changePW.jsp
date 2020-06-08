@@ -63,7 +63,7 @@ cursor: pointer;
 <h1>パスワード変更</h1>
 
 <div id = "profileUd" style="font-size: 30px;">
-<form action="../user/profile" method="post" id="profileUpdate">
+<form action="../user/changePW" method="post" id="profileUpdate">
 <table>
 <tr></tr>
 
@@ -71,7 +71,7 @@ cursor: pointer;
 	<td>PW</td>
 	<td><input type="password" id="Password" class="passwordButton" name="Password" style="font-size: 30px;"></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr><td></td></tr>
 <tr>
 	<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn" style="font-size: 30px;">確認</button>
 	<div align="right">

@@ -16,23 +16,23 @@ select * from user_inform where usermail =#{login_id}
 			<if test='Password != null and Password != ""'>
 			,password = #{Password}
 			</if>
-		where usernum = #{UserNum}
+		where UserNum = #{UserNum}
 	</update>
 	
 <select id="getMy_List" resultType="WorkReportVO" parameterType="int">
-		  select * from report_list where user_num = #{user_num} order by reportnum desc
+		  select * from report_list where UserNum = #{UserNum} order by reportnum desc
 	</select>	
 	
 	<select id="readReportList" resultType="WorkReportVO" parameterType="WorkReportVO">
-select * from report_list where User_Num = #{userNum} and User_Name = #{userName} ORDER BY reportnum desc limit 1
+select * from report_list where UserNum = #{userNum} and UserName = #{userName} ORDER BY reportnum desc limit 1
 
 </select>
 
 	<select id="getTotal" resultType="int" parameterType="int">
-		select count(*) from report_list where User_Num = #{User_Num}
+		select count(*) from report_list where UserNum = #{userNum}
 	</select>
 
 <select id="getAll" resultType="int" parameterType="int">
-	select count(*) from report_list where user_num = #{user_num} ORDER BY reportnum desc
+	select count(*) from report_list where UserNum = #{userNum} ORDER BY reportnum desc
 </select>
 </mapper>

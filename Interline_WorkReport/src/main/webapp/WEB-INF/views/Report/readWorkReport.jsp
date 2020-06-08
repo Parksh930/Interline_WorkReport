@@ -64,6 +64,55 @@
 		}
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");
 
+
+		function OZUserEvent_OZViewer(param1, param2, param3) {
+			if(param3=="submitApproval"){
+				//var jsonSet=makeJsonForUpdate(JSON.parse(param1));
+				//$('#updateJsonReport').val(JSON.stringify(jsonSet));
+				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
+				var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+				console.log(chartData);
+				var sConfirm=confirm("提出された勤務表を承認されますか？");
+				if(sConfirm==true){
+				adminUpdateReport(chartData,"submitApproval");
+				}
+			}
+			if(param3=="submitCancel"){
+
+
+			}
+			if(param3=="approvaledCancel"){
+
+
+			}
+			if(param3=="updateApproval1"){
+
+
+			}
+			if(param3=="updateApproval2"){
+
+
+			}
+			if(param3=="updateApprovalCancel1"){
+
+
+			}
+			if(param3=="updateApprovalCancel2"){
+
+
+			}
+			if(param3=="updateApprovaledCancel1"){
+
+
+			}
+			if(param3=="updateApprovaledCancel2"){
+
+
+			}
+
+
+		}
+
 	</script>
 
 

@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>ReportList</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <style>
 body {
 	text-align: center;
@@ -17,11 +18,6 @@ body {
 #report_List {
 	margin: 20px auto;
 	width: fit-content;
-}
-
-#navigator {
-	text-align: center;
-	margin: 20px 0px 0px 0px;
 }
 
 table {
@@ -34,15 +30,6 @@ tr {
 
 th, td {
 	border: 1px solid black;
-}
-
-.Reportlist_userNum, .Reportlist_userMail, .Reportlist_userName,
-	.Reportlist_team {
-	width: 100px;
-}
-
-.Reportlist_reportDays, .Reportlist_updateDate {
-	width: 150px;
 }
 
 .Reportlist_reportBtn {
@@ -107,11 +94,6 @@ th, td {
 	width: 68px;
 }
 
-
-a {
-	text-decoration: none;
-}
-
 .Main_logOut {
 	margin: 0px 0px 0px 20px;
 }
@@ -122,12 +104,74 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
+input[type="number"],input[type="text"]{
+height: 18px;
+}
+
 #reportDays_Filter{
 	border: 0;
 }
 
+.Reportlist_userName{
+	width: 150px;
+}
+
+.Reportlist_userNum,.Reportlist_team,.Reportlist_reportDays,.Reportlist_updateDate  {
+    width: 100px;
+}
+.Reportlist_userMail{
+    width: 200px;
+}
+
+#read_btn{
+font-size: 15px;
+}
+
+fieldset{
+    border: 0;
+    padding:5px 12px 5px 12px;    
+}
+
+select{
+height: 24px;
+}
+
+.filter_btn{
+    border: solid 2px rgb(0, 112, 192);
+    border-radius: 9px;
+    padding: 2px 5px;
+    background-color: rgb(0, 112, 192);
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#report_list_sort{
+text-align: left;
+margin:20px 0px 0px 14.4px;
+}
+
+#Reportlist_sort{
+margin: auto 0px;
+}
+
+label[for="report_userName"]{
+margin: 0px 0px 0px 16px;
+}
+
+#report_reportDays_span{
+margin:0px 0px 0px -26px;
+}
+
+#team_span{
+margin: 0px 0px 0px 35px;
+}
+
+#ReadReport_Btn{
+font-size: 14.8px;
+}
+
 </style>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $(function(){
 	var report_table_title;
@@ -146,14 +190,93 @@ $(function(){
 	$("#reportDays_Filter").change(report_Days_Filter);
 
 	
+	function report_List_Sort(){
+		var report_com = report_table_title;
+
+		if($(this)[0].id == "Reportlist_sort"){
+			report_Measure = ($(this).val()).split('_');
+		}
+
+		if(report_Measure[0] == "reportDays" && report_Measure[1] == "ascending"){
+			report_sort.sort(function(a,b){
+				var ab = a["year"] - b["year"];
+				if (ab == 0){
+					return  a["month"] - b["month"];
+				}
+				return ab});
+		}else if (report_Measure[0] == "reportDays" && report_Measure[1] == "descending"){
+			report_sort.sort(function(a,b){
+				var ba = b["year"] - a["year"];
+				if (ba == 0){
+					return  b["month"] - a["month"];
+				}
+				return ba});
+		}
+
+		if(report_Measure[0] == "userNum" && report_Measure[1] == "ascending"){
+			report_sort.sort(function(a,b){return a[report_Measure[0]] - b[report_Measure[0]]});
+		}else if(report_Measure[0] == "userNum" && report_Measure[1] == "descending"){
+			report_sort.sort(function(a,b){return b[report_Measure[0]] - a[report_Measure[0]]});
+		}
+
+		if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "ascending"){
+			report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
+		}else if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "descending"){
+			report_sort.sort(function(a, b) {return a[report_Measure[0]] > b[report_Measure[0]] ? -1 : a[report_Measure[0]] < b[report_Measure[0]] ? 1 : 0;});
+		} 
+	
+		report_sort.forEach(function(report){
+			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="${report_List.reportNum}"></td>';
+			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
+			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
+			report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
+			report_com += '<td class="Reportlist_team">'+report.team+'</td>';
+			report_com += '<td class="Reportlist_reportDays">'+report.year+'年'+report.month+'月</td>';
+			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
+			report_com += '<td class="Reportlist_reportBtn"><button id="ReadReport_Btn" class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
+			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
+		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button>';
+		if(report.state==1){
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="submitCancel('+report.reportNum+')">取消</button></td>';
+			}
+		else if(report.state==2){
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認完了</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="approvaledCancel('+report.reportNum+')">取消</button></td>';
+			}
+		else if(report.state==3){
+		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval1('+report.reportNum+')">修正承認</button></td>';
+		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel1('+report.reportNum+')">取消</button></td>';
+		}
+		else if(report.state==4){
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval2('+report.reportNum+')">修正承認</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel2('+report.reportNum+')">取消</button></td>';
+		}
+		else if(report.state==5){
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled1('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel1('+report.reportNum+')">取消</button></td>';
+		}
+		else if(report.state==6){
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled2('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel2('+report.reportNum+')">取消</button></td>';
+		}
+	
+		report_com +='</tr>';
+		});
+		
+		report_com += "</table>";
+		 $("#report_List").html(report_com); 
+	}
+	
 	function first_reportList(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
 		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
 		report_table_title	+='<th class="Reportlist_userName">社員名</th><th class="Reportlist_team">チーム名</th>';
-		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th></tr>';
-
-		var report_com = report_table_title;
-
+		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th>';
+		report_table_title	+='<td class="Reportlist_reportBtn" colspan="5"><button class="Read_Btn4" disabled="disabled">承認完了</button>';
+		report_table_title	+='<class="Reportlist_reportBtn"><button class="Read_Btn6" disabled="disabled">修正可能</button>はクリックする<br>ことができません。</td>'
+		report_table_title	+='</tr>';
+		
 		$.ajax({
 			type:"post",
 			url:"reportList",
@@ -161,41 +284,9 @@ $(function(){
 			traditional: true,
 			dataType:"json",
 			success:function(list){
-
-				list.forEach(function(report){
-					report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="'+report.reportNum+'"></td>';
-					report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
-					report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
-					report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
-					report_com += '<td class="Reportlist_team">'+report.team+'</td>';
-					report_com += '<td class="Reportlist_reportDays">'+report.year+'年'+report.month+'月</td>';
-					report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
-					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
-					report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button>';
-				if(report.state==1){
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="submitCancel('+report.reportNum+')">取消</button></td>';
-					}
-				else if(report.state==2){
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認完了</button></td>';
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="approvaledCancel('+report.reportNum+')">取消</button></td>';
-					}
-				else if(report.state==3){
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval('+report.reportNum+')">修正承認</button></td>';
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel('+report.reportNum+')">取消</button></td>';
-				}
-				else if(report.state==4){
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel('+report.reportNum+')">取消</button></td>';
-				}
-				report_com +='</tr>';
-				});
-				
-				report_com += "</table>";
-				 $("#report_List").html(report_com); 
 				 report_sort = list;
-			}	
+			}
+
 		});
 
 		var date = new Date();
@@ -216,7 +307,10 @@ $(function(){
 
 		from_ReportDays_value = $("#from_ReportDays option:selected").val();
 		to_ReportDays_value= $("#to_ReportDays option:selected").val();
+
+		report_List_Sort();
 	}
+	
 	function report_Team_Filter(){
 		report_userTeam = [];
 
@@ -298,58 +392,7 @@ $(function(){
 		report_List_Sort();
 	}
 
-	function report_List_Sort(){
-		var report_com = report_table_title;
-
-		if($(this)[0].id == "Reportlist_sort"){
-			report_Measure = ($(this).val()).split('_');
-		}
-
-		if(report_Measure[0] == "reportDays" && report_Measure[1] == "ascending"){
-			report_sort.sort(function(a,b){
-				var ab = a["year"] - b["year"];
-				if (ab == 0){
-					return  a["month"] - b["month"];
-				}
-				return ab});
-		}else if (report_Measure[0] == "reportDays" && report_Measure[1] == "descending"){
-			report_sort.sort(function(a,b){
-				var ba = b["year"] - a["year"];
-				if (ba == 0){
-					return  b["month"] - a["month"];
-				}
-				return ba});
-		}
-
-		if(report_Measure[0] == "userNum" && report_Measure[1] == "ascending"){
-			report_sort.sort(function(a,b){return a[report_Measure[0]] - b[report_Measure[0]]});
-		}else if(report_Measure[0] == "userNum" && report_Measure[1] == "descending"){
-			report_sort.sort(function(a,b){return b[report_Measure[0]] - a[report_Measure[0]]});
-		}
-
-		if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "ascending"){
-			report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
-		}else if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "descending"){
-			report_sort.sort(function(a, b) {return a[report_Measure[0]] > b[report_Measure[0]] ? -1 : a[report_Measure[0]] < b[report_Measure[0]] ? 1 : 0;});
-		} 
-
-
-		report_sort.forEach(function(report){
-			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="${report_List.reportNum}"></td>';
-			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
-			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
-			report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
-			report_com += '<td class="Reportlist_team">'+report.team+'</td>';
-			report_com += '<td class="Reportlist_reportDays">'+report.year+'年'+report.month+'月</td>';
-			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
-			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
-			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button></tr>';
-		});
-		
-		report_com += "</table>";
-		 $("#report_List").html(report_com); 
-	}
+	
 });
 
 
@@ -378,27 +421,40 @@ $(function(){
 			location.href = "../admin/submitApproval?reportNum="+reportNum;
 			};
 	function submitCancel(reportNum) { 
-		 if(confirm("提出された勤務表を拒絶されますか？"))
+		 if(confirm("提出された勤務表を取消されますか？"))
 		location.href = "../admin/submitCancel?reportNum="+reportNum;
 	};	
 	function approvaledCancel(reportNum) { 
 		 if(confirm("すでに承認した勤務表を取消されますか？"))
 		location.href = "../admin/approvaledCancel?reportNum="+reportNum;
 	};		
-	function updateApproval(reportNum) { 
+	function updateApproval1(reportNum) { 
 		 if(confirm("勤務表の修正許可要請を承認されますか？"))
-		location.href = "../admin/updateApproval?reportNum="+reportNum;
+		location.href = "../admin/updateApproval1?reportNum="+reportNum;
 		 };
-	
-	function updateApprovalCancel(reportNum) { 
-		 if(confirm("勤務表の修正許可要請を拒絶されますか？"))
-		location.href = "../admin/updateApprovalCancel?reportNum="+reportNum;
-		 };				
 
-	function updateApprovaledCancel(reportNum) { 
+	function updateApproval2(reportNum) { 
+				 if(confirm("勤務表の修正許可要請を承認されますか？"))
+				location.href = "../admin/updateApproval2?reportNum="+reportNum;
+			};
+	
+	function updateApprovalCancel1(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を取消されますか？"))
+		location.href = "../admin/updateApprovalCancel1?reportNum="+reportNum;
+		 };
+	function updateApprovalCancel2(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を取消されますか？"))
+		location.href = "../admin/updateApprovalCancel2?reportNum="+reportNum;
+	 };				
+
+	function updateApprovaledCancel1(reportNum) { 
 		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
-		location.href = "../admin/updateApprovaledCancel?reportNum="+reportNum;
-	};				
+		location.href = "../admin/updateApprovaledCancel1?reportNum="+reportNum;
+	};	
+	function updateApprovaledCancel2(reportNum) { 
+		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
+		location.href = "../admin/updateApprovaledCancel2?reportNum="+reportNum;
+	};					
 			
 	
 
@@ -440,19 +496,23 @@ $(function(){
 <body>
 	<h1>報告書リスト</h1>
 	<div id="report_list_filter">
-	<label for="user_num">社員番号</label><input type="number" name = "report_userNum" id = "report_userNum">
-	<button id="report_userNum_btn">検索</button>
-	<br>
-	<label for="user_name">社員名</label><input type="text" name="report_userName" id = "report_userName">
-	<button id="report_userName_btn">検索</button>
-	<br>
+	<fieldset id="reportUserNum_Filter">
+	<label for="report_userNum">社員番号：</label><input type="number" name = "report_userNum" id = "report_userNum">
+	<button id="report_userNum_btn" class="filter_btn">検索</button>
+	</fieldset>
+	<fieldset id="reportName_Filter">
+	<label for="report_userName">社員名：</label><input type="text" name="report_userName" id = "report_userName">
+	<button id="report_userName_btn" class="filter_btn">検索</button>
+	</fieldset>
+	<fieldset id="reportTeam_Filter">
+	<span id="team_span">チーム名：</span>
 	<input type="checkbox" id ="team_tokyo" name ="report_userTeam" value="東京"><label for="team_tokyo">東京</label>
 	<input type="checkbox" id ="team_yokohama" name ="report_userTeam" value="横浜"><label for="team_yokohama">横浜</label>
 	<input type="checkbox" id ="team_saitama" name ="report_userTeam" value="埼玉"><label for="team_saitama">埼玉</label>
 	<input type="checkbox" id ="team_others" name ="report_userTeam" value="その他"><label for="team_others">その他</label>
-	<br>
+	</fieldset>
 	<fieldset id = "reportDays_Filter">
-	勤務票の期間
+	<span id="report_reportDays_span">勤務票の期間：</span>
 	<select id ="from_ReportDays" name="from_ReportDays">
 	</select>
 	~

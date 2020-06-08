@@ -36,7 +36,7 @@
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<div id="year" style="display: none;">${vo.year}</div>
-	<div id="year" style="display: none;">${vo.state}</div>
+	<div id="state" style="display: none;">${vo.state}</div>
 <script>
 		var holiday;
 		holiday = $('#year').html();
