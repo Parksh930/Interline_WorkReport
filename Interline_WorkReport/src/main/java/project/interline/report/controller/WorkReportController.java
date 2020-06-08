@@ -316,6 +316,11 @@ public class WorkReportController {
 			stateNum = 6;
 			vo.setState(stateNum);
 		}
+		
+		System.out.println("vo   :" + vo );
+		int result = dao.updateState(vo);
+		logger.debug("getVO:{}",result);
+		System.out.println("stateUp 결과   " + result);
 		return "redirect:/admin/reportList";
 
 	}
