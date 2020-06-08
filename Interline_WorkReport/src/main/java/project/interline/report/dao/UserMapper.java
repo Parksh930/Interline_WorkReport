@@ -15,5 +15,7 @@ public interface UserMapper {
 	ArrayList<ReportListVO> getMy_List(RowBounds rbs,int user_num);
 	ReportListVO readReportList(ReportListVO report);
 	int getAll(int user_num);
+	int changePW(UserVO userVO);
+	
 
 }

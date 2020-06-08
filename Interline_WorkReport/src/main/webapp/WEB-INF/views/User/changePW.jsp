@@ -69,7 +69,7 @@ cursor: pointer;
 
 <tr>
 	<td>PW</td>
-	<td><input type="password" id="Password" class="passwordButton" name="Password" style="font-size: 30px;"></td>
+	<td><input type="password" id="Password" class="passwordButton" name="password" style="font-size: 30px;"></td>
 </tr>
 <tr><td></td></tr>
 <tr>

@@ -67,4 +67,14 @@ private static final int pagePerGroup=10;
 		return "User/myreportList";
 	}
 	
+	
+	//유진씨 수정할거있음 하세요. 비번 변경받아주는 곳입니다.
+	@RequestMapping(value="/user/changePW", method=RequestMethod.POST)
+	public String changePW(Model model, HttpSession session ,String password){
+		UserVO userVO=(UserVO)session.getAttribute("user_inform");
+		userVO.setPassword(password);
+		dao.changePW(userVO);
+		return "User/changePW";
+	}
+	
 }
