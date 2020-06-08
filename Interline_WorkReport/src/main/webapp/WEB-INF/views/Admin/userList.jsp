@@ -10,7 +10,6 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
 $(function(){
-	
 	var user_team=[];
 	var user_sort;
 	var user_table_title;
