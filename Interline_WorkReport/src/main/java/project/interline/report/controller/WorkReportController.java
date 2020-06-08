@@ -300,158 +300,193 @@ public class WorkReportController {
 		return "Report/readMyReport";
 	}
 	
-	@RequestMapping(value="/admin/submitApproval", method = {RequestMethod.GET,RequestMethod.POST})
-	public String submitApproval(WorkReportVO vo,Model model) {
-		
-		int stateNum = 2;
-		vo.setState(stateNum);
-		
+	@RequestMapping(value="/admin/stateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	public String stateUp(WorkReportVO vo,Model model) {
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 5;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 6;
+			vo.setState(stateNum);
+		}
 		System.out.println("vo   :" + vo );
-		
 		int result = dao.updateState(vo);
-		
 		logger.debug("getVO:{}",result);
-		
-		System.out.println("submitApproval 결과   " + result);
-		
+		System.out.println("stateUp 결과   " + result);
 		return "redirect:/admin/reportList";
 	}
 	
-	@RequestMapping(value="/admin/submitCancel", method = {RequestMethod.GET,RequestMethod.POST})
-	public String submitCancel(WorkReportVO vo,Model model) {
-		
-		int stateNum = 0;
-		vo.setState(stateNum);
-		
+	@RequestMapping(value="/admin/stateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	public String stateDown(WorkReportVO vo,Model model) {
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 0;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==2) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==5) {
+			stateNum = 3;
+			vo.setState(stateNum);
+			
+		}
+		else if(vo.getState()==6) {
+			stateNum = 4;
+			vo.setState(stateNum);
+		}
 		System.out.println("vo   :" + vo );
-		
 		int result = dao.updateState(vo);
-		
 		logger.debug("getVO:{}",result);
-		
-		System.out.println("submitCancel 결과   " + result);
-		
+		System.out.println("stateDown 결과   " + result);
 		return "redirect:/admin/reportList";
 	}
 	
-	@RequestMapping(value="/admin/approvaledCancel", method = {RequestMethod.GET,RequestMethod.POST})
-	public String approvaledCancel(WorkReportVO vo,Model model) {
+	@RequestMapping(value = "/admin/ReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	public String ReadStateUp(
+			Model model, HttpSession session,WorkReportVO vo) {
 		
-		int stateNum = 1;
-		vo.setState(stateNum);
+		System.out.println(" ReadStateUp  먼저 "+vo);
 		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 5;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 6;
+			vo.setState(stateNum);
+		}
 		System.out.println("vo   :" + vo );
-		
 		int result = dao.updateState(vo);
-		
 		logger.debug("getVO:{}",result);
+		System.out.println("ReadStateUp 결과   " + result);
 		
-		System.out.println("approvalCancel 결과   " + result);
-		
-		return "redirect:/admin/reportList";
+		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
 	
-	@RequestMapping(value="/admin/updateApproval", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApproval1(WorkReportVO vo,Model model) {
+	@RequestMapping(value = "/admin/ReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	public String ReadStateDown(
+			Model model, HttpSession session,WorkReportVO vo) {
 		
-		int stateNum = 5;
-		vo.setState(stateNum);
-		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 0;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==2) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==5) {
+			stateNum = 3;
+			vo.setState(stateNum);
+			
+		}
+		else if(vo.getState()==6) {
+			stateNum = 4;
+			vo.setState(stateNum);
+		}
 		System.out.println("vo   :" + vo );
-		
 		int result = dao.updateState(vo);
-		
 		logger.debug("getVO:{}",result);
+		System.out.println("ReadStateDown 결과   " + result);
 		
-		System.out.println("updateApproval 결과   " + result);
-		
-		return "redirect:/admin/reportList";
+		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
 	
-	@RequestMapping(value="/admin/updateApprova2l", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApproval2(WorkReportVO vo,Model model) {
+	@RequestMapping(value = "/admin/allReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	public String allReadStateUp(
+			Model model, HttpSession session,WorkReportVO vo) {
 		
-		int stateNum = 6;
-		vo.setState(stateNum);
+		System.out.println(" allReadStateUp  먼저 "+vo);
 		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 5;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 6;
+			vo.setState(stateNum);
+		}
 		System.out.println("vo   :" + vo );
-		
 		int result = dao.updateState(vo);
-		
 		logger.debug("getVO:{}",result);
+		System.out.println("allReadStateUp 결과   " + result);
 		
-		System.out.println("updateApproval 결과   " + result);
-		
-		return "redirect:/admin/reportList";
+		return "redirect:/admin/getAllReport";
 	}
 	
-	
-	@RequestMapping(value="/admin/updateApprovalCancel1",method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApprovalCancel1(WorkReportVO vo,Model model) {
+	@RequestMapping(value = "/admin/allReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	public String allReadStateDown(
+			Model model, HttpSession session,WorkReportVO vo) {
 		
-		int stateNum = 1;
-		vo.setState(stateNum);
+		System.out.println(" allReadStateDown  먼저 "+vo);
 		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 0;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==2) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==5) {
+			stateNum = 3;
+			vo.setState(stateNum);
+			
+		}
+		else if(vo.getState()==6) {
+			stateNum = 4;
+			vo.setState(stateNum);
+		}
 		System.out.println("vo   :" + vo );
-		
 		int result = dao.updateState(vo);
-		
 		logger.debug("getVO:{}",result);
+		System.out.println("allReadStateUp 결과   " + result);
 		
-		System.out.println("updateApprovalCancel 결과   " + result);
-		
-		return "redirect:/admin/reportList";
-	}
-	
-	@RequestMapping(value="/admin/updateApprovalCancel2",method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApprovalCancel2(WorkReportVO vo,Model model) {
-		
-		int stateNum = 2;
-		vo.setState(stateNum);
-		
-		System.out.println("vo   :" + vo );
-		
-		int result = dao.updateState(vo);
-		
-		logger.debug("getVO:{}",result);
-		
-		System.out.println("updateApprovalCancel 결과   " + result);
-		
-		return "redirect:/admin/reportList";
-	}
-	
-	@RequestMapping(value="/admin/updateApprovaledCancel1", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApprovaledCancel1(WorkReportVO vo,Model model) {
-		
-		int stateNum = 3;
-		vo.setState(stateNum);
-		
-		System.out.println("vo   :" + vo );
-		
-		int result = dao.updateState(vo);
-		
-		logger.debug("getVO:{}",result);
-		
-		System.out.println("updateApprovaledCancel 결과   " + result);
-		
-		return "redirect:/admin/reportList";
-	}
-	
-	@RequestMapping(value="/admin/updateApprovaledCancel2", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApprovaledCancel2(WorkReportVO vo,Model model) {
-		
-		int stateNum = 4;
-		vo.setState(stateNum);
-		
-		System.out.println("vo   :" + vo );
-		
-		int result = dao.updateState(vo);
-		
-		logger.debug("getVO:{}",result);
-		
-		System.out.println("updateApprovaledCancel 결과   " + result);
-		
-		return "redirect:/admin/reportList";
+		return "redirect:/admin/getAllReport";
 	}
 
 }

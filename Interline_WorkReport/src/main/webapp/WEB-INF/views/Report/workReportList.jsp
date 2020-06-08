@@ -387,42 +387,40 @@ $(function(){
 	
   function submitApproval(reportNum) { 
 	  if(confirm("提出された勤務表を承認されますか？"))
-			location.href = "../admin/submitApproval?reportNum="+reportNum;
+			location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+1;
 			};
 	function submitCancel(reportNum) { 
 		 if(confirm("提出された勤務表を取消されますか？"))
-		location.href = "../admin/submitCancel?reportNum="+reportNum;
+		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+1;
 	};	
 	function approvaledCancel(reportNum) { 
 		 if(confirm("すでに承認した勤務表を取消されますか？"))
-		location.href = "../admin/approvaledCancel?reportNum="+reportNum;
+		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+2;
 	};		
 	function updateApproval1(reportNum) { 
 		 if(confirm("勤務表の修正許可要請を承認されますか？"))
-		location.href = "../admin/updateApproval1?reportNum="+reportNum;
+		location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+3;
 		 };
-
 	function updateApproval2(reportNum) { 
-				 if(confirm("勤務表の修正許可要請を承認されますか？"))
-				location.href = "../admin/updateApproval2?reportNum="+reportNum;
+		 if(confirm("勤務表の修正許可要請を承認されますか？"))
+		location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+4;
 			};
-	
 	function updateApprovalCancel1(reportNum) { 
 		 if(confirm("勤務表の修正許可要請を取消されますか？"))
-		location.href = "../admin/updateApprovalCancel1?reportNum="+reportNum;
+		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+3;
 		 };
 	function updateApprovalCancel2(reportNum) { 
 		 if(confirm("勤務表の修正許可要請を取消されますか？"))
-		location.href = "../admin/updateApprovalCancel2?reportNum="+reportNum;
+		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+4;
 	 };				
 
 	function updateApprovaledCancel1(reportNum) { 
 		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
-		location.href = "../admin/updateApprovaledCancel1?reportNum="+reportNum;
+		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+5;
 	};	
 	function updateApprovaledCancel2(reportNum) { 
 		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
-		location.href = "../admin/updateApprovaledCancel2?reportNum="+reportNum;
+		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+6;
 	};					
 			
 	
