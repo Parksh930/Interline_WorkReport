@@ -56,7 +56,7 @@ height: 50px;
 }
 
 #registerUser_contents{
-margin: 30px auto;
+margin: 70px auto;
 width: fit-content;
 }
 
@@ -82,14 +82,35 @@ color: white;
 cursor: pointer;
 }
 
-.return_Btn{
-border: solid 2px rgb(0, 0, 0);
-border-radius: 9px;
-padding: 2px 5px;
-color: black;
-cursor: pointer;
+#insert_User_btn{
+margin:0px 0px 0px 135px;
 }
 
+#delete_User_btn{
+margin:0px 0px 0px 25px;
+}
+
+input[type="number"],input[type="text"],input[type="password"]{
+height: 18px;
+}
+
+input:read-only{
+height: 22px;
+border:0px;
+}
+
+#tr_btn{
+height: 55px;
+}
+
+td{
+height: 28px;
+}
+
+select{
+height: 24px;
+width: 70px;
+}
 </style>
 </head>
 <body>
@@ -141,8 +162,8 @@ cursor: pointer;
 </select></td>
 </tr>
 <tr id="tr_btn"><td colspan="2">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="insert_User_btn">修正</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id="delete_User_btn">削除</button>
+<button id="insert_User_btn">修正</button>
+<button id="delete_User_btn">削除</button>
 </td></tr>
 </table>
 </form>
