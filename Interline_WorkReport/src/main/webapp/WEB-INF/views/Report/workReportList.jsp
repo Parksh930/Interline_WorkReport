@@ -150,7 +150,10 @@ $(function(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
 		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
 		report_table_title	+='<th class="Reportlist_userName">社員名</th><th class="Reportlist_team">チーム名</th>';
-		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th></tr>';
+		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th>';
+		report_table_title	+='<td class="Reportlist_reportBtn" colspan="5"><button class="Read_Btn4" disabled="disabled">承認完了</button>';
+		report_table_title	+='<class="Reportlist_reportBtn"><button class="Read_Btn6" disabled="disabled">修正可能</button>はクリックする<br>ことができません。</td>'
+		report_table_title	+='</tr>';
 
 		var report_com = report_table_title;
 
@@ -182,13 +185,22 @@ $(function(){
 					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="approvaledCancel('+report.reportNum+')">取消</button></td>';
 					}
 				else if(report.state==3){
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval('+report.reportNum+')">修正承認</button></td>';
-				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel('+report.reportNum+')">取消</button></td>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval1('+report.reportNum+')">修正承認</button></td>';
+				report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel1('+report.reportNum+')">取消</button></td>';
 				}
 				else if(report.state==4){
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
-					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel('+report.reportNum+')">取消</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval2('+report.reportNum+')">修正承認</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel2('+report.reportNum+')">取消</button></td>';
 				}
+				else if(report.state==5){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled1('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel1('+report.reportNum+')">取消</button></td>';
+				}
+				else if(report.state==6){
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled2('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
+					report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel2('+report.reportNum+')">取消</button></td>';
+				}
+			
 				report_com +='</tr>';
 				});
 				
@@ -378,27 +390,40 @@ $(function(){
 			location.href = "../admin/submitApproval?reportNum="+reportNum;
 			};
 	function submitCancel(reportNum) { 
-		 if(confirm("提出された勤務表を拒絶されますか？"))
+		 if(confirm("提出された勤務表を取消されますか？"))
 		location.href = "../admin/submitCancel?reportNum="+reportNum;
 	};	
 	function approvaledCancel(reportNum) { 
 		 if(confirm("すでに承認した勤務表を取消されますか？"))
 		location.href = "../admin/approvaledCancel?reportNum="+reportNum;
 	};		
-	function updateApproval(reportNum) { 
+	function updateApproval1(reportNum) { 
 		 if(confirm("勤務表の修正許可要請を承認されますか？"))
-		location.href = "../admin/updateApproval?reportNum="+reportNum;
+		location.href = "../admin/updateApproval1?reportNum="+reportNum;
 		 };
-	
-	function updateApprovalCancel(reportNum) { 
-		 if(confirm("勤務表の修正許可要請を拒絶されますか？"))
-		location.href = "../admin/updateApprovalCancel?reportNum="+reportNum;
-		 };				
 
-	function updateApprovaledCancel(reportNum) { 
+	function updateApproval2(reportNum) { 
+				 if(confirm("勤務表の修正許可要請を承認されますか？"))
+				location.href = "../admin/updateApproval2?reportNum="+reportNum;
+			};
+	
+	function updateApprovalCancel1(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を取消されますか？"))
+		location.href = "../admin/updateApprovalCancel1?reportNum="+reportNum;
+		 };
+	function updateApprovalCancel2(reportNum) { 
+		 if(confirm("勤務表の修正許可要請を取消されますか？"))
+		location.href = "../admin/updateApprovalCancel2?reportNum="+reportNum;
+	 };				
+
+	function updateApprovaledCancel1(reportNum) { 
 		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
-		location.href = "../admin/updateApprovaledCancel?reportNum="+reportNum;
-	};				
+		location.href = "../admin/updateApprovaledCancel1?reportNum="+reportNum;
+	};	
+	function updateApprovaledCancel2(reportNum) { 
+		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
+		location.href = "../admin/updateApprovaledCancel2?reportNum="+reportNum;
+	};					
 			
 	
 

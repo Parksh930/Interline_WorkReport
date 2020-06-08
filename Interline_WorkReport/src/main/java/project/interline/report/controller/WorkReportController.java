@@ -352,9 +352,26 @@ public class WorkReportController {
 	}
 	
 	@RequestMapping(value="/admin/updateApproval", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApproval(WorkReportVO vo,Model model) {
+	public String updateApproval1(WorkReportVO vo,Model model) {
 		
-		int stateNum = 4;
+		int stateNum = 5;
+		vo.setState(stateNum);
+		
+		System.out.println("vo   :" + vo );
+		
+		int result = dao.updateState(vo);
+		
+		logger.debug("getVO:{}",result);
+		
+		System.out.println("updateApproval 결과   " + result);
+		
+		return "redirect:/admin/reportList";
+	}
+	
+	@RequestMapping(value="/admin/updateApprova2l", method = {RequestMethod.GET,RequestMethod.POST})
+	public String updateApproval2(WorkReportVO vo,Model model) {
+		
+		int stateNum = 6;
 		vo.setState(stateNum);
 		
 		System.out.println("vo   :" + vo );
@@ -369,8 +386,8 @@ public class WorkReportController {
 	}
 	
 	
-	@RequestMapping(value="/admin/updateApprovalCancel",method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApprovalCancel(WorkReportVO vo,Model model) {
+	@RequestMapping(value="/admin/updateApprovalCancel1",method = {RequestMethod.GET,RequestMethod.POST})
+	public String updateApprovalCancel1(WorkReportVO vo,Model model) {
 		
 		int stateNum = 1;
 		vo.setState(stateNum);
@@ -386,10 +403,44 @@ public class WorkReportController {
 		return "redirect:/admin/reportList";
 	}
 	
-	@RequestMapping(value="/admin/updateApprovaledCancel", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateApprovaledCancel(WorkReportVO vo,Model model) {
+	@RequestMapping(value="/admin/updateApprovalCancel2",method = {RequestMethod.GET,RequestMethod.POST})
+	public String updateApprovalCancel2(WorkReportVO vo,Model model) {
+		
+		int stateNum = 2;
+		vo.setState(stateNum);
+		
+		System.out.println("vo   :" + vo );
+		
+		int result = dao.updateState(vo);
+		
+		logger.debug("getVO:{}",result);
+		
+		System.out.println("updateApprovalCancel 결과   " + result);
+		
+		return "redirect:/admin/reportList";
+	}
+	
+	@RequestMapping(value="/admin/updateApprovaledCancel1", method = {RequestMethod.GET,RequestMethod.POST})
+	public String updateApprovaledCancel1(WorkReportVO vo,Model model) {
 		
 		int stateNum = 3;
+		vo.setState(stateNum);
+		
+		System.out.println("vo   :" + vo );
+		
+		int result = dao.updateState(vo);
+		
+		logger.debug("getVO:{}",result);
+		
+		System.out.println("updateApprovaledCancel 결과   " + result);
+		
+		return "redirect:/admin/reportList";
+	}
+	
+	@RequestMapping(value="/admin/updateApprovaledCancel2", method = {RequestMethod.GET,RequestMethod.POST})
+	public String updateApprovaledCancel2(WorkReportVO vo,Model model) {
+		
+		int stateNum = 4;
 		vo.setState(stateNum);
 		
 		System.out.println("vo   :" + vo );
