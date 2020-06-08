@@ -10,7 +10,6 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
  $(function(){
-	 
 	$('#startDate').val(new Date().toISOString().substring(0, 10))	;
 	 
 	$("#insert_User_btn").click(function(){
