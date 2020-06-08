@@ -234,7 +234,7 @@ $(function(){
 		} 
 	
 		report_sort.forEach(function(report){
-			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check"value="${report_List.reportNum}"></td>';
+			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check" value='+report.reportNum+'></td>';
 			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
 			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
 			report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
