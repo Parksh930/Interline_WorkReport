@@ -28,9 +28,9 @@
 	<script> 
 		var holiday;
 		holiday = $('#year').html();
-		var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]}; 
+		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]}; 
 		//getSecondMondayOnOCT(2020);
-		alternativeHoliday(holiday);
+		//alternativeHoliday(holiday);
 		
 		function SetOZParamters_OZViewer() {
 			var oz;
@@ -38,7 +38,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://192.168.1.34:8888/oz80/server");
 			oz.sendToActionScript("connection.reportname",
-					"OSA/workReport1.ozr");
+					"OSA/workReportOption.ozr");
 			oz.sendToActionScript("connection.pcount","1");
 			oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
 			oz.sendToActionScript("global.language", "ja");
@@ -48,6 +48,118 @@
 			return true;
 		}
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");
+
+
+		function OZUserEvent_OZViewer(param1, param2, param3) {
+
+	/* 		if (param3 == "Approval") {
+				console.log(chartData);
+				if (chartData.state == 1) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("提出された勤務表を承認されますか？");
+					if (sConfirm == true) {
+						location.href = "../admin/allReadStateUp?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				} else if (chartData.state == 3) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("勤務表の修正許可要請を承認されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						location.href = "../admin/allReadStateUp?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				} else if (chartData.state == 4) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("勤務表の修正許可要請を承認されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						location.href = "../admin/allReadStateUp?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				}
+
+			} else if (param3 == "Cancel") {
+				var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+				var chartData = JSON.parse(OZViewer
+						.GetInformation("INPUT_JSON_ALL"));
+				if (chartData.state == 1) {
+					var sConfirm = confirm("提出された勤務表を取消されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						console.log(chartData);
+						location.href = "../admin/allReadStateDown?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				} else if (chartData.state == 2) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("すでに承認された勤務表を取消されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						console.log(chartData);
+						location.href = "../admin/allReadStateDown?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				} else if (chartData.state == 3) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("勤務表の修正許可要請を取消されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						console.log(chartData);
+						location.href = "../admin/allReadStateDown?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				} else if (chartData.state == 4) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("勤務表の修正許可要請を取消されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						console.log(chartData);
+						location.href = "../admin/allReadStateDown?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				} else if (chartData.state == 5) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("すでに修正許可された勤務表の修正許可を取消されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						console.log(chartData);
+						location.href = "../admin/allReadStateDown?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+
+				} else if (chartData.state == 6) {
+					var chartData = JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+					var sConfirm = confirm("すでに修正許可された勤務表の修正許可を取消されますか？");
+					if (sConfirm == true) {
+						var chartData = JSON.parse(OZViewer
+								.GetInformation("INPUT_JSON_ALL"));
+						console.log(chartData);
+						location.href = "../admin/allReadStateDown?reportNum="
+								+ chartData.reportNum + "&state="
+								+ chartData.state;
+					}
+				}
+
+			}
+
+		} */
+		
 	</script>
 
 
