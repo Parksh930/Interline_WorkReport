@@ -529,7 +529,7 @@ $(function(){
 </script>
 
 <body>
-	<h1>報告書リスト</h1>
+	<h1>勤務表リスト</h1>
 	<div id="report_list_filter">
 	<fieldset id="reportUserNum_Filter">
 	<label for="report_userNum">社員番号：</label><input type="number" name = "report_userNum" id = "report_userNum">
