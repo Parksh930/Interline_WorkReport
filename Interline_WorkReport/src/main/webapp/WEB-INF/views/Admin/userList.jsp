@@ -66,8 +66,12 @@ $(function(){
 				con +='<td class="Userlist_updateBtn"><a class="Update_Btn" href="userUpdate?Num='+item.userNum+'">修正</a></td>';
 			});
 			
-			con += "</table>";
-			$("#user_List").html(con);
+		con += "</table>";
+		$("#user_List").html(con);
+
+		if($('#list_Box',parent.document)[0] != null){
+			$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
+		}
 	}
 
 	function first_userList(){
@@ -76,7 +80,8 @@ $(function(){
 		user_table_title	+='<th class="Userlist_userMail">社員メール</th><th class="Userlist_userName">社員名</th>';
 		user_table_title	+='<th class="Userlist_team">チーム名</th><th class="Userlist_position">職級</th>';
 		user_table_title	+='<th class="Userlist_startDate">入社日</th><th class="Userlist_lastupdateDate">最新更新日</th>';
-		user_table_title	+='<th class="Userlist_finalreportDate">最終提出分</th><th class="Userlist_retirement">退職区分</th></tr>';
+		user_table_title	+='<th class="Userlist_finalreportDate">最終提出分</th><th class="Userlist_retirement">退職区分</th>';
+		user_table_title	+='<th class="Userlist_updateBtn"></th></tr>';
 
 		var con = user_table_title;
 
