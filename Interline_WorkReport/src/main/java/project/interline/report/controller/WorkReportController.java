@@ -415,6 +415,7 @@ public class WorkReportController {
 	}
 	
 	@RequestMapping(value = "/admin/allReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
 	public String allReadStateUp(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
@@ -438,10 +439,11 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("allReadStateUp 결과   " + result);
 		
-		return "redirect:/admin/getAllReport";
+		return "success";
 	}
 	
 	@RequestMapping(value = "/admin/allReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
 	public String allReadStateDown(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
@@ -478,7 +480,77 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("allReadStateUp 결과   " + result);
 		
-		return "redirect:/admin/getAllReport";
+		return "success";
+	}
+	
+	
+	@RequestMapping(value = "/admin/selectReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public String selectReadStateUp(
+			Model model, HttpSession session,WorkReportVO vo) {
+		
+		System.out.println(" selectReadStateUp  먼저 "+vo);
+		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 5;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 6;
+			vo.setState(stateNum);
+		}
+		System.out.println("vo   :" + vo );
+		int result = dao.updateState(vo);
+		logger.debug("getVO:{}",result);
+		System.out.println("selectReadStateUp 결과   " + result);
+		
+		return "success";
+	}
+	
+	@RequestMapping(value = "/admin/selectReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public String selectReadStateDown(
+			Model model, HttpSession session,WorkReportVO vo) {
+		
+		System.out.println(" selectReadStateDown  먼저 "+vo);
+		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 0;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==2) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==5) {
+			stateNum = 3;
+			vo.setState(stateNum);
+			
+		}
+		else if(vo.getState()==6) {
+			stateNum = 4;
+			vo.setState(stateNum);
+		}
+		System.out.println("vo   :" + vo );
+		int result = dao.updateState(vo);
+		logger.debug("getVO:{}",result);
+		System.out.println("selectReadStateDown 결과   " + result);
+		
+		return "success";
 	}
 
 }

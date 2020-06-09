@@ -118,10 +118,15 @@
 	
 	
 	<select id="getReportList" resultType="ReportList">
-		select report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month,report.updatedate,report.state  
-			from work_Report as report join user_inform as user
-			on report.usernum = user.usernum and state > 0 
-			order by report.updateDate desc
+		select
+			report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month
+			,report.updatedate,report.state  
+		from 
+			work_Report as report join user_inform as user
+		on 
+			report.usernum = user.usernum and state > 0 
+		order by 
+			report.updateDate desc
 			limit 100
 	</select>
 	
@@ -132,7 +137,7 @@
 	<select id="reportFilter" parameterType="map" resultType="ReportList">
 		select 
 			report.reportnum,user.usernum,user.usermail,user.username,user.team,report.year,report.month
-			,report.updatedate
+			,report.updatedate,report.state 
 		from 
 			work_Report as report join user_inform as user
 		on 
@@ -150,7 +155,7 @@
      		and user.usernum like concat(#{userNum},'%')
      	</if>
      	<if test='userName !=null and userName != ""'>
-     		and user.usernum like concat('%',#{userName},'%')
+     		and user.username like concat('%',#{userName},'%')
      	</if>
      		and
      			(date_format(concat(year,'-0',month,'-01'), '%Y-%m') between #{From_ReportDays} and #{To_ReportDays})

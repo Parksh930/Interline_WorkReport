@@ -60,17 +60,17 @@ private static final int pagePerGroup=10;
 		
 		
 		ArrayList<ReportListVO> my_list = dao.getMy_List(navi.getStartRecord(), navi.getCountPerPage(),user_num);
-		System.out.println("여기까지1111111111111111111111111111111111111111111111111");
+		System.out.println("�뿬湲곌퉴吏�1111111111111111111111111111111111111111111111111");
 		model.addAttribute("pn", navi);
 		model.addAttribute("report_my",my_list);
-		System.out.println("여기까지222222222222222222222222222222222222222222222222");
+		System.out.println("�뿬湲곌퉴吏�222222222222222222222222222222222222222222222222");
 		
 		
-		return "User/myReportList";
+		return "User/myreportList";
 	}
 	
 	
-	//유진씨 수정할거있음 하세요. 비번 변경받아주는 곳입니다.
+	//�쑀吏꾩뵪 �닔�젙�븷嫄곗엳�쓬 �븯�꽭�슂. 鍮꾨쾲 蹂�寃쎈컺�븘二쇰뒗 怨녹엯�땲�떎.
 	@RequestMapping(value="/user/changePW", method=RequestMethod.POST)
 	public String changePW(Model model, HttpSession session ,String password){
 		UserVO userVO=(UserVO)session.getAttribute("user_inform");
