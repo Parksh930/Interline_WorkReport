@@ -83,16 +83,16 @@ padding:0px 30px 0px 0px;
 padding: 20px 0px 0px 0px;
 }
 
-
 </style>
 <body>
 
 <div id="login_div">
+<img src="<c:url value = 'resources/image/interline_login.png'/>" id="login_logo">
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
 <span class="login_text">ログイン</span>
-<span class="title_text">WORK REPORT</span></th>
+<span class="title_text">勤務表報告 システム</span></th>
 </tr>
 <form action="login" method="post" id="login_form">
 <tr>
