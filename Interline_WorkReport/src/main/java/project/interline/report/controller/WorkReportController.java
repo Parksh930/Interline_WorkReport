@@ -336,6 +336,7 @@ public class WorkReportController {
 		}
 		System.out.println("vo   :" + vo );
 		int result = dao.updateState(vo);
+		
 		logger.debug("getVO:{}",result);
 		System.out.println("stateDown 결과   " + result);
 		return "redirect:/admin/reportList";
@@ -363,7 +364,11 @@ public class WorkReportController {
 		System.out.println("vo   :" + vo );
 		int result = dao.updateState(vo);
 		logger.debug("getVO:{}",result);
+		
+		
+		System.out.println("업데이트 후의 :   "+vo);
 		System.out.println("ReadStateUp 결과   " + result);
+		
 		
 		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
@@ -403,6 +408,13 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("ReadStateDown 결과   " + result);
 		
+
+		if(vo.getState()==0) {
+			
+			return "redirect:/admin/reportList";
+			
+		}
+		
 		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
 	
@@ -431,12 +443,13 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("allReadStateUp 결과   " + result);
 		
+		
 		return "success";
 	}
 	
 	@RequestMapping(value = "/admin/allReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public String allReadStateDown(
+	public int allReadStateDown(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
 		System.out.println(" allReadStateDown  먼저 "+vo);
@@ -472,7 +485,10 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("allReadStateUp 결과   " + result);
 		
-		return "success";
+		
+		int returnData = vo.getState();
+		
+		return returnData;
 	}
 	
 	
@@ -506,7 +522,7 @@ public class WorkReportController {
 	
 	@RequestMapping(value = "/admin/selectReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public String selectReadStateDown(
+	public int selectReadStateDown(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
 		System.out.println(" selectReadStateDown  먼저 "+vo);
@@ -542,7 +558,9 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("selectReadStateDown 결과   " + result);
 		
-		return "success";
+		int returnData = vo.getState();
+		
+		return returnData;
 	}
 
 }
