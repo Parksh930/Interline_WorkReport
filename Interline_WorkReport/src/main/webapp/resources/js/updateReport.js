@@ -577,6 +577,99 @@
 	}
 	
 
+	
+	function changeSelectStateUp(reportNum,state){
+		console.log(reportNum);
+		
+		
+		$.ajax(
+				{
+					url: "selectReadStateUp",
+					type: 'POST',
+					data: {"reportNum":reportNum,"state":state},
+					success: function(data){
+							alert("承認を正常的に処理しました。提出ボタンはリロードしてから変わります。");
+							
+//							location.reload(true);
+							
+							
+							//var refresh = confirm("提出ボタンはリロードしてから変わります。すぐリロードされますか？")；
+							//if(refresh==true){
+							//	location.reload(true);
+							//}
+							//else if(refresh==false){
+							//	alert("提出ボタンの更新は後程ご確認ください。);
+							//}
+							
+							//location.href="getUpdateReport?reportNum="+reportNum;
+						},
+						error: function(e){
+							alert('承認ができませんでした。もう一度お試して下さい。');
+						}
+				}		
+			);
+	}
+	
+	function changeSelectStateDown(reportNum,state){
+		console.log(reportNum);
+		
+		$.ajax(
+				{
+					url: "selectReadStateDown",
+					type: 'POST',
+					data: {"reportNum":reportNum,"state":state},
+					success: function(data){
+							alert("取消を正常的に処理しました。提出ボタンはリロードしてから変わります。");
+//							location.reload(true);
+						},
+						error: function(e){
+							alert('取消ができませんでした。もう一度お試して下さい。');
+						}
+				}		
+			);
+	}
+	
+	
+	function changeAllStateUp(reportNum,state){
+		console.log(reportNum);
+		
+		$.ajax(
+				{
+					url: "allReadStateUp",
+					type: 'POST',
+					data: {"reportNum":reportNum,"state":state},
+					success: function(data){
+							alert("取消を正常的に処理しました。提出ボタンはリロードしてから変わります。");
+//							location.reload(true);
+						},
+						error: function(e){
+							alert('取消ができませんでした。もう一度お試して下さい。');
+						}
+				}		
+			);
+	}
+	
+	
+	
+	function changeAllStateDown(reportNum,state){
+		console.log(reportNum);
+		
+		$.ajax(
+				{
+					url: "allReadStateDown",
+					type: 'POST',
+					data: {"reportNum":reportNum,"state":state},
+					success: function(data){
+							alert("取消を正常的に処理しました。提出ボタンはリロードしてから変わります。");
+//							location.reload(true);
+						},
+						error: function(e){
+							alert('取消ができませんでした。もう一度お試して下さい。');
+						}
+				}		
+			);
+	}
+	
 				
 function adminUpdateReport(jsonData,address){
 	for (var i=1 ; i<=31 ; i++){
@@ -652,7 +745,7 @@ function adminUpdateReport(jsonData,address){
 					},
 				error: function(e){
 						console.log(JSON.stringify(e));
-						alert('修正にできませんでした。もう一度試して下さい。');
+						alert('修正ができませんでした。もう一度お試して下さい。');
 					}
 			}		
 		);
