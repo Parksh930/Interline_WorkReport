@@ -43,6 +43,14 @@ public class WorkReportController {
 		logger.debug("writeReport");
 		model.addAttribute("userNum", userNum);
 		
+		int checkNewEmployee = dao.checkNewEmployee(userNum);
+		if(checkNewEmployee==0) {
+			//신입사원입니다.
+			model.addAttribute("month", month);
+			model.addAttribute("year", year);
+			return "Report/writeReport";
+		}
+		
 		//저번달 작성분 확인
 		HashMap<String, Integer> map= new HashMap<String, Integer>();
 		if (month==1) {
