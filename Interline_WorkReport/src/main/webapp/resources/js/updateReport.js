@@ -588,20 +588,15 @@
 					type: 'POST',
 					data: {"reportNum":reportNum,"state":state},
 					success: function(data){
-							alert("承認を正常的に処理しました。提出ボタンはリロードしてから変わります。");
-							
-//							location.reload(true);
-							
-							
-							//var refresh = confirm("提出ボタンはリロードしてから変わります。すぐリロードされますか？")；
-							//if(refresh==true){
-							//	location.reload(true);
-							//}
-							//else if(refresh==false){
-							//	alert("提出ボタンの更新は後程ご確認ください。);
-							//}
-							
-							//location.href="getUpdateReport?reportNum="+reportNum;
+						alert("承認を正常的に処理しました。");
+						if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
+							location.reload(true);	
+						}
+						
+/*						if(confirm("承認を正常的に処理しました。提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
+								location.reload(true);	
+							}
+*/					
 						},
 						error: function(e){
 							alert('承認ができませんでした。もう一度お試して下さい。');
@@ -619,8 +614,10 @@
 					type: 'POST',
 					data: {"reportNum":reportNum,"state":state},
 					success: function(data){
-							alert("取消を正常的に処理しました。提出ボタンはリロードしてから変わります。");
-//							location.reload(true);
+						if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
+							location.reload(true);	
+						}
+						
 						},
 						error: function(e){
 							alert('取消ができませんでした。もう一度お試して下さい。');
@@ -639,8 +636,11 @@
 					type: 'POST',
 					data: {"reportNum":reportNum,"state":state},
 					success: function(data){
-							alert("取消を正常的に処理しました。提出ボタンはリロードしてから変わります。");
-//							location.reload(true);
+						alert("承認を正常的に処理しました。");
+						if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
+							location.reload(true);	
+						}
+						
 						},
 						error: function(e){
 							alert('取消ができませんでした。もう一度お試して下さい。');
@@ -660,8 +660,11 @@
 					type: 'POST',
 					data: {"reportNum":reportNum,"state":state},
 					success: function(data){
-							alert("取消を正常的に処理しました。提出ボタンはリロードしてから変わります。");
-//							location.reload(true);
+						alert("承認を正常的に処理しました。");
+						if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
+							location.reload(true);	
+						}
+						
 						},
 						error: function(e){
 							alert('取消ができませんでした。もう一度お試して下さい。');
