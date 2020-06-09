@@ -60,7 +60,7 @@
 		var countHolidayWork=0;
 		var thisMonth=parseInt(jsonData.month);
 		for ( var i=1 ; i<=numberOfDate ; i++){
-			if( jsonData["workContent"+i] != "-" ){
+			if( jsonData["workContent"+i] != "-" && jsonData["dateCondition"+i]!="無休" ){
 				if( jsonData["dateCondition"+i]=="休日" ){
 					countHolidayWork++
 				}else{
@@ -79,7 +79,7 @@
 		//var salesDayArray=jsonData.salesDayArray.split(",");
 		//for( var i=0 ; i < salesDayArray.length ; i++ ){
 		for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
-			if (jsonData["dateCondition"+i]=="無休"){
+			if (jsonData["dateCondition"+i]=="無休" || (jsonData["dateCondition"+i]=="" && jsonData["workContent"+i]=="-" )){
 				cnt++;
 			}
 		}
@@ -150,7 +150,7 @@
 					success: function(s){
 							var text=["成功","成功","報告書重複 管理者にお問い合わせてください","提出したのは修正できません。"];
 							alert(text[s]);
-							//location.href="../";
+							location.href="userMain";
 						},
 					error: function(e){
 							console.log(JSON.stringify(e));

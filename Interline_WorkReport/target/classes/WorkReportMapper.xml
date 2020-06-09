@@ -15,6 +15,10 @@
   	<select id="checkState2" parameterType="hashmap" resultType="WorkReportVO">
   		select * from work_report where userNum=#{userNum} and year=#{year} and month=#{month} 
   	</select>
+  	
+  	<select id="checkNewEmployee" resultType="int" parameterType="int">
+		select count(*) from work_Report where UserNum = #{userNum}
+	</select>
   
   
 	<insert id="insertReport" parameterType="WorkReportVO">
