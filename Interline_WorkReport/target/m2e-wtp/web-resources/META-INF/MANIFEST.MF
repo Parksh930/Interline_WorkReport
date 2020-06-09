@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: DaeunLabtop
-=======
-Built-By: USER
->>>>>>> d2914652e744dce1d050af20401669563f4fbe17
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 
