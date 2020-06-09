@@ -95,7 +95,7 @@ text-decoration: none;
 <c:forEach var = "work_report" items="${report_my}">
 <tr>
 <td class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
-<td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}">閲覧</a></td>
+<td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a></td>
 <td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}">修正依頼</a></td>
 </tr>
 </c:forEach>

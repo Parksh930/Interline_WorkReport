@@ -197,6 +197,25 @@ $(function(){
 	$('#report_userName_btn').click(report_Text_Filter);
 	$("#reportDays_Filter").change(report_Days_Filter);
 
+	$("#report_userNum").keypress(function(key){
+		if(key.keyCode == 13){
+			report_result_Filter("report_userNum",$(this)[0].value);
+
+			$("#report_userNum").val("");
+			$("#report_userName").val("");
+		}
+	});
+
+	$("#report_userName").keypress(function(key){
+		if(key.keyCode == 13){
+			report_result_Filter("report_userName",$(this)[0].value);
+
+
+			$("#report_userNum").val("");
+			$("#report_userName").val("");
+		}
+	});
+	
 	
 	function report_List_Sort(){
 		var report_com = report_table_title;
@@ -279,7 +298,10 @@ $(function(){
          if($('#list_Box',parent.document)[0] != null){
              $('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
          }
-         
+
+         if(report_sort==""||report_sort==null){
+			$(".Reportlist_reportBtn").css("width","276.4px")
+         }
 	}
 	
 	function first_reportList(){
@@ -355,6 +377,7 @@ $(function(){
 	}
 
 	function report_Text_Filter(){
+		
 		if($(this)[0].id == "report_userNum_btn"){
 			var report_userNum = $("#report_userNum").val();
 			report_result_Filter("report_userNum",report_userNum);
@@ -545,7 +568,7 @@ $(function(){
 			<option value="reportDays_ascending">年月分の昇順</option>
 			<option value="reportDays_descending">年月分の降順</option>
 			<option value="updateDate_ascending">最終保存日時の昇順</option>
-			<option value="updateDate_descending">最終保存日時の降順</option>
+			<option value="updateDate_descending" selected="selected">最終保存日時の降順</option>
 		</select>
 	</div>
 	<div id="report_List"></div>

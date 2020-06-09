@@ -115,7 +115,7 @@
 			</tr>
 		</table>
 		<br></br>
-		<div class="menu_Btn"><a class="menu_Btn" href="javascript:void(0);" onclick="writeReport()" target="list_Box">今月の勤務表作成</a></div><br></br>
+		<div class="menu_Btn"><a class="menu_Btn" href="javascript:void(0);" onclick="writeReport()" >今月の勤務表作成</a></div><br></br>
 		<div class="menu_Btn"><a class="menu_Btn" href="../user/myReportList" onclick="uncover()" target="list_Box">過去の勤務表閲覧</a></div><br></br>
 		<div class="menu_Btn"><a class="menu_Btn" href="../user/profile" onclick="uncover()" target="list_Box">パスワード変更</a></div>
 	</div>
@@ -144,7 +144,8 @@
 			$('.menu_Btn').css('font-size', '20px');
 			$('.logout').css('font-size', '20px');
 			$('#name').css('font-size', '20px');
-			$('#button1').css('width', '7%')
+			$('#button1').css('height', 'auto');
+			$('#button1').css('max-width', '3%');
 		} 
 	}
 	

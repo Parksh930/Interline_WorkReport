@@ -79,7 +79,7 @@
 		//var salesDayArray=jsonData.salesDayArray.split(",");
 		//for( var i=0 ; i < salesDayArray.length ; i++ ){
 		for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
-			if (jsonData["dateCondition"+salesDayArray[i]]=="無休"){
+			if (jsonData["dateCondition"+i]=="無休"){
 				cnt++;
 			}
 		}
@@ -158,5 +158,11 @@
 						}
 				}		
 			);
+	}
+	
+	
+	function closePage(){
+		console.log("aaa");
+		self.close();
 	}
 	
