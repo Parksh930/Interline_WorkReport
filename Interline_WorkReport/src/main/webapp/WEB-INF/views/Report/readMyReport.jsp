@@ -55,7 +55,6 @@
 		
 		console.log(reportYear);
 		console.log(reportMonth);
-		
 		var oz;
 		oz = document.getElementById("OZViewer");
 		oz.sendToActionScript("connection.servlet","http://192.168.1.124:8888/oz80/server");

@@ -116,7 +116,7 @@ text-decoration: none;
 <td class="Reportlist_Days">提出日</td>
 <td class="Reportlist_Days">状態</td>
 </tr>
-<c:set var="stateVal" value="${['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可']}"/>
+<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
 <c:forEach var = "work_report" items="${report_my}" varStatus="status">
 <tr>
 <td class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
