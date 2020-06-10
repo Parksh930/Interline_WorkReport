@@ -56,7 +56,7 @@ public class MainController {
 		}
 		
 		if(user == null) {
-			redirect.addFlashAttribute("error","存在しないIDです。");
+			redirect.addFlashAttribute("error","存在しないメールアドレスです。");
 		}else if(!user.getPassword().equals(login_pw)){
 			redirect.addFlashAttribute("error","パスワードが一致しません。");
 		}
