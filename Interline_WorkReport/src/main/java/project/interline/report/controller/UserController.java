@@ -66,7 +66,7 @@ private static final int pagePerGroup=10;
 		System.out.println("�뿬湲곌퉴吏�222222222222222222222222222222222222222222222222");
 		
 		
-		return "User/myreportList";
+		return "User/myReportList";
 	}
 	
 	
