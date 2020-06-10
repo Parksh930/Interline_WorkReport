@@ -107,7 +107,7 @@
 					${sessionScope.user_inform.userName}さん
 				</td>
 				<td>
-					<div class="logout"><a class="menu_Btn" href="로드할 페이지 주소를 넣어줘요." target="list_Box">ログアウト</a></div>
+					<div class="logout"><a class="menu_Btn" href="../logout">ログアウト</a></div>
 				</td>
 			</tr>
 			<tr>
