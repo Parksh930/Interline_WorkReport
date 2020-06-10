@@ -82,9 +82,9 @@
 		$('#button1').css("display","block");
 	}
 	function writeReport(){
-		let today = new Date();   
-		let year = today.getFullYear(); // 년도
-		let month = today.getMonth() + 1;  // 월		
+		var today1 = new Date();   
+		var year = today1.getFullYear(); // 년도
+		var month = today1.getMonth() + 1;  // 월		
 		$('#year').val(year);
 		$('#month').val(month);
 		document.getElementById("form1").submit();
