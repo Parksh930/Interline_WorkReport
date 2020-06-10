@@ -40,6 +40,7 @@ public class UserDAO {
 	public ArrayList<ReportListVO> getMy_List(int st, int ctt, int user_num) {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		
+		System.out.println("사원번호:"+user_num);
 		RowBounds rbs = new RowBounds(st,ctt);
 		ArrayList<ReportListVO> my_List = mapper.getMy_List(rbs,user_num);
 		return my_List;

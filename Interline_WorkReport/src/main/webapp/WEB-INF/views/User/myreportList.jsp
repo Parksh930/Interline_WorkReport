@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>myreportList</title>
+
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
@@ -19,6 +20,20 @@ function formSubmit(page){
 							
 	document.location.href = "myreportList?page=" + pp.value;
 }
+
+
+
+
+function confirmChange() {
+    if (confirm("修正依頼をしますか。\n修正依頼をした後に管理部に連絡して下さい。") == true) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+	
+
 </script>
 
 <style>
@@ -65,15 +80,21 @@ padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
+text-decoration: none;
 }
 
-.ReviseRequest_Btn{
+
+.rr_Btn{
 border: solid 2px rgb(0, 112, 192);
-border-radius: 9px;
+border-radius:9px; 
 padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
+text-decoration: none;
+width: 100%;
+height: 100%;
+
 }
 
 a{
@@ -96,7 +117,8 @@ text-decoration: none;
 <tr>
 <td class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
 <td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a></td>
-<td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}">修正依頼</a></td>
+<td class="Reportlist_reportNum" > <a class="rr_Btn" href="myReport?reportNum=${work_report.reportNum}"  onclick="return confirmChange()">修正依頼</a>
+</td>
 </tr>
 </c:forEach>
 </table>

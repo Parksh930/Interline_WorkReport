@@ -66,7 +66,7 @@ private static final int pagePerGroup=10;
 		System.out.println("여기까지222222222222222222222222222222222222222222222222");
 		
 		
-		return "User/myReportList";
+		return "User/myreportList";
 	}
 	
 	
