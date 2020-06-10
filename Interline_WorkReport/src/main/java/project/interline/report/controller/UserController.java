@@ -60,10 +60,8 @@ private static final int pagePerGroup=10;
 		
 		
 		ArrayList<ReportListVO> my_list = dao.getMy_List(navi.getStartRecord(), navi.getCountPerPage(),user_num);
-		System.out.println("�뿬湲곌퉴吏�1111111111111111111111111111111111111111111111111");
 		model.addAttribute("pn", navi);
 		model.addAttribute("report_my",my_list);
-		System.out.println("�뿬湲곌퉴吏�222222222222222222222222222222222222222222222222");
 		
 		
 		return "User/myReportList";
