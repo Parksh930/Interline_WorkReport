@@ -43,6 +43,14 @@ public class WorkReportController {
 		logger.debug("writeReport");
 		model.addAttribute("userNum", userNum);
 		
+		int checkNewEmployee = dao.checkNewEmployee(userNum);
+		if(checkNewEmployee==0) {
+			//신입사원입니다.
+			model.addAttribute("month", month);
+			model.addAttribute("year", year);
+			return "Report/writeReport";
+		}
+		
 		//저번달 작성분 확인
 		HashMap<String, Integer> map= new HashMap<String, Integer>();
 		if (month==1) {
@@ -336,6 +344,7 @@ public class WorkReportController {
 		}
 		System.out.println("vo   :" + vo );
 		int result = dao.updateState(vo);
+		
 		logger.debug("getVO:{}",result);
 		System.out.println("stateDown 결과   " + result);
 		return "redirect:/admin/reportList";
@@ -363,7 +372,11 @@ public class WorkReportController {
 		System.out.println("vo   :" + vo );
 		int result = dao.updateState(vo);
 		logger.debug("getVO:{}",result);
+		
+		
+		System.out.println("업데이트 후의 :   "+vo);
 		System.out.println("ReadStateUp 결과   " + result);
+		
 		
 		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
@@ -403,10 +416,18 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("ReadStateDown 결과   " + result);
 		
+
+		if(vo.getState()==0) {
+			
+			return "redirect:/admin/reportList";
+			
+		}
+		
 		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
 	
 	@RequestMapping(value = "/admin/allReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
 	public String allReadStateUp(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
@@ -430,11 +451,13 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("allReadStateUp 결과   " + result);
 		
-		return "redirect:/admin/getAllReport";
+		
+		return "success";
 	}
 	
 	@RequestMapping(value = "/admin/allReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
-	public String allReadStateDown(
+	@ResponseBody
+	public int allReadStateDown(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
 		System.out.println(" allReadStateDown  먼저 "+vo);
@@ -470,7 +493,82 @@ public class WorkReportController {
 		logger.debug("getVO:{}",result);
 		System.out.println("allReadStateUp 결과   " + result);
 		
-		return "redirect:/admin/getAllReport";
+		
+		int returnData = vo.getState();
+		
+		return returnData;
+	}
+	
+	
+	@RequestMapping(value = "/admin/selectReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public String selectReadStateUp(
+			Model model, HttpSession session,WorkReportVO vo) {
+		
+		System.out.println(" selectReadStateUp  먼저 "+vo);
+		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 5;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 6;
+			vo.setState(stateNum);
+		}
+		System.out.println("vo   :" + vo );
+		int result = dao.updateState(vo);
+		logger.debug("getVO:{}",result);
+		System.out.println("selectReadStateUp 결과   " + result);
+		
+		return "success";
+	}
+	
+	@RequestMapping(value = "/admin/selectReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public int selectReadStateDown(
+			Model model, HttpSession session,WorkReportVO vo) {
+		
+		System.out.println(" selectReadStateDown  먼저 "+vo);
+		
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 0;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==2) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 1;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==5) {
+			stateNum = 3;
+			vo.setState(stateNum);
+			
+		}
+		else if(vo.getState()==6) {
+			stateNum = 4;
+			vo.setState(stateNum);
+		}
+		System.out.println("vo   :" + vo );
+		int result = dao.updateState(vo);
+		logger.debug("getVO:{}",result);
+		System.out.println("selectReadStateDown 결과   " + result);
+		
+		int returnData = vo.getState();
+		
+		return returnData;
 	}
 
 }

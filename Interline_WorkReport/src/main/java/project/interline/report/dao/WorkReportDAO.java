@@ -102,9 +102,12 @@ public class WorkReportDAO {
 
 	public int updateState(WorkReportVO vo) {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
-		
-		
 		return mapper.updateState(vo);
+	}
+
+	public int checkNewEmployee(int userNum) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.checkNewEmployee(userNum);
 	}
 
 

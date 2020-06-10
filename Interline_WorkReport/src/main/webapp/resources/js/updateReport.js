@@ -266,10 +266,10 @@
 			  "netWorkingTime31"  :"",
 			  "workContent31"  :"",
 			  "sumWorkingTime"  :""
-				
+
 		}
-	
-	
+
+
 	reportJson.ReportNum=oriJson.ReportNum;  
 	reportJson.UserNum =oriJson.UserNum;  
 	reportJson.UserName=oriJson.UserName;
@@ -530,9 +530,9 @@
 	reportJson.netWorkingTime31=oriJson.netWorkingTime31;
 	reportJson.workContent31=oriJson.workContent31;
 	reportJson.sumWorkingTime=oriJson.sumWorkingTime;
-	
-	
-	
+
+
+
 	return reportJson;
 }*/
 
@@ -541,43 +541,151 @@
 //해당 달의 일수 구하는 합수
 //parameter: 년(int 4) ,월(int 1||2)
 //return: 해당월의 일수(int)
-	function getDatesNum(year,month){  
-		var start = new Date(year+"-"+month+"-01");  
-		if(month==12){
-			var end = new Date((Number(start.getFullYear())+1)+"-01-01");
-		}else{
-			var end = new Date(start.getFullYear()+"-"+(month+1)+"-01");
-		}
-		
-		var dates = (end.getTime() - start.getTime())/1000/60/60/24;  
-		return dates;
-	
-	}		
-
-
-	function getDateNum2(year,month){  
-		var dates;
-		if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
-			dates = 31;
-		}
-		else if(month==4||month==6||month==9||month==11){
-			dates = 30;
-		}
-		else if(month==2){
-			if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-				dates = 29;
-			}
-			else{
-				dates = 28;
-			}
-		}
-		
-		return dates+1;
-	
+function getDatesNum(year,month){  
+	var start = new Date(year+"-"+month+"-01");  
+	if(month==12){
+		var end = new Date((Number(start.getFullYear())+1)+"-01-01");
+	}else{
+		var end = new Date(start.getFullYear()+"-"+(month+1)+"-01");
 	}
-	
 
-				
+	var dates = (end.getTime() - start.getTime())/1000/60/60/24;  
+	return dates;
+
+}		
+
+
+function getDateNum2(year,month){  
+	var dates;
+	if(month==1||month==3||month==5||month==7||month==8||month==10||month==12){
+		dates = 31;
+	}
+	else if(month==4||month==6||month==9||month==11){
+		dates = 30;
+	}
+	else if(month==2){
+		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+			dates = 29;
+		}
+		else{
+			dates = 28;
+		}
+	}
+
+	return dates+1;
+
+}
+
+
+
+function changeSelectStateUp(reportNum,state){
+	console.log(reportNum);
+
+
+	$.ajax(
+			{
+				url: "selectReadStateUp",
+				type: 'POST',
+				data: {"reportNum":reportNum,"state":state},
+				success: function(data){
+					alert("承認を正常的に処理しました。");
+					if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+						location.reload(true);	
+					}
+
+					/*						if(confirm("承認を正常的に処理しました。提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+								location.reload(true);	
+							}
+					 */					
+				},
+				error: function(e){
+					alert('承認ができませんでした。もう一度お試し下さい。');
+				}
+			}		
+	);
+}
+
+function changeSelectStateDown(reportNum,state){
+	console.log(reportNum);
+
+	$.ajax(
+			{
+				url: "selectReadStateDown",
+				type: 'POST',
+				data: {"reportNum":reportNum,"state":state},
+				success: function(data){
+
+					alert("取消が正常的に処理されました。");
+
+					if(data==0){
+						location.href = "reportList";
+					}
+					else{
+						if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+							location.reload(true);	
+						}
+					}
+				},
+				error: function(e){
+					alert('取消ができませんでした。もう一度お試し下さい。');
+				}
+			}		
+	);
+}
+
+
+function changeAllStateUp(reportNum,state){
+	console.log(reportNum);
+
+	$.ajax(
+			{
+				url: "allReadStateUp",
+				type: 'POST',
+				data: {"reportNum":reportNum,"state":state},
+				success: function(data){
+					alert("承認を正常的に処理しました。");
+					if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+						location.reload(true);	
+					}
+
+				},
+				error: function(e){
+					alert('取消ができませんでした。もう一度お試し下さい。');
+				}
+			}		
+	);
+}
+
+
+
+function changeAllStateDown(reportNum,state){
+	console.log(reportNum);
+
+	$.ajax(
+			{
+				url: "allReadStateDown",
+				type: 'POST',
+				data: {"reportNum":reportNum,"state":state},
+				success: function(data){
+					alert("取消が正常的に処理されました。");
+
+					if(data==0){
+						location.href = "reportList";
+					}
+					else{
+						if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+							location.reload(true);	
+						}
+					}						
+				},
+				error: function(e){
+					alert('取消ができませんでした。もう一度お試し下さい。');
+				}
+			}		
+	);
+}
+
+
 function adminUpdateReport(jsonData,address){
 	for (var i=1 ; i<=31 ; i++){
 		if(jsonData["attendHour"+i]==""||["attendHour"+i]==null||["attendHour"+i]==undefined||["attendHour"+i]=='\"\"'){	
@@ -590,21 +698,21 @@ function adminUpdateReport(jsonData,address){
 			jsonData["offHour"+i]=0;
 		}
 		if(jsonData["offMinute"+i]==""||["offMinute"+i]==null||["offMinute"+i]==undefined||["offMinute"+i]=='\"\"'){
-		jsonData["offMinute"+i]=0;
+			jsonData["offMinute"+i]=0;
 		}
 		if(jsonData["restHour"+i]==""||["restHour"+i]==null||["restHour"+i]==undefined||["restHour"+i]=='\"\"'){
-		jsonData["restHour"+i]=0;
+			jsonData["restHour"+i]=0;
 		}
 		if(jsonData["restMinute"+i]==""||["restMinute"+i]==null||["restMinute"+i]==undefined||["restMinute"+i]=='\"\"'){
-		jsonData["restMinute"+i]=0;
+			jsonData["restMinute"+i]=0;
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	//var dates = getDatesNum(jsonData.year,jsonData.month);  // 날짜계산이 잘 적용되지 않아 추후 시도 예정
-	
+
 	/*for (var i=parseInt(dates)+1 ; i<=31 ; i++){
 		jsonData["attendHour"+i]=0;
 		jsonData["attendMinute"+i]=0;
@@ -615,15 +723,15 @@ function adminUpdateReport(jsonData,address){
 		jsonData["netWorkingTime"+i]="0:00";
 		jsonData["workContent"+i]="-";
 	}*/
-	
-	
+
+
 	console.log(jsonData.year);
 	console.log(jsonData.month);
-	
+
 	var dates = getDateNum2(jsonData.year,jsonData.month);
-	
+
 	console.log(dates);
-	
+
 	for (var i=dates; i<=31 ; i++){
 		jsonData["attendHour"+i]=0;
 		jsonData["attendMinute"+i]=0;
@@ -634,28 +742,28 @@ function adminUpdateReport(jsonData,address){
 		jsonData["netWorkingTime"+i]="0:00";
 		jsonData["workContent"+i]="-";
 	}
-	
+
 	console.log(JSON.stringify(jsonData));
-	
+
 	var reportNum = jsonData.reportNum;
-	
+
 	console.log(reportNum);
-	
+
 	$.ajax(
 			{
 				url: address,
 				type: 'POST',
 				data: JSON.parse(JSON.stringify(jsonData)),
 				success: function(data){
-						alert("修正を完了しました。")
-						location.href="getUpdateReport?reportNum="+reportNum;
-					},
+					alert("修正を完了しました。")
+					location.href="getUpdateReport?reportNum="+reportNum;
+				},
 				error: function(e){
-						console.log(JSON.stringify(e));
-						alert('修正にできませんでした。もう一度試して下さい。');
-					}
+					console.log(JSON.stringify(e));
+					alert('修正ができませんでした。もう一度お試して下さい。');
+				}
 			}		
-		);
+	);
 }
 
 

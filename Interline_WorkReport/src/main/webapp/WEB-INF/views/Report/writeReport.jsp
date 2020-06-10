@@ -50,7 +50,7 @@
 	var name=$('#userName').val();
 	console.log("name="+name);
 	if (reportJSON=="submitted"){
-		alert("今月の勤務表はすでに提出しました。修正したかったら修正要請してください。");
+		alert("今月の勤務表はすでに提出しました。修正したかったら修正依頼してください。");
 		location.href="userMain";
 	}
 	console.log(reportJSON);
