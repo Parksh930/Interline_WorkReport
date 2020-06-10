@@ -26,6 +26,7 @@ function formSubmit(page){
 
 function confirmChange() {
     if (confirm("修正依頼をしますか。\n修正依頼をした後に管理部に連絡して下さい。") == true) {
+    
         return true;
     } else {
         return false;
@@ -76,7 +77,7 @@ width:50px;
 .Read_Btn{
 border: solid 2px rgb(0, 112, 192);
 border-radius: 9px;
-padding: 2px 5px;
+padding: 5px 5px 5px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
@@ -87,14 +88,15 @@ text-decoration: none;
 .rr_Btn{
 border: solid 2px rgb(0, 112, 192);
 border-radius:9px; 
-padding: 2px 5px;
+padding: 5px 5px 5px 5px;
+margin:2px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
 text-decoration: none;
-width: 100%;
-height: 100%;
-
+width: 150%;
+height: 30%;
+display:block;
 }
 
 a{
@@ -117,7 +119,7 @@ text-decoration: none;
 <tr>
 <td class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
 <td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a></td>
-<td class="Reportlist_reportNum" > <a class="rr_Btn" href="myReport?reportNum=${work_report.reportNum}"  onclick="return confirmChange()">修正依頼</a>
+<td class="Reportlist_reportNum" > <a class="rr_Btn"  onclick="return confirmChange()">修正依頼</a>
 </td>
 </tr>
 </c:forEach>
