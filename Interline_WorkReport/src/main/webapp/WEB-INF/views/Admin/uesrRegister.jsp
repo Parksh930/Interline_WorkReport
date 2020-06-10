@@ -10,7 +10,7 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
  $(function(){
-	$('#startDate').val(new Date().toISOString().substring(0, 10))	;
+	$('#startDate').val(new Date().toISOString().substring(0, 10));
 	 
 	$("#insert_User_btn").click(function(){
 		var user_num = $("#userNum").val();
@@ -26,12 +26,12 @@
 				data:{userNum:user_num,userMail:user_mail},
 				dataType:"text",
 				success:function(result){
-
+					
 					if(result == "存在する社員番号です。"){
 						alert(result);
 						$("#userNum").focus();
 						
-					}else if(result == "存在するメースです。"){
+					}else if(result == "存在するメールアドレスです。"){
 						alert(result);
 						$("#userMail").focus();	
 																				
@@ -46,7 +46,7 @@
 			alert("社員番号を入力してください。");
 			$("#userNum").focus();
 		}else if(user_mail == ""){
-			alert("メールを入力してください。");
+			alert("メールアドレスを入力してください。");
 			$("#userMail").focus();
 		}else if(user_pw == ""){
 			alert("パスワードを入力してください。");

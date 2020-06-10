@@ -38,6 +38,11 @@
 			
 			<beans:ref bean="loginInterceptor"/>
 		</mvc:interceptor>
+			
+			<beans:bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+		        <beans:property name="cacheSeconds" value="0" />
+		     </beans:bean>	
+		     
 	</mvc:interceptors>
 	
 </beans:beans>

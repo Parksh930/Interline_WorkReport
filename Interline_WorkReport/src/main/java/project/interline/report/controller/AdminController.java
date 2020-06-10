@@ -92,16 +92,17 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/admin/check_multiple", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
 	public String check_Multiple(int userNum, String userMail) {
-		logger.debug("userNum:{},userId:{}",userNum,userMail);
+		logger.debug("userNum:{},userMail:{}",userNum,userMail);
 		UserVO check_result = null;
+		
 		check_result = dao.check_Multiple("check_num",userNum);
 		if(check_result != null) {
-			
 			return "存在する社員番号です。";
 		}
+		
 		check_result = dao.check_Multiple("check_mail",userMail);
 		if(check_result != null) {
-			return "存在するIDです。";
+			return "存在するメールアドレスです。";
 		}
 
 		return "成功";
