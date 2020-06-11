@@ -107,27 +107,33 @@ text-decoration: none;
 <!-- ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] -->
 <!-- {'0':'aa','1':'bb'} -->
 <body>
+<script>
+	console.log("ttttt");
+</script>
+
 <h1>過去の勤務票閲覧</h1>
 
 <div id="report_List">
 <table>
-
-<tr>
-<td class="Reportlist_Days">提出日</td>
-<td class="Reportlist_Days">状態</td>
-</tr>
-<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
-<c:forEach var = "work_report" items="${report_my}" varStatus="status">
-<tr>
-<td class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
-<td id="state${status.count}" class="Reportlist_Days">${stateVal[work_report.state]}</td>
-<td class="Reportlist_reportNum"><a class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a></td>
-<td class="Reportlist_reportNum" > <a class="rr_Btn"  onclick="return confirmChange()">修正依頼</a>
-</td>
-</tr>
-</c:forEach>
+	<tr>
+	<td class="Reportlist_Days">提出日</td>
+	<td class="Reportlist_Days">状態</td>
+	</tr>
+	<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
+	<c:forEach var = "work_report" items="${report_my}" varStatus="status">
+	<tr>
+	<td id="yearMonth${status.count}" class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
+	<td id="state${status.count}" class="Reportlist_Days">${stateVal[work_report.state]}</td>
+	<td class="Reportlist_reportNum">
+		<a id="readReport${status.count}" class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a>
+	</td>
+	<td class="Reportlist_reportNum" > <a class="rr_Btn"  onclick="return confirmChange()">修正依頼</a>
+	</td>
+	</tr>
+	</c:forEach>
 </table>
 </div>
+
 
 <div id = "navigator">
 <a href="javascript:formSubmit(${pn.currentPage - pn.pagePerGroup})">◁◁</a>&nbsp;
@@ -143,10 +149,16 @@ text-decoration: none;
 <a href="javascript:formSubmit(	${pn.currentPage + pn.pagePerGroup})">▷▷</a>
 </div>
 
-
-<script type="text/javascript">
-  //var state = $('#state'+i).html();
-
+<script>
+	
+	for(var i=1 ; i<=10; i++){
+		var reportNum="0";
+		if($('#state'+i).html()=="修正許可"){
+			reportNum=$('#readReport'+i).attr('href').split("=")[1];
+			$('#state'+i).html("<a class='Read_Btn' href='correctMyReport?reportNum="+reportNum+"' target='_blank'>修正許可</a>")
+		}
+	}
 </script>
+
 </body>
 </html>

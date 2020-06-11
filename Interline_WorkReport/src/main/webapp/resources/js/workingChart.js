@@ -29,7 +29,6 @@
 //return: 해당월의 일수(int)
 	function getDates(year,month){  
 		var start = new Date(year+"/"+month+"/01"); 
-		alert(start);
 		if(month==12){
 			var end = new Date((Number(start.getFullYear())+1)+"/01/01");
 		}else{
