@@ -10,15 +10,33 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
  $(function(){
-	$('#startDate').val(new Date().toISOString().substring(0, 10));
+	 var date = new Date();
+
+	 setDate();
+	 $("#insert_User_btn").click(userInform_check);
+
+
+	 function setDate(){
+		 
+		$('#startDate').val(date.toISOString().substring(0, 10));
+		$('#startDate').attr("max",date.getFullYear()+1+"-12-31");
+	}
 	 
-	$("#insert_User_btn").click(function(){
+	function userInform_check(){
+
+		var thisYear = date.getFullYear();
+		
 		var user_num = $("#userNum").val();
 		var user_mail = $("#userMail").val();
 		var user_pw = $("#password").val();
 		var user_name = $("#userName").val();
+		var user_startDate = ($("#startDate").val()).split("-");
 
- 		if(user_num !="" && user_mail != ""&& user_pw != ""&& user_name != ""){
+		if(user_startDate[0] > thisYear+1){
+			$("#startDate").val(thisYear+"-"+user_startDate[1]+"-"+user_startDate[2]);
+		}
+	
+ 		if(user_num !="" && user_mail != ""&& user_pw != ""&& user_name != "" && user_startDate != ""){
 
  			$.ajax({
 				type:"post",
@@ -36,6 +54,7 @@
 						$("#userMail").focus();	
 																				
 					}else if(confirm("登録しましか？")){
+						alert("社員の情報が登録されました。");
 							$('#userRegister_Form').submit();			
 					} 
 				}
@@ -54,9 +73,12 @@
 		}else if(user_name == ""){
 			alert("社員名を入力してください。");
 			$("#userName").focus();
+		}else if(user_startDate == ""){
+			alert("入社日を入力してください。");
+			$("#startDate").focus();
 		}
 		return false;
-	});
+	}
 	
 });
  
