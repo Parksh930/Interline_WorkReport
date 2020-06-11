@@ -262,7 +262,7 @@ $(function(){
 			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
 			report_com += '<td class="Reportlist_reportBtn"><button id="ReadReport_Btn" class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
-		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="DeleteReport('+report.reportNum+')">削除</button>';
+		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="deleteReport('+report.reportNum+')">削除</button>';
 		if(report.state==1){
 			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
 			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="submitCancel('+report.reportNum+')">取消</button></td>';
@@ -443,7 +443,7 @@ $(function(){
   function getUpdateReport(reportNum) {
    	  location.href = "../admin/getUpdateReport?reportNum="+reportNum;
       };
-  function DeleteReport(reportNum) {
+  function deleteReport(reportNum) {
       if(confirm("削除されますか？")){
     	  location.href = "../admin/deleteReport?reportNum="+reportNum;
       }
