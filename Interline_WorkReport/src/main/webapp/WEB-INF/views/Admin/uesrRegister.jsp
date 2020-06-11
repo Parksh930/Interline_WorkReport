@@ -10,15 +10,33 @@
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
  $(function(){
-	$('#startDate').val(new Date().toISOString().substring(0, 10))	;
+	 var date = new Date();
+
+	 setDate();
+	 $("#insert_User_btn").click(userInform_check);
+
+
+	 function setDate(){
+		 
+		$('#startDate').val(date.toISOString().substring(0, 10));
+		$('#startDate').attr("max",date.getFullYear()+1+"-12-31");
+	}
 	 
-	$("#insert_User_btn").click(function(){
+	function userInform_check(){
+
+		var thisYear = date.getFullYear();
+		
 		var user_num = $("#userNum").val();
 		var user_mail = $("#userMail").val();
 		var user_pw = $("#password").val();
 		var user_name = $("#userName").val();
+		var user_startDate = ($("#startDate").val()).split("-");
 
- 		if(user_num !="" && user_mail != ""&& user_pw != ""&& user_name != ""){
+		if(user_startDate[0] > thisYear+1){
+			$("#startDate").val(thisYear+"-"+user_startDate[1]+"-"+user_startDate[2]);
+		}
+	
+ 		if(user_num !="" && user_mail != ""&& user_pw != ""&& user_name != "" && user_startDate != ""){
 
  			$.ajax({
 				type:"post",
@@ -26,16 +44,17 @@
 				data:{userNum:user_num,userMail:user_mail},
 				dataType:"text",
 				success:function(result){
-
+					
 					if(result == "存在する社員番号です。"){
 						alert(result);
 						$("#userNum").focus();
 						
-					}else if(result == "存在するメースです。"){
+					}else if(result == "存在するメールアドレスです。"){
 						alert(result);
 						$("#userMail").focus();	
 																				
 					}else if(confirm("登録しましか？")){
+						alert("社員の情報が登録されました。");
 							$('#userRegister_Form').submit();			
 					} 
 				}
@@ -46,7 +65,7 @@
 			alert("社員番号を入力してください。");
 			$("#userNum").focus();
 		}else if(user_mail == ""){
-			alert("メールを入力してください。");
+			alert("メールアドレスを入力してください。");
 			$("#userMail").focus();
 		}else if(user_pw == ""){
 			alert("パスワードを入力してください。");
@@ -54,9 +73,12 @@
 		}else if(user_name == ""){
 			alert("社員名を入力してください。");
 			$("#userName").focus();
+		}else if(user_startDate == ""){
+			alert("入社日を入力してください。");
+			$("#startDate").focus();
 		}
 		return false;
-	});
+	}
 	
 });
  

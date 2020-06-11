@@ -3,7 +3,7 @@
 //return: 함수 실행 시점 년도의 공휴일배열    예)
 	//10월의 둘째주 월요일 계산
 	function getSecondMondayOnOCT(year){	
-		var today = new Date(year+'-10-01').getDay();
+		var today = new Date(year+'/10/01').getDay();
 		if(1-today<0){ return(16-today); }else{ return(9-today); }
 	}
 	
@@ -13,7 +13,7 @@
 		for(var i=0 ; i < holiday.holiday.length ; i++){ 
 					for(var j=0 ; j < holiday.holiday[i].length ; j++){
 				theDate = holiday.holiday[i][j];
-				theDay=new Date(year+"-"+i+"-"+theDate);
+				theDay=new Date(year+"/"+i+"/"+theDate);
 				console.log(theDay);
 				if(theDay.getDay()==0){
 					while(holiday.holiday[i].includes(++theDate)==true){	}
@@ -28,11 +28,11 @@
 //parameter: 년(int 4) ,월(int 1||2)
 //return: 해당월의 일수(int)
 	function getDates(year,month){  
-		var start = new Date(year+"-"+month+"-01");  
+		var start = new Date(year+"/"+month+"/01"); 
 		if(month==12){
-			var end = new Date((Number(start.getFullYear())+1)+"-01-01");
+			var end = new Date((Number(start.getFullYear())+1)+"/01/01");
 		}else{
-			var end = new Date(start.getFullYear()+"-"+(month+1)+"-01");
+			var end = new Date(start.getFullYear()+"/"+(month+1)+"/01");
 		}
 		
 		var dates = (end.getTime() - start.getTime())/1000/60/60/24;  
@@ -45,7 +45,7 @@
 //return: 1일 일요일인 달과, 해당 달의 1일의 요일차(int)
 //일요일:0, 월요일:1, 화요일:2, ... 토요일:6 임. 
 	function getDayDelay(year,month){
-		var firstOfThisMonth = new Date(year+"-"+month+"-01");
+		var firstOfThisMonth = new Date(year+"/"+month+"/01");
 		return (firstOfThisMonth.getDay()-1);
 	}
 	

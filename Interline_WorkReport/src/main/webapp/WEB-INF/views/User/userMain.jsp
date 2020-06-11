@@ -82,9 +82,9 @@
 		$('#button1').css("display","block");
 	}
 	function writeReport(){
-		let today = new Date();   
-		let year = today.getFullYear(); // 년도
-		let month = today.getMonth() + 1;  // 월		
+		var today1 = new Date();   
+		var year = today1.getFullYear(); // 년도
+		var month = today1.getMonth() + 1;  // 월		
 		$('#year').val(year);
 		$('#month').val(month);
 		document.getElementById("form1").submit();
@@ -107,7 +107,7 @@
 					${sessionScope.user_inform.userName}さん
 				</td>
 				<td>
-					<div class="logout"><a class="menu_Btn" href="로드할 페이지 주소를 넣어줘요." target="list_Box">ログアウト</a></div>
+					<div class="logout"><a class="menu_Btn" href="../logout">ログアウト</a></div>
 				</td>
 			</tr>
 			<tr>

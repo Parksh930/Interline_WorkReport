@@ -24,10 +24,10 @@ $(document).ready(function(){
 		}
 		
 		if(id == ""){
-			alert("IDを入力してください。");
+			alert("メールアドレスを入力してください。");
 			$("#login_id").focus();
 		}else if(pw == ""){
-			alert("PWを入力してください。");
+			alert("パスワードを入力してください。");
 			$("#login_pw").focus();
 		}
 		return false;
@@ -96,11 +96,11 @@ padding: 20px 0px 0px 0px;
 </tr>
 <form action="login" method="post" id="login_form">
 <tr>
-<td class="login_td_id">ID</td>
+<td class="login_td_id">メールアドレス</td>
 <td class="login_td_id"><input type="text" id="login_id" name="login_id"></td>
 </tr>
 <tr>
-<td class="login_td_pw">PW</td>
+<td class="login_td_pw">パスワード</td>
 <td class="login_td_pw"><input type="password" id="login_pw" name="login_pw"></td>
 </tr>
 <tr>

@@ -14,13 +14,13 @@
 <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css"/>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
 
-<link rel="stylesheet" href="http://192.168.1.125:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-<script type="text/javascript" src="http://192.168.1.125:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://192.168.1.125:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://192.168.1.124:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
+<script type="text/javascript" src="http://192.168.1.124:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://192.168.1.124:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 <!-- If you want to run the HTML5SVG viewer please change the OZJSViewer.js to OZJSSVGViewer.js.
-<script type="text/javascript" src="http://192.168.1.125:8080/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://192.168.1.124:8080/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 -->
-<script src="http://192.168.1.125:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
+<script src="http://192.168.1.124:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 
 
 <title>Insert title here</title>
@@ -55,10 +55,9 @@
 		
 		console.log(reportYear);
 		console.log(reportMonth);
-		
 		var oz;
 		oz = document.getElementById("OZViewer");
-		oz.sendToActionScript("connection.servlet","http://192.168.1.125:8888/oz80/server");
+		oz.sendToActionScript("connection.servlet","http://192.168.1.124:8888/oz80/server");
 		oz.sendToActionScript("viewer.showpagemargin","false");
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
 		oz.sendToActionScript("connection.reportname","readMyReport.ozr");
@@ -73,7 +72,7 @@
 		oz.sendToActionScript("connection.args5","holiday="+JSON.stringify(holiday));
 		return true;
 	}
-	start_ozjs("OZViewer","http://192.168.1.125:8888/oz80/ozhviewer/", true);
+	start_ozjs("OZViewer","http://192.168.1.124:8888/oz80/ozhviewer/", true);
 		
 </script>
 

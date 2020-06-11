@@ -291,6 +291,35 @@ public class WorkReportController {
 		return "Report/readMyReport";
 	}
 	
+	@RequestMapping(value = "/user/correctMyReport", method = RequestMethod.GET)
+	public String correctMyReport(Model model,HttpSession session , int reportNum) {
+		logger.debug("correctMyReport");
+		UserVO userVO=(UserVO)session.getAttribute("user_inform");
+		WorkReportVO workReport=new WorkReportVO();
+		workReport.setUserNum(userVO.getUserNum());
+		workReport.setReportNum(reportNum);
+		workReport=dao.getMyReport(workReport);
+		
+		//저장내용 JSON스트링파이
+		ObjectMapper objectMapper= new ObjectMapper();
+		String reportJSON="";
+		if (workReport.getUserName()==null||workReport.getUserName().equals("")) {
+			model.addAttribute("reportJSON", "none");
+			return "Report/readMyReport";
+		}
+		try {
+			reportJSON = objectMapper.writeValueAsString(workReport);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("reportJSON", reportJSON);
+		model.addAttribute("month", workReport.getMonth());
+		model.addAttribute("year", workReport.getYear());
+		
+		return "Report/correctMyReport";
+	}
+	
 
 	@RequestMapping(value="/admin/stateUp", method = {RequestMethod.GET,RequestMethod.POST})
 	public String stateUp(WorkReportVO vo,Model model) {
@@ -572,5 +601,9 @@ public class WorkReportController {
 		
 		return returnData;
 	}
-
+	
+	
+	
+	
+	
 }
