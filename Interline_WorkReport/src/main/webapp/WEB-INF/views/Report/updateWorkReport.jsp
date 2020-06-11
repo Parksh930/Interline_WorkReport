@@ -29,7 +29,8 @@
 	src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js"
 	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
-<script src="/report/resources/js/workingChart.js" type="text/javascript"></script> 
+<script src="/report/resources/js/workingChart.js"
+	type="text/javascript"></script>
 
 <title>updateReport</title>
 </head>
@@ -37,7 +38,7 @@
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>
 	<div id="year" style="display: none;">${vo.year}</div>
 	<div id="state" style="display: none;">${vo.state}</div>
-<script>
+	<script>
 		var holiday;
 		holiday = $('#year').html();
 		var array = "array=" + "${vo.reportNum}";
@@ -45,12 +46,11 @@
 		var stateNum;
 		stateNum = $('#state').html();
 
-		
 		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[],[3,23],[]]}; 
 		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]};
 		//getSecondMondayOnOCT(2020);
 		//alternativeHoliday(holiday);
-		
+
 		function SetOZParamters_OZViewer() {
 			var oz;
 			oz = document.getElementById("OZViewer");
@@ -69,22 +69,24 @@
 		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");
 
 		function OZUserEvent_OZViewer(param1, param2, param3) {
-			if(param3=="update"){
+			if (param3 == "update") {
 				//var jsonSet=makeJsonForUpdate(JSON.parse(param1));
 				//$('#updateJsonReport').val(JSON.stringify(jsonSet));
 				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
-				var chartData=JSON.parse(OZViewer.GetInformation("INPUT_JSON_ALL"));
+				var chartData = JSON.parse(OZViewer
+						.GetInformation("INPUT_JSON_ALL"));
 				console.log(chartData);
-				var uConfirm=confirm("修正されますか？");
-				if(uConfirm==true){
-				chartData.state=stateNum;
-				adminUpdateReport(chartData,"adminUpdateReport");
+				var uConfirm = confirm("修正されますか？");
+				if (uConfirm == true) {
+					chartData.state = stateNum;
+					adminUpdateReport(chartData, "adminUpdateReport");
 				}
 			}
-		}
-</script>
 
-<!-- 	<form id="updateReport" action="updateReport">
+		}
+	</script>
+
+	<!-- 	<form id="updateReport" action="updateReport">
 		<input id="updateJsonReport" type="hidden" name="updateJsonReport" value="">
 		<input id="updateJsonContents" type="hidden" name="updateJsonContents" value=""> 
 	</form>-->

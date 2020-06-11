@@ -589,11 +589,11 @@ function changeSelectStateUp(reportNum,state){
 				data: {"reportNum":reportNum,"state":state},
 				success: function(data){
 					alert("承認を正常的に処理しました。");
-					if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+					if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
 						location.reload(true);	
 					}
 
-					/*						if(confirm("承認を正常的に処理しました。提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+					/*						if(confirm("承認を正常的に処理しました。提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
 								location.reload(true);	
 							}
 					 */					
@@ -621,7 +621,7 @@ function changeSelectStateDown(reportNum,state){
 						location.href = "reportList";
 					}
 					else{
-						if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+						if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
 							location.reload(true);	
 						}
 					}
@@ -644,13 +644,13 @@ function changeAllStateUp(reportNum,state){
 				data: {"reportNum":reportNum,"state":state},
 				success: function(data){
 					alert("承認を正常的に処理しました。");
-					if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+					if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
 						location.reload(true);	
 					}
 
 				},
 				error: function(e){
-					alert('取消ができませんでした。もう一度お試し下さい。');
+					alert('承認ができませんでした。もう一度お試し下さい。');
 				}
 			}		
 	);
@@ -673,7 +673,7 @@ function changeAllStateDown(reportNum,state){
 						location.href = "reportList";
 					}
 					else{
-						if(confirm("提出ボタンの変更はリロードしてから変わります。今すぐリロードされますか？")){
+						if(confirm("提出ボタンはリロードしてから変わります。今すぐリロードされますか？")){
 							location.reload(true);	
 						}
 					}						
@@ -755,7 +755,7 @@ function adminUpdateReport(jsonData,address){
 				type: 'POST',
 				data: JSON.parse(JSON.stringify(jsonData)),
 				success: function(data){
-					alert("修正を完了しました。")
+					alert("修正を完了しました。");
 					location.href="getUpdateReport?reportNum="+reportNum;
 				},
 				error: function(e){
@@ -765,5 +765,7 @@ function adminUpdateReport(jsonData,address){
 			}		
 	);
 }
+
+
 
 

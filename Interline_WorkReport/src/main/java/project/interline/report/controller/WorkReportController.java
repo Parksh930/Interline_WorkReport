@@ -254,12 +254,14 @@ public class WorkReportController {
 		
 		
 		int result = dao.updateReport(workReportVO);
+		
 		System.out.println("어드민 업데이트result: "+result); // 0 이 성공
-
+		System.out.println("update after  VO : "+workReportVO);
 		
 		
 		return "success";
 	}
+	
 	
 	@RequestMapping(value="/user/myReport", method = RequestMethod.GET)
 	public String myReport(Model model, HttpSession session ,int reportNum) {

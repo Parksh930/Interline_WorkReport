@@ -511,7 +511,7 @@ $(function(){
 
   	
   		var arr = arrNumber.substr(0, arrNumber.length -1);
-  	  	 alert(arr);
+  	  //	 alert(arr);
   		
   	   	location.href = "../admin/getReadReport2?arrNumber="+arr;
   };
