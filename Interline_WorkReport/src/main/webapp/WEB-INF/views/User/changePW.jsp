@@ -60,6 +60,7 @@ cursor: pointer;
 
 </style>
 <body>
+<img src="/report/resources/image/interline1.png" style="width: 50%;">
 <h1>パスワード変更</h1>
 
 <div id = "profileUd" style="font-size: 30px;">

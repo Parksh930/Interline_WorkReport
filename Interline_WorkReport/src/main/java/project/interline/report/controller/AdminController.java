@@ -23,7 +23,6 @@ public class AdminController {
 	
 	SimpleDateFormat old_pattern = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	SimpleDateFormat new_pattern = new SimpleDateFormat("yyyy.MM.dd");
-	SimpleDateFormat report_pattern = new SimpleDateFormat("yyyy年MM月");
 	
 	@Autowired
 	AdminDAO dao;
@@ -53,7 +52,7 @@ public class AdminController {
 			
 			if(list.get(n).getLastreportDate() != null) {
 				Date report_Date = old_pattern.parse(list.get(n).getLastreportDate());
-				list.get(n).setLastreportDate(report_pattern.format(report_Date ));
+				list.get(n).setLastreportDate(new_pattern.format(report_Date ));
 			}
 			
 			if(list.get(n).getLastupdateDate() != null) {
@@ -77,7 +76,7 @@ public class AdminController {
 			
 			if(list.get(n).getLastreportDate() != null) {
 				Date report_Date = old_pattern.parse(list.get(n).getLastreportDate());
-				list.get(n).setLastreportDate(report_pattern.format(report_Date ));
+				list.get(n).setLastreportDate(new_pattern.format(report_Date ));
 			}
 			
 			if(list.get(n).getLastupdateDate() != null) {
@@ -85,6 +84,7 @@ public class AdminController {
 				list.get(n).setLastupdateDate(new_pattern.format(report_update_Date ));
 			}
 		}
+		
 		
 		return list;
 	}

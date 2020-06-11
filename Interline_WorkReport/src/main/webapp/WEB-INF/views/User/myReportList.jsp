@@ -107,6 +107,7 @@ text-decoration: none;
 <!-- ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] -->
 <!-- {'0':'aa','1':'bb'} -->
 <body>
+<img src="/report/resources/image/interline1.png" style="width: 50%;">
 <script>
 	console.log("ttttt");
 </script>

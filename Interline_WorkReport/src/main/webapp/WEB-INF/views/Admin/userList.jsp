@@ -30,18 +30,47 @@ $(function(){
 		if($(this)[0].id == "Userlist_sort"){
 			user_Measure = ($(this).val()).split('_');
 		}
+
 		
 		if(user_Measure[0] == "userNum" && user_Measure[1] == "ascending"){
-			user_sort.sort(function(a,b){return a[user_Measure[0]] - b[user_Measure[0]]});
+			user_sort.sort(function(a,b){
+				return a[user_Measure[0]] - b[user_Measure[0]];
+			});
 		}else if(user_Measure[0] == "userNum" && user_Measure[1] == "descending"){
-			user_sort.sort(function(a,b){return b[user_Measure[0]] - a[user_Measure[0]]});
+			user_sort.sort(function(a,b){
+				return b[user_Measure[0]] - a[user_Measure[0]];
+			});
 		}
 
+		
 		if(user_Measure[0] != "userNum" && user_Measure[1] == "ascending"){
-			user_sort.sort(function(a,b){return a[user_Measure[0]] < b[user_Measure[0]] ? -1 : a[user_Measure[0]] > b[user_Measure[0]] ? 1 : 0})
+			user_sort.sort(function(a,b){
+				return a[user_Measure[0]] < b[user_Measure[0]] ? -1 : a[user_Measure[0]] > b[user_Measure[0]] ? 1 : 0;
+			});
 		}else if(user_Measure[0] != "userNum" && user_Measure[1] == "descending"){
-			user_sort.sort(function(a, b) {return a[user_Measure[0]] > b[user_Measure[0]] ? -1 : a[user_Measure[0]] < b[user_Measure[0]] ? 1 : 0;});
-		} 
+			user_sort.sort(function(a, b) {
+				return a[user_Measure[0]] > b[user_Measure[0]] ? -1 : a[user_Measure[0]] < b[user_Measure[0]] ? 1 : 0;
+			});
+		}
+		
+
+		if(user_Measure[0].indexOf("Date") > -1 && user_Measure[1] == "ascending"){
+			user_sort.sort(function(a,b){
+
+				var dateA = new Date(a[user_Measure[0]]).getTime();
+				var dateB = new Date(b[user_Measure[0]]).getTime();
+
+				return dateA > dateB ? 1 : -1;
+			});
+		}else if(user_Measure[0].indexOf("Date") > -1  && user_Measure[1] == "descending"){
+			user_sort.sort(function(a,b){
+
+				var dateA = new Date(a[user_Measure[0]]).getTime();
+				var dateB = new Date(b[user_Measure[0]]).getTime();
+				
+				return dateA < dateB ? 1 : -1;
+			});
+		}
 		
 		user_sort.forEach(function(item){
 				con +='<tr><td class="Userlist_userNum">'+item.userNum+'</td>';
@@ -57,10 +86,11 @@ $(function(){
 					con +='<td class="Userlist_lastupdateDate"></td>'
 					}
 				if(item.lastreportDate != null){
-					con +='<td class="Userlist_lastreportDate">'+item.lastreportDate+'</td>';
+					console.log(item.lastreportDate);
+					con +='<td class="Userlist_lastreportDate">'+item.lastreportDate.substring(0,4)+"年"+item.lastreportDate.substring(5,7)+"月"+'</td>';
 				}else {
 					con +='<td class="Userlist_lastreportDate"></td>'
-					}
+				}
 
 				con +='<td class="Userlist_retirement">'+item.retirement+'</td>';
 				con +='<td class="Userlist_updateBtn"><a class="Update_Btn" href="userUpdate?Num='+item.userNum+'">修正</a></td>';

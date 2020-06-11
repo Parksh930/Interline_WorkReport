@@ -210,7 +210,6 @@ $(function(){
 		if(key.keyCode == 13){
 			report_result_Filter("report_userName",$(this)[0].value);
 
-
 			$("#report_userNum").val("");
 			$("#report_userName").val("");
 		}
@@ -223,6 +222,22 @@ $(function(){
 		if($(this)[0].id == "Reportlist_sort"){
 			report_Measure = ($(this).val()).split('_');
 		}
+		
+        if(report_Measure[0] == "updateDate" &&  report_Measure[1] == "ascending"){
+            report_sort.sort(function(a,b){
+                var dateA = new Date(a[report_Measure[0]]).getTime();
+                var dateB = new Date(b[report_Measure[0]]).getTime();
+
+                return dateA > dateB ? 1 : -1;
+            });
+        }else if (report_Measure[0] == "updateDate" && report_Measure[1] == "descending"){
+            report_sort.sort(function(a,b){
+                var dateA = new Date(a[report_Measure[0]]).getTime();
+                var dateB = new Date(b[report_Measure[0]]).getTime();
+
+                return dateA < dateB ? 1 : -1;
+            });
+        }
 
 		if(report_Measure[0] == "reportDays" && report_Measure[1] == "ascending"){
 			report_sort.sort(function(a,b){
@@ -246,11 +261,14 @@ $(function(){
 			report_sort.sort(function(a,b){return b[report_Measure[0]] - a[report_Measure[0]]});
 		}
 
-		if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "ascending"){
-			report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
-		}else if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[1] == "descending"){
-			report_sort.sort(function(a, b) {return a[report_Measure[0]] > b[report_Measure[0]] ? -1 : a[report_Measure[0]] < b[report_Measure[0]] ? 1 : 0;});
-		} 
+        if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[0] != "updateDate"){
+            if(report_Measure[1] == "ascending"){
+                report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
+            }else if(report_Measure[1] == "descending"){
+                report_sort.sort(function(a, b) {return a[report_Measure[0]] > b[report_Measure[0]] ? -1 : a[report_Measure[0]] < b[report_Measure[0]] ? 1 : 0;});
+            }
+        }
+
 	
 		report_sort.forEach(function(report){
 			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check" value='+report.reportNum+'></td>';
