@@ -79,8 +79,6 @@
 				} else if (chartData.state == 3) {
 					var sConfirm = confirm("勤務表の修正許可要請を承認されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
 						location.href = "../admin/readStateUp?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -88,8 +86,6 @@
 				} else if (chartData.state == 4) {
 					var sConfirm = confirm("勤務表の修正許可要請を承認されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
 						location.href = "../admin/readStateUp?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -102,9 +98,6 @@
 				if (chartData.state == 1) {
 					var sConfirm = confirm("提出された勤務表を取消されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
-						console.log(chartData);
 						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -112,9 +105,6 @@
 				} else if (chartData.state == 2) {
 					var sConfirm = confirm("すでに承認された勤務表を取消されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
-						console.log(chartData);
 						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -122,9 +112,6 @@
 				} else if (chartData.state == 3) {
 					var sConfirm = confirm("勤務表の修正許可要請を取消されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
-						console.log(chartData);
 						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -132,9 +119,6 @@
 				} else if (chartData.state == 4) {
 					var sConfirm = confirm("勤務表の修正許可要請を取消されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
-						console.log(chartData);
 						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -142,9 +126,6 @@
 				} else if (chartData.state == 5) {
 					var sConfirm = confirm("すでに修正許可された勤務表の修正許可を取消されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
-						console.log(chartData);
 						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
@@ -153,9 +134,6 @@
 				} else if (chartData.state == 6) {
 					var sConfirm = confirm("すでに修正許可された勤務表の修正許可を取消されますか？");
 					if (sConfirm == true) {
-						var chartData = JSON.parse(OZViewer
-								.GetInformation("INPUT_JSON_ALL"));
-						console.log(chartData);
 						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
