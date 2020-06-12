@@ -12,11 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.interline.report.dao.UserDAO;
 import project.interline.report.util.PageNavigator;
 import project.interline.report.vo.ReportListVO;
 import project.interline.report.vo.UserVO;
+import project.interline.report.vo.WorkReportVO;
 
 
 @Controller
@@ -79,4 +81,22 @@ private static final int pagePerGroup=10;
 		return "User/changePW";
 	}
 	
+	
+	@ResponseBody
+	@RequestMapping(value = "/user/confirmChange", method = RequestMethod.POST)
+	public String confirmChange(Model model, HttpSession session, int reportNum, int originalState) {
+		UserVO userVO=(UserVO)session.getAttribute("user_inform");
+		System.out.println(userVO.getUserNum()+"이(가) 문서상태 "+originalState +"에서 수정요청.");
+		WorkReportVO workReport=new WorkReportVO();
+		workReport.setReportNum(reportNum);
+		
+		workReport.setUserNum(userVO.getUserNum());
+		if (originalState==1) {
+			workReport.setState(3);
+		}else {
+			workReport.setState(4);
+		}
+		dao.confirmChange(workReport);
+		return "";
+	}
 }

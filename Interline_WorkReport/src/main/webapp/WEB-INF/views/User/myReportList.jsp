@@ -24,12 +24,23 @@ function formSubmit(page){
 
 
 
-function confirmChange() {
-    if (confirm("修正依頼をしますか。\n修正依頼をした後に管理部に連絡して下さい。") == true) {
-    
-        return true;
-    } else {
-        return false;
+function confirmChange(reportNum,originalState) {
+	console.log(window.location.href);
+    if (confirm("修正依頼をしますか。\n修正依頼をした後に管理部に連絡して下さい。")) {
+    	$.ajax(
+				{
+					url: 'confirmChange',
+					type: 'POST',
+					data: {"reportNum":reportNum,"originalState":originalState},
+					success: function(s){
+							console.log('수정의뢰 완료');
+						},
+					error: function(e){
+							console.log(JSON.stringify(e));
+							alert('失敗 管理者にお問い合わせてください');
+						}
+				}		
+			);
     }
 }
 
@@ -151,7 +162,7 @@ font-size: 60px;
 				<a id="readReport${status.count}" class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a>
 			</td>
 			<td id="request${status.count}" class="Reportlist_request" > 
-				<a class="rr_Btn"  onclick="return confirmChange()">修正依頼</a>
+				<a class="rr_Btn"  onclick="return confirmChange(${work_report.reportNum},${work_report.state})">修正依頼</a>
 			</td>
 		</tr>
 	</c:forEach>
@@ -177,12 +188,13 @@ font-size: 60px;
 	
 	for(var i=1 ; i<=10; i++){
 		var reportNum="0";
-		if($('#state'+i).html()=="修正許可"){
+		var stateHtml=$('#state'+i).html();
+		if(stateHtml=="修正許可"){
 			reportNum=$('#readReport'+i).attr('href').split("=")[1];
-			$('#state'+i).html("<a class='state_Btn' href='correctMyReport?reportNum="+reportNum+"' target='_blank'>修正許可</a>");
+			$('#state'+i).html("<a class='state_Btn' href='correctMyReport?reportNum="+reportNum+"' target='_parent'>修正許可</a>");
 			$('#request'+i).html("");
 		}
-		if($('#state'+i).html()=="保存"){
+		if(stateHtml=="保存"|| stateHtml=="修正依頼"){
 			$('#request'+i).html("");
 		}
 	}
