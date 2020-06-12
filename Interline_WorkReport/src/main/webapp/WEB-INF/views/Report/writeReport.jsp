@@ -54,7 +54,7 @@
 		location.href="userMain";
 	}
 	console.log(reportJSON);
-	var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
+	var holiday={"holiday":[[],[1,13],[11,23],[],[29],[3,4,5],[],[getThirdMondayOnJLY(reportYear)],[11],[getThirdMondayOnSEP(reportYear)],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
 	alternativeHoliday(reportYear);
 	console.log(JSON.stringify(holiday));
 </script>
@@ -114,6 +114,9 @@
 		
 		console.log(reportYear);
 		console.log(reportMonth);
+
+		console.log("getDates:"+getDates(reportYear,reportMonth));
+		console.log("getDayDelay:"+getDayDelay(reportYear,reportMonth));
 		
 		var oz;
 		oz = document.getElementById("OZViewer");
@@ -128,7 +131,7 @@
 		oz.sendToActionScript("connection.args1","year="+reportYear);	
 		oz.sendToActionScript("connection.args2","month="+reportMonth);	
 		oz.sendToActionScript("connection.args3","row="+getDates(reportYear,reportMonth));	
-		oz.sendToActionScript("connection.args4","daDelay="+getDayDelay(reportYear,reportMonth)); 
+		oz.sendToActionScript("connection.args4","dayDelay="+getDayDelay(reportYear,reportMonth)); 
 		oz.sendToActionScript("connection.args5","holiday="+JSON.stringify(holiday));
 		return true;
 	}

@@ -2,9 +2,23 @@
 //parameter: 없음
 //return: 함수 실행 시점 년도의 공휴일배열    예)
 	//10월의 둘째주 월요일 계산
+	function getThirdMondayOnJLY(year){	
+		var today = new Date(year+'/07/01').getDay();
+		console.log("year:"+year);
+		console.log("1일의 요일:"+today);
+		if(1-today<0){ return(23-today); }else{ return(16-today); }
+	}
+
 	function getSecondMondayOnOCT(year){	
 		var today = new Date(year+'/10/01').getDay();
 		if(1-today<0){ return(16-today); }else{ return(9-today); }
+	}
+	
+	function getThirdMondayOnSEP(year){	
+		var today = new Date(year+'/09/01').getDay();
+		console.log("year:"+year);
+		console.log("1일의 요일:"+today);
+		if(1-today<0){ return(23-today); }else{ return(16-today); }
 	}
 	
 	
@@ -42,10 +56,11 @@
 
 //해당 월의 dayDelay를 구하는 함수      ****** (해당일+dayDelay)%7을하면 그날의 요일이나옴.
 //parameter: 년(int 4) ,월(int 1||2)
-//return: 1일 일요일인 달과, 해당 달의 1일의 요일차(int)
+//return: 1일 일요일인 기준으로, 해당 달의 1일의 요일차(int)
 //일요일:0, 월요일:1, 화요일:2, ... 토요일:6 임. 
 	function getDayDelay(year,month){
 		var firstOfThisMonth = new Date(year+"/"+month+"/01");
+		console.log("firstOfThisMonth:"+firstOfThisMonth.getDay());
 		return (firstOfThisMonth.getDay()-1);
 	}
 	
