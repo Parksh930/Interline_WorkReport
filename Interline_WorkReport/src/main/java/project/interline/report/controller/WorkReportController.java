@@ -381,8 +381,8 @@ public class WorkReportController {
 		return "redirect:/admin/reportList";
 	}
 	
-	@RequestMapping(value = "/admin/ReadStateUp", method = {RequestMethod.GET,RequestMethod.POST})
-	public String ReadStateUp(
+	@RequestMapping(value = "/admin/readStateUp", method = {RequestMethod.GET,RequestMethod.POST})
+	public String readStateUp(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
 		System.out.println(" ReadStateUp  먼저 "+vo);
@@ -412,8 +412,8 @@ public class WorkReportController {
 		return "redirect:/admin/getReadReport?reportNum="+vo.getReportNum();
 	}
 	
-	@RequestMapping(value = "/admin/ReadStateDown", method = {RequestMethod.GET,RequestMethod.POST})
-	public String ReadStateDown(
+	@RequestMapping(value = "/admin/readStateDown", method = {RequestMethod.GET,RequestMethod.POST})
+	public String readStateDown(
 			Model model, HttpSession session,WorkReportVO vo) {
 		
 		int stateNum;

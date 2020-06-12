@@ -32,7 +32,7 @@
 <script src="/report/resources/js/workingChart.js"
 	type="text/javascript"></script>
 
-<title>ReadReport</title>
+<title>SelectReadReport</title>
 </head>
 <body style="width: 98%; height: 98%">
 	<div id="OZViewer" style="width: 98%; height: 98%"></div>

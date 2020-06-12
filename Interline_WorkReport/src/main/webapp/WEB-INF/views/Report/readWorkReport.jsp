@@ -72,7 +72,7 @@
 				if (chartData.state == 1) {
 					var sConfirm = confirm("提出された勤務表を承認されますか？");
 					if (sConfirm == true) {
-						location.href = "../admin/ReadStateUp?reportNum="
+						location.href = "../admin/readStateUp?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -81,7 +81,7 @@
 					if (sConfirm == true) {
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
-						location.href = "../admin/ReadStateUp?reportNum="
+						location.href = "../admin/readStateUp?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -90,7 +90,7 @@
 					if (sConfirm == true) {
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
-						location.href = "../admin/ReadStateUp?reportNum="
+						location.href = "../admin/readStateUp?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -105,7 +105,7 @@
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
 						console.log(chartData);
-						location.href = "../admin/ReadStateDown?reportNum="
+						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -115,7 +115,7 @@
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
 						console.log(chartData);
-						location.href = "../admin/ReadStateDown?reportNum="
+						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -125,7 +125,7 @@
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
 						console.log(chartData);
-						location.href = "../admin/ReadStateDown?reportNum="
+						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -135,7 +135,7 @@
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
 						console.log(chartData);
-						location.href = "../admin/ReadStateDown?reportNum="
+						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -145,7 +145,7 @@
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
 						console.log(chartData);
-						location.href = "../admin/ReadStateDown?reportNum="
+						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
@@ -156,7 +156,7 @@
 						var chartData = JSON.parse(OZViewer
 								.GetInformation("INPUT_JSON_ALL"));
 						console.log(chartData);
-						location.href = "../admin/ReadStateDown?reportNum="
+						location.href = "../admin/readStateDown?reportNum="
 								+ chartData.reportNum + "&state="
 								+ chartData.state;
 					}
