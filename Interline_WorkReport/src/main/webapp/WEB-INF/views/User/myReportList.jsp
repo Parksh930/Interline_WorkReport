@@ -42,11 +42,11 @@ body{
 text-align:center;
 }
 
-#report_List{
-margin: 50px auto;
-width: fit-content;
-}
 
+#report_List{
+	text-align: center;
+	margin: auto;
+}
 #navigator{
 text-align: center;
 margin: 20px 0px 0px 0px;
@@ -54,6 +54,8 @@ margin: 20px 0px 0px 0px;
 
 table {
   border-collapse: collapse;
+  text-align: center;
+	margin: auto;
 }
 
 tr{
@@ -62,26 +64,47 @@ height: 45px;
 
 th,td{
 border: 1px solid black;
+text-align: center;
+margin: auto;
+font-size: 60px;
+
+height: 80px;
 }
 
-
-.Reportlist_Days{
-width: 150px;
+td.Reportlist_Days{
 }
-
-.Reportlist_reportNum{
+td.Reportlist_state{
+}
+td.Reportlist_reportNum{
 border-style: none;
-width:50px;
 }
+td.Reportlist_request{
+border-style: none;
+}
+
 
 .Read_Btn{
 border: solid 2px rgb(0, 112, 192);
-border-radius: 9px;
+border-radius:9px; 
 padding: 5px 5px 5px 5px;
+margin:2px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
 text-decoration: none;
+
+}
+
+.state_Btn{
+border: solid 2px rgb(0, 112, 192);
+border-radius:9px; 
+padding: 5px 5px 5px 5px;
+margin:2px;
+background-color: rgb(0, 112, 192);
+color: white;
+cursor: pointer;
+text-decoration: none;
+
 }
 
 
@@ -94,13 +117,12 @@ background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
 text-decoration: none;
-width: 150%;
-height: 30%;
-display:block;
+
 }
 
 a{
 text-decoration: none;
+font-size: 60px;
 }
 </style>
 
@@ -108,29 +130,30 @@ text-decoration: none;
 <!-- {'0':'aa','1':'bb'} -->
 <body>
 <img src="/report/resources/image/interline1.png" style="width: 50%;">
-<script>
-	console.log("ttttt");
-</script>
 
-<h1>過去の勤務票閲覧</h1>
+<br></br>
+<div id="title" style="font-size: 90px; text-align: center;">過去の勤務票閲覧</div>
+<br></br>
+
 
 <div id="report_List">
 <table>
 	<tr>
-	<td class="Reportlist_Days">提出日</td>
-	<td class="Reportlist_Days">状態</td>
+		<td class="Reportlist_Days">提出日</td>
+		<td class="Reportlist_state">状態</td>
 	</tr>
 	<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
 	<c:forEach var = "work_report" items="${report_my}" varStatus="status">
-	<tr>
-	<td id="yearMonth${status.count}" class="Reportlist_Days">${work_report.year}年${work_report.month}</td>
-	<td id="state${status.count}" class="Reportlist_Days">${stateVal[work_report.state]}</td>
-	<td class="Reportlist_reportNum">
-		<a id="readReport${status.count}" class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a>
-	</td>
-	<td class="Reportlist_reportNum" > <a class="rr_Btn"  onclick="return confirmChange()">修正依頼</a>
-	</td>
-	</tr>
+		<tr>
+			<td id="yearMonth${status.count}" class="Reportlist_Days">&nbsp;${work_report.year}-${work_report.month}&nbsp;</td>
+			<td id="state${status.count}" class="Reportlist_Days">${stateVal[work_report.state]}</td>
+			<td class="Reportlist_reportNum">
+				<a id="readReport${status.count}" class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a>
+			</td>
+			<td id="request${status.count}" class="Reportlist_request" > 
+				<a class="rr_Btn"  onclick="return confirmChange()">修正依頼</a>
+			</td>
+		</tr>
 	</c:forEach>
 </table>
 </div>
@@ -156,10 +179,30 @@ text-decoration: none;
 		var reportNum="0";
 		if($('#state'+i).html()=="修正許可"){
 			reportNum=$('#readReport'+i).attr('href').split("=")[1];
-			$('#state'+i).html("<a class='Read_Btn' href='correctMyReport?reportNum="+reportNum+"' target='_blank'>修正許可</a>")
+			$('#state'+i).html("<a class='state_Btn' href='correctMyReport?reportNum="+reportNum+"' target='_blank'>修正許可</a>");
+			$('#request'+i).html("");
+		}
+		if($('#state'+i).html()=="保存"){
+			$('#request'+i).html("");
 		}
 	}
 </script>
+<script type="text/javascript">
+	var filter = "win16|win32|win64|mac|macintel"; 
+	if ( navigator.platform ) { 
+		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+			//alert('mobile 접속'); 
+		} else { 
+			console.log("pc접속")
+			$('#title').css('font-size', '60px');
+			$('td').css('font-size', '20px');
+			$('td').css('height', '35px');
+			$('a').css('font-size', '20px');
+			
+		} 
+	}	
+</script>
+
 
 </body>
 </html>
