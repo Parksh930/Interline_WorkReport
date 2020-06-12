@@ -162,7 +162,6 @@
 	
 	
 	function closePage(){
-		console.log("aaa");
 		self.close();
 	}
 	

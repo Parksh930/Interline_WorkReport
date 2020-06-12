@@ -42,4 +42,9 @@ select * from work_Report where UserNum = #{userNum} and UserName = #{userName} 
 		password = #{password}
 	where userNum = #{userNum}
 </update>
+<update id="confirmChange" parameterType="WorkReportVO">
+	update work_Report set
+		state = #{state}
+	where reportNum=#{reportNum} and userNum = #{userNum}
+</update>
 </mapper>

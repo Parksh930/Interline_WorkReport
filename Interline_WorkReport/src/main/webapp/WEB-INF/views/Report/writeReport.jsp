@@ -174,7 +174,7 @@
 		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
 			//alert('mobile 접속'); 
 		} else { 
-			console.log("pc접속")
+			console.log("pc접속");
 			$('.summary').css('font-size', '15px');
 			$('#OZViewer').css('width', '30%');
 			

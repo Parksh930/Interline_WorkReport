@@ -11,31 +11,28 @@
 <script>
  $(function(){
 	 var date = new Date();
+	 var thisYear = date.getFullYear();
 
-	 setDate();
+	 $('#startDate').val(date.toISOString().substring(0, 10));
+	 $('#startDate').attr("max",thisYear+1+"-12-31");
+
+		
 	 $("#insert_User_btn").click(userInform_check);
+	 $("#startDate").keydown(function(key){
+		 if(key.keyCode==8	|| key.keyCode==46){
+			 return false;
+		 }
+	 });
 
-
-	 function setDate(){
-		 
-		$('#startDate').val(date.toISOString().substring(0, 10));
-		$('#startDate').attr("max",date.getFullYear()+1+"-12-31");
-	}
 	 
 	function userInform_check(){
-
-		var thisYear = date.getFullYear();
 		
 		var user_num = $("#userNum").val();
 		var user_mail = $("#userMail").val();
 		var user_pw = $("#password").val();
 		var user_name = $("#userName").val();
-		var user_startDate = ($("#startDate").val()).split("-");
-
-		if(user_startDate[0] > thisYear+1){
-			$("#startDate").val(thisYear+"-"+user_startDate[1]+"-"+user_startDate[2]);
-		}
-	
+		var user_startDate = $("#startDate").val();
+		
  		if(user_num !="" && user_mail != ""&& user_pw != ""&& user_name != "" && user_startDate != ""){
 
  			$.ajax({
@@ -54,8 +51,7 @@
 						$("#userMail").focus();	
 																				
 					}else if(confirm("登録しましか？")){
-						alert("社員の情報が登録されました。");
-							$('#userRegister_Form').submit();			
+						$('#userRegister_Form').submit();			
 					} 
 				}
 			}); 
@@ -170,7 +166,7 @@ height: 18px;
 </tr>
 <tr>
 <td><label for="startDate">入社日</label></td>
-<td style="text-align: left;"><input type="date"  id="startDate" name="startDate"></td>
+<td style="text-align: left;"><input type="date"  id="startDate" name="startDate" onkeypress="return false"></td>
 </tr>
 <tr>
 <td><label for="authority">権限</label></td>

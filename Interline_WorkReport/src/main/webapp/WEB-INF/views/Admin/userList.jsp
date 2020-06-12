@@ -86,7 +86,6 @@ $(function(){
 					con +='<td class="Userlist_lastupdateDate"></td>'
 					}
 				if(item.lastreportDate != null){
-					console.log(item.lastreportDate);
 					con +='<td class="Userlist_lastreportDate">'+item.lastreportDate.substring(0,4)+"年"+item.lastreportDate.substring(5,7)+"月"+'</td>';
 				}else {
 					con +='<td class="Userlist_lastreportDate"></td>'

@@ -143,8 +143,8 @@ public class WorkReportController {
 			System.out.println("reportNum="+reportNum.get(0));
 			int state = dao.checkState(reportNum.get(0));
 			System.out.println("state="+state);
-			if (state != 0) {
-				System.out.println("aleady submitted");
+			if (state != 0 && state != 5 && state != 6) {
+				System.out.println("aleady submitted:state("+state+")");
 				return 3; //aleady submitted!
 			}
 			workReportVO.setReportNum(reportNum.get(0));
@@ -153,7 +153,6 @@ public class WorkReportController {
 			if (workReportVO.getState()==1) { 
 				dao.lastUpdateDate(workReportVO.getUserNum());
 			}
-			
 			
 			return result;
 		}
@@ -299,7 +298,7 @@ public class WorkReportController {
 		workReport.setUserNum(userVO.getUserNum());
 		workReport.setReportNum(reportNum);
 		workReport=dao.getMyReport(workReport);
-		
+		System.out.println("userNum="+workReport.getUserNum());
 		//저장내용 JSON스트링파이
 		ObjectMapper objectMapper= new ObjectMapper();
 		String reportJSON="";
@@ -316,6 +315,8 @@ public class WorkReportController {
 		model.addAttribute("reportJSON", reportJSON);
 		model.addAttribute("month", workReport.getMonth());
 		model.addAttribute("year", workReport.getYear());
+		model.addAttribute("userNum", workReport.getUserNum());
+		
 		
 		return "Report/correctMyReport";
 	}

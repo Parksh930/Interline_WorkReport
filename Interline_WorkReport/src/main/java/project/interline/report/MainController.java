@@ -29,7 +29,9 @@ public class MainController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String loginForm() {
+	public String loginForm(HttpSession session) {
+		session.removeAttribute("login_id");
+		session.invalidate();
 		
 		return "login";
 	}

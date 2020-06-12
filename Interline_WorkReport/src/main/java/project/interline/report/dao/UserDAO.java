@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import project.interline.report.vo.ReportListVO;
 import project.interline.report.vo.UserVO;
+import project.interline.report.vo.WorkReportVO;
 
 @Repository
 public class UserDAO {
@@ -54,6 +55,11 @@ public class UserDAO {
 	public int changePW(UserVO userVO) {
 		UserMapper mapper = session.getMapper(UserMapper.class);
 		return mapper.changePW(userVO);
+	}
+
+	public int confirmChange(WorkReportVO workReport) {
+		UserMapper mapper = session.getMapper(UserMapper.class);
+		return mapper.confirmChange(workReport);
 	}
 	
 	

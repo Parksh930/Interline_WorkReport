@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.RowBounds;
 
 import project.interline.report.vo.UserVO;
+import project.interline.report.vo.WorkReportVO;
 import project.interline.report.vo.ReportListVO;
 
 public interface UserMapper {
@@ -16,6 +17,7 @@ public interface UserMapper {
 	ReportListVO readReportList(ReportListVO report);
 	int getAll(int user_num);
 	int changePW(UserVO userVO);
+	int confirmChange(WorkReportVO workReport);
 	
 
 }
