@@ -34,6 +34,7 @@ function confirmChange(reportNum,originalState) {
 					data: {"reportNum":reportNum,"originalState":originalState},
 					success: function(s){
 							console.log('수정의뢰 완료');
+							location.reload();
 						},
 					error: function(e){
 							console.log(JSON.stringify(e));
@@ -140,7 +141,7 @@ font-size: 60px;
 <!-- ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] -->
 <!-- {'0':'aa','1':'bb'} -->
 <body>
-<img src="/report/resources/image/interline1.png" style="width: 50%;">
+<img src="../resources/image/interline1.png" style="width: 50%;">
 
 <br></br>
 <div id="title" style="font-size: 90px; text-align: center;">過去の勤務票閲覧</div>

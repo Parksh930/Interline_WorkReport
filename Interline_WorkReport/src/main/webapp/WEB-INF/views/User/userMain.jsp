@@ -95,9 +95,9 @@
 
 
 <div id="bodyDiv" style="width:100%;height:100%;overflow:hidden;">
-	<img id="button1" src="/report/resources/image/menuButton.png" style="position: absolute;left: 0;top: 0; z-index: 1000;">
+	<img id="button1" src="../resources/image/menuButton.png" style="position: absolute;left: 0;top: 0; z-index: 1000;">
 	<div id="menuBar" style="width: 70%; z-index: 1000; position: absolute; top:0; left:0; z-index: 1000;">
-		<img src="/report/resources/image/interline.jpg" style="width: 100%;">
+		<img src="../resources/image/interline.jpg" style="width: 100%;">
 		<table style="width: 100%; border-bottom: thin; border-bottom-style: solid; border-bottom-color: rgb(200,200,200);">
 			<tr>
 				<td colspan="2" style="font-size: 5px;"><br></br></td>
