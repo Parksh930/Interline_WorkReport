@@ -15,7 +15,7 @@ public class getProperties {
 	
 	
 	public getProperties() {
-		ClassPathResource resource = new ClassPathResource("db2.properties");
+		ClassPathResource resource = new ClassPathResource("user.properties");
 		
 		
 		Properties properties = new Properties();
