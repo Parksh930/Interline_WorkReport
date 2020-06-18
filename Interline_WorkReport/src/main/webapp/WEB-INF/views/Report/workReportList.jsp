@@ -246,14 +246,14 @@ $(function(){
                 var dateA = new Date(a[report_Measure[0]]).getTime();
                 var dateB = new Date(b[report_Measure[0]]).getTime();
 
-                return dateA > dateB ? 1 : -1;
+                return dateA > dateB ? 1 : dateA < dateB ? -1 : 0;
             });
         }else if (report_Measure[0] == "updateDate" && report_Measure[1] == "descending"){
             report_sort.sort(function(a,b){
                 var dateA = new Date(a[report_Measure[0]]).getTime();
                 var dateB = new Date(b[report_Measure[0]]).getTime();
 
-                return dateA < dateB ? 1 : -1;
+                return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
             });
         }
 
@@ -280,6 +280,7 @@ $(function(){
 		}
 
         if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[0] != "updateDate"){
+
             if(report_Measure[1] == "ascending"){
                 report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
             }else if(report_Measure[1] == "descending"){
@@ -287,6 +288,7 @@ $(function(){
             }
         }
 
+       
 	
 		report_sort.forEach(function(report){
 		if(report.state>0  && report.state<5){
