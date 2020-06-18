@@ -271,6 +271,8 @@ $(function(){
 
 	
 		report_sort.forEach(function(report){
+		if(report.state>0  && report.state<5){
+
 			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check" value='+report.reportNum+'></td>';
 			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
 			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
@@ -281,6 +283,8 @@ $(function(){
 			report_com += '<td class="Reportlist_reportBtn"><button id="ReadReport_Btn" class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
 		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="deleteReport('+report.reportNum+')">削除</button>';
+
+		}
 		if(report.state==1){
 			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
 			}
@@ -296,10 +300,13 @@ $(function(){
 	
 		report_com +='</tr>';
 		});
+
+		
 		
 		report_com += "</table>";
 		 $("#report_List").html(report_com); 
 
+		
 
          if($('#list_Box',parent.document)[0] != null){
              $('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
