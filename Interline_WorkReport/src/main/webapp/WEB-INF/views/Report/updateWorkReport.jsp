@@ -1,7 +1,9 @@
+<%@page import="project.interline.report.util.getProperties"%>
+<%@page import="java.util.Properties"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<% getProperties properties= new getProperties(); %>
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -14,22 +16,22 @@
 <meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge" />
 <script src="../resources/js/updateReport.js"></script>
 <script
-	src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
+	src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet"
-	href="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.css"
+	href="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery-ui.css"
 	type="text/css" />
-<script src="http://192.168.1.34:8888/oz80/ozhviewer/jquery-ui.min.js"></script>
+<script src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery-ui.min.js"></script>
 <link rel="stylesheet"
-	href="http://192.168.1.34:8888/oz80/ozhviewer/ui.dynatree.css"
+	href="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/ui.dynatree.css"
 	type="text/css" />
 <script type="text/javascript"
-	src="http://192.168.1.34:8888/oz80/ozhviewer/jquery.dynatree.js"
+	src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery.dynatree.js"
 	charset="utf-8"></script>
 <script type="text/javascript"
-	src="http://192.168.1.34:8888/oz80/ozhviewer/OZJSViewer.js"
+	src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/OZJSViewer.js"
 	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
-<script src="/report/resources/js/workingChart.js"
+<script src="../resources/js/workingChart.js"
 	type="text/javascript"></script>
 
 <title>updateReport</title>
@@ -51,7 +53,7 @@
 			var oz;
 			oz = document.getElementById("OZViewer");
 			oz.sendToActionScript("connection.servlet",
-					"http://192.168.1.34:8888/oz80/server");
+					"http://<%out.print(properties.getIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
 					"OSA/workReport2.ozr");
 			oz.sendToActionScript("global.language", "ja");
@@ -60,7 +62,7 @@
 			oz.sendToActionScript("odi.workTest.args1", array);
 			return true;
 		}
-		start_ozjs("OZViewer", "http://192.168.1.34:8888/oz80/ozhviewer/");
+		start_ozjs("OZViewer", "http://<%out.print(properties.getIP());%>/oz80/ozhviewer/");
 
 		function OZUserEvent_OZViewer(param1, param2, param3) {
 			if (param3 == "update") {

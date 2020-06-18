@@ -39,20 +39,56 @@ public class WorkReportController {
 	
 	//
 	@RequestMapping(value = "/user/writeReport", method = RequestMethod.POST)
-	public String writeReport(Model model,int month,int year,int userNum) { //int month,int year,int userNum을 POST로 받아와야한다. 메서드도 POST로 나중에 고칠것
+	public String writeReport(Model model, int month, int year, int userNum) { //int month,int year,int userNum을 POST로 받아와야한다. 메서드도 POST로 나중에 고칠것
 		logger.debug("writeReport");
+		HashMap<String, Integer> map= new HashMap<String, Integer>();
+		
+		ArrayList<WorkReportVO> newEmployeeThisMonthReport = new ArrayList(); 
 		model.addAttribute("userNum", userNum);
 		
 		int checkNewEmployee = dao.checkNewEmployee(userNum);
-		if(checkNewEmployee==0) {
+		System.out.println("checkNewEmployee:"+checkNewEmployee);
+		if(checkNewEmployee==0 ||checkNewEmployee==1) {
 			//신입사원입니다.
-			model.addAttribute("month", month);
-			model.addAttribute("year", year);
-			return "Report/writeReport";
+			System.out.println("신입사원입니다.");
+			if (checkNewEmployee==0) {
+				model.addAttribute("month", month);
+				model.addAttribute("year", year);
+				return "Report/writeReport";
+			} 
+			if (checkNewEmployee==1) {
+				map.put("userNum", userNum);
+				map.put("year", year);
+				map.put("month", month);
+				newEmployeeThisMonthReport=dao.checkState2(map);
+				if (newEmployeeThisMonthReport.size()==1) {
+					System.out.println("신입사원 이번달 작성중인게 있음.");
+					model.addAttribute("month", month);
+					model.addAttribute("year", year);
+					ObjectMapper newobjectMapper= new ObjectMapper();
+					String newreportJSON="";
+					try {
+						newreportJSON = newobjectMapper.writeValueAsString(newEmployeeThisMonthReport.get(0));
+					} catch (JsonProcessingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("신입사원 이번달 작성중인게 있음.로딩"+newreportJSON);
+					if (newEmployeeThisMonthReport.get(0).getState()!=0) { //이번달 쓰던게 있고 제출이상의 상태면 로딩불가
+						model.addAttribute("reportJSON", "submitted");
+						return "Report/writeReport";
+					}
+					model.addAttribute("reportJSON", newreportJSON);
+					
+					
+					return "Report/writeReport";
+				}
+			}
+			
 		}
 		
 		//저번달 작성분 확인
-		HashMap<String, Integer> map= new HashMap<String, Integer>();
+		ArrayList<WorkReportVO> lastMonthReport = new ArrayList(); 
 		if (month==1) {
 			map.put("userNum", userNum);
 			map.put("year", year-1);
@@ -63,7 +99,7 @@ public class WorkReportController {
 			map.put("month", month-1);//자바스크립트에서 그냥오면 month는 0으로 시작하므로 주의!
 		}
 		
-		ArrayList<WorkReportVO> lastMonthReport = new ArrayList(); 
+		
 		lastMonthReport=dao.checkState2(map);
 		switch (lastMonthReport.size()) {
 		case 0://전달게 아예 존제하지 않음. 전달걸 모델에담아 보낸다.

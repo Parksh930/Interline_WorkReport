@@ -1,5 +1,8 @@
+<%@page import="project.interline.report.util.getProperties"%>
+<%@page import="java.util.Properties"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% getProperties properties= new getProperties(); %>
 <!DOCTYPE html>
 <html style="height:100%;">
 <head>
@@ -14,13 +17,13 @@
 <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css"/>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
 
-<link rel="stylesheet" href="http://192.168.1.124:8888/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-<script type="text/javascript" src="http://192.168.1.124:8888/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://192.168.1.124:8888/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
+<script type="text/javascript" src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 <!-- If you want to run the HTML5SVG viewer please change the OZJSViewer.js to OZJSSVGViewer.js.
-<script type="text/javascript" src="http://192.168.1.124:8080/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://localhost:8080/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 -->
-<script src="http://192.168.1.124:8888/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
+<script src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 	$(document).ready(
@@ -40,7 +43,7 @@
 <input id="userName" type="hidden" value="${sessionScope.user_inform.userName}">
 <div id="reportJSON" style="display: none;">${reportJSON}</div>
 <!-- /model값을 불러오기위한 input -->
-<script src="/report/resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
+<script src="../resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
 <script type="text/javascript">
 	//페이지에 들어오기위한 필요 초기값
 	session="";
@@ -54,7 +57,7 @@
 		location.href="userMain";
 	}
 	console.log(reportJSON);
-	var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
+	var holiday={"holiday":[[],[1,13],[11,23],[],[29],[3,4,5],[],[getThirdMondayOnJLY(reportYear)],[11],[getThirdMondayOnSEP(reportYear)],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
 	alternativeHoliday(reportYear);
 	console.log(JSON.stringify(holiday));
 </script>
@@ -114,10 +117,13 @@
 		
 		console.log(reportYear);
 		console.log(reportMonth);
+
+		console.log("getDates:"+getDates(reportYear,reportMonth));
+		console.log("getDayDelay:"+getDayDelay(reportYear,reportMonth));
 		
 		var oz;
 		oz = document.getElementById("OZViewer");
-		oz.sendToActionScript("connection.servlet","http://192.168.1.124:8888/oz80/server");
+		oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getIP());%>/oz80/server");
 		oz.sendToActionScript("viewer.showpagemargin","false");
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
 		oz.sendToActionScript("connection.reportname","phonetest.ozr");
@@ -128,18 +134,18 @@
 		oz.sendToActionScript("connection.args1","year="+reportYear);	
 		oz.sendToActionScript("connection.args2","month="+reportMonth);	
 		oz.sendToActionScript("connection.args3","row="+getDates(reportYear,reportMonth));	
-		oz.sendToActionScript("connection.args4","daDelay="+getDayDelay(reportYear,reportMonth)); 
+		oz.sendToActionScript("connection.args4","dayDelay="+getDayDelay(reportYear,reportMonth)); 
 		oz.sendToActionScript("connection.args5","holiday="+JSON.stringify(holiday));
 		return true;
 	}
-	start_ozjs("OZViewer","http://192.168.1.124:8888/oz80/ozhviewer/", true);
+	start_ozjs("OZViewer","http://<%out.print(properties.getIP());%>/oz80/ozhviewer/", true);
 	
 	
 	$('#bt1').css('bottom', '-2px');		//제어창 팝업 하단 고정
 </script>
 
 <div style="position: absolute; bottom: -2px; left: 0;">
-	<img id="bt1" src="/report/resources/image/popupButton.PNG" style="display: block; left: 20%;">
+	<img id="bt1" src="../resources/image/popupButton.PNG" style="display: block; left: 20%;">
 	<div id="summary" style="text-align:left; background-color:rgb(217,217,217,0.8); border-radius: 3px; ">
 		<div style="background-color:rgb(217,217,217,0.8); display: block;">
 			<table>
