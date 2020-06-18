@@ -366,11 +366,11 @@ public class WorkReportController {
 			vo.setState(stateNum);
 		}
 		else if(vo.getState()==3) {
-			stateNum = 0;
+			stateNum = 5;
 			vo.setState(stateNum);
 		}
 		else if(vo.getState()==4) {
-			stateNum = 0;
+			stateNum = 6;
 			vo.setState(stateNum);
 		}
 		
