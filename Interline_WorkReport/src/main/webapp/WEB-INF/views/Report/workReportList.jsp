@@ -283,27 +283,15 @@ $(function(){
 		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn"onclick="deleteReport('+report.reportNum+')">削除</button>';
 		if(report.state==1){
 			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="submitCancel('+report.reportNum+')">取消</button></td>';
 			}
 		else if(report.state==2){
 			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認完了</button></td>';
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="approvaledCancel('+report.reportNum+')">取消</button></td>';
 			}
 		else if(report.state==3){
 		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval1('+report.reportNum+')">修正承認</button></td>';
-		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel1('+report.reportNum+')">取消</button></td>';
 		}
 		else if(report.state==4){
 			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval2('+report.reportNum+')">修正承認</button></td>';
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovalCancel2('+report.reportNum+')">取消</button></td>';
-		}
-		else if(report.state==5){
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled1('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel1('+report.reportNum+')">取消</button></td>';
-		}
-		else if(report.state==6){
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn6"onclick="updateApprovaled2('+report.reportNum+')" disabled="disabled">修正可能</button></td>';
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn3"onclick="updateApprovaledCancel2('+report.reportNum+')">取消</button></td>';
 		}
 	
 		report_com +='</tr>';
@@ -327,8 +315,6 @@ $(function(){
 		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
 		report_table_title	+='<th class="Reportlist_userName">社員名</th><th class="Reportlist_team">チーム名</th>';
 		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th>';
-		report_table_title	+='<td class="Reportlist_reportBtn" colspan="5"><button class="Read_Btn4" disabled="disabled">承認完了</button>';
-		report_table_title	+='<class="Reportlist_reportBtn"><button class="Read_Btn6" disabled="disabled">修正可能</button>はクリックする<br>ことができません。</td>'
 		report_table_title	+='</tr>';
 		
 		$.ajax({
@@ -451,10 +437,6 @@ $(function(){
 });
 
 
-
-
-
-
   function getReadReport(reportNum) {
      location.href = "../admin/getReadReport?reportNum="+reportNum;
       };
@@ -462,7 +444,7 @@ $(function(){
    	  location.href = "../admin/getUpdateReport?reportNum="+reportNum;
       };
   function deleteReport(reportNum) {
-      if(confirm("削除されますか？")){
+      if(confirm("削除しますか。")){
     	  location.href = "../admin/deleteReport?reportNum="+reportNum;
       }
 	　};
@@ -472,43 +454,17 @@ $(function(){
 
 	
   function submitApproval(reportNum) { 
-	  if(confirm("提出された勤務表を承認されますか？"))
+	  if(confirm("提出された勤務表を承認しますか。"))
 			location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+1;
 			};
-	function submitCancel(reportNum) { 
-		 if(confirm("提出された勤務表を取消されますか？"))
-		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+1;
-	};	
-	function approvaledCancel(reportNum) { 
-		 if(confirm("すでに承認した勤務表を取消されますか？"))
-		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+2;
-	};		
 	function updateApproval1(reportNum) { 
-		 if(confirm("勤務表の修正許可要請を承認されますか？"))
+		 if(confirm("勤務表の修正を承認しますか。"))
 		location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+3;
 		 };
 	function updateApproval2(reportNum) { 
-		 if(confirm("勤務表の修正許可要請を承認されますか？"))
+		 if(confirm("勤務表の修正を承認しますか。"))
 		location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+4;
 			};
-	function updateApprovalCancel1(reportNum) { 
-		 if(confirm("勤務表の修正許可要請を取消されますか？"))
-		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+3;
-		 };
-	function updateApprovalCancel2(reportNum) { 
-		 if(confirm("勤務表の修正許可要請を取消されますか？"))
-		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+4;
-	 };				
-
-	function updateApprovaledCancel1(reportNum) { 
-		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
-		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+5;
-	};	
-	function updateApprovaledCancel2(reportNum) { 
-		if(confirm("すでに修正許可した勤務表の修正許可を取消されますか？"))
-		location.href = "../admin/stateDown?reportNum="+reportNum+"&state="+6;
-	};					
-			
 	
 
   function selectRead(reportNum){
@@ -529,7 +485,6 @@ $(function(){
 
   	
   		var arr = arrNumber.substr(0, arrNumber.length -1);
-  	  //	 alert(arr);
   		
   	   	location.href = "../admin/getReadReport2?arrNumber="+arr;
   };
@@ -588,12 +543,11 @@ $(function(){
 			<option value="updateDate_ascending">最終保存日時の昇順</option>
 			<option value="updateDate_descending" selected="selected">最終保存日時の降順</option>
 		</select>
+		&nbsp&nbsp<button  id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
 	</div>
 	<div id="report_List"></div>
 
-	<div>
-		<button id="report_ReadAll_Btn" class="Read_Btn" onclick="getAllReport()">全体閲覧</button>
-		<button id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
-	</div>
+	
+
 </body>
 </html>
