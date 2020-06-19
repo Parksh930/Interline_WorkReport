@@ -75,7 +75,7 @@
 		var countHolidayWork=0;
 		var thisMonth=parseInt(jsonData.month);
 		for ( var i=1 ; i<=numberOfDate ; i++){
-			if( jsonData["workContent"+i] != "-" && jsonData["dateCondition"+i]!="無休" ){
+			if( jsonData["onoff"+i] == "1" && jsonData["dateCondition"+i]!="無休" ){
 				if( jsonData["dateCondition"+i]=="休日" ){
 					countHolidayWork++
 				}else{
@@ -94,7 +94,7 @@
 		//var salesDayArray=jsonData.salesDayArray.split(",");
 		//for( var i=0 ; i < salesDayArray.length ; i++ ){
 		for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
-			if (jsonData["dateCondition"+i]=="無休" || (jsonData["dateCondition"+i]=="" && jsonData["workContent"+i]=="-" )){
+			if (jsonData["dateCondition"+i]=="無休" || jsonData["onoff"+i] == "0" && jsonData["dateCondition"+i]=="平日" ){
 				cnt++;
 			}
 		}
@@ -110,11 +110,8 @@
 		var hour=0;
 		var minute=0;
 		for ( var i=1 ; i<=numberOfDate ; i++){
-			if ( jsonData["workContent"+i] != "-" && (jsonData["dateCondition"+i]=="" || jsonData["dateCondition"+i]=="休日") ){
-				var time = jsonData["netWorkingTime"+i].split(':');
-				hour=hour+parseInt(time[0]);
-				minute=minute+parseInt(time[1]);
-			}
+			hour=hour+parseInt(jsonData["netWorkingTimeHour"+i]);
+			minute=minute+parseInt(jsonData["netWorkingTimeMinute"+i]);
 		}
 		hour=hour+(parseInt(minute/60));
 		minute=minute%60;
@@ -137,21 +134,37 @@
 			jsonData["offMinute"+i]=0;
 			jsonData["restHour"+i]=0;
 			jsonData["restMinute"+i]=0;
-			jsonData["netWorkingTime"+i]="0:00";
-			jsonData["workContent"+i]="-";
+			jsonData["netWorkingTimeHour"+i]=0;
+			jsonData["netWorkingTimeMinute"+i]=0;
+			jsonData["workContent"+i]="";
 		}
-		//보존의경우는 default값 그대로 들어가있도록. 보존이 아닌경우는 결근이나 근무내용이없는경우 시간을 전부 0으로
+		//제출의 경우엔 일하지않은날(근무시간이0)에는 시간을 모두 0으로.default값을 0으로 바꾸기위함. 보존이 아닌경우는 결근이나 근무내용이없는경우 시간을 전부 0으로
+		if(type==0){
+			jsonData["attendHour"+i]=parseInt(jsonData["attendHour"+i]);
+			jsonData["attendMinute"+i]=parseInt(jsonData["attendMinute"+i]);
+			jsonData["offHour"+i]=parseInt(jsonData["offHour"+i]);
+			jsonData["offMinute"+i]=parseInt(jsonData["offMinute"+i]);
+			jsonData["restHour"+i]=parseInt(jsonData["restHour"+i]);
+			jsonData["restMinute"+i]=parseInt(jsonData["restMinute"+i]);
+			jsonData["netWorkingTime"+i]=jsonData["netWorkingTimeHour"+i] + ":" + jsonData["netWorkingTimeMinute"+i];
+		}
 		if(type==1){
 			for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
-				if (jsonData["workContent"+i]=="-" || jsonData["dateCondition"+i]=="無休" ) {
+				if (jsonData["netWorkingTimeHour"+i] == "0" && jsonData["netWorkingTimeMinute"+i] == "00") {
 					jsonData["attendHour"+i]=0;
 					jsonData["attendMinute"+i]=0;
 					jsonData["offHour"+i]=0;
 					jsonData["offMinute"+i]=0;
 					jsonData["restHour"+i]=0;
 					jsonData["restMinute"+i]=0;
-					jsonData["netWorkingTime"+i]="0:00";
 				}
+				jsonData["attendHour"+i]=parseInt(jsonData["attendHour"+i]);
+				jsonData["attendMinute"+i]=parseInt(jsonData["attendMinute"+i]);
+				jsonData["offHour"+i]=parseInt(jsonData["offHour"+i]);
+				jsonData["offMinute"+i]=parseInt(jsonData["offMinute"+i]);
+				jsonData["restHour"+i]=parseInt(jsonData["restHour"+i]);
+				jsonData["restMinute"+i]=parseInt(jsonData["restMinute"+i]);
+				jsonData["netWorkingTime"+i]=jsonData["netWorkingTimeHour"+i] + ":" + jsonData["netWorkingTimeMinute"+i];
 			}
 		}
 		console.log(JSON.stringify(jsonData));

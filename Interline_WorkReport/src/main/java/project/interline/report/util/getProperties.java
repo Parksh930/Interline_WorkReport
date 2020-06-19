@@ -11,7 +11,8 @@ import org.springframework.core.io.ClassPathResource;
 
 public class getProperties {
 	
-	String IP="";
+	String ozIP="";
+	String webIP="";
 	
 	
 	public getProperties() {
@@ -25,24 +26,41 @@ public class getProperties {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-	    IP=properties.getProperty("IP","localhost:8888");
+	    ozIP=properties.getProperty("ozIP","localhost:8888");
+	    webIP=properties.getProperty("webIP","localhost:8888");
 	    
 	}
 
 
-	public String getIP() {
-		return IP;
+	public String getOzIP() {
+		return ozIP;
 	}
-	public void setIP(String iP) {
-		IP = iP;
+
+
+	public void setOzIP(String ozIP) {
+		this.ozIP = ozIP;
+	}
+
+
+	public String getWebIP() {
+		return webIP;
+	}
+
+
+	public void setWebIP(String webIP) {
+		this.webIP = webIP;
 	}
 
 
 	@Override
 	public String toString() {
-		return "getProperties [IP=" + IP + "]";
+		return "getProperties [ozIP=" + ozIP + ", webIP=" + webIP + "]";
 	}
 	
+	
+
+
+
 
 	
 }

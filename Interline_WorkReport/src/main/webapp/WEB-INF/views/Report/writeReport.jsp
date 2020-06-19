@@ -17,13 +17,13 @@
 <link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css"/>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
 
-<link rel="stylesheet" href="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
-<script type="text/javascript" src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
+<link rel="stylesheet" href="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/ui.dynatree.css" type="text/css"/>
+<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.dynatree.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/OZJSViewer.js" charset="utf-8"></script>
 <!-- If you want to run the HTML5SVG viewer please change the OZJSViewer.js to OZJSSVGViewer.js.
 <script type="text/javascript" src="http://localhost:8080/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script>
 -->
-<script src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
+<script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 	$(document).ready(
@@ -123,8 +123,11 @@
 		
 		var oz;
 		oz = document.getElementById("OZViewer");
-		oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getIP());%>/oz80/server");
+		oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getOzIP());%>/oz80/server");
+		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		oz.sendToActionScript("viewer.showpagemargin","false");
+		oz.sendToActionScript("viewer.external_functions_path","http://192.168.1.20:8887/report/resources/js/writeReportForOZR.js");
+		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
 		oz.sendToActionScript("connection.reportname","phonetest.ozr");
 		oz.sendToActionScript("connection.clientcachetype","none");
@@ -136,9 +139,10 @@
 		oz.sendToActionScript("connection.args3","row="+getDates(reportYear,reportMonth));	
 		oz.sendToActionScript("connection.args4","dayDelay="+getDayDelay(reportYear,reportMonth)); 
 		oz.sendToActionScript("connection.args5","holiday="+JSON.stringify(holiday));
+		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		return true;
 	}
-	start_ozjs("OZViewer","http://<%out.print(properties.getIP());%>/oz80/ozhviewer/", true);
+	start_ozjs("OZViewer","http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/", true);
 	
 	
 	$('#bt1').css('bottom', '-2px');		//제어창 팝업 하단 고정
