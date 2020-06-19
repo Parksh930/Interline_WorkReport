@@ -31,6 +31,7 @@ var changeBackgroundColor=function(index){
 	var hourComponent = GetInputComponent("netWorkingTimeHour"+index);
 	var dotComponent = GetInputComponent("netWorkingTimeDot"+index);
 	var minuteComponent = GetInputComponent("netWorkingTimeMinute"+index);
+	var offHourComponent = GetInputComponent("offHour"+index);
 
 	hourComponent.SetTextColor("0,0,0");
 	dotComponent.SetTextColor("0,0,0");
@@ -38,12 +39,17 @@ var changeBackgroundColor=function(index){
 
 	var text=onoffComponent.GetText();
 	if(text=="1"){
-		if( hourComponent.GetText()=="0" && minuteComponent.GetText()=="00" ){
-			hourComponent.SetTextColor("225,225,225");
-			dotComponent.SetTextColor("225,225,225");
-			minuteComponent.SetTextColor("225,225,225");
-			onoffComponent.SetValue("0");
+		console.log(offHourComponent.GetSelectedIndex());
+		if( hourComponent.GetText()=="0" && minuteComponent.GetText()=="00" && (offHourComponent.GetSelectedIndex()==0 || offHourComponent.GetSelectedIndex()==1) ){
+		//if( offHourComponent.GetSelectedIndex()==0 || offHourComponent.GetSelectedIndex()==1 ){
+			console.log(GetInputComponent("dateCondition"+index).GetSelectedItemText());
+			if(GetInputComponent("dateCondition"+index).GetSelectedItemText()=="休日"){	
+				hourComponent.SetTextColor("225,225,225");
+				dotComponent.SetTextColor("225,225,225");
+				minuteComponent.SetTextColor("225,225,225");
+			}
 			bgComponent.SetBackgroundColor("225,225,225");
+			onoffComponent.SetValue("0");
 		}
 	}
 	if(text=="0"){
@@ -61,7 +67,8 @@ var countSalesDayOZR=function(){
 	var cnt=0;
 	var salesDayArray=new Array();
 	for(var i=1 ; i<=row ; i++){
-		if( GetInputComponent("dateCondition"+i).GetSelectedItemText()!="休日"){ 
+		//console.log(GetInputComponent("dateCondition"+i).GetSelectedIndex());
+		if( GetInputComponent("dateCondition"+i).GetSelectedIndex() != 0 ){ 
 			salesDayArray.push(i);
 			cnt++;
 		}	

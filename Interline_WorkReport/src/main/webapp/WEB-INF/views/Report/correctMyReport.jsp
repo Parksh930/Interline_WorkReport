@@ -121,8 +121,10 @@
 		var oz;
 		oz = document.getElementById("OZViewer");
 		oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getOzIP());%>/oz80/server");
-		oz.sendToActionScript("viewer.showpagemargin","false");
+		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
+		oz.sendToActionScript("viewer.showpagemargin","false");
+		oz.sendToActionScript("viewer.external_functions_path","http://<%out.print(properties.getWebIP());%>/report/resources/js/writeReportForOZR.js");
 		oz.sendToActionScript("connection.reportname","phonetest.ozr");
 		oz.sendToActionScript("connection.clientcachetype","none");
 		oz.sendToActionScript("connection.inputjson", reportJSON);

@@ -193,3 +193,11 @@
 		self.close();
 	}
 	
+	
+	
+	function setCustomContents(jsonData){
+		for (var i=1 ; i<31 ; i++){
+			jsonData["direct"+i] = jsonData["workContent"+i];
+		}
+	}
+	

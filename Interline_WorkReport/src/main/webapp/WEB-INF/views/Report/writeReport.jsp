@@ -139,7 +139,6 @@
 		oz.sendToActionScript("connection.args3","row="+getDates(reportYear,reportMonth));	
 		oz.sendToActionScript("connection.args4","dayDelay="+getDayDelay(reportYear,reportMonth)); 
 		oz.sendToActionScript("connection.args5","holiday="+JSON.stringify(holiday));
-		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		return true;
 	}
 	start_ozjs("OZViewer","http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/", true);
