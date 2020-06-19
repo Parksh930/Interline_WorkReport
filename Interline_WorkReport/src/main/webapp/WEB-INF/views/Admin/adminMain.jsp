@@ -49,7 +49,7 @@ margin:20px 0px 0px 0px;
 
 <div id="menuBar" style="position: absolute; left: 0px; z-index: 1000; text-align: center; width:20%;">
 	<img id="" src="../resources/image/interline2.png" width="100%" height="100%" ><span style="font-size: 30px; font-weight: bolder;">管理者</span><br></br><br></br>
-	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務表リスト</a><br></br><br></br>
+	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務票リスト</a><br></br><br></br>
 	<a class="_Btn" href="../admin/userList" target="list_Box">社員リスト</a><br></br><br></br>
 	<a class="_Btn" href="../logout">ログアウト</a>
 </div>

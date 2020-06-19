@@ -48,10 +48,6 @@
 		var stateNum;
 		stateNum = $('#state').html();
 
-		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[],[3,23],[]]}; 
-		//var holiday={"holiday":[[],[1,13],[11,23],[20],[29],[3,4,5],[],[20],[10],[21,22],[getSecondMondayOnOCT(holiday)],[3,23],[]]};
-		//getSecondMondayOnOCT(2020);
-		//alternativeHoliday(holiday);
 
 		function SetOZParamters_OZViewer() {
 			var oz;
@@ -60,8 +56,6 @@
 					"http://<%out.print(properties.getIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
 					"OSA/workReport2.ozr");
-			//oz.sendToActionScript("connection.pcount","1");
-			//oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
@@ -72,13 +66,10 @@
 
 		function OZUserEvent_OZViewer(param1, param2, param3) {
 			if (param3 == "update") {
-				//var jsonSet=makeJsonForUpdate(JSON.parse(param1));
-				//$('#updateJsonReport').val(JSON.stringify(jsonSet));
-				//$('#updateJsonContents').val(JSON.stringify(jsonSet[1]));
 				var chartData = JSON.parse(OZViewer
 						.GetInformation("INPUT_JSON_ALL"));
 				console.log(chartData);
-				var uConfirm = confirm("修正されますか？");
+				var uConfirm = confirm("修正しますか。");
 				if (uConfirm == true) {
 					chartData.state = stateNum;
 					adminUpdateReport(chartData, "adminUpdateReport");
