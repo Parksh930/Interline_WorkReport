@@ -56,8 +56,9 @@
 		alert("今月の勤務表はすでに提出しました。修正したかったら修正依頼してください。");
 		location.href="userMain";
 	}
+	reportJSON=JSON.stringify(setCustomContents(JSON.parse(reportJSON)));
 	console.log(reportJSON);
-	var holiday={"holiday":[[],[1,13],[11,23],[],[29],[3,4,5],[],[getThirdMondayOnJLY(reportYear)],[11],[getThirdMondayOnSEP(reportYear)],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
+	var holiday={"holiday":[[],[1,getSecondMondayOnJAN(reportYear)],[11,23],[],[29],[3,4,5],[],[getThirdMondayOnJLY(reportYear)],[11],[getThirdMondayOnSEP(reportYear)],[getSecondMondayOnOCT(reportYear)],[3,23],[]]}; 
 	alternativeHoliday(reportYear);
 	console.log(JSON.stringify(holiday));
 </script>

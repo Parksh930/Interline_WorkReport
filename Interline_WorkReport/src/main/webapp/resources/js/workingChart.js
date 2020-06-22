@@ -2,10 +2,13 @@
 //parameter: 없음
 //return: 함수 실행 시점 년도의 공휴일배열    예)
 	//10월의 둘째주 월요일 계산
+	function getSecondMondayOnJAN(year){
+		var today = new Date(year+'/01/01').getDay();
+		if(1-today<0){ return(16-today); }else{ return(9-today); }
+	}
+	
 	function getThirdMondayOnJLY(year){	
 		var today = new Date(year+'/07/01').getDay();
-		console.log("year:"+year);
-		console.log("1일의 요일:"+today);
 		if(1-today<0){ return(23-today); }else{ return(16-today); }
 	}
 
@@ -16,8 +19,6 @@
 	
 	function getThirdMondayOnSEP(year){	
 		var today = new Date(year+'/09/01').getDay();
-		console.log("year:"+year);
-		console.log("1일의 요일:"+today);
 		if(1-today<0){ return(23-today); }else{ return(16-today); }
 	}
 	
@@ -127,7 +128,11 @@
 // type에는 0:보존 ,  1:제출
 	function submitReport(jsonData,address,type){
 		//없는날짜에 0으로 채워서
+		console.log("numberOfDate:"+(parseInt(jsonData.numberOfDate)+1));
+		console.log("0:"+Object.keys(jsonData).length);
 		for (var i=parseInt(jsonData.numberOfDate)+1 ; i<=31 ; i++){
+			console.log("i:"+i)
+			jsonData["dateCondition"+i]="";
 			jsonData["attendHour"+i]=0;
 			jsonData["attendMinute"+i]=0;
 			jsonData["offHour"+i]=0;
@@ -135,11 +140,27 @@
 			jsonData["restHour"+i]=0;
 			jsonData["restMinute"+i]=0;
 			jsonData["netWorkingTimeHour"+i]=0;
-			jsonData["netWorkingTimeMinute"+i]=0;
+			jsonData["netWorkingTimeMinute"+i]="00";
+			jsonData["netWorkingTimeDot"]=":";
+			jsonData["onoff"+i]="0";			
 			jsonData["workContent"+i]="";
 		}
+		console.log("1:"+Object.keys(jsonData).length);
 		//제출의 경우엔 일하지않은날(근무시간이0)에는 시간을 모두 0으로.default값을 0으로 바꾸기위함. 보존이 아닌경우는 결근이나 근무내용이없는경우 시간을 전부 0으로
-		if(type==0){
+		if(type==1){
+			for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
+				if (jsonData["onoff"+i] == "0") {
+					jsonData["attendHour"+i]=0;
+					jsonData["attendMinute"+i]=0;
+					jsonData["offHour"+i]=0;
+					jsonData["offMinute"+i]=0;
+					jsonData["restHour"+i]=0;
+					jsonData["restMinute"+i]=0;
+				}
+			}
+		}
+		console.log("2:"+Object.keys(jsonData).length);
+		for (var i=1 ; i<=31 ; i++){
 			jsonData["attendHour"+i]=parseInt(jsonData["attendHour"+i]);
 			jsonData["attendMinute"+i]=parseInt(jsonData["attendMinute"+i]);
 			jsonData["offHour"+i]=parseInt(jsonData["offHour"+i]);
@@ -148,25 +169,7 @@
 			jsonData["restMinute"+i]=parseInt(jsonData["restMinute"+i]);
 			jsonData["netWorkingTime"+i]=jsonData["netWorkingTimeHour"+i] + ":" + jsonData["netWorkingTimeMinute"+i];
 		}
-		if(type==1){
-			for (var i=1 ; i<=parseInt(jsonData.numberOfDate) ; i++){
-				if (jsonData["netWorkingTimeHour"+i] == "0" && jsonData["netWorkingTimeMinute"+i] == "00") {
-					jsonData["attendHour"+i]=0;
-					jsonData["attendMinute"+i]=0;
-					jsonData["offHour"+i]=0;
-					jsonData["offMinute"+i]=0;
-					jsonData["restHour"+i]=0;
-					jsonData["restMinute"+i]=0;
-				}
-				jsonData["attendHour"+i]=parseInt(jsonData["attendHour"+i]);
-				jsonData["attendMinute"+i]=parseInt(jsonData["attendMinute"+i]);
-				jsonData["offHour"+i]=parseInt(jsonData["offHour"+i]);
-				jsonData["offMinute"+i]=parseInt(jsonData["offMinute"+i]);
-				jsonData["restHour"+i]=parseInt(jsonData["restHour"+i]);
-				jsonData["restMinute"+i]=parseInt(jsonData["restMinute"+i]);
-				jsonData["netWorkingTime"+i]=jsonData["netWorkingTimeHour"+i] + ":" + jsonData["netWorkingTimeMinute"+i];
-			}
-		}
+		console.log("3:"+Object.keys(jsonData).length);
 		console.log(JSON.stringify(jsonData));
 		if (type==1) confirm("提出すると修正できません。よろしいでしょうか。");
 		
@@ -199,5 +202,6 @@
 		for (var i=1 ; i<31 ; i++){
 			jsonData["direct"+i] = jsonData["workContent"+i];
 		}
+		return jsonData;
 	}
 	

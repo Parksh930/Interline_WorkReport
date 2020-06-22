@@ -1,6 +1,4 @@
-function sayHello(){
-	_MessageBox("Hello");
-}
+var comboText="\n()\n内容１,内容a\n内容2,内容b\n直接入力";
 
 
 //출퇴휴시간,내용을 조정시 시간을 계산하여 근무시간산출
@@ -75,4 +73,16 @@ var countSalesDayOZR=function(){
 	}
 	GetInputComponent("salesDay").SetText(cnt);
 	GetInputComponent("salesDayArray").SetText(salesDayArray);
+}
+
+
+//직업입력된 내용 가려내서 표시하기
+var setDirectToCombo=function(row){
+	for (var i=1 ; i<=row ; i++){
+		var contentComponent=GetInputComponent("workContent"+i);
+		if(contentComponent.GetSelectedIndex()==-1){
+			contentComponent.SetItems(GetInputComponent("direct"+i).GetValue()+comboText);
+			contentComponent.SetSelectedIndex(0);
+		}
+	}
 }
