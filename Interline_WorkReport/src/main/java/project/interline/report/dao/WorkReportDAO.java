@@ -110,5 +110,20 @@ public class WorkReportDAO {
 		return mapper.checkNewEmployee(userNum);
 	}
 
+	public int updateReport2(WorkReportVO workReportVO) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		int result = mapper.updateReport2(workReportVO);
+		return 0;
+	}
+
+	public int reportSelectDelete(String arrNumber) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.reportSelectDelete(arrNumber);
+	}
+
+	public int reportSelectApproval(String[] arr) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.reportSelectApproval(arr);
+	}
 
 }

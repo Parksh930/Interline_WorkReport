@@ -54,7 +54,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://<%out.print(properties.getOzIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
-					"OSA/workReport1.ozr");
+					"OSA/workReportNew1.ozr");
 			//oz.sendToActionScript("connection.pcount","1");
 			//oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
 			oz.sendToActionScript("global.language", "ja");
@@ -65,86 +65,7 @@
 		}
 		start_ozjs("OZViewer", "http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/");
 
-		function OZUserEvent_OZViewer(param1, param2, param3) {
-
-			if (param3 == "Approval") {
-				var chartData = JSON.parse(OZViewer
-						.GetInformation("INPUT_JSON_ALL"));
-				console.log(chartData);
-				if (chartData.state == 1) {
-					var sConfirm = confirm("提出された勤務表を承認されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateUp?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				} else if (chartData.state == 3) {
-					var sConfirm = confirm("勤務表の修正許可要請を承認されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateUp?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				} else if (chartData.state == 4) {
-					var sConfirm = confirm("勤務表の修正許可要請を承認されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateUp?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				}
-
-			} else if (param3 == "Cancel") {
-				var chartData = JSON.parse(OZViewer
-						.GetInformation("INPUT_JSON_ALL"));
-				if (chartData.state == 1) {
-					var sConfirm = confirm("提出された勤務表を取消されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateDown?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				} else if (chartData.state == 2) {
-					var sConfirm = confirm("すでに承認された勤務表を取消されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateDown?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				} else if (chartData.state == 3) {
-					var sConfirm = confirm("勤務表の修正許可要請を取消されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateDown?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				} else if (chartData.state == 4) {
-					var sConfirm = confirm("勤務表の修正許可要請を取消されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateDown?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				} else if (chartData.state == 5) {
-					var sConfirm = confirm("すでに修正許可された勤務表の修正許可を取消されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateDown?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-
-				} else if (chartData.state == 6) {
-					var sConfirm = confirm("すでに修正許可された勤務表の修正許可を取消されますか？");
-					if (sConfirm == true) {
-						location.href = "../admin/readStateDown?reportNum="
-								+ chartData.reportNum + "&state="
-								+ chartData.state;
-					}
-				}
-
-			}
-
-		}
+	
 	</script>
 
 

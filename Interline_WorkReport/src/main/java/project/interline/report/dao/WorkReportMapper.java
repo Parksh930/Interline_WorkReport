@@ -34,4 +34,10 @@ public interface WorkReportMapper {
 
 	int checkNewEmployee(int userNum);
 
+	int updateReport2(WorkReportVO workReportVO);
+
+	int reportSelectDelete(String arrNumber);
+
+	int reportSelectApproval(String[] arr);
+
 }

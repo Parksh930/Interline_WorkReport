@@ -14,6 +14,18 @@
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
 
 $(document).ready(function(){
+	/* isMobile(); */
+	
+	function isMobile() {
+	    var filter = "win16|win32|win64|mac|macintel";
+	    if( navigator.platform  ){
+	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+	    	  $("#login_div").attr('id','phone_login_div');
+	      }else{
+	    	  $("#login_div").attr('id','pc_login_div');
+	      }
+	    }
+	  }
 	
 	$("#login_form").submit(function(){
 		var id = $("#login_id").val();
@@ -56,10 +68,12 @@ width:230px;
 }
 
 input[type=submit]{
-background-color: rgb(0,32,96);
-border: solid 2px rgb(127,127,127);
-color:white;
-cursor: pointer;
+	border: solid 2px rgb(0, 112, 192);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(0, 112, 192);
+	color: white;
+	cursor: pointer;
 }
 
 .login_text{
@@ -110,18 +124,5 @@ padding: 20px 0px 0px 0px;
 </form>
 </table>
 </div>
-<script>
-	function isMobile() {
-	    var filter = "win16|win32|win64|mac|macintel";
-	    if( navigator.platform  ){
-	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-	        return "1";
-	      }else{
-	        return "0";
-	      }
-	    }
-	  }
-	$('#mobileCheck').val(isMobile());
-</script> 
 </body>
 </html>
