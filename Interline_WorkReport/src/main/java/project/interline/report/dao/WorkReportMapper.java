@@ -34,4 +34,6 @@ public interface WorkReportMapper {
 
 	int checkNewEmployee(int userNum);
 
+	int updateReport2(WorkReportVO workReportVO);
+
 }

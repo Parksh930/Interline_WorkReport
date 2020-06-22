@@ -288,7 +288,7 @@ public class WorkReportController {
 		System.out.println("어드민으로 왔습니까? VO : "+workReportVO);
 		
 		
-		int result = dao.updateReport(workReportVO);
+		int result = dao.updateReport2(workReportVO);
 		
 		System.out.println("어드민 업데이트result: "+result); // 0 이 성공
 		System.out.println("update after  VO : "+workReportVO);
