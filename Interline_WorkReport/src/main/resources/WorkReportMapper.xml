@@ -223,6 +223,27 @@
 			sumWorkingTime=#{sumWorkingTime}
            where reportNum = #{reportNum}
 	</update>		
+	
+	
+	
+	<delete id="reportSelectDelete" parameterType="String">
+		delete from work_Report 
+		<where>
+		FIND_IN_SET(reportNum, #{arrNumber})
+		</where>
+	</delete>
 
+
+	<update id="reportSelectApproval" parameterType="int">
+		
+		<foreach collection="array" item="reportNumValue" index="index" open="(" close=")" separator=",">
+		UPDATE work_Report 
+            SET 
+   			state = 2 
+          where reportNum = #{reportNumValue}
+     	</foreach>
+      
+      
+     </update>     
 	
 </mapper>

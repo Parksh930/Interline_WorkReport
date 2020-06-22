@@ -383,7 +383,37 @@ public class WorkReportController {
 	}
 	
 	
+	@RequestMapping(value="/admin/reportSelectApproval", method = RequestMethod.GET)
+	public String reportSelectApproval(Model model, String arrNumber) {
+		
+		System.out.println("번호 잘 찾아왔나?  "  +  arrNumber);
+		
+		System.out.println(" arrNumber  java 타입은 ?    "+arrNumber.getClass().getName());
+		
+		String[] arr =  arrNumber.split(",");
+		
+		System.out.println("arr  java 타입은 ?    "+arr.getClass().getName());
+		
+		
+		int result = dao.reportSelectApproval(arr);
+		
+		System.out.println("reportSelectApproval 의 결과값    " + result);
+		
+		return "redirect:/admin/reportList";
+	}
 	
+	
+	@RequestMapping(value="/admin/reportSelectDelete", method = RequestMethod.GET)
+	public String reportSelectDelete(Model model, String arrNumber) {
+
+		System.out.println("번호 잘 찾아왔나?  "  +  arrNumber);
+		
+		int result = dao.reportSelectDelete(arrNumber);
+		
+		System.out.println("reportSelectDelete 의 결과값    " + result);
+		
+		return "redirect:/admin/reportList";
+	}
 	
 	
 	

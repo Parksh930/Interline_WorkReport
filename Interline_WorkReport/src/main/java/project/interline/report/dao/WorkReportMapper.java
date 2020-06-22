@@ -36,4 +36,8 @@ public interface WorkReportMapper {
 
 	int updateReport2(WorkReportVO workReportVO);
 
+	int reportSelectDelete(String arrNumber);
+
+	int reportSelectApproval(String[] arr);
+
 }
