@@ -498,6 +498,8 @@ $(function(){
 			};
 	
 
+
+			
   function selectRead(reportNum){
 
   	
@@ -519,6 +521,53 @@ $(function(){
   		
   	   	location.href = "../admin/getReadReport2?arrNumber="+arr;
   };
+
+
+  function SelectApproval(){
+
+	  	
+		if(!$(".check").is(':checked')){
+			alert("閲覧する勤務表を選択してください。");
+			return false;
+			}
+
+
+		var arrNumber="";
+	      $('input[name="selectValue"]').each(function(){
+	          if($(this).prop("checked")){
+	        	 arrNumber += $(this)[0].value+",";
+	          }
+	       });
+
+	  	
+	  		var arr = arrNumber.substr(0, arrNumber.length -1);
+	  		
+	  	   	location.href = "../admin/reportSelectApproval?arrNumber="+arr;
+	  };
+
+
+
+	  function SelectDelete(){
+
+		  	
+			if(!$(".check").is(':checked')){
+				alert("閲覧する勤務表を選択してください。");
+				return false;
+				}
+
+
+			var arrNumber="";
+		      $('input[name="selectValue"]').each(function(){
+		          if($(this).prop("checked")){
+		        	 arrNumber += $(this)[0].value+",";
+		          }
+		       });
+
+		  	
+		  		var arr = arrNumber.substr(0, arrNumber.length -1);
+		  		
+		  	   	location.href = "../admin/reportSelectDelete?arrNumber="+arr;
+		  };
 
 
   function Acheck(){
@@ -561,6 +610,8 @@ $(function(){
 	</div>
 	<div id="report_Read_Btn">
 		<button  id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
+		<button  id="report_ReadSelectApproval_Btn" class="Read_Btn" onclick="SelectApproval()">選択承認</button>
+		<button  id="report_ReadSelectDelete_Btn" class="Read_Btn" onclick="SelectDelete()">選択削除</button>
 	</div>
 	<div id="report_List"></div>
 
