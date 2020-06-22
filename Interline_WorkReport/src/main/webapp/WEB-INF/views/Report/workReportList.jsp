@@ -172,8 +172,6 @@ label[for="report_userName"] {
 	margin: 0px 0px 0px 310px;
 }
 
-<<<<<<< HEAD
-
 
 .Reportlist_sort_asc:hover{
 cursor:pointer;
@@ -182,7 +180,7 @@ font-weight:900;
 .Reportlist_sort_des:hover{
 cursor:pointer;
 font-weight:900;
-=======
+}
 #report_ReadSelect_Btn {
 	margin: 0px 0px 0px 25px;
 }
@@ -197,7 +195,6 @@ font-weight:900;
 	font-weight: 900;
 }
 
-<<<<<<< HEAD
 td[id*="_descending"]{
 margin: 0px 0px 0px 0px;
 }
@@ -211,7 +208,8 @@ border-style:none;
 border-bottom:none;
 margin-left: auto;
 margin-right: auto;
-=======
+}
+
 .Reportlist_Blank {
 	width: 220px;
 	border-style: none;
