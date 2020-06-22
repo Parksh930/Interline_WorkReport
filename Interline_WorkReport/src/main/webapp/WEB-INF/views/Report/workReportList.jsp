@@ -47,16 +47,15 @@ th, td {
 }
 
 .Read_Btn2 {
-	border: solid 2px rgb(154,205,50);
+	border: solid 2px rgb(154, 205, 50);
 	border-radius: 9px;
 	padding: 2px 5px;
-	background-color: rgb(154,205,50);
+	background-color: rgb(154, 205, 50);
 	color: white;
 	cursor: pointer;
 	width: 68px;
 }
 /*  255 255 0 */
-
 .Read_Btn3 {
 	border: solid 2px rgb(255, 0, 0);
 	border-radius: 9px;
@@ -75,20 +74,22 @@ th, td {
 	cursor: pointer;
 	width: 68px;
 }
+
 .Read_Btn5 {
-	border: solid 2px rgb(255 255 0);
+	border: solid 2px rgb(255, 255, 0);
 	border-radius: 9px;
 	padding: 2px 5px;
-	background-color: rgb(255 255 0);
+	background-color: rgb(255, 255, 0);
 	color: black;
 	cursor: pointer;
 	width: 68px;
 }
+
 .Read_Btn6 {
-	border: solid 2px rgb(255,127,0);
+	border: solid 2px rgb(255, 127, 0);
 	border-radius: 9px;
 	padding: 2px 5px;
-	background-color: rgb(255,127,0);
+	background-color: rgb(255, 127, 0);
 	color: black;
 	cursor: pointer;
 	width: 68px;
@@ -98,105 +99,106 @@ th, td {
 	margin: 0px 0px 0px 20px;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
 }
 
-input[type="number"],input[type="text"]{
-height: 18px;
+input[type="number"], input[type="text"] {
+	height: 18px;
 }
 
-#reportDays_Filter{
+#reportDays_Filter {
 	border: 0;
 }
 
-.Reportlist_userName{
+.Reportlist_userName {
 	width: 150px;
 }
 
-.Reportlist_userNum,.Reportlist_team,.Reportlist_reportDays,.Reportlist_updateDate  {
-    width: 100px;
-}
-.Reportlist_userMail{
-    width: 200px;
+.Reportlist_userNum, .Reportlist_team, .Reportlist_reportDays,
+	.Reportlist_updateDate {
+	width: 100px;
 }
 
-#read_btn{
-font-size: 15px;
+.Reportlist_userMail {
+	width: 200px;
 }
 
-fieldset{
-    border: 0;
-    padding:5px 12px 5px 12px;    
+#read_btn {
+	font-size: 15px;
 }
 
-select{
-height: 24px;
+fieldset {
+	border: 0;
+	padding: 5px 12px 5px 12px;
 }
 
-.filter_btn{
-    border: solid 2px rgb(0, 112, 192);
-    border-radius: 9px;
-    padding: 2px 5px;
-    background-color: rgb(0, 112, 192);
-    color: white;
-    cursor: pointer;
-    font-size: 12px;
+select {
+	height: 24px;
 }
 
-#report_Read_Btn{
-text-align: left;
-margin:20px 0px 0px 14.4px;
+.filter_btn {
+	border: solid 2px rgb(0, 112, 192);
+	border-radius: 9px;
+	padding: 2px 5px;
+	background-color: rgb(0, 112, 192);
+	color: white;
+	cursor: pointer;
+	font-size: 12px;
 }
 
-label[for="report_userName"]{
-margin: 0px 0px 0px 16px;
+#report_Read_Btn {
+	text-align: left;
+	margin: 20px 0px 0px 14.4px;
 }
 
-#report_reportDays_span{
-margin:0px 0px 0px -26px;
+label[for="report_userName"] {
+	margin: 0px 0px 0px 16px;
 }
 
-#team_span{
-margin: 0px 0px 0px 35px;
+#report_reportDays_span {
+	margin: 0px 0px 0px -26px;
 }
 
-#ReadReport_Btn{
-font-size: 14.8px;
+#team_span {
+	margin: 0px 0px 0px 35px;
 }
 
-#report_ReadAll_Btn{
-margin:0px 0px 0px 310px;
+#ReadReport_Btn {
+	font-size: 14.8px;
 }
 
-#report_ReadSelect_Btn{
-margin:0px 0px 0px 25px;
+#report_ReadAll_Btn {
+	margin: 0px 0px 0px 310px;
 }
 
-.Reportlist_sort{
-font-weight:100;
+#report_ReadSelect_Btn {
+	margin: 0px 0px 0px 25px;
 }
 
-.Reportlist_sort:hover{
-cursor:pointer;
-font-weight:900;
+.Reportlist_sort {
+	font-weight: 100;
 }
 
-.Reportlist_Blank{
-width:220px;
-border-style: none;
+.Reportlist_sort:hover {
+	cursor: pointer;
+	font-weight: 900;
 }
 
-span[id*="_descending"]{
-margin: 0px 0px 0px 5px;
+.Reportlist_Blank {
+	width: 220px;
+	border-style: none;
 }
 
-span[id*="_ascending"]{
-margin: 0px 5px 0px 0px;
+span[id*="_descending"] {
+	margin: 0px 0px 0px 5px;
 }
 
+span[id*="_ascending"] {
+	margin: 0px 5px 0px 0px;
+}
 </style>
 <script>
 $(function(){
@@ -524,14 +526,14 @@ $(function(){
 
 
   function SelectApproval(){
-
+		
 	  	
 		if(!$(".check").is(':checked')){
 			alert("承認する勤務表を選択してください。");
 			return false;
 			}
 
-
+		if(confirm("選択した勤務表を承認しますか。")){
 		var arrNumber="";
 	      $('input[name="selectValue"]').each(function(){
 	          if($(this).prop("checked")){
@@ -543,19 +545,22 @@ $(function(){
 	  		var arr = arrNumber.substr(0, arrNumber.length -1);
 	  		
 	  	   	location.href = "../admin/reportSelectApproval?arrNumber="+arr;
+
+
+		}
 	  };
 
 
 
 	  function SelectDelete(){
 
-		  	
 			if(!$(".check").is(':checked')){
 				alert("削除する勤務表を選択してください。");
 				return false;
 				}
 
 
+		  if(confirm("選択した勤務表を削除しますか。")){
 			var arrNumber="";
 		      $('input[name="selectValue"]').each(function(){
 		          if($(this).prop("checked")){
@@ -567,7 +572,8 @@ $(function(){
 		  		var arr = arrNumber.substr(0, arrNumber.length -1);
 		  		
 		  	   	location.href = "../admin/reportSelectDelete?arrNumber="+arr;
-		  };
+		  }
+		};
 
 
   function Acheck(){
@@ -584,38 +590,45 @@ $(function(){
 <body>
 	<h1>勤務票リスト</h1>
 	<div id="report_list_filter">
-	<fieldset id="reportUserNum_Filter">
-	<label for="report_userNum">社員番号：</label><input type="number" name = "report_userNum" id = "report_userNum">
-	<button id="report_userNum_btn" class="filter_btn">検索</button>
-	</fieldset>
-	<fieldset id="reportName_Filter">
-	<label for="report_userName">社員名：</label><input type="text" name="report_userName" id = "report_userName">
-	<button id="report_userName_btn" class="filter_btn">検索</button>
-	</fieldset>
-	<fieldset id="reportTeam_Filter">
-	<span id="team_span">チーム名：</span>
-	<input type="checkbox" id ="team_tokyo" name ="report_userTeam" value="東京"><label for="team_tokyo">東京</label>
-	<input type="checkbox" id ="team_yokohama" name ="report_userTeam" value="横浜"><label for="team_yokohama">横浜</label>
-	<input type="checkbox" id ="team_saitama" name ="report_userTeam" value="埼玉"><label for="team_saitama">埼玉</label>
-	<input type="checkbox" id ="team_others" name ="report_userTeam" value="その他"><label for="team_others">その他</label>
-	</fieldset>
-	<fieldset id = "reportDays_Filter">
-	<span id="report_reportDays_span">勤務票の期間：</span>
-	<select id ="from_ReportDays" name="from_ReportDays">
-	</select>
-	~
-	<select id ="to_ReportDays" name="to_ReportDays">
-	</select>
-	</fieldset>
+		<fieldset id="reportUserNum_Filter">
+			<label for="report_userNum">社員番号：</label><input type="number"
+				name="report_userNum" id="report_userNum">
+			<button id="report_userNum_btn" class="filter_btn">検索</button>
+		</fieldset>
+		<fieldset id="reportName_Filter">
+			<label for="report_userName">社員名：</label><input type="text"
+				name="report_userName" id="report_userName">
+			<button id="report_userName_btn" class="filter_btn">検索</button>
+		</fieldset>
+		<fieldset id="reportTeam_Filter">
+			<span id="team_span">チーム名：</span> <input type="checkbox"
+				id="team_tokyo" name="report_userTeam" value="東京"><label
+				for="team_tokyo">東京</label> <input type="checkbox"
+				id="team_yokohama" name="report_userTeam" value="横浜"><label
+				for="team_yokohama">横浜</label> <input type="checkbox"
+				id="team_saitama" name="report_userTeam" value="埼玉"><label
+				for="team_saitama">埼玉</label> <input type="checkbox"
+				id="team_others" name="report_userTeam" value="その他"><label
+				for="team_others">その他</label>
+		</fieldset>
+		<fieldset id="reportDays_Filter">
+			<span id="report_reportDays_span">勤務票の期間：</span> <select
+				id="from_ReportDays" name="from_ReportDays">
+			</select> ~ <select id="to_ReportDays" name="to_ReportDays">
+			</select>
+		</fieldset>
 	</div>
 	<div id="report_Read_Btn">
-		<button  id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
-		<button  id="report_ReadSelectApproval_Btn" class="Read_Btn" onclick="SelectApproval()">選択承認</button>
-		<button  id="report_ReadSelectDelete_Btn" class="Read_Btn" onclick="SelectDelete()">選択削除</button>
+		<button id="report_ReadSelect_Btn" class="Read_Btn"
+			onclick="selectRead()">選択閲覧</button>
+		<button id="report_ReadSelectApproval_Btn" class="Read_Btn"
+			onclick="SelectApproval()">選択承認</button>
+		<button id="report_ReadSelectDelete_Btn" class="Read_Btn"
+			onclick="SelectDelete()">選択削除</button>
 	</div>
 	<div id="report_List"></div>
 
-	
+
 
 </body>
 </html>
