@@ -24,9 +24,7 @@ table {
 	border-collapse: collapse;
 }
 
-tr {
-	height: 45px;
-}
+
 
 th, td {
 	border: 1px solid black;
@@ -174,17 +172,42 @@ label[for="report_userName"] {
 	margin: 0px 0px 0px 310px;
 }
 
+
+.Reportlist_sort_asc:hover{
+cursor:pointer;
+font-weight:900;
+}
+.Reportlist_sort_des:hover{
+cursor:pointer;
+font-weight:900;
+}
 #report_ReadSelect_Btn {
 	margin: 0px 0px 0px 25px;
 }
 
 .Reportlist_sort {
 	font-weight: 100;
+>>>>>>> 90b069934eee1d2d4b351c560c9eaa9847a9a77e
 }
 
 .Reportlist_sort:hover {
 	cursor: pointer;
 	font-weight: 900;
+}
+
+td[id*="_descending"]{
+margin: 0px 0px 0px 0px;
+}
+
+td[id*="_ascending"]{
+margin: 0px 0px 0px 0px;
+}
+
+.thTable{
+border-style:none;
+border-bottom:none;
+margin-left: auto;
+margin-right: auto;
 }
 
 .Reportlist_Blank {
@@ -194,7 +217,13 @@ label[for="report_userName"] {
 
 span[id*="_descending"] {
 	margin: 0px 0px 0px 5px;
+>>>>>>> 90b069934eee1d2d4b351c560c9eaa9847a9a77e
 }
+.thTable td{
+border-style:none;
+border-bottom:none;
+}
+
 
 span[id*="_ascending"] {
 	margin: 0px 5px 0px 0px;
@@ -340,12 +369,12 @@ $(function(){
 	
 	function first_reportList(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
-		report_table_title	+='<th class="Reportlist_reportDays">年月分<br><span id="reportDays_ascending" class="Reportlist_sort">△</span><span id="reportDays_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_userNum">社員番号<br><span id="userNum_ascending" class="Reportlist_sort">△</span><span id="userNum_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_userName">社員名<br><span id="userName_ascending" class="Reportlist_sort">△</span><span id="userName_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_userMail">社員メール<br><span id="userMail_ascending" class="Reportlist_sort">△</span><span id="userMail_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_team">チーム名<br><span id="team_ascending" class="Reportlist_sort">△</span><span id="team_descending" class="Reportlist_sort">▽</span></th>';	
-		report_table_title	+='<th class="Reportlist_updateDate">最終保存日時<br><span id="updateDate_ascending" class="Reportlist_sort">△</span><span id="updateDate_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_reportDays"><table class="thTable" style="border-style: none;"><tr><td rowspan="2">年月分</td><td id="reportDays_ascending" class="Reportlist_sort_asc">▲</td></tr><tr><td id="reportDays_descending" class="Reportlist_sort_des">▼</td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_userNum"><table class="thTable"><tr><td rowspan="2">社員番号</td><td id="userNum_ascending" class="Reportlist_sort_asc">▲</td></tr><tr><td id="userNum_descending" class="Reportlist_sort_des">▼</td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_userName"><table class="thTable"><tr><td rowspan="2">社員名</td><td id="userName_ascending" class="Reportlist_sort_asc">▲</td></tr><tr><td id="userName_descending" class="Reportlist_sort_des">▼</td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_userMail"><table class="thTable"><tr><td rowspan="2">社員メール</td><td id="userMail_ascending" class="Reportlist_sort_asc">▲</td></tr><tr><td id="userMail_descending" class="Reportlist_sort_des">▼</td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_team"><table class="thTable"><tr><td rowspan="2">チーム名</td><td id="team_ascending" class="Reportlist_sort_asc">▲</td></tr><tr><td id="team_descending" class="Reportlist_sort_des">▼</td></tr></table></th>';	
+		report_table_title	+='<th class="Reportlist_updateDate"><table class="thTable"><tr><td rowspan="2">最終保存日時</td><td id="updateDate_ascending" class="Reportlist_sort_asc">▲</td></tr><tr><td id="updateDate_descending" class="Reportlist_sort_des">▼</td></tr></table></th>';
 		report_table_title	+='<td class="Reportlist_Blank" colspan="5"></td></tr>';
 		
 		$.ajax({
