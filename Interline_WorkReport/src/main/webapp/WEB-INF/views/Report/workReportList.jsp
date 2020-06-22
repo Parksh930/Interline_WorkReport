@@ -233,7 +233,6 @@ $(function(){
 		}
 	});
 	
-	
 	function report_List_Sort(){
 		var report_com = report_table_title;
 
@@ -294,11 +293,11 @@ $(function(){
 		if(report.state>0  && report.state<5){
 
 			report_com += '<tr><td><input type="checkbox" name="selectValue" class="check" value='+report.reportNum+'></td>';
-			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
-			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
-			report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
-			report_com += '<td class="Reportlist_team">'+report.team+'</td>';
 			report_com += '<td class="Reportlist_reportDays">'+report.year+'年'+report.month+'月</td>';
+			report_com += '<td class="Reportlist_userNum">'+report.userNum+'</td>';
+			report_com += '<td class="Reportlist_userName">'+report.userName+'</td>';
+			report_com += '<td class="Reportlist_userMail">'+report.userMail+'</td>';
+			report_com += '<td class="Reportlist_team">'+report.team+'</td>';
 			report_com += '<td class="Reportlist_updateDate">'+report.updateDate+'</td>';
 			report_com += '<td class="Reportlist_reportBtn"><button id="ReadReport_Btn" class="Read_Btn" onclick="getReadReport('+report.reportNum+')">閲覧</button>';
 			report_com += '<td class="Reportlist_reportBtn"><button class="Read_Btn" onclick="getUpdateReport('+report.reportNum+')">修正</button>';
@@ -339,11 +338,11 @@ $(function(){
 	
 	function first_reportList(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
-		report_table_title	+='<th class="Reportlist_userNum">社員番号<br><span id="userNum_ascending" class="Reportlist_sort">△</span><span id="userNum_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_userMail">社員メール<br><span id="userMail_ascending" class="Reportlist_sort">△</span><span id="userMail_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_userName">社員名<br><span id="userName_ascending" class="Reportlist_sort">△</span><span id="userName_descending" class="Reportlist_sort">▽</span></th>';
-		report_table_title	+='<th class="Reportlist_team">チーム名<br><span id="team_ascending" class="Reportlist_sort">△</span><span id="team_descending" class="Reportlist_sort">▽</span></th>';
 		report_table_title	+='<th class="Reportlist_reportDays">年月分<br><span id="reportDays_ascending" class="Reportlist_sort">△</span><span id="reportDays_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_userNum">社員番号<br><span id="userNum_ascending" class="Reportlist_sort">△</span><span id="userNum_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_userName">社員名<br><span id="userName_ascending" class="Reportlist_sort">△</span><span id="userName_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_userMail">社員メール<br><span id="userMail_ascending" class="Reportlist_sort">△</span><span id="userMail_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_team">チーム名<br><span id="team_ascending" class="Reportlist_sort">△</span><span id="team_descending" class="Reportlist_sort">▽</span></th>';	
 		report_table_title	+='<th class="Reportlist_updateDate">最終保存日時<br><span id="updateDate_ascending" class="Reportlist_sort">△</span><span id="updateDate_descending" class="Reportlist_sort">▽</span></th>';
 		report_table_title	+='<td class="Reportlist_Blank" colspan="5"></td></tr>';
 		
@@ -366,6 +365,7 @@ $(function(){
 		$("#to_ReportDays").prepend("<option value='"+now_year+"-12'>上限なし</option>");
 		
 		for(var n = 1; n<=12 ; n++){
+			
 			if(n<10){
 				$("#from_ReportDays").append("<option value='"+now_year+"-0"+n+"'>"+now_year+"年"+n+"月</option>");
 				$("#to_ReportDays").append("<option value='"+now_year+"-0"+n+"'>"+now_year+"年"+n+"月</option>");
@@ -373,6 +373,7 @@ $(function(){
 				$("#from_ReportDays").append("<option value='"+now_year+"-"+n+"'>"+now_year+"年"+n+"月</option>");
 				$("#to_ReportDays").append("<option value='"+now_year+"-"+n+"'>"+now_year+"年"+n+"月</option>");
 			}
+			
 		}
 
 		from_ReportDays_value = $("#from_ReportDays option:selected").val();
