@@ -165,7 +165,7 @@ public class WorkReportController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/user/saveReport", method = RequestMethod.POST)
-	public int saveReport(Model model, WorkReportVO workReportVO) {
+	public int saveReport(Model model, WorkReportVO workReportVO ) {
 		logger.debug(workReportVO.toString());
 		int result=0;
 		HashMap<String, Object> map= new HashMap<String, Object>();
