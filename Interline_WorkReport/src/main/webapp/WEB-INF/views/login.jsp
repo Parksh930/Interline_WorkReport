@@ -9,20 +9,21 @@
 </head>
 
 <script src="<c:url value = 'resources/js/jquery-2.0.3.min.js'/>"></script>
+<link href="resources/css/Font-Style.css" rel="stylesheet">
 
 <script>
 <c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
 
 $(document).ready(function(){
-	/* isMobile(); */
+	 isMobile(); 
 	
 	function isMobile() {
 	    var filter = "win16|win32|win64|mac|macintel";
 	    if( navigator.platform  ){
 	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-	    	  $("#login_div").attr('id','phone_login_div');
+	    	  $("body").attr('class','mobile_login');
 	      }else{
-	    	  $("#login_div").attr('id','pc_login_div');
+	    	  $("body").attr('class','pc_login');
 	      }
 	    }
 	  }
@@ -49,11 +50,8 @@ $(document).ready(function(){
 </script>
 
 <style>
-*{
-font-size: 20px;
-}
 
-#login_div{
+.pc_login #login_div{
 margin: 200px auto;
 width: fit-content;
 }
@@ -120,7 +118,6 @@ padding: 20px 0px 0px 0px;
 <tr>
 <td colspan="2" class="login_td_Submit"><input type="submit" value="ログイン" id="btn_login"></td>
 </tr>
-<input id="mobileCheck" type="hidden" name="mobileCheck" value="">
 </form>
 </table>
 </div>

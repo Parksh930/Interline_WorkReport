@@ -360,21 +360,6 @@ public class WorkReportController {
 
 	@RequestMapping(value="/admin/stateUp", method = {RequestMethod.GET,RequestMethod.POST})
 	public String stateUp(WorkReportVO vo,Model model) {
-		int stateNum;
-		if(vo.getState()==1) {
-			stateNum = 2;
-			vo.setState(stateNum);
-		}
-		else if(vo.getState()==3) {
-			stateNum = 5;
-			vo.setState(stateNum);
-		}
-		else if(vo.getState()==4) {
-			stateNum = 6;
-			vo.setState(stateNum);
-		}
-		
-		System.out.println("vo   :" + vo );
 		int result = dao.updateState(vo);
 		logger.debug("getVO:{}",result);
 		System.out.println("stateUp 결과   " + result);
@@ -385,20 +370,23 @@ public class WorkReportController {
 	
 	@RequestMapping(value="/admin/reportSelectApproval", method = RequestMethod.GET)
 	public String reportSelectApproval(Model model, String arrNumber) {
-		
 		System.out.println("번호 잘 찾아왔나?  "  +  arrNumber);
-		
-		System.out.println(" arrNumber  java 타입은 ?    "+arrNumber.getClass().getName());
-		
+		System.out.println(" arrNumber  java  data 타입은 ?    "+arrNumber.getClass().getName());
 		String[] arr =  arrNumber.split(",");
-		
-		System.out.println("arr  java 타입은 ?    "+arr.getClass().getName());
-		
-		
-		int result = dao.reportSelectApproval(arr);
-		
-		System.out.println("reportSelectApproval 의 결과값    " + result);
-		
+		System.out.println("arr  java   data  타입은 ?    "+arr.getClass().getName());
+		WorkReportVO vo = new WorkReportVO();
+		String num;
+		int intNum;
+		for(int i=0; i<=arr.length-1; i++) {
+			num = arr[i];
+			System.out.println(" selectReport  num  : "  +  num);
+			intNum = Integer.parseInt(num);
+			vo = dao.selectReport(intNum);
+			System.out.println(" 검색 되었나? selectReport  vo  : "  +  vo);
+			int result = dao.updateState(vo);
+			System.out.println("수정되었나?  result "  +  result);
+		}
+	//	int result = dao.reportSelectApproval(arr);  // forEach 용 하지만 나중에...
 		return "redirect:/admin/reportList";
 	}
 	

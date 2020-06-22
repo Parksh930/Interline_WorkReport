@@ -535,7 +535,7 @@ $(function(){
   };
 
 
-  function SelectApproval(){
+  function selectApproval(){
 		
 	  	
 		if(!$(".check").is(':checked')){
@@ -562,7 +562,7 @@ $(function(){
 
 
 
-	  function SelectDelete(){
+	  function selectDelete(){
 
 			if(!$(".check").is(':checked')){
 				alert("削除する勤務表を選択してください。");
@@ -632,9 +632,9 @@ $(function(){
 		<button id="report_ReadSelect_Btn" class="Read_Btn"
 			onclick="selectRead()">選択閲覧</button>
 		<button id="report_ReadSelectApproval_Btn" class="Read_Btn"
-			onclick="SelectApproval()">選択承認</button>
+			onclick="selectApproval()">選択承認</button>
 		<button id="report_ReadSelectDelete_Btn" class="Read_Btn"
-			onclick="SelectDelete()">選択削除</button>
+			onclick="selectDelete()">選択削除</button>
 	</div>
 	<div id="report_List"></div>
 
