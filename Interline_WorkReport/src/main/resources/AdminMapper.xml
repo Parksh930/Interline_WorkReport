@@ -63,7 +63,9 @@ select user.*,max(report.updatedate)lastupdateDate
 		,userName
 		,password
 		,team
+		<if test='position != null and position != ""'>
 		,position
+		</if>
 		<if test='startDate != null and startDate != ""'>
 			,startDate
 		</if>
@@ -76,7 +78,9 @@ select user.*,max(report.updatedate)lastupdateDate
 		,#{userName}
 		,#{password}
 		,#{team}
+		<if test='position != null and position != ""'>
 		,#{position}
+		</if>
 		<if test='startDate != null and startDate != ""'>
 			,#{startDate}
 		</if>
