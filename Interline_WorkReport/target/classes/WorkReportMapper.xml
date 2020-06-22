@@ -234,16 +234,13 @@
 	</delete>
 
 
-	<update id="reportSelectApproval" parameterType="int">
-		
-		<foreach collection="array" item="reportNumValue" index="index" open="(" close=")" separator=",">
+	<update id="reportSelectApproval" parameterType="java.util.ArrayList">
+	<foreach collection="array" item="reportNumValue" index="index" separator=";">
 		UPDATE work_Report 
             SET 
    			state = 2 
           where reportNum = #{reportNumValue}
      	</foreach>
-      
-      
      </update>     
 	
 </mapper>
