@@ -40,4 +40,7 @@ public interface WorkReportMapper {
 
 	int reportSelectApproval(String[] arr);
 
+	WorkReportVO selectReport(int intNum);
+
+
 }

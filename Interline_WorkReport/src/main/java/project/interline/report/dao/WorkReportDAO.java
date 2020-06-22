@@ -102,6 +102,19 @@ public class WorkReportDAO {
 
 	public int updateState(WorkReportVO vo) {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		int stateNum;
+		if(vo.getState()==1) {
+			stateNum = 2;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==3) {
+			stateNum = 5;
+			vo.setState(stateNum);
+		}
+		else if(vo.getState()==4) {
+			stateNum = 6;
+			vo.setState(stateNum);
+		}
 		return mapper.updateState(vo);
 	}
 
@@ -125,5 +138,12 @@ public class WorkReportDAO {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		return mapper.reportSelectApproval(arr);
 	}
+
+	public WorkReportVO selectReport(int intNum) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.selectReport(intNum);
+	}
+
+
 
 }

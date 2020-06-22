@@ -225,7 +225,11 @@
 	</update>		
 	
 	
+	<select id="selectReport" parameterType="WorkReportVO"  resultType="WorkReportVO">
+		select * from work_Report where reportNum=#{intNum}
+	</select>
 	
+		
 	<delete id="reportSelectDelete" parameterType="String">
 		delete from work_Report 
 		<where>
@@ -234,13 +238,13 @@
 	</delete>
 
 
-	<update id="reportSelectApproval" parameterType="java.util.ArrayList">
+<!-- 	<update id="reportSelectApproval" parameterType="java.util.ArrayList">
 	<foreach collection="array" item="reportNumValue" index="index" separator=";">
 		UPDATE work_Report 
             SET 
    			state = 2 
           where reportNum = #{reportNumValue}
      	</foreach>
-     </update>     
+     </update>   -->   
 	
 </mapper>
