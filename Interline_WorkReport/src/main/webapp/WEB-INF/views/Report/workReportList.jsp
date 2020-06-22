@@ -527,7 +527,7 @@ $(function(){
 
 	  	
 		if(!$(".check").is(':checked')){
-			alert("閲覧する勤務表を選択してください。");
+			alert("承認する勤務表を選択してください。");
 			return false;
 			}
 
@@ -551,7 +551,7 @@ $(function(){
 
 		  	
 			if(!$(".check").is(':checked')){
-				alert("閲覧する勤務表を選択してください。");
+				alert("削除する勤務表を選択してください。");
 				return false;
 				}
 
