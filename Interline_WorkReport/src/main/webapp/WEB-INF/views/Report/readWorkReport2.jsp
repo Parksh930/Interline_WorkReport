@@ -16,19 +16,19 @@
 <meta charset="utf8" http-equiv="X-UA-Compatible" content="IE=edge" />
 <script src="../resources/js/updateReport.js"></script>
 <script
-	src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
+	src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery-2.0.3.min.js"></script>
 <link rel="stylesheet"
-	href="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery-ui.css"
+	href="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery-ui.css"
 	type="text/css" />
-<script src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery-ui.min.js"></script>
+<script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery-ui.min.js"></script>
 <link rel="stylesheet"
-	href="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/ui.dynatree.css"
+	href="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/ui.dynatree.css"
 	type="text/css" />
 <script type="text/javascript"
-	src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/jquery.dynatree.js"
+	src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.dynatree.js"
 	charset="utf-8"></script>
 <script type="text/javascript"
-	src="http://<%out.print(properties.getIP());%>/oz80/ozhviewer/OZJSViewer.js"
+	src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/OZJSViewer.js"
 	charset="utf-8"></script>
 <!-- <script type="text/javascript" src="http://192.168.0.103:8888/ozrviewer/OZJSSVGViewer.js" charset="utf-8"></script> -->
 <script src="../resources/js/workingChart.js"
@@ -51,7 +51,7 @@
 			var oz;
 			oz = document.getElementById("OZViewer");
 			oz.sendToActionScript("connection.servlet",
-					"http://<%out.print(properties.getIP());%>/oz80/server");
+					"http://<%out.print(properties.getOzIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
 					"OSA/workReportNew1.ozr");
 			oz.sendToActionScript("global.language", "ja");
@@ -60,7 +60,7 @@
 			oz.sendToActionScript("odi.workTest.args1", array);
 			return true;
 		}
-		start_ozjs("OZViewer", "http://<%out.print(properties.getIP());%>/oz80/ozhviewer/");
+		start_ozjs("OZViewer", "http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/");
 
 
 		

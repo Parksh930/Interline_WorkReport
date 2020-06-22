@@ -14,37 +14,285 @@ public class WorkReportVO {
 	int absentDay;
 	String sumWorkingTime;
 	
-	int attendHour1;	int attendMinute1;	int offHour1;	int offMinute1;	int restHour1;	int restMinute1;	String netWorkingTime1;	String workContent1;	String dateCondition1;
-	int attendHour2;	int attendMinute2;	int offHour2;	int offMinute2;	int restHour2;	int restMinute2;	String netWorkingTime2;	String workContent2;	String dateCondition2;
-	int attendHour3;	int attendMinute3;	int offHour3;	int offMinute3;	int restHour3;	int restMinute3;	String netWorkingTime3;	String workContent3;	String dateCondition3;
-	int attendHour4;	int attendMinute4;	int offHour4;	int offMinute4;	int restHour4;	int restMinute4;	String netWorkingTime4;	String workContent4;	String dateCondition4;
-	int attendHour5;	int attendMinute5;	int offHour5;	int offMinute5;	int restHour5;	int restMinute5;	String netWorkingTime5;	String workContent5;	String dateCondition5;
-	int attendHour6;	int attendMinute6;	int offHour6;	int offMinute6;	int restHour6;	int restMinute6;	String netWorkingTime6;	String workContent6;	String dateCondition6;
-	int attendHour7;	int attendMinute7;	int offHour7;	int offMinute7;	int restHour7;	int restMinute7;	String netWorkingTime7;	String workContent7;	String dateCondition7;
-	int attendHour8;	int attendMinute8;	int offHour8;	int offMinute8;	int restHour8;	int restMinute8;	String netWorkingTime8;	String workContent8;	String dateCondition8;
-	int attendHour9;	int attendMinute9;	int offHour9;	int offMinute9;	int restHour9;	int restMinute9;	String netWorkingTime9;	String workContent9;	String dateCondition9;
-	int attendHour10;	int attendMinute10;	int offHour10;	int offMinute10;	int restHour10;	int restMinute10;	String netWorkingTime10;	String workContent10;	String dateCondition10;
-	int attendHour11;	int attendMinute11;	int offHour11;	int offMinute11;	int restHour11;	int restMinute11;	String netWorkingTime11;	String workContent11;	String dateCondition11;
-	int attendHour12;	int attendMinute12;	int offHour12;	int offMinute12;	int restHour12;	int restMinute12;	String netWorkingTime12;	String workContent12;	String dateCondition12;
-	int attendHour13;	int attendMinute13;	int offHour13;	int offMinute13;	int restHour13;	int restMinute13;	String netWorkingTime13;	String workContent13;	String dateCondition13;
-	int attendHour14;	int attendMinute14;	int offHour14;	int offMinute14;	int restHour14;	int restMinute14;	String netWorkingTime14;	String workContent14;	String dateCondition14;
-	int attendHour15;	int attendMinute15;	int offHour15;	int offMinute15;	int restHour15;	int restMinute15;	String netWorkingTime15;	String workContent15;	String dateCondition15;
-	int attendHour16;	int attendMinute16;	int offHour16;	int offMinute16;	int restHour16;	int restMinute16;	String netWorkingTime16;	String workContent16;	String dateCondition16;
-	int attendHour17;	int attendMinute17;	int offHour17;	int offMinute17;	int restHour17;	int restMinute17;	String netWorkingTime17;	String workContent17;	String dateCondition17;
-	int attendHour18;	int attendMinute18;	int offHour18;	int offMinute18;	int restHour18;	int restMinute18;	String netWorkingTime18;	String workContent18;	String dateCondition18;
-	int attendHour19;	int attendMinute19;	int offHour19;	int offMinute19;	int restHour19;	int restMinute19;	String netWorkingTime19;	String workContent19;	String dateCondition19;
-	int attendHour20;	int attendMinute20;	int offHour20;	int offMinute20;	int restHour20;	int restMinute20;	String netWorkingTime20;	String workContent20;	String dateCondition20;
-	int attendHour21;	int attendMinute21;	int offHour21;	int offMinute21;	int restHour21;	int restMinute21;	String netWorkingTime21;	String workContent21;	String dateCondition21;
-	int attendHour22;	int attendMinute22;	int offHour22;	int offMinute22;	int restHour22;	int restMinute22;	String netWorkingTime22;	String workContent22;	String dateCondition22;
-	int attendHour23;	int attendMinute23;	int offHour23;	int offMinute23;	int restHour23;	int restMinute23;	String netWorkingTime23;	String workContent23;	String dateCondition23;
-	int attendHour24;	int attendMinute24;	int offHour24;	int offMinute24;	int restHour24;	int restMinute24;	String netWorkingTime24;	String workContent24;	String dateCondition24;
-	int attendHour25;	int attendMinute25;	int offHour25;	int offMinute25;	int restHour25;	int restMinute25;	String netWorkingTime25;	String workContent25;	String dateCondition25;
-	int attendHour26;	int attendMinute26;	int offHour26;	int offMinute26;	int restHour26;	int restMinute26;	String netWorkingTime26;	String workContent26;	String dateCondition26;
-	int attendHour27;	int attendMinute27;	int offHour27;	int offMinute27;	int restHour27;	int restMinute27;	String netWorkingTime27;	String workContent27;	String dateCondition27;
-	int attendHour28;	int attendMinute28;	int offHour28;	int offMinute28;	int restHour28;	int restMinute28;	String netWorkingTime28;	String workContent28;	String dateCondition28;
-	int attendHour29;	int attendMinute29;	int offHour29;	int offMinute29;	int restHour29;	int restMinute29;	String netWorkingTime29;	String workContent29;	String dateCondition29;
-	int attendHour30;	int attendMinute30;	int offHour30;	int offMinute30;	int restHour30;	int restMinute30;	String netWorkingTime30;	String workContent30;	String dateCondition30;
-	int attendHour31;	int attendMinute31;	int offHour31;	int offMinute31;	int restHour31;	int restMinute31;	String netWorkingTime31;	String workContent31;	String dateCondition31;
+	int attendHour1;	int attendMinute1;	int offHour1;	int offMinute1;	int restHour1;	int restMinute1;	String netWorkingTime1;	String workContent1;	String dateCondition1;	String onoff1;
+	int attendHour2;	int attendMinute2;	int offHour2;	int offMinute2;	int restHour2;	int restMinute2;	String netWorkingTime2;	String workContent2;	String dateCondition2;	String onoff2;
+	int attendHour3;	int attendMinute3;	int offHour3;	int offMinute3;	int restHour3;	int restMinute3;	String netWorkingTime3;	String workContent3;	String dateCondition3;	String onoff3;
+	int attendHour4;	int attendMinute4;	int offHour4;	int offMinute4;	int restHour4;	int restMinute4;	String netWorkingTime4;	String workContent4;	String dateCondition4;	String onoff4;
+	int attendHour5;	int attendMinute5;	int offHour5;	int offMinute5;	int restHour5;	int restMinute5;	String netWorkingTime5;	String workContent5;	String dateCondition5;	String onoff5;
+	int attendHour6;	int attendMinute6;	int offHour6;	int offMinute6;	int restHour6;	int restMinute6;	String netWorkingTime6;	String workContent6;	String dateCondition6;	String onoff6;
+	int attendHour7;	int attendMinute7;	int offHour7;	int offMinute7;	int restHour7;	int restMinute7;	String netWorkingTime7;	String workContent7;	String dateCondition7;	String onoff7;
+	int attendHour8;	int attendMinute8;	int offHour8;	int offMinute8;	int restHour8;	int restMinute8;	String netWorkingTime8;	String workContent8;	String dateCondition8;	String onoff8;
+	int attendHour9;	int attendMinute9;	int offHour9;	int offMinute9;	int restHour9;	int restMinute9;	String netWorkingTime9;	String workContent9;	String dateCondition9;	String onoff9;
+	int attendHour10;	int attendMinute10;	int offHour10;	int offMinute10;	int restHour10;	int restMinute10;	String netWorkingTime10;	String workContent10;	String dateCondition10;	String onoff10;
+	int attendHour11;	int attendMinute11;	int offHour11;	int offMinute11;	int restHour11;	int restMinute11;	String netWorkingTime11;	String workContent11;	String dateCondition11;	String onoff11;
+	int attendHour12;	int attendMinute12;	int offHour12;	int offMinute12;	int restHour12;	int restMinute12;	String netWorkingTime12;	String workContent12;	String dateCondition12;	String onoff12;
+	int attendHour13;	int attendMinute13;	int offHour13;	int offMinute13;	int restHour13;	int restMinute13;	String netWorkingTime13;	String workContent13;	String dateCondition13;	String onoff13;
+	int attendHour14;	int attendMinute14;	int offHour14;	int offMinute14;	int restHour14;	int restMinute14;	String netWorkingTime14;	String workContent14;	String dateCondition14;	String onoff14;
+	int attendHour15;	int attendMinute15;	int offHour15;	int offMinute15;	int restHour15;	int restMinute15;	String netWorkingTime15;	String workContent15;	String dateCondition15;	String onoff15;
+	int attendHour16;	int attendMinute16;	int offHour16;	int offMinute16;	int restHour16;	int restMinute16;	String netWorkingTime16;	String workContent16;	String dateCondition16;	String onoff16;
+	int attendHour17;	int attendMinute17;	int offHour17;	int offMinute17;	int restHour17;	int restMinute17;	String netWorkingTime17;	String workContent17;	String dateCondition17;	String onoff17;
+	int attendHour18;	int attendMinute18;	int offHour18;	int offMinute18;	int restHour18;	int restMinute18;	String netWorkingTime18;	String workContent18;	String dateCondition18;	String onoff18;
+	int attendHour19;	int attendMinute19;	int offHour19;	int offMinute19;	int restHour19;	int restMinute19;	String netWorkingTime19;	String workContent19;	String dateCondition19;	String onoff19;
+	int attendHour20;	int attendMinute20;	int offHour20;	int offMinute20;	int restHour20;	int restMinute20;	String netWorkingTime20;	String workContent20;	String dateCondition20;	String onoff20;
+	int attendHour21;	int attendMinute21;	int offHour21;	int offMinute21;	int restHour21;	int restMinute21;	String netWorkingTime21;	String workContent21;	String dateCondition21;	String onoff21;
+	int attendHour22;	int attendMinute22;	int offHour22;	int offMinute22;	int restHour22;	int restMinute22;	String netWorkingTime22;	String workContent22;	String dateCondition22;	String onoff22;
+	int attendHour23;	int attendMinute23;	int offHour23;	int offMinute23;	int restHour23;	int restMinute23;	String netWorkingTime23;	String workContent23;	String dateCondition23;	String onoff23;
+	int attendHour24;	int attendMinute24;	int offHour24;	int offMinute24;	int restHour24;	int restMinute24;	String netWorkingTime24;	String workContent24;	String dateCondition24;	String onoff24;
+	int attendHour25;	int attendMinute25;	int offHour25;	int offMinute25;	int restHour25;	int restMinute25;	String netWorkingTime25;	String workContent25;	String dateCondition25;	String onoff25;
+	int attendHour26;	int attendMinute26;	int offHour26;	int offMinute26;	int restHour26;	int restMinute26;	String netWorkingTime26;	String workContent26;	String dateCondition26;	String onoff26;
+	int attendHour27;	int attendMinute27;	int offHour27;	int offMinute27;	int restHour27;	int restMinute27;	String netWorkingTime27;	String workContent27;	String dateCondition27;	String onoff27;
+	int attendHour28;	int attendMinute28;	int offHour28;	int offMinute28;	int restHour28;	int restMinute28;	String netWorkingTime28;	String workContent28;	String dateCondition28;	String onoff28;
+	int attendHour29;	int attendMinute29;	int offHour29;	int offMinute29;	int restHour29;	int restMinute29;	String netWorkingTime29;	String workContent29;	String dateCondition29;	String onoff29;
+	int attendHour30;	int attendMinute30;	int offHour30;	int offMinute30;	int restHour30;	int restMinute30;	String netWorkingTime30;	String workContent30;	String dateCondition30;	String onoff30;
+	int attendHour31;	int attendMinute31;	int offHour31;	int offMinute31;	int restHour31;	int restMinute31;	String netWorkingTime31;	String workContent31;	String dateCondition31;	String onoff31;
+
+	public String getOnoff1() {
+		return onoff1;
+	}
+
+	public void setOnoff1(String onoff1) {
+		this.onoff1 = onoff1;
+	}
+
+	public String getOnoff2() {
+		return onoff2;
+	}
+
+	public void setOnoff2(String onoff2) {
+		this.onoff2 = onoff2;
+	}
+
+	public String getOnoff3() {
+		return onoff3;
+	}
+
+	public void setOnoff3(String onoff3) {
+		this.onoff3 = onoff3;
+	}
+
+	public String getOnoff4() {
+		return onoff4;
+	}
+
+	public void setOnoff4(String onoff4) {
+		this.onoff4 = onoff4;
+	}
+
+	public String getOnoff5() {
+		return onoff5;
+	}
+
+	public void setOnoff5(String onoff5) {
+		this.onoff5 = onoff5;
+	}
+
+	public String getOnoff6() {
+		return onoff6;
+	}
+
+	public void setOnoff6(String onoff6) {
+		this.onoff6 = onoff6;
+	}
+
+	public String getOnoff7() {
+		return onoff7;
+	}
+
+	public void setOnoff7(String onoff7) {
+		this.onoff7 = onoff7;
+	}
+
+	public String getOnoff8() {
+		return onoff8;
+	}
+
+	public void setOnoff8(String onoff8) {
+		this.onoff8 = onoff8;
+	}
+
+	public String getOnoff9() {
+		return onoff9;
+	}
+
+	public void setOnoff9(String onoff9) {
+		this.onoff9 = onoff9;
+	}
+
+	public String getOnoff10() {
+		return onoff10;
+	}
+
+	public void setOnoff10(String onoff10) {
+		this.onoff10 = onoff10;
+	}
+
+	public String getOnoff11() {
+		return onoff11;
+	}
+
+	public void setOnoff11(String onoff11) {
+		this.onoff11 = onoff11;
+	}
+
+	public String getOnoff12() {
+		return onoff12;
+	}
+
+	public void setOnoff12(String onoff12) {
+		this.onoff12 = onoff12;
+	}
+
+	public String getOnoff13() {
+		return onoff13;
+	}
+
+	public void setOnoff13(String onoff13) {
+		this.onoff13 = onoff13;
+	}
+
+	public String getOnoff14() {
+		return onoff14;
+	}
+
+	public void setOnoff14(String onoff14) {
+		this.onoff14 = onoff14;
+	}
+
+	public String getOnoff15() {
+		return onoff15;
+	}
+
+	public void setOnoff15(String onoff15) {
+		this.onoff15 = onoff15;
+	}
+
+	public String getOnoff16() {
+		return onoff16;
+	}
+
+	public void setOnoff16(String onoff16) {
+		this.onoff16 = onoff16;
+	}
+
+	public String getOnoff17() {
+		return onoff17;
+	}
+
+	public void setOnoff17(String onoff17) {
+		this.onoff17 = onoff17;
+	}
+
+	public String getOnoff18() {
+		return onoff18;
+	}
+
+	public void setOnoff18(String onoff18) {
+		this.onoff18 = onoff18;
+	}
+
+	public String getOnoff19() {
+		return onoff19;
+	}
+
+	public void setOnoff19(String onoff19) {
+		this.onoff19 = onoff19;
+	}
+
+	public String getOnoff20() {
+		return onoff20;
+	}
+
+	public void setOnoff20(String onoff20) {
+		this.onoff20 = onoff20;
+	}
+
+	public String getOnoff21() {
+		return onoff21;
+	}
+
+	public void setOnoff21(String onoff21) {
+		this.onoff21 = onoff21;
+	}
+
+	public String getOnoff22() {
+		return onoff22;
+	}
+
+	public void setOnoff22(String onoff22) {
+		this.onoff22 = onoff22;
+	}
+
+	public String getOnoff23() {
+		return onoff23;
+	}
+
+	public void setOnoff23(String onoff23) {
+		this.onoff23 = onoff23;
+	}
+
+	public String getOnoff24() {
+		return onoff24;
+	}
+
+	public void setOnoff24(String onoff24) {
+		this.onoff24 = onoff24;
+	}
+
+	public String getOnoff25() {
+		return onoff25;
+	}
+
+	public void setOnoff25(String onoff25) {
+		this.onoff25 = onoff25;
+	}
+
+	public String getOnoff26() {
+		return onoff26;
+	}
+
+	public void setOnoff26(String onoff26) {
+		this.onoff26 = onoff26;
+	}
+
+	public String getOnoff27() {
+		return onoff27;
+	}
+
+	public void setOnoff27(String onoff27) {
+		this.onoff27 = onoff27;
+	}
+
+	public String getOnoff28() {
+		return onoff28;
+	}
+
+	public void setOnoff28(String onoff28) {
+		this.onoff28 = onoff28;
+	}
+
+	public String getOnoff29() {
+		return onoff29;
+	}
+
+	public void setOnoff29(String onoff29) {
+		this.onoff29 = onoff29;
+	}
+
+	public String getOnoff30() {
+		return onoff30;
+	}
+
+	public void setOnoff30(String onoff30) {
+		this.onoff30 = onoff30;
+	}
+
+	public String getOnoff31() {
+		return onoff31;
+	}
+
+	public void setOnoff31(String onoff31) {
+		this.onoff31 = onoff31;
+	}
 
 	public int getReportNum() {
 		return reportNum;

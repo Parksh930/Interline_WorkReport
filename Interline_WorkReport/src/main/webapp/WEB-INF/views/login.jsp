@@ -92,7 +92,7 @@ padding: 20px 0px 0px 0px;
 <tr>
 <th colspan="2" class="login_th_title">
 <span class="login_text">ログイン</span>
-<span class="title_text">勤務表報告 システム</span></th>
+<span class="title_text">勤務票報告 システム</span></th>
 </tr>
 <form action="login" method="post" id="login_form">
 <tr>

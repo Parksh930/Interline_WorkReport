@@ -121,7 +121,7 @@
 	</div>
 	
 	<div id="_iframe" style="position:absolute; top:0; left:0; text-align: left; z-index: 1; background-color: rgb(255,255,255); width: 100%; height: 100%;">
-		<iframe name="list_Box" id="list_Box" src="../user/myReportList" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0 ></iframe>
+		<iframe name="list_Box" id="list_Box" src="../user/myReportList" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=yes vspace=0 ></iframe>
 	</div>
 	
 	<div id="cover" class="cover" style="z-index: -1; width: 100%; height: 100%; background-color: rgb(255,255,255); position: absolute; top:0; left:0;"></div>

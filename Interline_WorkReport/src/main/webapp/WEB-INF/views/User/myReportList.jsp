@@ -151,8 +151,8 @@ font-size: 60px;
 <div id="report_List">
 <table>
 	<tr>
-		<td class="Reportlist_Days">提出日</td>
-		<td class="Reportlist_state">状態</td>
+		<td class="Reportlist_Days" width="250">提出日</td>
+		<td class="Reportlist_state" width="250">状態</td>
 	</tr>
 	<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
 	<c:forEach var = "work_report" items="${report_my}" varStatus="status">
@@ -211,7 +211,8 @@ font-size: 60px;
 			$('td').css('font-size', '20px');
 			$('td').css('height', '35px');
 			$('a').css('font-size', '20px');
-			
+			$('.Reportlist_Days').width("90");
+			$('.Reportlist_state').width("90");
 		} 
 	}	
 </script>

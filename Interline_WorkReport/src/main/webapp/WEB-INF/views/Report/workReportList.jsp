@@ -146,13 +146,9 @@ height: 24px;
     font-size: 12px;
 }
 
-#report_list_sort{
+#report_Read_Btn{
 text-align: left;
 margin:20px 0px 0px 14.4px;
-}
-
-#Reportlist_sort{
-margin: auto 0px;
 }
 
 label[for="report_userName"]{
@@ -176,7 +172,29 @@ margin:0px 0px 0px 310px;
 }
 
 #report_ReadSelect_Btn{
-margin:0px 0px 0px 20px;
+margin:0px 0px 0px 25px;
+}
+
+.Reportlist_sort{
+font-weight:100;
+}
+
+.Reportlist_sort:hover{
+cursor:pointer;
+font-weight:900;
+}
+
+.Reportlist_Blank{
+width:220px;
+border-style: none;
+}
+
+span[id*="_descending"]{
+margin: 0px 0px 0px 5px;
+}
+
+span[id*="_ascending"]{
+margin: 0px 5px 0px 0px;
 }
 
 </style>
@@ -191,7 +209,7 @@ $(function(){
 	var to_ReportDays_value;
 
 	first_reportList();
-	$("#Reportlist_sort").change(report_List_Sort);
+	$(document).on('click','.Reportlist_sort',report_List_Sort);
 	$('input[name="report_userTeam"]').click(report_Team_Filter);
 	$('#report_userNum_btn').click(report_Text_Filter);
 	$('#report_userName_btn').click(report_Text_Filter);
@@ -219,8 +237,8 @@ $(function(){
 	function report_List_Sort(){
 		var report_com = report_table_title;
 
-		if($(this)[0].id == "Reportlist_sort"){
-			report_Measure = ($(this).val()).split('_');
+		if($(this)[0].className == "Reportlist_sort"){
+			report_Measure = ($(this)[0].id).split('_');
 		}
 		
         if(report_Measure[0] == "updateDate" &&  report_Measure[1] == "ascending"){
@@ -228,14 +246,14 @@ $(function(){
                 var dateA = new Date(a[report_Measure[0]]).getTime();
                 var dateB = new Date(b[report_Measure[0]]).getTime();
 
-                return dateA > dateB ? 1 : -1;
+                return dateA > dateB ? 1 : dateA < dateB ? -1 : 0;
             });
         }else if (report_Measure[0] == "updateDate" && report_Measure[1] == "descending"){
             report_sort.sort(function(a,b){
                 var dateA = new Date(a[report_Measure[0]]).getTime();
                 var dateB = new Date(b[report_Measure[0]]).getTime();
 
-                return dateA < dateB ? 1 : -1;
+                return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
             });
         }
 
@@ -262,6 +280,7 @@ $(function(){
 		}
 
         if(report_Measure[0] != "userNum" && report_Measure[0] != "reportDays" && report_Measure[0] != "updateDate"){
+
             if(report_Measure[1] == "ascending"){
                 report_sort.sort(function(a,b){return a[report_Measure[0]] < b[report_Measure[0]] ? -1 : a[report_Measure[0]] > b[report_Measure[0]] ? 1 : 0;});
             }else if(report_Measure[1] == "descending"){
@@ -269,6 +288,7 @@ $(function(){
             }
         }
 
+       
 	
 		report_sort.forEach(function(report){
 		if(report.state>0  && report.state<5){
@@ -319,10 +339,13 @@ $(function(){
 	
 	function first_reportList(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
-		report_table_title	+='<th class="Reportlist_userNum">社員番号</th><th class="Reportlist_userMail">社員メール</th>';
-		report_table_title	+='<th class="Reportlist_userName">社員名</th><th class="Reportlist_team">チーム名</th>';
-		report_table_title	+='<th class="Reportlist_reportDays">年月分</th><th class="Reportlist_updateDate">最終保存日時</th>';
-		report_table_title	+='</tr>';
+		report_table_title	+='<th class="Reportlist_userNum">社員番号<br><span id="userNum_ascending" class="Reportlist_sort">△</span><span id="userNum_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_userMail">社員メール<br><span id="userMail_ascending" class="Reportlist_sort">△</span><span id="userMail_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_userName">社員名<br><span id="userName_ascending" class="Reportlist_sort">△</span><span id="userName_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_team">チーム名<br><span id="team_ascending" class="Reportlist_sort">△</span><span id="team_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_reportDays">年月分<br><span id="reportDays_ascending" class="Reportlist_sort">△</span><span id="reportDays_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<th class="Reportlist_updateDate">最終保存日時<br><span id="updateDate_ascending" class="Reportlist_sort">△</span><span id="updateDate_descending" class="Reportlist_sort">▽</span></th>';
+		report_table_title	+='<td class="Reportlist_Blank" colspan="5"></td></tr>';
 		
 		$.ajax({
 			type:"post",
@@ -509,7 +532,7 @@ $(function(){
 </script>
 
 <body>
-	<h1>勤務表リスト</h1>
+	<h1>勤務票リスト</h1>
 	<div id="report_list_filter">
 	<fieldset id="reportUserNum_Filter">
 	<label for="report_userNum">社員番号：</label><input type="number" name = "report_userNum" id = "report_userNum">
@@ -535,22 +558,8 @@ $(function(){
 	</select>
 	</fieldset>
 	</div>
-	<div id="report_list_sort">
-		<select id ="Reportlist_sort" name="Userlist_sort">
-			<option value="userNum_ascending">社員番号の昇順</option>
-			<option value="userNum_descending">社員番号の降順</option>
-			<option value="userMail_ascending">社員メールの昇順</option>
-			<option value="userMail_descending">社員メールの降順</option>
-			<option value="userName_ascending">社員名の昇順</option>
-			<option value="userName_descending">社員名の降順</option>
-			<option value="team_ascending">チーム名の昇順</option>
-			<option value="team_descending">チーム名の降順</option>
-			<option value="reportDays_ascending">年月分の昇順</option>
-			<option value="reportDays_descending">年月分の降順</option>
-			<option value="updateDate_ascending">最終保存日時の昇順</option>
-			<option value="updateDate_descending" selected="selected">最終保存日時の降順</option>
-		</select>
-		&nbsp&nbsp<button  id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
+	<div id="report_Read_Btn">
+		<button  id="report_ReadSelect_Btn" class="Read_Btn" onclick="selectRead()">選択閲覧</button>
 	</div>
 	<div id="report_List"></div>
 
