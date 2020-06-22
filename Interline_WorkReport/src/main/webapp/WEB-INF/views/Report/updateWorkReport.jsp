@@ -55,7 +55,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://<%out.print(properties.getIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
-					"OSA/workReport2.ozr");
+					"OSA/workReportNew2.ozr");
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
@@ -79,10 +79,7 @@
 		}
 	</script>
 
-	<!-- 	<form id="updateReport" action="updateReport">
-		<input id="updateJsonReport" type="hidden" name="updateJsonReport" value="">
-		<input id="updateJsonContents" type="hidden" name="updateJsonContents" value=""> 
-	</form>-->
+
 </body>
 </html>
 

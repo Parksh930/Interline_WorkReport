@@ -53,7 +53,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://<%out.print(properties.getIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
-					"OSA/workReport1.ozr");
+					"OSA/workReportNew1.ozr");
 			oz.sendToActionScript("global.language", "ja");
 			oz.sendToActionScript("odi.odinames", "workTest");
 			oz.sendToActionScript("odi.workTest.pcount", "1");
