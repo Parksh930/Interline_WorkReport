@@ -386,7 +386,6 @@ public class WorkReportController {
 			int result = dao.updateState(vo);
 			System.out.println("수정되었나?  result "  +  result);
 		}
-	//	int result = dao.reportSelectApproval(arr);  // forEach 용 하지만 나중에...
 		return "redirect:/admin/reportList";
 	}
 	
