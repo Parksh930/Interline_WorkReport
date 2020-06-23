@@ -137,15 +137,15 @@
 		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
 			//alert('mobile 접속'); 
 		} else { 
-			console.log("pc접속")
-			$('#bodyDiv').css('width', '40%');
-			$('#_iframe').css('width', '40%');
-			$('#menuBar').css('width', '30%');
-			$('.menu_Btn').css('font-size', '20px');
-			$('.logout').css('font-size', '20px');
-			$('#name').css('font-size', '20px');
-			$('#button1').css('height', 'auto');
-			$('#button1').css('max-width', '3%');
+			//console.log("pc접속")
+			//$('#bodyDiv').css('width', '40%');
+			//$('#_iframe').css('width', '40%');
+			//$('#menuBar').css('width', '30%');
+			//$('.menu_Btn').css('font-size', '20px');
+			//$('.logout').css('font-size', '20px');
+			//$('#name').css('font-size', '20px');
+			//$('#button1').css('height', 'auto');
+			//$('#button1').css('max-width', '3%');
 		} 
 	}
 	
