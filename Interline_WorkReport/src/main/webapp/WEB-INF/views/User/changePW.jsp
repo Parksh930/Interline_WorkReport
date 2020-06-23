@@ -68,7 +68,7 @@ font-size: 70px;
 
 </style>
 <body>
-<img src="../resources/image/interline1.png" style="width: 50%;">
+
 <div id="title">パスワード変更</div>
 
 <div id = "profileUd" style="text-align: center;">
