@@ -290,7 +290,7 @@ public class WorkReportController {
 		
 		int result = dao.updateReport2(workReportVO);
 		
-		System.out.println("어드민 업데이트result: "+result); // 0 이 성공
+		System.out.println("어드민 업데이트result: "+result); 
 		System.out.println("update after  VO : "+workReportVO);
 		
 		
