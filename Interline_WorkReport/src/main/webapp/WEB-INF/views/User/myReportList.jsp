@@ -10,8 +10,27 @@
 
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href="../resources/css/Font-Style.css" rel="stylesheet">
 <script>
-
+$(document).ready(function(){
+	 isMobile(); 
+	
+	function isMobile() {
+	    var filter = "win16|win32|win64|mac|macintel";
+	    if( navigator.platform  ){
+	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+	    	  $("body").addClass('mobile_body');
+	    	  $("#title").addClass('mobile_font_title');
+	    	  $("#listTable").addClass('mobile_font_content2');
+	    	  $("[id^=stateDiv]").addClass('mobile_button');
+	    	  $("[id^=fakeStateDiv]").addClass('mobile_button_fake');
+	      }else{
+	    	  $("body").addClass('mobile_body');
+	    	  $("#title").addClass('mobile_font_title');
+	      }
+	    }
+	  }
+});
 
 function formSubmit(page){
 	var pp = document.getElementById('page');
@@ -21,7 +40,9 @@ function formSubmit(page){
 	document.location.href = "myreportList?page=" + pp.value;
 }
 
-
+function loadCorrectPage(reportNum){
+	parent.location.href="correctMyReport?reportNum="+reportNum;
+}
 
 
 function confirmChange(reportNum,originalState) {
@@ -51,124 +72,52 @@ function confirmChange(reportNum,originalState) {
 
 <style>
 body{
-text-align:center;
-}
-
-
-#report_List{
 	text-align: center;
-	margin: auto;
 }
-#navigator{
-text-align: center;
-margin: 20px 0px 0px 0px;
-}
-
-table {
-  border-collapse: collapse;
-  text-align: center;
-	margin: auto;
-}
-
-tr{
-height: 45px;
-}
-
-th,td{
-border: 1px solid black;
-text-align: center;
-margin: auto;
-font-size: 60px;
-
-height: 80px;
-}
-
-td.Reportlist_Days{
-}
-td.Reportlist_state{
-}
-td.Reportlist_reportNum{
-border-style: none;
-}
-td.Reportlist_request{
-border-style: none;
-}
-
-
-.Read_Btn{
-border: solid 2px rgb(0, 112, 192);
-border-radius:9px; 
-padding: 5px 5px 5px 5px;
-margin:2px;
-background-color: rgb(0, 112, 192);
-color: white;
-cursor: pointer;
-text-decoration: none;
-
-}
-
-.state_Btn{
-border: solid 2px rgb(0, 112, 192);
-border-radius:9px; 
-padding: 5px 5px 5px 5px;
-margin:2px;
-background-color: rgb(0, 112, 192);
-color: white;
-cursor: pointer;
-text-decoration: none;
-
-}
-
-
-.rr_Btn{
-border: solid 2px rgb(0, 112, 192);
-border-radius:9px; 
-padding: 5px 5px 5px 5px;
-margin:2px;
-background-color: rgb(0, 112, 192);
-color: white;
-cursor: pointer;
-text-decoration: none;
-
-}
-
 a{
-text-decoration: none;
-font-size: 60px;
+	text-decoration: none;
+}
+.list_table{
+	border-collapse: collapse;
+	text-align: center;
+	margin-left: auto; 
+	margin-right: auto;
+}
+.list_table td{
+	border: 1px solid;
+	border-collapse: collapse;
 }
 </style>
 
 <!-- ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] -->
 <!-- {'0':'aa','1':'bb'} -->
+
 <body>
-<img src="../resources/image/interline1.png" style="width: 50%;">
 
 <br></br>
-<div id="title" style="font-size: 90px; text-align: center;">過去の勤務票閲覧</div>
+<div id="title">過去の勤務票閲覧</div>
 <br></br>
 
 
-<div id="report_List">
-<table>
+<table id="listTable" class="list_table">
 	<tr>
-		<td class="Reportlist_Days" width="250">提出日</td>
+		<td class="Reportlist_state" width="250">提出日</td>
 		<td class="Reportlist_state" width="250">状態</td>
 	</tr>
 	<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
 	<c:forEach var = "work_report" items="${report_my}" varStatus="status">
 		<tr>
-			<td id="yearMonth${status.count}" class="Reportlist_Days">&nbsp;${work_report.year}-${work_report.month}&nbsp;</td>
-			<td id="state${status.count}" class="Reportlist_Days">${stateVal[work_report.state]}</td>
-			<td class="Reportlist_reportNum">
-				<a id="readReport${status.count}" class="Read_Btn" href="myReport?reportNum=${work_report.reportNum}" target="_blank">閲覧</a>
+			<td id="submitDate${status.count}" class="Reportlist_Days">
+				<a id="readReport${status.count}" href="myReport?reportNum=${work_report.reportNum}" target="_blank">
+					<fmt:parseDate value="${work_report.updateDate}" var="noticePostDate" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${noticePostDate}" pattern="yyyy.MM.dd"/>
+				</a>
 			</td>
-			<td id="request${status.count}" class="Reportlist_request" > 
-				<a class="rr_Btn"  onclick="return confirmChange(${work_report.reportNum},${work_report.state})">修正依頼</a>
-			</td>
+			<td id="state${status.count}" class="Reportlist_Days">${work_report.state}</td>
+			<!-- <td id="state${status.count}" class="Reportlist_Days">${stateVal[work_report.state]}</td> -->
 		</tr>
 	</c:forEach>
 </table>
-</div>
 
 
 <div id = "navigator">
@@ -186,7 +135,39 @@ font-size: 60px;
 </div>
 
 <script>
-	
+	for(var i=1 ; i<=10 ; i++){
+		var reportNum=$('#readReport'+i).attr('href').split("=")[1];
+		var stateHtml=$('#state'+i).html();
+		//var stateArray=['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'];
+		switch (stateHtml){
+		case "0":
+			$('#state'+i).html("<div id='stateDiv"+i+"' width='250px'  onclick='loadCorrectPage("+reportNum+")'>保存</div>");
+			break;
+		case "1":
+			$('#state'+i).html("<div id='fakeStateDiv"+i+"' width='250px' onclick='confirmChange("+reportNum+","+stateHtml+")'>提出</div>");
+			break;
+		case "2":
+			$('#state'+i).html("<div id='fakeStateDiv"+i+"' width='250px' onclick='confirmChange("+reportNum+","+stateHtml+")'>提出</div>");
+			break;
+		case "3":
+			$('#state'+i).html("<div id='fakeStateDiv"+i+"' width='250px'>修正依頼</div>");
+			break;
+		case "4":
+			$('#state'+i).html("<div id='fakeStateDiv"+i+"' width='250px'>修正依頼</div>");
+			break;
+		case "5":
+			$('#state'+i).html("<div id='stateDiv"+i+"' width='250px'  onclick='loadCorrectPage("+reportNum+")'>修正許可</div>");
+			break;
+		case "6":
+			$('#state'+i).html("<div id='stateDiv"+i+"' width='250px'  onclick='loadCorrectPage("+reportNum+")'>修正許可</div>");
+			break;
+		default:
+			console.log("default");
+			break;
+		}
+	}
+
+/*
 	for(var i=1 ; i<=10; i++){
 		var reportNum="0";
 		var stateHtml=$('#state'+i).html();
@@ -199,6 +180,7 @@ font-size: 60px;
 			$('#request'+i).html("");
 		}
 	}
+	*/
 </script>
 <script type="text/javascript">
 	var filter = "win16|win32|win64|mac|macintel"; 
@@ -206,13 +188,13 @@ font-size: 60px;
 		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
 			//alert('mobile 접속'); 
 		} else { 
-			console.log("pc접속")
-			$('#title').css('font-size', '60px');
-			$('td').css('font-size', '20px');
-			$('td').css('height', '35px');
-			$('a').css('font-size', '20px');
-			$('.Reportlist_Days').width("90");
-			$('.Reportlist_state').width("90");
+		//	console.log("pc접속")
+		//	$('#title').css('font-size', '60px');
+		//	$('td').css('font-size', '20px');
+		//	$('td').css('height', '35px');
+		//	$('a').css('font-size', '20px');
+		//	$('.Reportlist_Days').width("90");
+		//	$('.Reportlist_state').width("90");
 		} 
 	}	
 </script>
