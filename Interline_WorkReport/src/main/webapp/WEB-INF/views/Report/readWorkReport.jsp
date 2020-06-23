@@ -54,7 +54,7 @@
 			oz.sendToActionScript("connection.servlet",
 					"http://<%out.print(properties.getOzIP());%>/oz80/server");
 			oz.sendToActionScript("connection.reportname",
-					"OSA/workReportNew1.ozr");
+					"OSA/workReportNormal.ozr");
 			//oz.sendToActionScript("connection.pcount","1");
 			//oz.sendToActionScript("connection.args1","holiday="+JSON.stringify(holiday));
 			oz.sendToActionScript("global.language", "ja");
