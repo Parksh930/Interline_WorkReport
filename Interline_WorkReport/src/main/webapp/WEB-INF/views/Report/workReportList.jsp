@@ -336,10 +336,10 @@ $(function(){
 
 		}
 		if(report.state==1){
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">提出承認</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn2"onclick="submitApproval('+report.reportNum+')">未承認</button></td>';
 			}
 		else if(report.state==2){
-			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認完了</button></td>';
+			report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn4"onclick="approvaled('+report.reportNum+')" disabled="disabled">承認済み</button></td>';
 			}
 		else if(report.state==3){
 		report_com +='<td class="Reportlist_reportBtn"><button class="Read_Btn5"onclick="updateApproval1('+report.reportNum+')">修正承認</button></td>';
@@ -516,15 +516,15 @@ $(function(){
 
 	
   function submitApproval(reportNum) { 
-	  if(confirm("提出された勤務表を承認しますか。"))
+	  if(confirm("提出された勤務票を承認しますか。"))
 			location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+1;
 			};
 	function updateApproval1(reportNum) { 
-		 if(confirm("勤務表の修正を承認しますか。"))
+		 if(confirm("勤務票の修正を承認しますか。"))
 		location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+3;
 		 };
 	function updateApproval2(reportNum) { 
-		 if(confirm("勤務表の修正を承認しますか。"))
+		 if(confirm("勤務票の修正を承認しますか。"))
 		location.href = "../admin/stateUp?reportNum="+reportNum+"&state="+4;
 			};
 	
@@ -535,7 +535,7 @@ $(function(){
 
   	
 	if(!$(".check").is(':checked')){
-		alert("閲覧する勤務表を選択してください。");
+		alert("閲覧する勤務票を選択してください。");
 		return false;
 		}
 
@@ -558,11 +558,11 @@ $(function(){
 		
 	  	
 		if(!$(".check").is(':checked')){
-			alert("承認する勤務表を選択してください。");
+			alert("承認する勤務票を選択してください。");
 			return false;
 			}
 
-		if(confirm("選択した勤務表を承認しますか。")){
+		if(confirm("選択した勤務票を承認しますか。")){
 		var arrNumber="";
 	      $('input[name="selectValue"]').each(function(){
 	          if($(this).prop("checked")){
@@ -584,12 +584,12 @@ $(function(){
 	  function selectDelete(){
 
 			if(!$(".check").is(':checked')){
-				alert("削除する勤務表を選択してください。");
+				alert("削除する勤務票を選択してください。");
 				return false;
 				}
 
 
-		  if(confirm("選択した勤務表を削除しますか。")){
+		  if(confirm("選択した勤務票を削除しますか。")){
 			var arrNumber="";
 		      $('input[name="selectValue"]').each(function(){
 		          if($(this).prop("checked")){
