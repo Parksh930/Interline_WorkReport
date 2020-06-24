@@ -25,37 +25,32 @@
 -->
 <script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-	$(document).ready(
-		function(){ $('#bt1').on('click',toggleSummary); }
-	);
-	$(document).ready(
-		function(){ $('#summary').hide(); }
-	);
-</script>
+
 
 </head>
-<style>
-	#summaryTable{
-		font-family: -apple-system-subset,Helvetica,Hiragino Kaku Gothic ProN,sans-serif;
-		-webkit-text-size-adjust:300%;
-		border-collapse: collapse;
-	}
-	.summary{
-		font-size:16px;
-	}
-	.button{
-		border: solid 2px rgb(0, 112, 192);
-		border-radius: 9px;
-		background-color: rgb(0, 112, 192);
-		color: white;
-		font-size: 16px;
-		text-align: center;
-		padding: 15px;
-		margin:10px;
-	}
-</style>
+<link href="../resources/css/Font-Style.css" rel="stylesheet">
+<script type="text/javascript">
+$(document).ready(function(){
+	 isMobile(); 
+	
+	function isMobile() {
+	    var filter = "win16|win32|win64|mac|macintel";
+	    if( navigator.platform  ){
+	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+   			$("#summaryTable").addClass("mobile_body"); 
+			$(".summary").addClass("mobile_font_content1"); 
+			$(".button").addClass("mobile_button"); 
+	      }else{
+   		$("body").addClass('mobile_body');
+   		$("#title").addClass('mobile_font_title');
+	      }
+	    }
+	    $('#bt1').on('click',toggleSummary);
+	    $('#summary').hide();
+	  }
+});
 
+</script>
 <body style="height:100%; overscroll-behavior:none;">
 <!-- model값을 불러오기위한 input -->
 <input id="userNum" type="hidden" value="${userNum}">
@@ -195,20 +190,7 @@
 	</div>	
 </div>
 
-<script type="text/javascript">
-	var filter = "win16|win32|win64|mac|macintel"; 
-	if ( navigator.platform ) { 
-		if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
-			//alert('mobile 접속'); 
-		} else { 
-			console.log("pc접속")
-			$('.summary').css('font-size', '15px');
-			$('#OZViewer').css('width', '30%');
-			
-		} 
-	}
-	
-</script>
+
 
 </body>
 </html>

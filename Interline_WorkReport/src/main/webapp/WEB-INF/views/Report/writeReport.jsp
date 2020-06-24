@@ -25,6 +25,7 @@
 -->
 <script src="http://<%out.print(properties.getOzIP());%>/oz80/ozhviewer/jquery.mouseSwipe.js" type="text/javascript"></script>
 </head>
+<link href="../resources/css/Font-Style.css" rel="stylesheet">
 <script type="text/javascript">
 	$(document).ready(function(){
 		 isMobile(); 
@@ -33,9 +34,9 @@
 		    var filter = "win16|win32|win64|mac|macintel";
 		    if( navigator.platform  ){
 		      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-	    		//$("body").addClass("mobile_body"); 
-				//$(".summary").addClass("mobile_font_content2"); 
-				//$(".button").addClass("mobile_button"); 
+	    		$("#summaryTable").addClass("mobile_body"); 
+				$(".summary").addClass("mobile_font_content1"); 
+				$(".button").addClass("mobile_button"); 
 		      }else{
 	    		$("body").addClass('mobile_body');
 	    		$("#title").addClass('mobile_font_title');
@@ -58,19 +59,6 @@
 		font-family: -apple-system-subset,Helvetica,Hiragino Kaku Gothic ProN,sans-serif;
 		-webkit-text-size-adjust:300%;
 		border-collapse: collapse;
-	}
-	.summary{
-		font-size:16px;
-	}
-	.button{
-		border: solid 2px rgb(0, 112, 192);
-		border-radius: 9px;
-		background-color: rgb(0, 112, 192);
-		color: white;
-		font-size: 16px;
-		text-align: center;
-		padding: 15px;
-		margin:10px;
 	}
 </style>
 <body style="height:100%; overscroll-behavior:none;">
