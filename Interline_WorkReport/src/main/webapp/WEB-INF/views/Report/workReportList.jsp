@@ -10,6 +10,7 @@
 <title>ReportList</title>
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <style>
 body {
 	text-align: center;
@@ -218,6 +219,7 @@ $(function(){
 	var to_ReportDays_value;
 
 	first_reportList();
+	isMobile();
 	$(document).on('click','.Reportlist_sort',report_List_Sort);
 	$('input[name="report_userTeam"]').click(report_Team_Filter);
 	$('#report_userNum_btn').click(report_Text_Filter);
@@ -241,6 +243,18 @@ $(function(){
 			$("#report_userName").val("");
 		}
 	});
+
+	function isMobile() {
+		var filter = "win16|win32|win64|mac|macintel";
+
+		if( navigator.platform  ){
+			if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+				$("body").attr('class','mobile_body');
+			}else{
+				$("body").attr('class','pc_body');
+		    }
+		}
+	}
 	
 	function report_List_Sort(){
 		var report_com = report_table_title;

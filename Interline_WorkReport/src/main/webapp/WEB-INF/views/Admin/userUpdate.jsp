@@ -7,13 +7,27 @@
 <meta charset="UTF-8">
 <title>admin_updateUser</title>
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
+<link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
 $(function(){
 
 	$("#insert_User_btn").click(user_update);
 	$("#delete_User_btn").click(user_delete);
 	option_selected();
-	
+	isMobile();
+
+
+	function isMobile() {
+		var filter = "win16|win32|win64|mac|macintel";
+
+		if( navigator.platform  ){
+			if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+				$("body").attr('class','mobile_body');
+			}else{
+				$("body").attr('class','pc_body');
+		    }
+		}
+	}
 });
 
 function option_selected(){
