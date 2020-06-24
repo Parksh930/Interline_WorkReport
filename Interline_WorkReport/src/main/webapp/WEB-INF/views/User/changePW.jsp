@@ -97,6 +97,7 @@ text-align: center;
 
 <div class="body">パスワード <div class="body">
 <input class="form-control" id="Password" type="password" name="password" style="font-size:16px; font-family: inherit;"> </div> </div> 
+
 <div class="signInMark form-group">パスワード確認 <div class="signInLeft">
 <input class="form-control" id="passwordCheck" type="password" name="passwordcheck" style="font-size:16px; font-family: inherit;"> </div> </div> 
 
