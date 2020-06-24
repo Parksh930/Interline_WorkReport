@@ -8,11 +8,13 @@
 <title>RegisterUser</title>
 </head>
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
+<link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
  $(function(){
 	 var date = new Date();
 	 var thisYear = date.getFullYear();
 
+	 isMobile(); 
 	 $('#startDate').val(date.toISOString().substring(0, 10));
 	 $('#startDate').attr("max",thisYear+1+"-12-31");
 
@@ -24,6 +26,19 @@
 		 }
 	 });
 
+
+		
+	function isMobile() {
+		var filter = "win16|win32|win64|mac|macintel";
+
+		if( navigator.platform  ){
+			if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+				$("body").attr('class','mobile_body');
+			}else{
+				$("body").attr('class','pc_body');
+			}
+		}
+	}
 	 
 	function userInform_check(){
 		

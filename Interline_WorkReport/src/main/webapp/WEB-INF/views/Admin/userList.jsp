@@ -19,10 +19,24 @@ $(function(){
 	var user_Measure = ["userNum","ascending"];
 
 	first_userList();
+	isMobile(); 
 	
 	$('input[name="user_team"]').click(user_Team_Filter);
 	$("input[name='user_status']").click(user_Status_Filter);
 	$(document).on('click','.Userlist_sort',user_List_Sort);
+
+		
+	function isMobile() {
+		var filter = "win16|win32|win64|mac|macintel";
+
+		if( navigator.platform  ){
+			if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+				$("body").attr('class','mobile_body');
+			}else{
+				$("body").attr('class','pc_body');
+		    }
+		}
+	}
 	
 	function user_List_Sort(){
 		var con = user_table_title;
