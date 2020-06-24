@@ -10,6 +10,19 @@
 <link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
 $(function(){
+
+	isMobile(); 
+		
+	function isMobile() {
+		var filter = "win16|win32|win64|mac|macintel";
+		if( navigator.platform  ){
+			if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+				$("body").attr('class','mobile_body');
+		    }else{
+		    	$("body").attr('class','pc_body');
+		    }
+		}
+	}
 	
 	$('#list_Box').css('min-height',window.innerHeight-100+'px');
 	$('#list_Box').attr("src","../admin/reportList");
