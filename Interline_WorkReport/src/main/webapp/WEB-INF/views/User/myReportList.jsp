@@ -104,7 +104,6 @@ a{
 		<td class="Reportlist_state" width="250">提出日</td>
 		<td class="Reportlist_state" width="250">状態</td>
 	</tr>
-	<c:set var="stateVal" value="${ ['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'] }"/>
 	<c:forEach var = "work_report" items="${report_my}" varStatus="status">
 		<tr>
 			<td id="submitDate${status.count}" class="Reportlist_Days">

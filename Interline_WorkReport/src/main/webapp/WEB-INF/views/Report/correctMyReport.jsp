@@ -35,6 +35,27 @@
 </script>
 
 </head>
+<style>
+	#summaryTable{
+		font-family: -apple-system-subset,Helvetica,Hiragino Kaku Gothic ProN,sans-serif;
+		-webkit-text-size-adjust:300%;
+		border-collapse: collapse;
+	}
+	.summary{
+		font-size:16px;
+	}
+	.button{
+		border: solid 2px rgb(0, 112, 192);
+		border-radius: 9px;
+		background-color: rgb(0, 112, 192);
+		color: white;
+		font-size: 16px;
+		text-align: center;
+		padding: 15px;
+		margin:10px;
+	}
+</style>
+
 <body style="height:100%; overscroll-behavior:none;">
 <!-- model값을 불러오기위한 input -->
 <input id="userNum" type="hidden" value="${userNum}">
@@ -150,24 +171,24 @@
 		<div style="background-color:rgb(217,217,217,0.8); display: block;">
 			<table>
 				<tr>
-					<td style="text-align: right; font-size: 15px;">営業日 : </td><td id="salesDay" style=" font-size: 15px;"></td>
+					<td class="summary" style="text-align: right;">営業日 : </td><td id="salesDay" class="summary"></td>
 					<td rowspan="5">
-						<input type="button" value="取り消し" onclick="redirect()">
-						<input type="button" value="保存" onclick="saveReport(0)">
-						<input type="button" value="提出" onclick="saveReport(1)">
+						<div class="button" onclick="redirect()">取り消し</div>
+						<div class="button" onclick="saveReport(0)">保存</div>
+						<div class="button" onclick="saveReport(1)">提出</div>
 					</td>
 				</tr>
 				<tr>
-					<td class="summary" style="text-align: right; font-size: 30px;">平日勤務 : </td><td id="workingDay" class="summary" style=" font-size: 30px;"></td>
+					<td class="summary" style="text-align: right;">平日勤務 : </td><td id="workingDay" class="summary"></td>
 				</tr>
 				<tr>
-					<td class="summary" style="text-align: right; font-size: 30px;">休日勤務 : </td><td id="holidayWorkingDay" class="summary" style=" font-size: 30px;"></td>
+					<td class="summary" style="text-align: right;">休日勤務 : </td><td id="holidayWorkingDay" class="summary"></td>
 				</tr>
 				<tr>
-					<td class="summary" style="text-align: right; font-size: 30px;">欠勤 : </td><td id="absent" class="summary" style=" font-size: 30px;"></td>
+					<td class="summary" style="text-align: right;">欠勤 : </td><td id="absent" class="summary"></td>
 				</tr>
 				<tr>
-					<td class="summary" style="text-align: right; font-size: 30px;">勤務時間 : </td><td id="sumWorkingTime" class="summary" style=" font-size: 30px;"></td>
+					<td class="summary" style="text-align: right;">勤務時間 : </td><td id="sumWorkingTime" class="summary"></td>
 				</tr>
 			</table>
 		</div>

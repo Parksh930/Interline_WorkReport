@@ -89,7 +89,6 @@
 		$('#month').val(month);
 		document.getElementById("form1").submit();
 	}	
-	
 	</script>
 <body>
 
