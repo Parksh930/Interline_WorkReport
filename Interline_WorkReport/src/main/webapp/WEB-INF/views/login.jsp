@@ -16,49 +16,74 @@
 
 $(document).ready(function(){
 	 isMobile(); 
-	
+	 $('#pc_btn_login').click(input_Check);
+	 $('#mobile_btn_login').click(input_Check);
+	 
+
 	function isMobile() {
-	    var filter = "win16|win32|win64|mac|macintel";
-	    if( navigator.platform  ){
-	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-	    	  $("body").attr('class','mobile_body');
-	      }else{
-	    	  $("body").attr('class','pc_body');
-	      }
-	    }
-	  }
-	
-	$("#login_form").submit(function(){
-		var id = $("#login_id").val();
-		var pw = $("#login_pw").val();
+		var filter = "win16|win32|win64|mac|macintel";
+
+		if( navigator.platform  ){
+			if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
+				$("body").attr('class','mobile_body');
+				$("#mobile_login_div").show();
+			}else{
+				$("body").attr('class','pc_body');
+				$("#pc_login_div").show();
+			}
+		}
+	}
+
+	function input_Check(){
+		var device = ($(this)[0].id).split("_")[0];
+		var id=$("#"+device+"_login_id").val();
+		var pw=$("#"+device+"_login_pw").val();
 
 		if(id !="" && pw != ""){
-			return true;
+			$.ajax({
+				type:"post",
+				url:"login",
+				traditional: true,
+				data:{login_id:id,login_pw:pw},
+				dataType:"json",
+				success:function(result){
+					
+					if(result.error!=null){
+						alert(result.error);
+					}else if(result.error==null){
+						location.href=result.url;
+					}
+				}	
+			});
+			$("#"+device+"_login_id").val("");
+			$("#"+device+"_login_pw").val("");
 		}
 		
 		if(id == ""){
 			alert("メールアドレスを入力してください。");
-			$("#login_id").focus();
+			$("#"+device+"_login_id").focus();
 		}else if(pw == ""){
 			alert("パスワードを入力してください。");
-			$("#login_pw").focus();
+			$("#"+device+"_login_pw").focus();
 		}
 		return false;
-	});
-
+	}
 });
+
 </script>
 
 <style>
 
-.pc_body #login_div{
+#pc_login_div{
 margin: 200px auto;
 width: fit-content;
+display:none;
 }
 
-.mobile_body #login_div{
+#mobile_login_div{
 margin: 200px auto;
 width: fit-content;
+display:none;
 }
 
 tr{
@@ -70,7 +95,7 @@ border: solid 2px rgb(127,127,127);
 width:230px;
 }
 
-input[type=submit]{
+button{
 	border: solid 2px rgb(0, 112, 192);
 	border-radius: 9px;
 	padding: 2px 5px;
@@ -100,10 +125,14 @@ padding:0px 30px 0px 0px;
 padding: 20px 0px 0px 0px;
 }
 
+#mobile_login_div input[type=text],#mobile_login_div input[type=password]{
+width:450px;
+}
+	
 </style>
 <body>
 
-<div id="login_div">
+<div id="pc_login_div" style="display:none;">
 <img src="<c:url value = 'resources/image/interline_login.png'/>" id="login_logo">
 <table>
 <tr>
@@ -111,20 +140,48 @@ padding: 20px 0px 0px 0px;
 <span class="login_text">ログイン</span>
 <span class="title_text">勤務票報告 システム</span></th>
 </tr>
-<form action="login" method="post" id="login_form">
 <tr>
 <td class="login_td_id">メールアドレス</td>
-<td class="login_td_id"><input type="text" id="login_id" name="login_id"></td>
+<td class="login_td_id"><input type="text" id="pc_login_id" name="login_id"></td>
 </tr>
 <tr>
 <td class="login_td_pw">パスワード</td>
-<td class="login_td_pw"><input type="password" id="login_pw" name="login_pw"></td>
+<td class="login_td_pw"><input type="password" id="pc_login_pw" name="login_pw"></td>
 </tr>
 <tr>
-<td colspan="2" class="login_td_Submit"><input type="submit" value="ログイン" id="btn_login"></td>
+<td colspan="2" class="login_td_Submit"><button id="pc_btn_login">ログイン</button></td>
 </tr>
-</form>
+
 </table>
 </div>
+
+
+<div id="mobile_login_div">
+<img src="<c:url value = 'resources/image/interline_login.png'/>" id="login_logo">
+<table>
+<tr>
+<th colspan="2" class="login_th_title">
+<span class="login_text">ログイン</span>
+<span class="title_text">勤務票報告 システム</span></th>
+</tr>
+<tr>
+<td class="login_td_id">メールアドレス</td>
+</tr>
+<tr>
+<td class="login_td_id"><input type="text" id="mobile_login_id" name="login_id"></td>
+</tr>
+<tr></tr>
+<tr>
+<td class="login_td_pw">パスワード</td>
+</tr>
+<tr>
+<td class="login_td_pw"><input type="password" id="mobile_login_pw" name="login_pw"></td>
+</tr>
+<tr>
+<td class="login_td_Submit"><button id="mobile_btn_login">ログイン</button></td>
+</tr>
+</table>
+</div>
+
 </body>
 </html>
