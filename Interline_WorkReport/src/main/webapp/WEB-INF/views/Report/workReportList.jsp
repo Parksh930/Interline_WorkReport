@@ -173,14 +173,11 @@ label[for="report_userName"] {
 }
 
 
-.Reportlist_sort_asc:hover{
+.Reportlist_sort:hover{
 cursor:pointer;
 font-weight:900;
 }
-.Reportlist_sort_des:hover{
-cursor:pointer;
-font-weight:900;
-}
+
 #report_ReadSelect_Btn {
 	margin: 0px 0px 0px 25px;
 }
@@ -350,12 +347,12 @@ $(function(){
 	
 	function first_reportList(){
 		report_table_title  = '<table><tr><th class="Reportlist_checkBox"><input type="checkbox" id="allCheck" onclick="Acheck()"></th>';
-		report_table_title	+='<th class="Reportlist_reportDays"><table class="thTable" style="border-style: none;"><tr><td rowspan="2">年月分</td><td id="reportDays_ascending" class="Reportlist_sort_asc"><div>▲</div></td></tr><tr><td id="reportDays_descending" class="Reportlist_sort_des"><div>▼</div></td></tr></table></th>';
-		report_table_title	+='<th class="Reportlist_userNum"><table class="thTable"><tr><td rowspan="2">社員番号</td><td id="userNum_ascending" class="Reportlist_sort_asc"><div>▲</div></td></tr><tr><td id="userNum_descending" class="Reportlist_sort_des"><div>▼</div></td></tr></table></th>';
-		report_table_title	+='<th class="Reportlist_userName"><table class="thTable"><tr><td rowspan="2">社員名</td><td id="userName_ascending" class="Reportlist_sort_asc"><div>▲</div></td></tr><tr><td id="userName_descending" class="Reportlist_sort_des"><div>▼</div></td></tr></table></th>';
-		report_table_title	+='<th class="Reportlist_userMail"><table class="thTable"><tr><td rowspan="2">社員メール</td><td id="userMail_ascending" class="Reportlist_sort_asc"><div>▲</div></td></tr><tr><td id="userMail_descending" class="Reportlist_sort_des"><div>▼</div></td></tr></table></th>';
-		report_table_title	+='<th class="Reportlist_team"><table class="thTable"><tr><td rowspan="2">チーム名</td><td id="team_ascending" class="Reportlist_sort_asc"><div>▲</div></td></tr><tr><td id="team_descending" class="Reportlist_sort_des"><div>▼</div></td></tr></table></th>';	
-		report_table_title	+='<th class="Reportlist_updateDate"><table class="thTable"><tr><td rowspan="2">最終保存日時</td><td id="updateDate_ascending" class="Reportlist_sort_asc"><div>▲</div></td></tr><tr><td id="updateDate_descending" class="Reportlist_sort_des"><div>▼</div></td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_reportDays"><table class="thTable" style="border-style: none;"><tr><td rowspan="2">年月分</td><td id="reportDays_ascending" class="Reportlist_sort"><div>▲</div></td></tr><tr><td id="reportDays_descending" class="Reportlist_sort"><div>▼</div></td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_userNum"><table class="thTable"><tr><td rowspan="2">社員番号</td><td id="userNum_ascending" class="Reportlist_sort"><div>▲</div></td></tr><tr><td id="userNum_descending" class="Reportlist_sort"><div>▼</div></td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_userName"><table class="thTable"><tr><td rowspan="2">社員名</td><td id="userName_ascending" class="Reportlist_sort"><div>▲</div></td></tr><tr><td id="userName_descending" class="Reportlist_sort"><div>▼</div></td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_userMail"><table class="thTable"><tr><td rowspan="2">社員メール</td><td id="userMail_ascending" class="Reportlist_sort"><div>▲</div></td></tr><tr><td id="userMail_descending" class="Reportlist_sort"><div>▼</div></td></tr></table></th>';
+		report_table_title	+='<th class="Reportlist_team"><table class="thTable"><tr><td rowspan="2">チーム名</td><td id="team_ascending" class="Reportlist_sort"><div>▲</div></td></tr><tr><td id="team_descending" class="Reportlist_sort"><div>▼</div></td></tr></table></th>';	
+		report_table_title	+='<th class="Reportlist_updateDate"><table class="thTable"><tr><td rowspan="2">最終保存日時</td><td id="updateDate_ascending" class="Reportlist_sort"><div>▲</div></td></tr><tr><td id="updateDate_descending" class="Reportlist_sort"><div>▼</div></td></tr></table></th>';
 		report_table_title	+='<td class="Reportlist_Blank" colspan="5"></td></tr>';
 		
 		$.ajax({

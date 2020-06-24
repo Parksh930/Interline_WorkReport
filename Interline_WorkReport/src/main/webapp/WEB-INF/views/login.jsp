@@ -21,9 +21,9 @@ $(document).ready(function(){
 	    var filter = "win16|win32|win64|mac|macintel";
 	    if( navigator.platform  ){
 	      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-	    	  $("body").attr('class','mobile_login');
+	    	  $("body").attr('class','mobile_body');
 	      }else{
-	    	  $("body").attr('class','pc_login');
+	    	  $("body").attr('class','pc_body');
 	      }
 	    }
 	  }
@@ -51,7 +51,12 @@ $(document).ready(function(){
 
 <style>
 
-.pc_login #login_div{
+.pc_body #login_div{
+margin: 200px auto;
+width: fit-content;
+}
+
+.mobile_body #login_div{
 margin: 200px auto;
 width: fit-content;
 }

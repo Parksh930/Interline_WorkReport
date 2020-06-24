@@ -9,39 +9,49 @@
 </head>
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
 <script>
+
+
  $(function(){
 	$("#udbtn").click(function(){
 		var user_pw = $("#Password").val();
-
-						if( user_pw != ""){
-							$("#profileUpdate").submit();
-							alert("修正完了");
-						} 
-
 		
 		 if(user_pw == ""){
 			alert("PWを入力してください。");
 			$("#Password").focus();
 		}
+			
+		 if(user_pw.length < 6 || user_pw.length > 10){
+			  alert("6~10文字で入力ください。");
 		return false;
+		 }
+
+		 else {
+				$("#profileUpdate").submit();
+				alert("パスワード変更できました。");
+			}
+
 	});
 	
 });
 
 
-
+ 
  
 </script>
 <style type="text/css">
 
 body{
 text-align:center;
+font-family: -apple-system-subset,Helvetica,Hiragino Kaku Gothic ProN,sans-serif;
 }
 
 
 #title{
-font-size: 90px;
+font-size: 18px;
+font-family: inherit;
+font-weight : 700;
 }
+
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
@@ -49,9 +59,11 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
+
 td{
 	margin: auto;
 	font-size: 60px;
+	font-family: inherit;
 	height: 80px;
 }
 
@@ -63,12 +75,15 @@ padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
-font-size: 70px;
+font-size: 14px;
+font-family: inherit;
+text-align: center;
 }
+
 
 </style>
 <body>
-<img src="../resources/image/interline1.png" style="width: 50%;">
+
 <div id="title">パスワード変更</div>
 
 <div id = "profileUd" style="text-align: center;">
@@ -77,13 +92,18 @@ font-size: 70px;
 <br></br>
 
 <table style="margin: auto; width: 50%;">
+
+
+
+<div class="body">パスワード <div class="body">
+<input class="form-control" id="Password" type="password" name="password" style="font-size:16px; font-family: inherit;"> </div> </div> 
+
+<div class="signInMark form-group">パスワード確認 <div class="signInLeft">
+<input class="form-control" id="passwordCheck" type="password" name="passwordcheck" style="font-size:16px; font-family: inherit;"> </div> </div> 
+
+
 	<tr>
-		<td class="td1" style="text-align:right;">&nbsp;PW&nbsp;</td>
-		<td class="td2" ><input type="password" id="Password" class="passwordButton" name="password" style="font-size: 60px; margin: 2px;padding:2px; width:300px;"></td>
-	</tr>
-	<tr><td></td></tr>
-	<tr>
-		<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn">確認</button>
+		<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn" onclick="location='../user/myReportList'">確認</button>
 		<div align="right">
 		
 		<input type = "hidden" name="page" id="page" value="1"/>
@@ -111,7 +131,18 @@ font-size: 70px;
 	}	
 </script>
 
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
