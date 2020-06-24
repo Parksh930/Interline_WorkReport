@@ -290,7 +290,7 @@ public class WorkReportController {
 		
 		int result = dao.updateReport2(workReportVO);
 		
-		System.out.println("어드민 업데이트result: "+result); // 0 이 성공
+		System.out.println("어드민 업데이트result: "+result); 
 		System.out.println("update after  VO : "+workReportVO);
 		
 		
@@ -386,7 +386,6 @@ public class WorkReportController {
 			int result = dao.updateState(vo);
 			System.out.println("수정되었나?  result "  +  result);
 		}
-	//	int result = dao.reportSelectApproval(arr);  // forEach 용 하지만 나중에...
 		return "redirect:/admin/reportList";
 	}
 	
