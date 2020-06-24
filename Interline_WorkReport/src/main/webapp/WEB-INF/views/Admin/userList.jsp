@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>userList</title>
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
+<link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
 $(function(){
 	var user_team=[];
@@ -21,14 +22,13 @@ $(function(){
 	
 	$('input[name="user_team"]').click(user_Team_Filter);
 	$("input[name='user_status']").click(user_Status_Filter);
-	$("#Userlist_sort").change(user_List_Sort);
-
+	$(document).on('click','.Userlist_sort',user_List_Sort);
 	
 	function user_List_Sort(){
 		var con = user_table_title;
 
-		if($(this)[0].id == "Userlist_sort"){
-			user_Measure = ($(this).val()).split('_');
+		if($(this)[0].className == "Userlist_sort"){
+			user_Measure = ($(this)[0].id).split('_');
 		}
 
 		
@@ -60,7 +60,7 @@ $(function(){
 				var dateA = new Date(a[user_Measure[0]]).getTime();
 				var dateB = new Date(b[user_Measure[0]]).getTime();
 
-				return dateA > dateB ? 1 : -1;
+				return dateA > dateB ? 1 : dateA < dateB ? -1 : 0;
 			});
 		}else if(user_Measure[0].indexOf("Date") > -1  && user_Measure[1] == "descending"){
 			user_sort.sort(function(a,b){
@@ -68,7 +68,7 @@ $(function(){
 				var dateA = new Date(a[user_Measure[0]]).getTime();
 				var dateB = new Date(b[user_Measure[0]]).getTime();
 				
-				return dateA < dateB ? 1 : -1;
+				return dateA < dateB ? 1 : dateA > dateB ? -1 : 0;
 			});
 		}
 		
@@ -105,12 +105,17 @@ $(function(){
 
 	function first_userList(){
 
-		user_table_title= '<table id = "user_list_table"><tr><th class="Userlist_userNum">社員番号</th>';
-		user_table_title	+='<th class="Userlist_userMail">社員メール</th><th class="Userlist_userName">社員名</th>';
-		user_table_title	+='<th class="Userlist_team">チーム名</th><th class="Userlist_position">職級</th>';
-		user_table_title	+='<th class="Userlist_startDate">入社日</th><th class="Userlist_lastupdateDate">最新更新日</th>';
-		user_table_title	+='<th class="Userlist_finalreportDate">最終提出分</th><th class="Userlist_retirement">退職区分</th>';
-		user_table_title	+='<th class="Userlist_updateBtn"></th></tr>';
+		user_table_title	= '<table id = "user_list_table"><tr>';
+		user_table_title	+='<th class="Userlist_userNum"><table class="thTable"><tr><td rowspan="2">社員番号</td><td id="userNum_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="userNum_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_userMail"><table class="thTable"><tr><td rowspan="2">社員メール</td><td id="userMail_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="userMail_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_userName"><table class="thTable"><tr><td rowspan="2">社員名</td><td id="userName_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="userName_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_team"><table class="thTable"><tr><td rowspan="2">チーム名</td><td id="team_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="team_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_position"><table class="thTable"><tr><td rowspan="2">職級</td><td id="position_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="position_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_startDate"><table class="thTable"><tr><td rowspan="2">入社日</td><td id="startDate_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="startDate_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_lastupdateDate"><table class="thTable"><tr><td rowspan="2">最新<br>更新日</td><td id="lastupdateDate_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="lastupdateDate_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_finalreportDate"><table class="thTable"><tr><td rowspan="2">最終<br>提出分</td><td id="finalreportDate_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="finalreportDate_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<th class="Userlist_retirement"><table class="thTable"><tr><td rowspan="2">退職区分</td><td id="retirement_ascending" class="Userlist_sort"><div>▲</div></td></tr><tr><td id="retirement_descending" class="Userlist_sort"><div>▼</div></td></tr></table></th>';
+		user_table_title	+='<td class="Userlist_updateBtn"></td></tr>';
 
 		var con = user_table_title;
 
@@ -202,12 +207,32 @@ table {
   border-collapse: collapse;
 }
 
-tr{
-height: 45px;
-}
-
 th,td{
 border: 1px solid black;
+}
+
+.thTable{
+border-style:none;
+border-bottom:none;
+margin-left: auto;
+margin-right: auto;
+}
+
+.thTable td{
+border:none;
+}
+
+td[id*="_ascending"] div{
+margin:0px 0px -5px 0px;
+}
+
+td[id*="_descending"] div{
+margin:-5px 0px 0px 0px;
+}
+
+.Userlist_sort:hover{
+cursor:pointer;
+font-weight:900;
 }
 
 #user_List{
@@ -218,6 +243,7 @@ width: fit-content;
 .Userlist_updateBtn{
 border-style: none;
 width:50px;
+height: 45px;
 }
 
 a[class*="_Btn"]{
@@ -287,28 +313,6 @@ font-size: 14px;
 <input type="radio" id="status_submitted" name="user_status" value="status_submitted"><label for="status_submitted">提出済み</label>
 <input type="radio" id="status_writing" name="user_status" value="status_writing"><label for="status_writing">未提出</label>
 </fieldset>
-</div>
-<div id="user_list_sort">
-<select id ="Userlist_sort" name="Userlist_sort">
-<option value="userNum_ascending">社員番号の昇順</option>
-<option value="userNum_descending">社員番号の降順</option>
-<option value="userMail_ascending">社員メールの昇順</option>
-<option value="userMail_descending">社員メールの降順</option>
-<option value="userName_ascending">社員名の昇順</option>
-<option value="userName_descending">社員名の降順</option>
-<option value="team_ascending">チーム名の昇順</option>
-<option value="team_descending">チーム名の降順</option>
-<option value="position_ascending">職級の昇順</option>
-<option value="position_descending">職級の降順</option>
-<option value="startDate_ascending">入社日の昇順</option>
-<option value="startDate_descending">入社日の降順</option>
-<option value="lastupdateDate_ascending">最新更新日の昇順</option>
-<option value="lastupdateDate_descending">最新更新日の降順</option>
-<option value="lastreportDate_ascending">最終提出分の昇順</option>
-<option value="lastreportDate_descending">最終提出分の降順</option>
-<option value="retirement_ascending">退職区分の昇順</option>
-<option value="retirement_descending">退職区分の降順</option>
-</select>
 </div>
 <div id ="user_List">
 </div>
