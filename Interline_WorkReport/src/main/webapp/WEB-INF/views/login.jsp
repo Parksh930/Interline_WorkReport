@@ -126,7 +126,7 @@ padding: 20px 0px 0px 0px;
 }
 
 #mobile_login_div input[type=text],#mobile_login_div input[type=password]{
-width:450px;
+width:600px;
 }
 	
 </style>
@@ -161,24 +161,24 @@ width:450px;
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
-<span class="login_text">ログイン</span>
-<span class="title_text">勤務票報告 システム</span></th>
+<span class="login_text mobile_font_title">ログイン</span>
+<span class="title_text mobile_font_title">勤務票報告 システム</span></th>
 </tr>
 <tr>
-<td class="login_td_id">メールアドレス</td>
+<td class="login_td_id mobile_font_content1">メールアドレス</td>
 </tr>
 <tr>
-<td class="login_td_id"><input type="text" id="mobile_login_id" name="login_id"></td>
+<td class="login_td_id mobile_font_content1"><input type="text" id="mobile_login_id" name="login_id" class="mobile_font_content1"></td>
 </tr>
 <tr></tr>
 <tr>
-<td class="login_td_pw">パスワード</td>
+<td class="login_td_pw mobile_font_content1" >パスワード</td>
 </tr>
 <tr>
-<td class="login_td_pw"><input type="password" id="mobile_login_pw" name="login_pw"></td>
+<td class="login_td_pw mobile_font_content1"><input type="password" id="mobile_login_pw" name="login_pw" class="mobile_font_content1"></td>
 </tr>
 <tr>
-<td class="login_td_Submit"><button id="mobile_btn_login">ログイン</button></td>
+<td class="login_td_Submit"><button id="mobile_btn_login" class="mobile_button">ログイン</button></td>
 </tr>
 </table>
 </div>
