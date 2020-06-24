@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Admin Page</title>
 <script src="<c:url value = '../resources/js/jquery-2.0.3.min.js'/>"></script>
+<link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
 $(function(){
 	
@@ -48,9 +49,9 @@ margin:20px 0px 0px 0px;
 
 
 <div id="menuBar" style="position: absolute; left: 0px; z-index: 1000; text-align: center; width:20%;">
-	<img id="" src="../resources/image/interline2.png" width="100%" height="100%" ><span style="font-size: 30px; font-weight: bolder;">管理者</span><br></br><br></br>
-	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務票リスト</a><br></br><br></br>
-	<a class="_Btn" href="../admin/userList" target="list_Box">社員リスト</a><br></br><br></br>
+	<img id="" src="../resources/image/interline2.png" width="100%" height="100%" ><h1>管理者</h1><br></br>
+	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務票リスト</a><br><br></br>
+	<a class="_Btn" href="../admin/userList" target="list_Box">社員リスト</a><br><br></br>
 	<a class="_Btn" href="../logout">ログアウト</a>
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
