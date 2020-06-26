@@ -17,7 +17,6 @@
 		    var filter = "win16|win32|win64|mac|macintel";
 		    if( navigator.platform  ){
 		      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
-			      console.log("asdasd");
 			      $("body").addClass('mobile_body');
 		    	  $("#button1").addClass('mobile_img_size');
 		    	  $("#menu_Btn1").addClass('mobile_button');
@@ -26,7 +25,11 @@
 		    	  $("#menu_Btn4").addClass('mobile_button');
 		      }else{
 		    	  $("body").addClass('mobile_body');
-		    	  $("#title").addClass('mobile_font_title');
+		    	  $("#button1").addClass('mobile_img_size');
+		    	  $("#menu_Btn1").addClass('mobile_button');
+		    	  $("#menu_Btn2").addClass('mobile_button');
+		    	  $("#menu_Btn3").addClass('mobile_button');
+		    	  $("#menu_Btn4").addClass('mobile_button');
 		      }
 		    }
 		  }
@@ -51,6 +54,10 @@
 	function moveTo(url){
 		uncover();
 		document.getElementById("list_Box").src = url;
+	}
+	function moveTo2(url){
+		uncover();
+		window.location.href = url;
 	}
 	function writeReport(){
 		var today1 = new Date();   
@@ -114,7 +121,7 @@
 		<div id="menu_Btn1" class="menu_Btn" onclick="writeReport()" >今月の勤務表作成</div>
 		<div id="menu_Btn2" class="menu_Btn" onclick="moveTo('../user/myReportList')">過去の勤務表閲覧</div>
 		<div id="menu_Btn3" class="menu_Btn" onclick="moveTo('../user/profile')">パスワード変更</div>
-		<div id="menu_Btn4" class="menu_Btn" onclick="moveTo('../logout')">ログアウト</div>
+		<div id="menu_Btn4" class="menu_Btn" onclick="moveTo2('../logout')">ログアウト</div>
 	</div>
 	
 	<div id="_iframe" style="position:absolute; top:0; left:0; text-align: left; z-index: 1; background-color: rgb(255,255,255); width: 100%; height: 100%;">

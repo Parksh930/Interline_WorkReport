@@ -27,6 +27,9 @@ $(document).ready(function(){
 	      }else{
 	    	  $("body").addClass('mobile_body');
 	    	  $("#title").addClass('mobile_font_title');
+	    	  $("#listTable").addClass('mobile_font_content2');
+	    	  $("[id^=stateDiv]").addClass('mobile_button');
+	    	  $("[id^=fakeStateDiv]").addClass('mobile_button_fake');
 	      }
 	    }
 	  }

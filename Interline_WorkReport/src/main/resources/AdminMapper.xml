@@ -11,7 +11,7 @@ select user.*,max(report.updatedate)lastupdateDate
 		user_inform as user left join work_Report as report
 	on
 		report.usernum = user.usernum 
-	<if test='team != null and team[0] != "team_all"'>
+	<if test='team.size !=0 and team[0] != "team_all"'>
 		where team 
 		${team_others} in
 	<foreach collection="team" item="team" index="num"  open="(" close=")" separator=",">
@@ -20,11 +20,11 @@ select user.*,max(report.updatedate)lastupdateDate
      </if>
 	group by
 		user.usernum
-	<if test='status != null and status == "status_submitted"'>
+	<if test='status.size !=0 and status == "status_submitted"'>
 		having
 			date_format(user.LastReportDate, "%Y-%m") = date_format(date_add(now(), interval -1 month), "%Y-%m")
 	</if>
-	<if test='status != null and status == "status_writing"'>
+	<if test='status.size !=0 and status == "status_writing"'>
 		having
 			date_format(user.LastReportDate, "%Y-%m") != date_format(date_add(now(), interval -1 month), "%Y-%m")
 		or 
@@ -46,10 +46,10 @@ select user.*,max(report.updatedate)lastupdateDate
 <select id = "check_Multiple" parameterType="map" resultType="user">
 	select * from user_inform where
 	<choose>
-		<when test='check_point != null and check_point == "check_num"'>
+		<when test='check_point.size !=0 and check_point == "check_num"'>
 			usernum = #{check_content}
 		</when>
-		<when test='check_point != null and check_point == "check_mail"'>
+		<when test='check_point.size !=0 and check_point == "check_mail"'>
 			usermail = #{check_content}
 		</when>
 	</choose>
@@ -63,10 +63,10 @@ select user.*,max(report.updatedate)lastupdateDate
 		,userName
 		,password
 		,team
-		<if test='position != null and position != ""'>
+		<if test='position.size !=0 and position != ""'>
 		,position
 		</if>
-		<if test='startDate != null and startDate != ""'>
+		<if test='startDate.size !=0 and startDate != ""'>
 			,startDate
 		</if>
 		,authority
@@ -78,10 +78,10 @@ select user.*,max(report.updatedate)lastupdateDate
 		,#{userName}
 		,#{password}
 		,#{team}
-		<if test='position != null and position != ""'>
+		<if test='position.size !=0 and position != ""'>
 		,#{position}
 		</if>
-		<if test='startDate != null and startDate != ""'>
+		<if test='startDate.size !=0 and startDate != ""'>
 			,#{startDate}
 		</if>
 		,#{authority}
@@ -97,13 +97,13 @@ update user_inform
 	set
 		authority = #{authority}
 		,retirement = #{retirement}
-	<if test='password != null and password != ""'>
+	<if test='password.size !=0 and password != ""'>
 		,password = #{password}
 	</if>
-	<if test='position != null and position != ""'>
+	<if test='position.size !=0 and position != ""'>
 		,position = #{position}
 	</if>
-	<if test='team != null and team != ""'>
+	<if test='team.size !=0 and team != ""'>
 		,team = #{team}
 	</if>
 	where
@@ -113,4 +113,54 @@ update user_inform
 <delete id="userDelete" parameterType="int">
 delete from user_inform where userNum = #{userNum}
 </delete>
+
+<select id="getAggregation" parameterType="map" resultType="Aggregation">
+	select u.userNum,u.userName,u.position,u.team , 
+	concat(year,'-',month) as yearMonth,
+	concat(AbsentDay,'(','0',')')as Absent, SalesDay-WorkingDay-AbsentDay as vacation , holidayWorkingDay ,sumWorkingTime,
+	concat(round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)/60,0),':',round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)%60,0)) as meanWorkingTime 
+	from user_inform as u join work_report as w on u.UserNum = w.UserNum 
+	where year=#{year} and month=#{month}
+</select>
+
+<select id="getAggregation2" parameterType="map" resultType="Aggregation">
+	select u.userNum,u.userName,u.position,u.team , 
+	concat(year,'-',month) as yearMonth,
+	concat(AbsentDay,'(','0',')')as Absent, SalesDay-WorkingDay-AbsentDay as vacation , holidayWorkingDay ,sumWorkingTime,
+	concat(round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)/60,0),':',round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)%60,0)) as meanWorkingTime 
+	from user_inform as u join work_report as w on u.UserNum = w.UserNum
+	where (concat(year,'-',month) between #{fromYearMonth} and #{toYearMonth})
+	<choose>    
+         <when test='teamArray != null and etcArray != null'>
+         	AND (
+         	u.team in 
+			<foreach collection="teamArray" item="item" index="index" separator="," open="(" close=")">
+            	#{item}
+        	</foreach>
+        	or u.team not in 
+			<foreach collection="etcArray" item="item" index="index" separator="," open="(" close=")">
+            	#{item}
+        	</foreach>
+             )
+         </when>
+         <when test='teamArray != null and etcArray == null'>
+         	 AND u.team in 
+			 <foreach collection="teamArray" item="item" index="index" separator="," open="(" close=")">
+	         	#{item}
+	         </foreach>
+         </when>
+         <when test='teamArray == null and etcArray != null'>
+         	AND u.team not in 
+			<foreach collection="etcArray" item="item" index="index" separator="," open="(" close=")">
+            	#{item}
+        	</foreach>
+         </when>
+     </choose>
+	
+	
+	
+	and u.userNum like #{userNum} and u.userName like #{userName}
+</select>
+
+
 </mapper>

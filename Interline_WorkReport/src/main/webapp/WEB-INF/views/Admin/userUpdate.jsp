@@ -11,11 +11,11 @@
 <script>
 $(function(){
 
+	isMobile();
 	$("#insert_User_btn").click(user_update);
 	$("#delete_User_btn").click(user_delete);
 	option_selected();
-	isMobile();
-
+	
 
 	function isMobile() {
 		var filter = "win16|win32|win64|mac|macintel";
@@ -25,6 +25,10 @@ $(function(){
 				$("body").attr('class','mobile_body');
 			}else{
 				$("body").attr('class','pc_body');
+				$("input").addClass('pc_font_content1');
+				$("select").addClass('pc_font_content1');
+				$("option").addClass('pc_font_content1');
+				$("td").addClass('pc_font_content1');
 		    }
 		}
 	}
@@ -90,10 +94,11 @@ text-align: right;
 #insert_User_btn,#delete_User_btn{
 border: solid 2px rgb(0, 112, 192);
 border-radius: 9px;
-padding: 2px 5px;
+padding: 0px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
+font-size:16px
 }
 
 #insert_User_btn{
@@ -106,6 +111,7 @@ margin:0px 0px 0px 25px;
 
 input[type="number"],input[type="text"],input[type="password"]{
 height: 18px;
+width:175px;
 }
 
 input:read-only{

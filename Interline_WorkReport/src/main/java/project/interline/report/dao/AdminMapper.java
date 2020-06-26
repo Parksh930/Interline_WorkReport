@@ -3,6 +3,7 @@ package project.interline.report.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import project.interline.report.vo.Aggregation;
 import project.interline.report.vo.UserVO;
 
 public interface AdminMapper {
@@ -20,4 +21,8 @@ public interface AdminMapper {
 	UserVO check_Multiple(HashMap<String, Object> map);
 
 	ArrayList<UserVO> userFilter(HashMap<String, Object> map);
+
+	ArrayList<Aggregation> getAggregation(HashMap<String, Object> map);
+
+	ArrayList<Aggregation> getAggregation2(HashMap<String, Object> map);
 }

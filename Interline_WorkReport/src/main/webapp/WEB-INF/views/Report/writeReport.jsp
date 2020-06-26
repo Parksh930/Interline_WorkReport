@@ -38,8 +38,9 @@
 				$(".summary").addClass("mobile_font_content1"); 
 				$(".button").addClass("mobile_button"); 
 		      }else{
-	    		$("body").addClass('mobile_body');
-	    		$("#title").addClass('mobile_font_title');
+		    	$("#summaryTable").addClass("mobile_body"); 
+				$(".summary").addClass("mobile_font_content1"); 
+				$(".button").addClass("mobile_button");
 		      }
 		    }
 		    $('#bt1').on('click',toggleSummary);

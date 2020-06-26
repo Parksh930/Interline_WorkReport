@@ -20,6 +20,7 @@ $(function(){
 				$("body").attr('class','mobile_body');
 		    }else{
 		    	$("body").attr('class','pc_body');
+		    	$("a").addClass('pc_font_button1');
 		    }
 		}
 	}
@@ -43,16 +44,6 @@ $(function(){
 width:1100px;
 }
 
-a[class*="_Btn"]{
-border: solid 2px rgb(0, 112, 192);
-border-radius: 9px;
-padding: 2px 5px;
-background-color: rgb(0, 112, 192);
-color: white;
-cursor: pointer;
-text-decoration: none;
-}
-
 #_iframe{
 margin:20px 0px 0px 0px;
 }
@@ -65,7 +56,8 @@ margin:20px 0px 0px 0px;
 	<img id="" src="../resources/image/interline2.png" width="70%" height="70%" ><h1>管理者</h1><br></br>
 	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務票リスト</a><br><br></br>
 	<a class="_Btn" href="../admin/userList" target="list_Box">社員リスト</a><br><br></br>
-	<a class="_Btn" href="../logout">ログアウト</a>
+	<a class="_Btn" href="../logout">ログアウト</a><br><br></br>
+	<a class="_Btn" href="../admin/kimDaeun" target="list_Box">김대은집계</a><br>
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
 <iframe name="list_Box" id="list_Box" src="" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
