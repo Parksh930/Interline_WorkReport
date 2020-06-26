@@ -168,13 +168,13 @@
 		
 		
 	<!-- oz스케쥴러 서버관련 라이브러리 -->
-<!-- 		<dependency>
+		<dependency>
 			<groupId>external</groupId>
 			<artifactId>external</artifactId>
 			<version>1.0</version>
 			<scope>system</scope>
 			<systemPath>${project.lib.path}/ozsfw80.jar</systemPath>
-		</dependency> -->
+		</dependency>
 		
 		<!-- json 라이브러리 (parsing쓰기위함) -->
 		<dependency>

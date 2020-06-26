@@ -65,7 +65,8 @@ margin:20px 0px 0px 0px;
 	<img id="" src="../resources/image/interline2.png" width="100%" height="100%" ><h1>管理者</h1><br></br>
 	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務票リスト</a><br><br></br>
 	<a class="_Btn" href="../admin/userList" target="list_Box">社員リスト</a><br><br></br>
-	<a class="_Btn" href="../logout">ログアウト</a>
+	<a class="_Btn" href="../logout">ログアウト</a><br><br></br>
+	<a class="_Btn" href="../admin/kimDaeun" target="list_Box">김대은집계</a><br>
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
 <iframe name="list_Box" id="list_Box" src="" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>

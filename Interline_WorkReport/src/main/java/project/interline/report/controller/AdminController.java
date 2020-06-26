@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import oz.scheduler.SchedulerException;
 import project.interline.report.dao.AdminDAO;
+import project.interline.report.util.ExportReport;
+import project.interline.report.util.getProperties;
+import project.interline.report.vo.Aggregation;
 import project.interline.report.vo.UserVO;
 
 @Controller
@@ -166,5 +175,66 @@ public class AdminController {
 		}
 		
 		return "redirect:/admin/userList";
+	}
+	
+	
+	@RequestMapping(value="/admin/kimDaeun", method=RequestMethod.GET)
+	public String kimDauen(Model model, HttpSession session) {
+		logger.debug("김대은집계");
+		ArrayList<Aggregation> list=null;
+		list=dao.getAggregation(2020, 6);
+		System.out.println(list);
+		model.addAttribute("arrayList",list);
+		ObjectMapper newobjectMapper= new ObjectMapper();
+		String JSONString="";
+		try {
+			JSONString = newobjectMapper.writeValueAsString(list);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("JSONString",JSONString);
+		return "Admin/kimDaeun";
+	}
+	@ResponseBody
+	@RequestMapping(value="/admin/aggregationFilter", method=RequestMethod.GET)
+	public ArrayList<Aggregation> aggregationFilter(HttpSession session, String teamArray, String etcArray, String userNum, String userName, String fromYearMonth, String toYearMonth ) {
+		logger.debug("김대은집계");
+		//System.out.println("들어온값"+teamArray.toString()+etcArray.toString()+userNum);
+		System.out.println("들어온값"+teamArray+etcArray+userNum);
+		//System.out.println(teamArray.split(","));
+		System.out.println(teamArray.split(",").length);
+		ArrayList<Aggregation> list=null;
+		list=dao.getAggregation2(teamArray, etcArray, userNum, userName, fromYearMonth, toYearMonth);
+		System.out.println(list);
+		return list;
+	}
+	@ResponseBody
+	@RequestMapping(value="/admin/exportAggregation", method=RequestMethod.GET)
+	public String exportAggregation(String jsonData, int row, String format) {
+		System.out.println("jsonData:::"+jsonData);
+		System.out.println("row:::"+row);
+		getProperties properties= new getProperties();
+		String ozId="admin";
+		String ozPW="admin1";
+		String OZserverURL="http://"+properties.getOzIP()+"/oz80/server";
+		String ipScheduler=properties.getOzIP().split(":")[0];
+		int portScheduler=9521;
+		ExportReport export=new ExportReport(ozId, ozPW, OZserverURL, ipScheduler, portScheduler);
+		String nameOzr="workReportAggregationSave.ozr";
+		String[] ozrParamValue = {"row="+row};
+		String nameOdi =null;
+		String[] odiParamValue = null;
+		String formatExport = format;
+		String fileNameExport="reportExport";
+		String result="";
+		try {
+			result=export.exportMethod(jsonData, nameOzr, ozrParamValue, nameOdi, odiParamValue, formatExport, fileNameExport);
+		} catch (SchedulerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result=e.toString();
+		}
+		return result;
 	}
 }
