@@ -47,17 +47,20 @@ width:1100px;
 #_iframe{
 margin:20px 0px 0px 0px;
 }
+
+
+
 </style>
 </head>
 <body>
 
-
 <div id="menuBar" style="position: absolute; left: 0px; z-index: 1000; text-align: center; width:20%;">
-	<img id="" src="../resources/image/interline2.png" width="70%" height="70%" ><h1>管理者</h1><br></br>
-	<a class="_Btn" href="../admin/reportList" target="list_Box">勤務票リスト</a><br><br></br>
-	<a class="_Btn" href="../admin/userList" target="list_Box">社員リスト</a><br><br></br>
-	<a class="_Btn" href="../logout">ログアウト</a><br><br></br>
-	<a class="_Btn" href="../admin/kimDaeun" target="list_Box">김대은집계</a><br>
+<img id="" src="../resources/image/interline2.png" width="70%" height="70%"><h1>管理者</h1><br></br>
+<p><button class="menuPc_font_button1" type="button" onclick="list_Box.location.href='reportList'">勤務票リスト</button></p>
+	<p><button class="menuPc_font_button1" type="button" onclick="list_Box.location.href='userList'">社員リスト</button></p>
+	<p><button class="menuPc_font_button1" type="button" onclick="location.href='logout'">ログアウト</button></p>
+	<p><button class="menuPc_font_button1" type="button" onclick="list_Box.location.href='kimDaeun'">김대은집계</button></p>
+	 
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
 <iframe name="list_Box" id="list_Box" src="" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
