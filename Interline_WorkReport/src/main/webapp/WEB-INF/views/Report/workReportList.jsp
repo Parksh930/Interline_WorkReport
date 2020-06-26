@@ -57,7 +57,7 @@ font-size: 16px;
 	background-color: rgb(154, 205, 50);
 	color: white;
 	cursor: pointer;
-	width: 68px;
+	width: 70px;
 	font-size: 14px;
 }
 /*  255 255 0 */
@@ -78,7 +78,7 @@ font-size: 16px;
 	background-color: rgb(0, 112, 192);
 	color: white;
 	cursor: pointer;
-	width: 68px;
+	width: 70px;
 	font-size: 14px;
 }
 
@@ -89,7 +89,7 @@ font-size: 16px;
 	background-color: rgb(255, 255, 0);
 	color: black;
 	cursor: pointer;
-	width: 68px;
+	width: 70px;
 	font-size: 14px;
 }
 
@@ -100,7 +100,7 @@ font-size: 16px;
 	background-color: rgb(255, 127, 0);
 	color: black;
 	cursor: pointer;
-	width: 68px;
+	width: 70px;
 	font-size: 14px;
 }
 
