@@ -15,7 +15,7 @@ $(function(){
 	var report_table_title;
 	var count_sort;
 	var countTable;
-	var countr_Measure = ["","ascending"];
+	var count_Measure = ["","ascending"];
 	
 	countList();
 	isMobile(); 
@@ -40,31 +40,55 @@ $(function(){
 		var con = countTable;
 
 		if($(this)[0].className == "Countlist_sort"){
-			countr_Measure = ($(this)[0].id).split('_');
+			count_Measure = ($(this)[0].id).split('_');
 		}
 
 		
-		if(countr_Measure[0] == "userNum" && countr_Measure[1] == "ascending"){
+		if(count_Measure[0] == "userNum" && count_Measure[1] == "ascending"){
 			count_sort.sort(function(a,b){
-				return a[countr_Measure[0]] - b[countr_Measure[0]];
+				return a[count_Measure[0]] - b[count_Measure[0]];
 			});
-		}else if(countr_Measure[0] == "usertNum" && countr_Measure[1] == "descending"){
+		}else if(count_Measure[0] == "userNum" && count_Measure[1] == "descending"){
 			count_sort.sort(function(a,b){
-				return b[countr_Measure[0]] - a[countr_Measure[0]];
+				return b[count_Measure[0]] - a[count_Measure[0]];
 			});
 		}
 
-		
-		if(countr_Measure[0] != "userNum" && countr_Measure[1] == "ascending"){
+
+		if(count_Measure[0] != "userNum" && count_Measure[1] == "ascending"){
 			count_sort.sort(function(a,b){
-				return a[countr_Measure[0]] < b[countr_Measure[0]] ? -1 : a[countr_Measure[0]] > b[countr_Measure[0]] ? 1 : 0;
+				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
 			});
-		}else if(countr_Measure[0] != "userNum" && countr_Measure[1] == "descending"){
+		}else if(count_Measure[0] != "userNum" && count_Measure[1] == "descending"){
 			count_sort.sort(function(a, b) {
-				return a[countr_Measure[0]] > b[countr_Measure[0]] ? -1 : a[countr_Measure[0]] < b[countr_Measure[0]] ? 1 : 0;
+				return a[count_Measure[0]] > b[count_Measure[0]] ? -1 : a[count_Measure[0]] < b[count_Measure[0]] ? 1 : 0;
 			});
 		}
 
+
+		//averageOfWorkingTime_descending
+		//sumOfWorkingTime_descending
+/* 		if(count_Measure[0] == "awo" && count_Measure[1] == "ascending"){
+			count_sort.sort(function(a,b){
+				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
+			});
+		}else if(count_Measure[0] == "awo" && count_Measure[1] == "descending"){
+			count_sort.sort(function(a,b){
+				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
+			});
+		}
+
+		if(count_Measure[0] == "sum" && count_Measure[1] == "ascending"){
+			count_sort.sort(function(a,b){
+				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
+			});
+		}else if(count_Measure[0] == "sum" && count_Measure[1] == "descending"){
+			count_sort.sort(function(a,b){
+				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
+			});
+		} */
+
+		
 		
 		count_sort.forEach(function(item){
 
@@ -75,9 +99,8 @@ $(function(){
 			var getSum3 = parseInt((getSum2[0]*60))+parseInt(getSum2[1]);
 			var getSum4 = ((getSum3/60)/getWorkingDay).toFixed(1);
 			var getSum5 = getSum4.split(".");
-			var averageWorkingValue1 = getSum5[0]+getSum5[1]
-			var averageWorkingTime = getSum5[0]+"時間"+getSum5[1]+"分"
-
+			var averageWorkingValue1 = getSum5[0]+getSum5[1];
+			var averageWorkingTime = getSum5[0]+"時間"+getSum5[1]+"分";
 			
 				con +='<tr><td class="Countlist_CountNum">'+item.userNum+'</td>';
 				con +='<td class="Countlist_CountName">'+item.userName+'</td>';
@@ -85,8 +108,8 @@ $(function(){
 				con +='<td class="Countlist_startDate">'+item.workingDay+'</td>';
 				con +='<td class="Countlist_startDate">'+item.holidayWorkingDay+'</td>';
 				con +='<td class="Countlist_startDate">'+item.absentDay+'</td>';
-				con +='<td class="Countlist_CountMail">'+averageWorkingTime+'</td>';
-				con +='<td class="Countlist_team">'+item.sumWorkingTime+'</td>';
+				con +='<td class="Countlist_aow">'+averageWorkingTime+'</td>';
+				con +='<td class="Countlist_sum">'+item.sumWorkingTime+'</td>';
 				con +='<td class="Countlist_readReportBtn"><button id="ReadReport_Btn" class="Read_Btn" onclick="getReadReportCount('+item.reportNum+')">閲覧</button></td>';
 			});
 			
@@ -103,13 +126,13 @@ $(function(){
 
 		countTable	= '<table id = "count_list_table"><tr>';
 		countTable	+='<th class="Countlist_userNum"><table class="thTable"><tr><td rowspan="2">社員番号</td><td id="userNum_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="userNum_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
-		countTable	+='<th class="Countlist_userName"><table class="thTable"><tr><td rowspan="2">社員名</td><td id="userName_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="CountName_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
+		countTable	+='<th class="Countlist_userName"><table class="thTable"><tr><td rowspan="2">社員名</td><td id="userName_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="userName_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
 		countTable	+='<th class="Countlist_salesDay"><table class="thTable"><tr><td rowspan="2">営業日</td><td id="salesDay_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="salesDay_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
 		countTable	+='<th class="Countlist_workingDay"><table class="thTable"><tr><td rowspan="2">勤務日</td><td id="workingDay_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="workingDay_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
 		countTable	+='<th class="Countlist_holidayWorkingDay"><table class="thTable"><tr><td rowspan="2">休日勤務日</td><td id="holidayWorkingDay_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="holidayWorkingDay_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
 		countTable	+='<th class="Countlist_absentDay"><table class="thTable"><tr><td rowspan="2">欠勤日</td><td id="absentDay_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="absentDay_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
-		countTable	+='<th class="Countlist_averageOfWorkingTime"><table class="thTable"><tr><td rowspan="2">一日平均勤務時間</td><td id="averageOfWorkingTime_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="averageOfWorkingTime_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
-		countTable	+='<th class="Countlist_sumOfWorkingTime"><table class="thTable"><tr><td rowspan="2">勤務時間合計</td><td id="sumOfWorkingTime_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="sumOfWorkingTime_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
+		countTable	+='<th class="Countlist_aow"><table class="thTable"><tr><td rowspan="2">一日平均勤務時間</td><td id="aow_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="aow_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
+		countTable	+='<th class="Countlist_sum"><table class="thTable"><tr><td rowspan="2">勤務時間合計</td><td id="sum_ascending" class="Countlist_sort"><div>▲</div></td></tr><tr><td id="sum_descending" class="Countlist_sort"><div>▼</div></td></tr></table></th>';
 		countTable	+='<td class="Countlist_readReportBtn">閲覧</td></tr>';
 
 		var con = countTable;
