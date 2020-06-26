@@ -20,6 +20,7 @@ $(function(){
 				$("body").attr('class','mobile_body');
 		    }else{
 		    	$("body").attr('class','pc_body');
+		    	$("a").addClass('pc_font_button1');
 		    }
 		}
 	}
@@ -41,16 +42,6 @@ $(function(){
 <style>
 #list_Box{
 width:1100px;
-}
-
-a[class*="_Btn"]{
-border: solid 2px rgb(0, 112, 192);
-border-radius: 9px;
-padding: 2px 5px;
-background-color: rgb(0, 112, 192);
-color: white;
-cursor: pointer;
-text-decoration: none;
 }
 
 #_iframe{

@@ -36,6 +36,10 @@
 				$("body").attr('class','mobile_body');
 			}else{
 				$("body").attr('class','pc_body');
+				$("label").addClass('pc_font_content1');
+				$("input").addClass('pc_font_content1');
+				$("select").addClass('pc_font_content1');
+				$("option").addClass('pc_font_content1');
 			}
 		}
 	}
@@ -111,14 +115,7 @@ padding: 2px 5px;
 background-color: rgb(0, 112, 192);
 color: white;
 cursor: pointer;
-}
-
-.return_Btn{
-border: solid 2px rgb(0, 0, 0);
-border-radius: 9px;
-padding: 2px 5px;
-color: black;
-cursor: pointer;
+font-size:16px;
 }
 
 #registerUser_contents{
@@ -141,12 +138,13 @@ height: 28px;
 }
 
 #authority{
-height: 24px;
+height: 25px;
 width: 70px;
 }
 
 input[type="number"],input[type="text"],input[type="password"]{
 height: 18px;
+width: 175px;
 }
 </style>
 <body>

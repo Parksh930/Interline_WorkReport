@@ -12,8 +12,6 @@
 <link href="resources/css/Font-Style.css" rel="stylesheet">
 
 <script>
-<c:if test="${error!=null && error!=''}">alert("${error}");</c:if>
-
 $(document).ready(function(){
 	 isMobile(); 
 	 $('#pc_btn_login').click(input_Check);
@@ -29,6 +27,10 @@ $(document).ready(function(){
 				$("#mobile_login_div").show();
 			}else{
 				$("body").attr('class','pc_body');
+/* 				$("span").addClass('pc_font_title');
+				$("label[for^='pc_']").addClass('pc_font_content1');
+				$("input[id^='pc_']").addClass('pc_font_content1');
+				$("button[id^='pc_']").addClass('pc_font_button1'); */
 				$("#pc_login_div").show();
 			}
 		}
@@ -77,12 +79,14 @@ $(document).ready(function(){
 #pc_login_div{
 margin: 200px auto;
 width: fit-content;
+text-align:center;
 display:none;
 }
 
 #mobile_login_div{
 margin: 200px auto;
 width: fit-content;
+text-align:center;
 display:none;
 }
 
@@ -102,6 +106,7 @@ button{
 	background-color: rgb(0, 112, 192);
 	color: white;
 	cursor: pointer;
+	font-size:16px;
 }
 
 .login_text{
@@ -113,20 +118,23 @@ color:rgb(31,73,125);
 }
 
 .login_th_title{
-text-align: left;
-padding: 0px 0px 20px 0px;
+padding: 0px 0px 10px 0px;
 }
 
 .login_td_id,.login_td_pw{
-padding:0px 30px 0px 0px;
+padding:0px 25px 0px 0px;
 }
 
 .login_td_Submit{
-padding: 20px 0px 0px 0px;
+padding: 15px 0px 0px 0px;
 }
 
 #mobile_login_div input[type=text],#mobile_login_div input[type=password]{
 width:600px;
+}
+
+.pc_login_label,.mobile_login_label{
+text-align: left;
 }
 	
 </style>
@@ -136,16 +144,15 @@ width:600px;
 <img src="<c:url value = 'resources/image/interline_login.png'/>" id="login_logo">
 <table>
 <tr>
-<th colspan="2" class="login_th_title">
-<span class="login_text">ログイン</span>
+<th colspan="2" class="login_th_title pc_font_title">
 <span class="title_text">勤務票報告 システム</span></th>
 </tr>
 <tr>
-<td class="login_td_id">メールアドレス</td>
+<td class="login_td_id pc_login_label pc_font_content1"><label for="pc_login_id">メールアドレス</label></td>
 <td class="login_td_id"><input type="text" id="pc_login_id" name="login_id"></td>
 </tr>
 <tr>
-<td class="login_td_pw">パスワード</td>
+<td class="login_td_pw pc_login_label pc_font_content1"><label for="pc_login_pw">パスワード</label></td>
 <td class="login_td_pw"><input type="password" id="pc_login_pw" name="login_pw"></td>
 </tr>
 <tr>
@@ -161,18 +168,17 @@ width:600px;
 <table>
 <tr>
 <th colspan="2" class="login_th_title">
-<span class="login_text mobile_font_title">ログイン</span>
 <span class="title_text mobile_font_title">勤務票報告 システム</span></th>
 </tr>
 <tr>
-<td class="login_td_id mobile_font_content1">メールアドレス</td>
+<td class="login_td_id mobile_login_label mobile_font_content1"><label for="mobile_login_id">メールアドレス</label></td>
 </tr>
 <tr>
 <td class="login_td_id mobile_font_content1"><input type="text" id="mobile_login_id" name="login_id" class="mobile_font_content1"></td>
 </tr>
 <tr></tr>
 <tr>
-<td class="login_td_pw mobile_font_content1" >パスワード</td>
+<td class="login_td_pw mobile_login_label mobile_font_content1" ><label for="mobile_login_pw">パスワード</label></td>
 </tr>
 <tr>
 <td class="login_td_pw mobile_font_content1"><input type="password" id="mobile_login_pw" name="login_pw" class="mobile_font_content1"></td>

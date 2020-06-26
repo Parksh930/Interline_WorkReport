@@ -36,6 +36,10 @@ th, td {
 	width: 50px;
 }
 
+button[id^="report_ReadSelect"]{
+font-size: 16px;
+}
+
 .Read_Btn {
 	border: solid 2px rgb(0, 112, 192);
 	border-radius: 9px;
@@ -43,6 +47,7 @@ th, td {
 	background-color: rgb(0, 112, 192);
 	color: white;
 	cursor: pointer;
+	font-size: 14px;
 }
 
 .Read_Btn2 {
@@ -53,6 +58,7 @@ th, td {
 	color: white;
 	cursor: pointer;
 	width: 68px;
+	font-size: 14px;
 }
 /*  255 255 0 */
 .Read_Btn3 {
@@ -62,6 +68,7 @@ th, td {
 	background-color: rgb(255, 0, 0);
 	color: black;
 	cursor: pointer;
+	font-size: 14px;
 }
 
 .Read_Btn4 {
@@ -72,6 +79,7 @@ th, td {
 	color: white;
 	cursor: pointer;
 	width: 68px;
+	font-size: 14px;
 }
 
 .Read_Btn5 {
@@ -82,6 +90,7 @@ th, td {
 	color: black;
 	cursor: pointer;
 	width: 68px;
+	font-size: 14px;
 }
 
 .Read_Btn6 {
@@ -92,6 +101,7 @@ th, td {
 	color: black;
 	cursor: pointer;
 	width: 68px;
+	font-size: 14px;
 }
 
 .Main_logOut {
@@ -106,6 +116,7 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 input[type="number"], input[type="text"] {
 	height: 18px;
+	width:	175px;
 }
 
 #reportDays_Filter {
@@ -138,16 +149,6 @@ select {
 	height: 24px;
 }
 
-.filter_btn {
-	border: solid 2px rgb(0, 112, 192);
-	border-radius: 9px;
-	padding: 2px 5px;
-	background-color: rgb(0, 112, 192);
-	color: white;
-	cursor: pointer;
-	font-size: 12px;
-}
-
 #report_Read_Btn {
 	text-align: left;
 	margin: 20px 0px 0px 14.4px;
@@ -162,11 +163,7 @@ label[for="report_userName"] {
 }
 
 #team_span {
-	margin: 0px 0px 0px 35px;
-}
-
-#ReadReport_Btn {
-	font-size: 14.8px;
+	margin: 0px 0px 0px 20px;
 }
 
 #report_ReadAll_Btn {
@@ -219,7 +216,7 @@ $(function(){
 	var to_ReportDays_value;
 
 	first_reportList();
-	isMobile();
+
 	$(document).on('click','.Reportlist_sort',report_List_Sort);
 	$('input[name="report_userTeam"]').click(report_Team_Filter);
 	$('#report_userNum_btn').click(report_Text_Filter);
@@ -252,6 +249,11 @@ $(function(){
 				$("body").attr('class','mobile_body');
 			}else{
 				$("body").attr('class','pc_body');
+				$("table").addClass("pc_font_content1");
+				$("span").addClass("pc_font_content1");
+				$("label").addClass("pc_font_content1");
+				$("input").addClass("pc_font_content1");
+				$("button[class^='filter']").addClass("pc_font_button2");
 		    }
 		}
 	}
@@ -348,8 +350,8 @@ $(function(){
 		report_com += "</table>";
 		 $("#report_List").html(report_com); 
 
-		
-
+		isMobile();
+		 
          if($('#list_Box',parent.document)[0] != null){
              $('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
          }
@@ -384,7 +386,7 @@ $(function(){
 		var date = new Date();
 		var now_year = date.getFullYear();
 
-		$("#from_ReportDays").prepend("<option value='"+now_year+"-01'>下限なし</option>");
+		$("#from_ReportDays").prepend("<option value='0001-01'>下限なし</option>");
 		$("#to_ReportDays").prepend("<option value='"+now_year+"-12'>上限なし</option>");
 		
 		for(var n = 1; n<=12 ; n++){

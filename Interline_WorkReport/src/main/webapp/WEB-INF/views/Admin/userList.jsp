@@ -17,9 +17,9 @@ $(function(){
 	var status = "all";
 	var team_others;
 	var user_Measure = ["userNum","ascending"];
-
+	
 	first_userList();
-	isMobile(); 
+	
 	
 	$('input[name="user_team"]').click(user_Team_Filter);
 	$("input[name='user_status']").click(user_Status_Filter);
@@ -34,6 +34,8 @@ $(function(){
 				$("body").attr('class','mobile_body');
 			}else{
 				$("body").attr('class','pc_body');
+				$("table").addClass("pc_font_content1");
+				$("a[class^='Update']").addClass("pc_font_button2");
 		    }
 		}
 	}
@@ -111,6 +113,8 @@ $(function(){
 			
 		con += "</table>";
 		$("#user_List").html(con);
+
+		isMobile(); 
 
 		if($('#list_Box',parent.document)[0] != null){
 			$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
@@ -269,6 +273,10 @@ color: white;
 cursor: pointer;
 }
 
+.Register_Btn{
+font-size:16px;
+}
+
 .Userlist_userNum, .Userlist_team,.Userlist_position,.Userlist_retirement
 ,.Userlist_startDate,.Userlist_finalreportDate,.Userlist_lastupdateDate {
 	width: 100px;
@@ -303,10 +311,6 @@ height: 24px;
 
 #user_status_span{
 margin: 0px 0px 0px -86px;
-}
-
-.Update_Btn{
-font-size: 14px;
 }
 
 </style>
