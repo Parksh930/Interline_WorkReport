@@ -60,7 +60,7 @@ $(function(){
 				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
 			});
 		}else if(count_Measure[0] != "userNum" && count_Measure[1] == "descending"){
-			count_sort.sort(function(a, b) {
+			count_sort.sort(function(a,b) {
 				return a[count_Measure[0]] > b[count_Measure[0]] ? -1 : a[count_Measure[0]] < b[count_Measure[0]] ? 1 : 0;
 			});
 		}
@@ -68,11 +68,11 @@ $(function(){
 
 		//averageOfWorkingTime_descending
 		//sumOfWorkingTime_descending
-/* 		if(count_Measure[0] == "awo" && count_Measure[1] == "ascending"){
+ 		if(count_Measure[0] == "aow" && count_Measure[1] == "ascending"){
 			count_sort.sort(function(a,b){
 				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
 			});
-		}else if(count_Measure[0] == "awo" && count_Measure[1] == "descending"){
+		}else if(count_Measure[0] == "aow" && count_Measure[1] == "descending"){
 			count_sort.sort(function(a,b){
 				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
 			});
@@ -86,7 +86,7 @@ $(function(){
 			count_sort.sort(function(a,b){
 				return a[count_Measure[0]] < b[count_Measure[0]] ? -1 : a[count_Measure[0]] > b[count_Measure[0]] ? 1 : 0;
 			});
-		} */
+		} 
 
 		
 		
