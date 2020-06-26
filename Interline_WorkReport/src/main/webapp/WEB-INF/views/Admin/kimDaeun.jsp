@@ -42,6 +42,12 @@ body{
 *[id*='_Filter']{
 	border: 0;
 }
+div[id*="_Asc"]{
+margin: 0px 0px -5px 0px;
+}
+div[id*="_Desc"]{
+margin: -5px 0px 0px 0px;
+}
 </style>
 <script>
 	$(document).ready(function(){
@@ -52,7 +58,6 @@ body{
 		$('#report_userNum_btn').click(getFilter);
 		$('#report_userName_btn').click(getFilter);
 		$("#reportDays_Filter").change(getFilter);
-		$('#allSelect').click(selectAll);
 		$("#aaa").html("");
 		function isMobile() {
 		    var filter = "win16|win32|win64|mac|macintel";
@@ -60,11 +65,14 @@ body{
 		      if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
 				
 		      }else{
-		    	
+		    	$("body").addClass("pc_body");
+		    	$("#title").addClass("pc_font_title");
+		    	$(".btn").addClass("pc_font_button2");
 		      }
 		    }
 		    
 		  }
+		
 		  //select박스의 option을 채워줌
 		function setOption(){
 			var date = new Date();
@@ -84,6 +92,12 @@ body{
 	//아이템리스트를 저장할 글로벌 변수
 	var globalList=null;
 
+
+	function scroll(){
+		 if($('#list_Box',parent.document)[0] != null){
+	         $('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
+	      }
+		}
 	
 	function getFilter(){
 		var checkBox=$('input[name="report_userTeam"]');
@@ -141,9 +155,13 @@ body{
 
 //뿌려주는 함수
 function setResult(list){
+	var saveTr=$('#saveTr').html();
 	var topTds=$('#topTr').html();
 	var bottomTds=$('#bottomTr').html();
 	var html="";
+	html+="<tr id='saveTr'>";
+	html+=saveTr;
+	html+="</tr>";
 	html+="<tr id='topTr'>";
 	html+=topTds;
 	html+="</tr>";
@@ -170,6 +188,7 @@ function setResult(list){
 
 	//전체평균을 구하여 넣어주는 함수실행
 	setTotalMean();
+	scroll();
 }
 //전체평균을 구하여 넣어주는 함수
 function setTotalMean(){
@@ -253,6 +272,7 @@ function selectAll(){
 </script>
 
 <body>
+	<div id="title">勤務票集計</div>
 	<div id="report_list_filter">
 		<fieldset id="reportUserNum_Filter">
 			<table class="filterTable">
@@ -316,58 +336,60 @@ function selectAll(){
 	
 	<table id="resultTable">
 		<tr id='saveTr'><td colspan="11" style="text-align: right; border-style: none;">
-			<span id="pdfExportButton" onclick="exportReport('pdf')">PDF</span>
-			<span id="xlsExportButton" onclick="exportReport('xls')">EXCEL</span>
+			<div style="margin-bottom: 4px;">
+			<span id="pdfExportButton" class='btn' onclick="exportReport('pdf')">PDF</span>
+			<span id="xlsExportButton" class='btn' onclick="exportReport('xls')">EXCEL</span>
+			</div>
 		</td></tr>
 		<tr id='topTr'>
-			<td><input id='allSelect' type='checkbox' name='selectAll' value='on'></td>
+			<td><input id='allSelect' type='checkbox' name='selectAll' value='on' onchange="selectAll()"></td>
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">사원번호</td><td><div id="numberAsc">▲</div></td>
+						<td rowspan="2">사원번호</td><td><div id="number_Asc">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="numberDesc">▼</div></td>
+						<td><div id="number_Desc">▼</div></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">이름</td><td><div id="nameAsc">▲</div></td>
+						<td rowspan="2">이름</td><td><div id="name_Asc">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="nameDesc">▼</div></td>
-					</tr>
-				</table>
-			</td>
-			<td>
-				<table>
-					<tr>
-						<td rowspan="2">직급</td><td><div id="positionAsc">▲</div></td>
-					</tr>
-					<tr>
-						<td><div id="positionDesc">▼</div></td>
+						<td><div id="name_Desc">▼</div></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">현장</td><td><div id="teamAsc">▲</div></td>
+						<td rowspan="2">직급</td><td><div id="position_Asc">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="teamDesc">▼</div></td>
+						<td><div id="position_Desc">▼</div></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">년월분</td><td><div id="timeAsc">▲</div></td>
+						<td rowspan="2">현장</td><td><div id="team_Asc">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="timeDesc">▼</div></td>
+						<td><div id="team_Desc">▼</div></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td rowspan="2">년월분</td><td><div id="time_Asc">▲</div></td>
+					</tr>
+					<tr>
+						<td><div id="time_Desc">▼</div></td>
 					</tr>
 				</table>
 			</td>
@@ -413,6 +435,7 @@ function selectAll(){
 	console.log("JSONString:::"+$('#JSONString').html());
 	globalList=JSON.parse($('#JSONString').html());
 	setTotalMean();
+	scroll();
 </script>
 </body>
 </html>
