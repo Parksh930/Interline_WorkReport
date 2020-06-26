@@ -402,7 +402,39 @@ public class WorkReportController {
 		return "redirect:/admin/reportList";
 	}
 	
+	@RequestMapping(value="/admin/getCount", method = RequestMethod.GET)
+	public String getCount(WorkReportVO vo,Model model) {
+		return "Report/getCount";
+	}
 	
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/countList", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ArrayList<WorkReportVO> countList(){
+		
+		ArrayList<WorkReportVO> countList = dao.getCountList();
+		
+		System.out.println("countList  : "  +  countList);
+
+		return countList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/Count_Filter", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+	public ArrayList<WorkReportVO> Count_Filter(Model model,String searchItem,String year,String month){
+		ArrayList<WorkReportVO> list = dao.searchList(year,month);
+		System.out.println("Count_Filter  : "  +  list);
+		model.addAttribute("searchItem", searchItem);
+		return list;
+	}
+	
+	@RequestMapping(value="/admin/getReadReportCount", method = RequestMethod.GET)
+	public String getReadReportCount(WorkReportVO vo,Model model) {
+		WorkReportVO getReadVO = dao.getWorkReportVO(vo);
+		model.addAttribute("vo",getReadVO);
+		return "Report/readWorkReport";
+	}
 	
 	
 }

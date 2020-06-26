@@ -144,6 +144,21 @@ public class WorkReportDAO {
 		return mapper.selectReport(intNum);
 	}
 
+	public ArrayList<WorkReportVO> getCountList() {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.getCountList();
+	}
+
+
+	public ArrayList<WorkReportVO> searchList(String year, String month) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("year",year);
+		map.put("month",month);
+		return mapper.searchList(map);
+	}
+
+
 
 
 }
