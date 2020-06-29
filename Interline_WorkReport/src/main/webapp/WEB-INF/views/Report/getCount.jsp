@@ -429,7 +429,7 @@ html { overflow-y:scroll; }
 	<div>
 		<select name="searchItem" id="searchItem">
 			<option value="ALL"
-				<c:if test="${'searchItem'==searchItem}">selected</c:if>>全勤務票</option>
+				<c:if test="${'searchItem'==searchItem}">selected</c:if>>全月勤務票</option>
 			<option value="1"
 				<c:if test="${'searchItem'==searchItem}">selected</c:if>>1月勤務票</option>
 			<option value="2"
