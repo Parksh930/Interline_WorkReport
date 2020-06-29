@@ -237,6 +237,16 @@
 		</where>
 	</delete>
 
+	<select id="getCountList" resultType="WorkReportVO">
+		select * from work_Report
+		order by updateDate desc limit 100
+	</select>
+	
+	<select id="searchList" parameterType="map" resultType="WorkReportVO">
+		select * from work_Report
+		where year like #{year} and month like #{month} 
+		order by updateDate desc limit 100
+	</select>
 
 	
 </mapper>

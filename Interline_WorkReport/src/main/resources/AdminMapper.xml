@@ -11,7 +11,7 @@ select user.*,max(report.updatedate)lastupdateDate
 		user_inform as user left join work_Report as report
 	on
 		report.usernum = user.usernum 
-	<if test='team.size !=0 and team[0] != "team_all"'>
+	<if test='team !=null and team[0] != "team_all"'>
 		where team 
 		${team_others} in
 	<foreach collection="team" item="team" index="num"  open="(" close=")" separator=",">
@@ -20,11 +20,11 @@ select user.*,max(report.updatedate)lastupdateDate
      </if>
 	group by
 		user.usernum
-	<if test='status.size !=0 and status == "status_submitted"'>
+	<if test='status !=null and status == "status_submitted"'>
 		having
 			date_format(user.LastReportDate, "%Y-%m") = date_format(date_add(now(), interval -1 month), "%Y-%m")
 	</if>
-	<if test='status.size !=0 and status == "status_writing"'>
+	<if test='status !=null and status == "status_writing"'>
 		having
 			date_format(user.LastReportDate, "%Y-%m") != date_format(date_add(now(), interval -1 month), "%Y-%m")
 		or 
@@ -46,10 +46,10 @@ select user.*,max(report.updatedate)lastupdateDate
 <select id = "check_Multiple" parameterType="map" resultType="user">
 	select * from user_inform where
 	<choose>
-		<when test='check_point.size !=0 and check_point == "check_num"'>
+		<when test="check_point != null and check_point == 'check_num'">
 			usernum = #{check_content}
 		</when>
-		<when test='check_point.size !=0 and check_point == "check_mail"'>
+		<when test="check_point !=null and check_point == 'check_mail'">
 			usermail = #{check_content}
 		</when>
 	</choose>
@@ -63,10 +63,10 @@ select user.*,max(report.updatedate)lastupdateDate
 		,userName
 		,password
 		,team
-		<if test='position.size !=0 and position != ""'>
+		<if test='position !=null and position != ""'>
 		,position
 		</if>
-		<if test='startDate.size !=0 and startDate != ""'>
+		<if test='startDate !=null and startDate != ""'>
 			,startDate
 		</if>
 		,authority
@@ -78,10 +78,10 @@ select user.*,max(report.updatedate)lastupdateDate
 		,#{userName}
 		,#{password}
 		,#{team}
-		<if test='position.size !=0 and position != ""'>
+		<if test='position !=null and position != ""'>
 		,#{position}
 		</if>
-		<if test='startDate.size !=0 and startDate != ""'>
+		<if test='startDate !=null and startDate != ""'>
 			,#{startDate}
 		</if>
 		,#{authority}
@@ -97,13 +97,13 @@ update user_inform
 	set
 		authority = #{authority}
 		,retirement = #{retirement}
-	<if test='password.size !=0 and password != ""'>
+	<if test='password !=null and password != ""'>
 		,password = #{password}
 	</if>
-	<if test='position.size !=0 and position != ""'>
+	<if test='position !=null and position != ""'>
 		,position = #{position}
 	</if>
-	<if test='team.size !=0 and team != ""'>
+	<if test='team !=null and team != ""'>
 		,team = #{team}
 	</if>
 	where
@@ -161,6 +161,5 @@ delete from user_inform where userNum = #{userNum}
 	
 	and u.userNum like #{userNum} and u.userName like #{userName}
 </select>
-
 
 </mapper>

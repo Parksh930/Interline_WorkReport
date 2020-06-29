@@ -42,5 +42,9 @@ public interface WorkReportMapper {
 
 	WorkReportVO selectReport(int intNum);
 
+	ArrayList<WorkReportVO> getCountList();
+
+	ArrayList<WorkReportVO> searchList(HashMap<String, String> map);
+
 
 }

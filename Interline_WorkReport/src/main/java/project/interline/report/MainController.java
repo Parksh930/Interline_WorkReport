@@ -63,14 +63,14 @@ public class MainController {
 			if(user.getAuthority().equals("a")) {
 				result.put("url", "admin/adminMain");		
 			}else if(user.getAuthority().equals("u")) {
-				result.put("url", "user/userMain");//userMainPage의 jsp등록
+				result.put("url", "user/userMain");//userMainPage�쓽 jsp�벑濡�
 			}
 		}
 		
 		if(user == null) {
-			result.put("error","存在しないメールアドレスです。");
+			result.put("error","耶섇쑉�걮�겒�걚�깳�꺖�꺂�궋�깋�꺃�궧�겎�걲��");
 		}else if(!user.getPassword().equals(login_pw)){
-			result.put("error","パスワードが一致しません。");
+			result.put("error","�깙�궧�꺈�꺖�깋�걣訝��눜�걮�겲�걵�굯��");
 		}
 		return result;
 	}
@@ -80,7 +80,6 @@ public class MainController {
 		logger.debug("logout");
 		session.removeAttribute("login_id");
 		session.invalidate();
-		
 		return "redirect:/";
 	}
 }
