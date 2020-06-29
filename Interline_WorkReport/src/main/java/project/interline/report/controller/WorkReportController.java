@@ -447,7 +447,7 @@ public class WorkReportController {
 	@ResponseBody
 	@RequestMapping(value="/admin/countOption", method=RequestMethod.POST,produces="application/json;charset=UTF-8" )
 	public ArrayList<WorkReportVO> countOption(WorkReportVO vo){
-		ArrayList<WorkReportVO> List = dao.countOption();
+		ArrayList<WorkReportVO> List = dao.countOption(vo);
 		return List;
 	}
 	

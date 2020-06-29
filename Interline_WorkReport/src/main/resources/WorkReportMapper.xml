@@ -254,6 +254,6 @@
 	</select>
 
 	<select id="countOption" resultType="WorkReportVO">
-		select * from work_Report
+		select * from work_Report where month = #{month} 
 	</select>
 </mapper>

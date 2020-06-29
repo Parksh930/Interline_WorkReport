@@ -162,8 +162,8 @@ function getReadReportCount(reportNum){
 }
 
 function countDetail(reportNum){
+	var month;
 	var conText="";
-
 	$('#Count_List3').empty(); 
 	
 	$.ajax({
@@ -185,17 +185,16 @@ function countDetail(reportNum){
 
 			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum2[0]+"時間"+getSum2[1]+"分」です。<br>";
 			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
-			
+
+			month=item.month;
 			$('#Count_List3').append(conText); 
+			countOption(month);
 		}	
 	});
-
 	
-	countOption();
 }
 
-
-function countOption(){
+function countOption(month){
 
 	$('#Count_List2').empty(); 
 	
@@ -208,12 +207,17 @@ function countOption(){
 	var text4;
 	var text5;
 	var text6;
+	var monthValue=0;
+	var monthValue = parseInt(month);
+
+	
 	
 	$.ajax({
 		type:"post",
 		url:"countOption",
 		//async:false,
 		//traditional: true,
+		data:{"month":monthValue},
 		dataType:"json",
 		success:function(list){
 			console.log(list);
