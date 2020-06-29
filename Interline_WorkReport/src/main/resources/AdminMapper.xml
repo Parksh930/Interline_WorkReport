@@ -124,7 +124,7 @@ delete from user_inform where userNum = #{userNum}
 </select>
 
 <select id="getAggregation2" parameterType="map" resultType="Aggregation">
-	select u.userNum,u.userName,u.position,u.team , 
+	select u.userNum, u.userName , u.position , u.team , 
 	concat(year,'-',month) as yearMonth,
 	concat(AbsentDay,'(','0',')')as Absent, SalesDay-WorkingDay-AbsentDay as vacation , holidayWorkingDay ,sumWorkingTime,
 	concat(round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)/60,0),':',round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)%60,0)) as meanWorkingTime 
