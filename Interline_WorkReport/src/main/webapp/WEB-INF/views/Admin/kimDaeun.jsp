@@ -44,9 +44,11 @@ body{
 }
 div[id*="_Asc"]{
 margin: 0px 0px -5px 0px;
+cursor: pointer;
 }
 div[id*="_Desc"]{
 margin: -5px 0px 0px 0px;
+cursor: pointer;
 }
 </style>
 <script>
@@ -68,6 +70,7 @@ margin: -5px 0px 0px 0px;
 		    	$("body").addClass("pc_body");
 		    	$("#title").addClass("pc_font_title");
 		    	$(".btn").addClass("pc_font_button2");
+		    	//$("#messageBox").addClass("pc_font_content1");
 		      }
 		    }
 		    
@@ -224,10 +227,18 @@ function objectoToJson(list){
 //저장을 눌렀을 경우
 function exportReport(format){
 	var getSeletedItemList=getSelectedItems(globalList);
+	if(getSeletedItemList.length==0){
+		alert("何も選択しなかったです。");
+		return
+	}
 	var dataSet=objectoToJson(getSeletedItemList);
 	console.log("json:::"+dataSet[0]);
 	console.log("row:::"+dataSet[1]);
 	console.log("format:::"+format);
+	$('#wrapper').css('z-index',2);
+	$('#wrapper').css('visibility','visible');
+	$('body').css('cursor','progress');
+	
 	$.ajax({
 		type:"get",
 		url:"exportAggregation",
@@ -235,6 +246,9 @@ function exportReport(format){
 		dataType:"text",
 		success:function(s){
 			console.log("ajax성공");
+			$('#wrapper').css('z-index',-1);
+			$('#wrapper').css('visibility','hidden');
+			$('body').css('cursor','pointer');
 			location.href="http://<%out.print(properties.getOzIP());%>/ozsch80/Repository/"+format+"/reportExport."+format;
 		},
 		error: function(e){
@@ -267,7 +281,21 @@ function selectAll(){
 	}else{
 		checkBoxItems.prop('checked', false) ;
 	}
-	
+}
+
+function sorting(type,colName){
+	if (type=="asc"){
+		globalList.sort(function(a,b){
+				return a[colName].toLowerCase() < b[colName].toLowerCase()? -1 : a[colName].toLowerCase() > b[colName].toLowerCase()? 1 : 0;
+				});
+	}else{	
+		globalList.sort(function(a,b){
+			return a[colName].toLowerCase() < b[colName].toLowerCase()? 1 : a[colName].toLowerCase() > b[colName].toLowerCase()? -1 : 0;
+			});
+	}
+
+	//가지고왔으면 뿌려주는 함수실행
+	setResult(globalList);
 }
 </script>
 
@@ -346,50 +374,50 @@ function selectAll(){
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">사원번호</td><td><div id="number_Asc">▲</div></td>
+						<td rowspan="2">사원번호</td><td><div id="number_Asc" onclick="sorting('asc','userNum')">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="number_Desc">▼</div></td>
-					</tr>
-				</table>
-			</td>
-			<td>
-				<table>
-					<tr>
-						<td rowspan="2">이름</td><td><div id="name_Asc">▲</div></td>
-					</tr>
-					<tr>
-						<td><div id="name_Desc">▼</div></td>
+						<td><div id="number_Desc" onclick="sorting('desc','userNum')">▼</div></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">직급</td><td><div id="position_Asc">▲</div></td>
+						<td rowspan="2">이름</td><td><div id="name_Asc" onclick="sorting('asc','userName')">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="position_Desc">▼</div></td>
-					</tr>
-				</table>
-			</td>
-			<td>
-				<table>
-					<tr>
-						<td rowspan="2">현장</td><td><div id="team_Asc">▲</div></td>
-					</tr>
-					<tr>
-						<td><div id="team_Desc">▼</div></td>
+						<td><div id="name_Desc" onclick="sorting('desc','userName')">▼</div></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr>
-						<td rowspan="2">년월분</td><td><div id="time_Asc">▲</div></td>
+						<td rowspan="2">직급</td><td><div id="position_Asc" onclick="sorting('asc','position')">▲</div></td>
 					</tr>
 					<tr>
-						<td><div id="time_Desc">▼</div></td>
+						<td><div id="position_Desc" onclick="sorting('desc','position')">▼</div></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td rowspan="2">현장</td><td><div id="team_Asc" onclick="sorting('asc','team')">▲</div></td>
+					</tr>
+					<tr>
+						<td><div id="team_Desc" onclick="sorting('desc','team')">▼</div></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr>
+						<td rowspan="2">년월분</td><td><div id="time_Asc" onclick="sorting('asc','yearMonth')">▲</div></td>
+					</tr>
+					<tr>
+						<td><div id="time_Desc" onclick="sorting('desc','yearMonth')">▼</div></td>
 					</tr>
 				</table>
 			</td>
@@ -430,8 +458,9 @@ function selectAll(){
 	</tr>
 	</table>
 	<div id="JSONString" style="visibility: hidden;">${JSONString}</div>
+	<div id="wrapper" style="z-index: -1; display: table; background-color:rgb(225,225,225); position: absolute; left: 0%; top: 0%; visibility: hidden; width: 100%; height: 100%; opacity: 0.5;">
+	</div>
 <script>
-	
 	console.log("JSONString:::"+$('#JSONString').html());
 	globalList=JSON.parse($('#JSONString').html());
 	setTotalMean();
