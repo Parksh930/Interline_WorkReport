@@ -138,7 +138,11 @@ a{
 
 <script>
 	for(var i=1 ; i<=10 ; i++){
-		var reportNum=$('#readReport'+i).attr('href').split("=")[1];
+		var indexString=$('#readReport'+i).attr('href');
+		if(indexString==null){
+			break;
+			}
+		var reportNum=indexString.split("=")[1];
 		var stateHtml=$('#state'+i).html();
 		//var stateArray=['保存','提出','承認','修正依頼','修正依頼','修正許可','修正許可'];
 		switch (stateHtml){

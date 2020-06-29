@@ -60,7 +60,7 @@ $(document).ready(function(){
 <input id="userName" type="hidden" value="${sessionScope.user_inform.userName}">
 <div id="reportJSON" style="display: none;">${reportJSON}</div>
 <!-- /model값을 불러오기위한 input -->
-<script src="/report/resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
+<script src="../resources/js/workingChart.js" type="text/javascript"></script> <!-- 보고서 출력을위한 js -->
 <script type="text/javascript">
 	//페이지에 들어오기위한 필요 초기값
 	session="";
@@ -142,7 +142,7 @@ $(document).ready(function(){
 		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
 		oz.sendToActionScript("viewer.showpagemargin","false");
-		oz.sendToActionScript("viewer.external_functions_path","http://<%out.print(properties.getWebIP());%>/report2/resources/js/writeReportForOZR.js");
+		oz.sendToActionScript("viewer.external_functions_path","http://<%out.print(properties.getWebIP());%>/<%out.print(properties.getProjectRoot());%>/resources/js/writeReportForOZR.js");
 		oz.sendToActionScript("connection.reportname","phonetest.ozr");
 		oz.sendToActionScript("connection.clientcachetype","none");
 		oz.sendToActionScript("connection.inputjson", reportJSON);
@@ -162,7 +162,7 @@ $(document).ready(function(){
 </script>
 
 <div style="position: absolute; bottom: -2px; left: 0;">
-	<img id="bt1" src="/report/resources/image/popupButton.PNG" style="display: block; left: 20%;">
+	<img id="bt1" src="../resources/image/popupButton.PNG" style="display: block; left: 20%;">
 	<div id="summary" style="text-align:left; background-color:rgb(217,217,217,0.8); border-radius: 3px; ">
 		<div style="background-color:rgb(217,217,217,0.8); display: block;">
 			<table>
