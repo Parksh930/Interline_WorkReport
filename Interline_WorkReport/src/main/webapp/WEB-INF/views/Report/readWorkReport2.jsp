@@ -9,7 +9,7 @@
 <head>
 <script>
 	function pagechange() {
-		location.href = "reportList";
+		window.history.back();
 	}
 </script>
 

@@ -46,6 +46,16 @@ public class WorkReportVO {
 	int attendHour30;	int attendMinute30;	int offHour30;	int offMinute30;	int restHour30;	int restMinute30;	String netWorkingTime30;	String workContent30;	String dateCondition30;	String onoff30;
 	int attendHour31;	int attendMinute31;	int offHour31;	int offMinute31;	int restHour31;	int restMinute31;	String netWorkingTime31;	String workContent31;	String dateCondition31;	String onoff31;
 
+	
+	
+	public WorkReportVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+
 	public String getOnoff1() {
 		return onoff1;
 	}

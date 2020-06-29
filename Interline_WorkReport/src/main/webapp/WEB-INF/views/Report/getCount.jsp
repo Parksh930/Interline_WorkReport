@@ -19,6 +19,7 @@ $(function(){
 	
 	countList();
 	isMobile(); 
+	
 
 	$(document).on('click','.Countlist_sort',Count_List_Sort);
 	$("#searchItem").change(Count_reslut_Filter);
@@ -86,22 +87,8 @@ $(function(){
 			$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
 		}
 
-		//countOption();
 	}
 
-
-
-	
-	
-	function countOption(){
-
-		var con3="";
-
-		con3 += "社員の平均勤務時間："+1+"<br>";
-		con3 += "社員の平均勤務時間："+2+"<br>";
-		$("#Count_List3").html(con3);
-
-	}
 
 	function countList(){
 
@@ -135,6 +122,9 @@ $(function(){
 	
 	function Count_reslut_Filter(){
 
+	$('#Count_List2').empty(); 
+	$('#Count_List3').empty(); 
+		
 	var searchItem = $("#searchItem").val()
 	var month = searchItem;
 	var thisDate = new Date();
@@ -172,9 +162,9 @@ function getReadReportCount(reportNum){
 }
 
 function countDetail(reportNum){
-	var con2="";
+	var conText="";
 
-	$('#Count_List2').empty(); 
+	$('#Count_List3').empty(); 
 	
 	$.ajax({
 		type:"post",
@@ -182,8 +172,8 @@ function countDetail(reportNum){
 		data:{"reportNum":reportNum},
 		dataType:"json",
 		success:function(item){
-			
- 			var getSum = item.sumWorkingTime;
+
+			var getSum = item.sumWorkingTime;
  			var getWorkingDay = item.workingDay;
 			var getSum2 = getSum.split(":");
 			var getSum3 = parseInt((getSum2[0]*60))+parseInt(getSum2[1]);
@@ -191,28 +181,68 @@ function countDetail(reportNum){
 			var getSum5 = getSum4.split(".");
 			var averageWorkingValue1 = getSum5[0]+getSum5[1];
 			var averageWorkingTime = getSum5[0]+"時間"+getSum5[1]+"分"; 
-
-/* 			var getNet;
-			var getNet2;
-			var getNet3;
-			for(var i=1; i<=28; i++){
-				getNet = item.netWorkingTime[i].split(":");
-				getNet2 += getNet[0]-8;
-				alert("hour:"  +  getNet2);
-				getNet3 += getNet[1];
-				alert("min:"  +  getNet3);
-			} */
-
 			
-			con2 +=	"<p>" +item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。</p><br>";
+
+			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum2[0]+"時間"+getSum2[1]+"分」です。<br>";
+			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
 			
-			$('#Count_List2').append(con2); 
+			$('#Count_List3').append(conText); 
 		}	
 	});
 
-
-	//$("#Count_List2").html(con2);
+	
+	countOption();
 }
+
+
+function countOption(){
+
+	$('#Count_List2').empty(); 
+	
+	var conText="";
+	var text;
+	var text0;
+	var text1;
+	var text2=0;
+	var text3=0;
+	var text4;
+	var text5;
+	var text6;
+	
+	$.ajax({
+		type:"post",
+		url:"countOption",
+		//async:false,
+		//traditional: true,
+		dataType:"json",
+		success:function(list){
+			console.log(list);
+			var length = list.length;
+			list.forEach(function(item){
+
+				text = item.sumWorkingTime.split(":");
+				text0 = parseInt(text[0]);
+				text1 = parseInt(text[1]);
+				text2 += text0;
+				text3 += text1;
+				text4 = Math.round(text2/length);
+				text5 = Math.round(text3/length);
+				text6 = text5.toString();
+				if(text6.length==1){
+				conText =item.month+'月の全社員の平均勤務時間は「'+text4+"時間0"+text5+'分」です。';
+				}
+				else{
+				conText =item.month+'月の全社員の平均勤務時間は「'+text4+"時間"+text5+'分」です。';
+				}
+				});
+			
+			$('#Count_List2').append(conText); 
+			//$("#Count_List3").html(conText);
+		}	
+	});
+
+}
+
 
 </script>
 
