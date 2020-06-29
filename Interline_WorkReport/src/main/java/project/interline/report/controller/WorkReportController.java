@@ -436,5 +436,12 @@ public class WorkReportController {
 		return "Report/readWorkReport";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/admin/countDetail", method=RequestMethod.POST)
+	public WorkReportVO countDetail(WorkReportVO vo){
+		WorkReportVO voData = dao.countDetail(vo);
+		return voData;
+	}
+	
 	
 }

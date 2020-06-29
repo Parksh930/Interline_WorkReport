@@ -248,5 +248,9 @@
 		order by updateDate desc limit 100
 	</select>
 
-	
+	<select id="countDetail" parameterType="map" resultType="WorkReportVO">
+		select * from work_Report 
+		where reportNum=#{reportNum}
+	</select>
+
 </mapper>
