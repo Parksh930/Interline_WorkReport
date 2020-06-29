@@ -84,9 +84,12 @@ $(function(){
 		con += "</table>";
 		$("#Count_List").html(con);
 
-		if($('#Count_List',parent.document)[0] != null){
-			$('#Count_List',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
+		if($('#list_Box',parent.document)[0] != null){
+			$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+100+'px');
 		}
+     //   if(count_sort==""||count_sort==null){
+	//		$(".Countlist_readReportBtn").css("width","276.4px")
+    //     }
 
 	}
 
@@ -192,6 +195,10 @@ function countDetail(reportNum){
 			year = item.year;
 			$('#Count_List3').append(conText); 
 			countOption(month,year);
+
+			if($('#list_Box',parent.document)[0] != null){
+				$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
+			}
 		}	
 	});
 	
@@ -264,7 +271,10 @@ function countOption(month,year){
 				$('#Count_List2').append(conText); 
 
 
-
+				if($('#list_Box',parent.document)[0] != null){
+					$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+100+'px');
+				}
+				
 		}
 	});
 }
@@ -383,6 +393,9 @@ fieldset {
 	color: white;
 	cursor: pointer;
 }
+
+html { overflow-y:scroll; }
+
 </style>
 </head>
 <body>
@@ -444,6 +457,8 @@ fieldset {
 		</select>
 	</div>
 
+<div id="list">
+
 	<div id="Count_List"></div>
 
 	<div id="Count_List2" align="center"></div>
@@ -451,6 +466,6 @@ fieldset {
 
 
 
-
+</div>
 </body>
 </html>
