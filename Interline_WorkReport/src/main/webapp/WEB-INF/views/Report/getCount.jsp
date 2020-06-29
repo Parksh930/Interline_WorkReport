@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>CountList</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="../resources/js/updateReport.js"></script>
 <link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
 $(function(){
@@ -163,6 +164,7 @@ function getReadReportCount(reportNum){
 
 function countDetail(reportNum){
 	var month;
+	var year;
 	var conText="";
 	$('#Count_List3').empty(); 
 	
@@ -187,14 +189,15 @@ function countDetail(reportNum){
 			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
 
 			month=item.month;
+			year = item.year;
 			$('#Count_List3').append(conText); 
-			countOption(month);
+			countOption(month,year);
 		}	
 	});
 	
 }
 
-function countOption(month){
+function countOption(month,year){
 
 	$('#Count_List2').empty(); 
 	
@@ -207,10 +210,15 @@ function countOption(month){
 	var text4;
 	var text5;
 	var text6;
+	var text7;
+	var text8;
+	var text9;
 	var monthValue=0;
 	var monthValue = parseInt(month);
-
-	
+	var yearValue=0;
+	var yearValue = parseInt(year);
+	var date = getDateNum2(yearValue,monthValue);
+	var dateNum = date-1; 
 	
 	$.ajax({
 		type:"post",
@@ -232,18 +240,33 @@ function countOption(month){
 				text4 = Math.round(text2/length);
 				text5 = Math.round(text3/length);
 				text6 = text5.toString();
+				text7 = Math.round(text4/dateNum);
+				text8 = Math.round(text5/dateNum);
+				text9 = text8.toString();
+
+				
 				if(text6.length==1){
-				conText =item.month+'月の全社員の平均勤務時間は「'+text4+"時間0"+text5+'分」です。';
+				conText =item.month+'月の全社員の平均総勤務時間は「'+text4+"時間0"+text5+'分」です。<br>';
 				}
 				else{
-				conText =item.month+'月の全社員の平均勤務時間は「'+text4+"時間"+text5+'分」です。';
+				conText =item.month+'月の全社員の平均総勤務時間は「'+text4+"時間"+text5+'分」です。<br>';
+				}
+				
+				if(text9.length==1){
+				conText +=item.month+'月の全社員の一日平均総勤務時間は「'+text7+"時間0"+text8+'分」です。';
+				}
+				else{
+				conText +=item.month+'月の全社員の一日平均総勤務時間は「'+text7+"時間"+text8+'分」です。';
 				}
 				});
-			
-			$('#Count_List2').append(conText); 
-		}	
-	});
 
+			
+				$('#Count_List2').append(conText); 
+
+
+
+		}
+	});
 }
 
 
@@ -366,17 +389,15 @@ fieldset {
 	<h1>集計</h1>
 
 	<div>
-		<select data-trigger="" 
-			name="searchKeyword" id="searchKeyword">
+		<select data-trigger="" name="searchKeyword" id="searchKeyword">
 			<option value="userNum"
 				<c:if test="${'title'==searchItem}">selected</c:if>>社員番号</option>
 			<option value="userName"
 				<c:if test="${'country'==searchItem}">selected</c:if>>社員名</option>
 			<option value="year"
 				<c:if test="${'startEvent'==searchItem}">selected</c:if>>年度</option>
-		</select>
-		<select data-trigger="" 
-			name="searchKeyword" id="searchKeyword" style="display: none">
+		</select> <select data-trigger="" name="searchKeyword" id="searchKeyword"
+			style="display: none">
 			<option value="userNum"
 				<c:if test="${'title'==searchItem}">selected</c:if>>タイトル</option>
 			<option value="userName"
@@ -387,8 +408,7 @@ fieldset {
 				<c:if test="${'adress'==searchItem}">selected</c:if>>住所</option>
 			<option value="hashSearch"
 				<c:if test="${'hashSearch'==searchItem}">selected</c:if>>#HASHTAG</option>
-		</select>
-		<input type="text"><input type="button" value="検索"
+		</select> <input type="text"><input type="button" value="検索"
 			id="searchOne" onclick='selectOne()'>
 	</div>
 
@@ -428,6 +448,7 @@ fieldset {
 
 	<div id="Count_List2" align="center"></div>
 	<div id="Count_List3" align="center"></div>
+
 
 
 

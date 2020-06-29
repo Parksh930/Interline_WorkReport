@@ -451,4 +451,10 @@ public class WorkReportController {
 		return List;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/admin/countOption2", method=RequestMethod.POST,produces="application/json;charset=UTF-8" )
+	public ArrayList<WorkReportVO> countOption2(WorkReportVO vo){
+		ArrayList<WorkReportVO> List = dao.countOption2();
+		return List;
+	}
 }

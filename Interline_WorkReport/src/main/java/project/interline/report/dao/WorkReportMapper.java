@@ -50,5 +50,7 @@ public interface WorkReportMapper {
 
 	ArrayList<WorkReportVO> countOption(WorkReportVO vo);
 
+	ArrayList<WorkReportVO> countOption2();
+
 
 }

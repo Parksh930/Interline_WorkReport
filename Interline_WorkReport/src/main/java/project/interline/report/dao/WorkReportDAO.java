@@ -168,5 +168,10 @@ public class WorkReportDAO {
 		return mapper.countOption(vo);
 	}
 
+	public ArrayList<WorkReportVO> countOption2() {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		return mapper.countOption2();
+	}
+
 
 }
