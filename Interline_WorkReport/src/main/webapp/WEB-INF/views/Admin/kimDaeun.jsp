@@ -147,7 +147,7 @@ cursor: pointer;
 				//가지고왔으면 뿌려주는 함수실행
 				setResult(list);
 				//
-				objectoToJson(list);
+				//objectoToJson(list);
 			},
 			error: function(e){
 				console.log(JSON.stringify(e));
@@ -216,10 +216,10 @@ function objectoToJson(list){
 	for(var i = 0 ; i<list.length ; i++){
 		var keyValue = Object.keys(list[i]);
 		for(var j = 0 ; j<keyValue.length ; j++){
+			console.log(list[i][keyValue[j]+""]);
 			JSONdata[keyValue[j]+(i+1)]=list[i][keyValue[j]+""];
 		}
 	}
-	console.log("만들어주는곳에서 스트링파이 전::::"+JSONdata);	
 	console.log("만들어주는곳에서 스트링파이한거::::"+JSON.stringify(JSONdata));	
 	return[JSON.stringify(JSONdata),list.length];
 }
@@ -261,15 +261,21 @@ function exportReport(format){
 function getSelectedItems(list){
 	var checkBox=$('input[name="selectedRow"]');
 	var selectedIndexArray=new Array();
-	for(i=0;i<checkBox.length;i++) {
+	for(var i=0 ; i<checkBox.length ; i++) {
 	    if (checkBox[i].checked == true){
 	    	selectedIndexArray.push(parseInt(checkBox[i].value));
 	    }
 	}
+	console.log("전체 어레이::");
+	console.log(list);
+	console.log("선택된인덱스::");
+	console.log(selectedIndexArray);
 	var newList=new Array();
-	for(var index in selectedIndexArray){
-		newList.push(list[i-1]);
+	for(var i=0 ; i<selectedIndexArray.length ; i++){
+		newList.push(list[selectedIndexArray[i]-1]);
 	}
+	console.log("선택된어레이");
+	console.log(newList)
 	return newList;
 }
 

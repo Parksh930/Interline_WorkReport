@@ -13,7 +13,7 @@ public class getProperties {
 	
 	String ozIP="";
 	String webIP="";
-	
+	String projectRoot="";
 	
 	public getProperties() {
 		ClassPathResource resource = new ClassPathResource("user.properties");
@@ -28,6 +28,7 @@ public class getProperties {
 		}
 	    ozIP=properties.getProperty("ozIP","localhost:8888");
 	    webIP=properties.getProperty("webIP","localhost:8888");
+	    projectRoot=properties.getProperty("projectRoot","projectRoot");
 	    
 	}
 
@@ -52,11 +53,22 @@ public class getProperties {
 	}
 
 
+	public String getProjectRoot() {
+		return projectRoot;
+	}
+
+
+	public void setProjectRoot(String projectRoot) {
+		this.projectRoot = projectRoot;
+	}
+
+
 	@Override
 	public String toString() {
-		return "getProperties [ozIP=" + ozIP + ", webIP=" + webIP + "]";
+		return "getProperties [ozIP=" + ozIP + ", webIP=" + webIP + ", projectRoot=" + projectRoot + "]";
 	}
-	
+
+
 	
 
 

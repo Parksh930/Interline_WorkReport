@@ -155,7 +155,7 @@
 		oz.sendToActionScript("connection.servlet","http://<%out.print(properties.getOzIP());%>/oz80/server");
 		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		oz.sendToActionScript("viewer.showpagemargin","false");
-		oz.sendToActionScript("viewer.external_functions_path","http://<%out.print(properties.getWebIP());%>/report2/resources/js/writeReportForOZR.js");
+		oz.sendToActionScript("viewer.external_functions_path","http://<%out.print(properties.getWebIP());%>/<%out.print(properties.getProjectRoot());%>/resources/js/writeReportForOZR.js");
 		oz.sendToActionScript("eform.dialog_autoclose_at_itemclick","true");
 		oz.sendToActionScript("eform.functionbutton_display_type","alwayshide");
 		oz.sendToActionScript("connection.reportname","phonetest.ozr");
