@@ -429,12 +429,26 @@ public class WorkReportController {
 		return list;
 	}
 	
-	@RequestMapping(value="/admin/getReadReportCount", method = RequestMethod.GET)
+	@RequestMapping(value="/admin/getReadReportCount", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
 	public String getReadReportCount(WorkReportVO vo,Model model) {
 		WorkReportVO getReadVO = dao.getWorkReportVO(vo);
 		model.addAttribute("vo",getReadVO);
 		return "Report/readWorkReport";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/admin/countDetail", method=RequestMethod.POST,produces="application/json;charset=UTF-8")
+	public WorkReportVO countDetail(WorkReportVO vo){
+		WorkReportVO voData = dao.countDetail(vo);
+		return voData;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/countOption", method=RequestMethod.POST,produces="application/json;charset=UTF-8" )
+	public ArrayList<WorkReportVO> countOption(WorkReportVO vo){
+		ArrayList<WorkReportVO> List = dao.countOption(vo);
+		return List;
+	}
 	
 }

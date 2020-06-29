@@ -46,5 +46,9 @@ public interface WorkReportMapper {
 
 	ArrayList<WorkReportVO> searchList(HashMap<String, String> map);
 
+	WorkReportVO countDetail(WorkReportVO vo);
+
+	ArrayList<WorkReportVO> countOption(WorkReportVO vo);
+
 
 }
