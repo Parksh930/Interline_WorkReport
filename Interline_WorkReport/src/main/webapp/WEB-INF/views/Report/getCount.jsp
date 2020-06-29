@@ -83,8 +83,8 @@ $(function(){
 		con += "</table>";
 		$("#Count_List").html(con);
 
-		if($('#list_Box',parent.document)[0] != null){
-			$('#list_Box',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
+		if($('#Count_List',parent.document)[0] != null){
+			$('#Count_List',parent.document).css('height',$("body")[0].scrollHeight+50+'px');
 		}
 
 	}
@@ -241,7 +241,6 @@ function countOption(month){
 				});
 			
 			$('#Count_List2').append(conText); 
-			//$("#Count_List3").html(conText);
 		}	
 	});
 
@@ -366,6 +365,34 @@ fieldset {
 <body>
 	<h1>集計</h1>
 
+	<div>
+		<select data-trigger="" 
+			name="searchKeyword" id="searchKeyword">
+			<option value="userNum"
+				<c:if test="${'title'==searchItem}">selected</c:if>>社員番号</option>
+			<option value="userName"
+				<c:if test="${'country'==searchItem}">selected</c:if>>社員名</option>
+			<option value="year"
+				<c:if test="${'startEvent'==searchItem}">selected</c:if>>年度</option>
+		</select>
+		<select data-trigger="" 
+			name="searchKeyword" id="searchKeyword" style="display: none">
+			<option value="userNum"
+				<c:if test="${'title'==searchItem}">selected</c:if>>タイトル</option>
+			<option value="userName"
+				<c:if test="${'country'==searchItem}">selected</c:if>>国家</option>
+			<option value="year"
+				<c:if test="${'startEvent'==searchItem}">selected</c:if>>期間</option>
+			<option value="adress"
+				<c:if test="${'adress'==searchItem}">selected</c:if>>住所</option>
+			<option value="hashSearch"
+				<c:if test="${'hashSearch'==searchItem}">selected</c:if>>#HASHTAG</option>
+		</select>
+		<input type="text"><input type="button" value="検索"
+			id="searchOne" onclick='selectOne()'>
+	</div>
+
+	<br>
 	<div>
 		<select name="searchItem" id="searchItem">
 			<option value="ALL"
