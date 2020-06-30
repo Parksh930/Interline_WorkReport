@@ -197,7 +197,7 @@ function countDetail(reportNum){
 			var getSum6 = getSum5.toString();
 			
 			if(getSum6.length==1){
-			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間0"+getSum[1]+"分」です。<br>";
+			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間"+getSum[1]+"分」です。<br>";
 			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+getSum4+"時間0"+getSum5+"分」です。";
 			}
 			else{
