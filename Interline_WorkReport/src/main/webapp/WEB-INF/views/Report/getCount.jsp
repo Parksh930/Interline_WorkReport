@@ -174,6 +174,9 @@ function countDetail(reportNum){
 	var month;
 	var year;
 	var conText="";
+
+	var getSum2=0;
+	var getSum2=0;
 	$('#Count_List3').empty(); 
 	
 	$.ajax({
@@ -183,14 +186,18 @@ function countDetail(reportNum){
 		dataType:"json",
 		success:function(item){
 
-			var getSum = item.sumWorkingTime;
+			var getSum = item.sumWorkingTime.split(":");
  			var getWorkingDay = item.workingDay;
-			var getSum2 = getSum.split(":");
-			var getSum3 = parseInt((getSum2[0]*60))+parseInt(getSum2[1]);
-			var getSum4 = ((getSum3/60)/getWorkingDay).toFixed(1);
-			var getSum5 = getSum4.split(".");
-			var averageWorkingValue1 = getSum5[0]+getSum5[1];
-			var averageWorkingTime = getSum5[0]+"時間"+getSum5[1]+"分"; 
+			var getSum0 = parseInt(getSum[0]);
+			var getSum1 = parseInt(getSum[1]);
+			getSum2 += getSum0;
+			getSum3 += getSum1;
+			var getSum4 = Math.round(getSum2/getWorkingDay);
+			var getSum5 = Math.round(getSum3/getWorkingDay);
+			var averageWorkingTime = getSum4+"時間"+getSum5+"分"; 
+			
+			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間"+getSum1+"分」です。<br>";
+			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
 			
 
 			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum2[0]+"時間"+getSum2[1]+"分」です。<br>";
