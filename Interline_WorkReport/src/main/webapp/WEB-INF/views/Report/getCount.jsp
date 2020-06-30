@@ -196,11 +196,7 @@ function countDetail(reportNum){
 			var getSum5 = Math.round(getSum3/getWorkingDay);
 			var averageWorkingTime = getSum4+"時間"+getSum5+"分"; 
 			
-			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間"+getSum1+"分」です。<br>";
-			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
-			
-
-			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum2[0]+"時間"+getSum2[1]+"分」です。<br>";
+			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間"+getSum[0]+"分」です。<br>";
 			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
 
 			month=item.month;
