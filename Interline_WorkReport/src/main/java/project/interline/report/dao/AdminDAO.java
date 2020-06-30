@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import project.interline.report.vo.Aggregation;
 import project.interline.report.vo.UserVO;
+import project.interline.report.vo.WorkTimeVO;
 
 @Repository
 public class AdminDAO {
@@ -58,7 +59,7 @@ public class AdminDAO {
 		map.put("check_content", check_content);
 		
 		UserVO vo = mapper.check_Multiple(map);
-		
+
 		return vo;
 	}
 
@@ -115,4 +116,11 @@ public class AdminDAO {
 		ArrayList<Aggregation> list = mapper.getAggregation2(map);
 		return list;
 	}
+	
+    public ArrayList<WorkTimeVO> getWorktimeList(int year) {
+        AdminMapper mapper = session.getMapper(AdminMapper.class);
+        ArrayList<WorkTimeVO> list = mapper.getWorktimeList(year);
+        
+        return list;
+    }
 }

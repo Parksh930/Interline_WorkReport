@@ -8,6 +8,7 @@
 		<typeAlias type="project.interline.report.vo.WorkReportVO" alias="WorkReportVO"/>
 		<typeAlias type="project.interline.report.vo.ReportListVO" alias="ReportList"/>
 		<typeAlias type="project.interline.report.vo.Aggregation" alias="Aggregation"/>
+		 <typeAlias type="project.interline.report.vo.WorkTimeVO" alias="worktime"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="AdminMapper.xml" />

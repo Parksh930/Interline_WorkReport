@@ -61,6 +61,7 @@ margin:20px 0px 0px 0px;
 <p><button class="menuPc_font_button1" type="button" onclick="location.href='../logout'">ログアウト</button></p>
 <p><button class="menuPc_font_button1" type="button" onclick="list_Box.location.href='kimDaeun'">김대은집계</button></p>
 <p><button class="menuPc_font_button1" type="button" onclick="list_Box.location.href='getCount'">ohsaeam</button></p>		
+<p><button class="menuPc_font_button1" type="button" onclick="list_Box.location.href='statistics'">1年間の集計</button></p>		
 </div>
 <div id="_iframe" style="position:absolute; left:20%;  text-align: left;">
 <iframe name="list_Box" id="list_Box" src="" frameborder=0 framespacing=0 marginheight=0 marginwidth=0 scrolling=no vspace=0></iframe>
