@@ -422,11 +422,14 @@ public class WorkReportController {
 	
 	@ResponseBody
 	@RequestMapping(value="/admin/Count_Filter", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
-	public ArrayList<WorkReportVO> Count_Filter(Model model,String searchItem,String year,String month){
-		ArrayList<WorkReportVO> list = dao.searchList(year,month);
+	public ArrayList<WorkReportVO> Count_Filter(Model model,String searchItem,String year,String month,String searchKeyword1,String searchKeyword2){
+		System.out.println("searchKeyword1:  " + searchKeyword1 +"  searchKeyword2:   "+searchKeyword2 +"  month:  "+ month);
+		ArrayList<WorkReportVO> list = dao.searchList(year,month,searchKeyword1,searchKeyword2);
 		System.out.println("Count_Filter  : "  +  list);
 		model.addAttribute("searchItem", searchItem);
+		model.addAttribute("searchKeyword1", searchKeyword1);
 		return list;
+		
 	}
 	
 	@RequestMapping(value="/admin/getReadReportCount", method = RequestMethod.GET,produces="application/json;charset=UTF-8")
@@ -455,15 +458,6 @@ public class WorkReportController {
 	@RequestMapping(value="/admin/countOption2", method=RequestMethod.POST,produces="application/json;charset=UTF-8" )
 	public ArrayList<WorkReportVO> countOption2(WorkReportVO vo){
 		ArrayList<WorkReportVO> List = dao.countOption2();
-		return List;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/admin/selectOne", method=RequestMethod.POST,produces="application/json;charset=UTF-8" )
-	public ArrayList<WorkReportVO> selectOne(String searchKeyword1,String searchKeyword2){
-		System.out.println("searchKeyword1:" + searchKeyword1 +" searchKeyword2:" +searchKeyword2);
-		ArrayList<WorkReportVO> List = dao.selectOne(searchKeyword1,searchKeyword2);
-		System.out.println("List:  "+List);
 		return List;
 	}
 	

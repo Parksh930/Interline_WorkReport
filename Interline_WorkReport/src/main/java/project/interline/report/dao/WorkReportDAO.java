@@ -150,11 +150,13 @@ public class WorkReportDAO {
 	}
 
 
-	public ArrayList<WorkReportVO> searchList(String year, String month) {
+	public ArrayList<WorkReportVO> searchList(String year, String month, String searchKeyword1, String searchKeyword2) {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("year",year);
 		map.put("month",month);
+		map.put("searchKeyword1",searchKeyword1);
+		map.put("searchKeyword2",searchKeyword2);
 		return mapper.searchList(map);
 	}
 
@@ -171,14 +173,6 @@ public class WorkReportDAO {
 	public ArrayList<WorkReportVO> countOption2() {
 		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
 		return mapper.countOption2();
-	}
-
-	public ArrayList<WorkReportVO> selectOne(String searchKeyword1, String searchKeyword2) {
-		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("searchKeyword1",searchKeyword1);
-		map.put("searchKeyword2",searchKeyword2);
-		return mapper.selectOne(map);
 	}
 
 

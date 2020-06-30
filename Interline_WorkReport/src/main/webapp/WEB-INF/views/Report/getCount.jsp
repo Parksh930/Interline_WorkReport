@@ -23,7 +23,7 @@ $(function(){
 	
 
 	$(document).on('click','.Countlist_sort',Count_List_Sort);
-	$('#selectOne').click(selectOne);
+	$('#selectOne').click(Count_reslut_Filter);
 	$("#searchItem").change(Count_reslut_Filter);
 	
 		
@@ -124,54 +124,37 @@ $(function(){
 		Count_List_Sort();
 	}
 
-
-	 function selectOne(){
-		 var searchKeyword1 = $("#searchKeyword1").val();
-		 var searchKeyword2 = $("#searchKeyword2").val();
-		 
-		 $.ajax({
-		     type:'POST',
-		     url : 'selectOne',               
-		     data: {'searchKeyword1':searchKeyword1,'searchKeyword2':searchKeyword2},
-			 async:false,
-			 traditional: true,
-		     dataType: 'json',
-		     success : function(list){
-			 	count_sort = list;
-			  }
-		  });
-		 	Count_List_Sort();
-		 	
-		 } 
-	
-
 	
 	function Count_reslut_Filter(){
 
 	$('#Count_List2').empty(); 
 	$('#Count_List3').empty(); 
+
+	
 		
 	var searchItem = $("#searchItem").val()
 	var month = searchItem;
 	var thisDate = new Date();
 	var thisYear = thisDate.getFullYear();
 	var year = thisYear;
-
+	var searchKeyword1 = $("#searchKeyword1").val();
+	var searchKeyword2 = $("#searchKeyword2").val();
 	
-	if(searchItem=="ALL"){
+ 	if(searchItem=="ALL"&&searchKeyword2==""){
 		countList();
-	}
-	else{
+	} 
+	else{ 
 	
 	$.ajax({
 	type:"POST",
 	url:"Count_Filter",
-	data:{"year":year,"month":month,"searchItem":searchItem},
+	data:{"year":year,"month":month,"searchItem":searchItem,'searchKeyword1':searchKeyword1,'searchKeyword2':searchKeyword2},
 	async:false,
 	traditional: true,
 	dataType:"json",
 	success:function(list){
-			count_sort = list;
+		$("#searchKeyword2").empty();
+		count_sort = list;
 		}	
 	});
 	Count_List_Sort();

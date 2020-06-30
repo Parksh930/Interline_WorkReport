@@ -244,8 +244,12 @@
 	
 	<select id="searchList" parameterType="map" resultType="WorkReportVO">
 		select * from work_Report
-		where year like #{year} and month like #{month} 
-		order by updateDate desc limit 100
+		where 
+		${searchKeyword1} like CONCAT('%',#{searchKeyword2},'%') 
+		<if test="month!='ALL'">
+		and year = #{year} and month = #{month}  
+		</if>
+		 order by updateDate desc limit 100
 	</select>
 
 	<select id="countDetail" resultType="WorkReportVO">
@@ -261,9 +265,4 @@
 		select * from work_Report
 	</select>
 	
-	<select id="selectOne" parameterType="map" resultType="WorkReportVO">
-		select * from work_Report
-		WHERE 
-		${searchKeyword1} like CONCAT('%',#{searchKeyword2},'%') order by updateDate desc limit 100
-	</select>
 </mapper>
