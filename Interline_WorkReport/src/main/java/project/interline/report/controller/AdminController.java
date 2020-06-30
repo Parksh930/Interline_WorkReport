@@ -255,7 +255,7 @@ public class AdminController {
     	HashMap<String, Object> result = new HashMap<String, Object>();
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
-        int[] month_sumTime = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        int[][] month_sumTime = {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
         ArrayList<String> month_sumWorkingTime = new ArrayList<>();
         ArrayList<String> month_avgWorkingTime = new ArrayList<>();
         
@@ -265,91 +265,109 @@ public class AdminController {
         	if(vo.getJanuary()==null){
         		vo.setJanuary("0");
         	}else {
-        		month_sumTime[0] = vo.month_sumWorkingTime(month_sumTime[0],vo.getJanuary()); 		
+        		month_sumTime[0][0] = vo.month_sumWorkingTime(month_sumTime[0][0],vo.getJanuary());
+        		month_sumTime[0][1] +=1;
         	}
         	
         	if(vo.getFeburary()==null){
         		vo.setFeburary("0");
         	}else {
-        		month_sumTime[1] = vo.month_sumWorkingTime(month_sumTime[1],vo.getFeburary()); 		
+        		month_sumTime[1][0] = vo.month_sumWorkingTime(month_sumTime[1][0],vo.getFeburary());
+        		month_sumTime[1][1] +=1;
         	}
         	
         	if(vo.getMarch()==null){
         		vo.setMarch("0");
         	}else {
-        		month_sumTime[2] = vo.month_sumWorkingTime(month_sumTime[2],vo.getMarch()); 		
+        		month_sumTime[2][0] = vo.month_sumWorkingTime(month_sumTime[2][0],vo.getMarch()); 
+        		month_sumTime[2][1] +=1;
         	}
         	
         	if(vo.getApril()==null){
         		vo.setApril("0");
         	}else {
-        		month_sumTime[3] = vo.month_sumWorkingTime(month_sumTime[3],vo.getApril()); 		
+        		month_sumTime[3][0] = vo.month_sumWorkingTime(month_sumTime[3][0],vo.getApril()); 	
+        		month_sumTime[3][1] +=1;
         	}
         	
         	if(vo.getMay()==null){
         		vo.setMay("0");
         	}else {	
-        		month_sumTime[4] = vo.month_sumWorkingTime(month_sumTime[4],vo.getMay()); 		
+        		month_sumTime[4][0] = vo.month_sumWorkingTime(month_sumTime[4][0],vo.getMay()); 
+        		month_sumTime[4][1] +=1;
         	}
         	
         	if(vo.getJune()==null){
         		vo.setJune("0");
         	}else {
-        		month_sumTime[5] = vo.month_sumWorkingTime(month_sumTime[5],vo.getJune()); 		
+        		month_sumTime[5][0] = vo.month_sumWorkingTime(month_sumTime[5][0],vo.getJune()); 
+        		month_sumTime[5][1] +=1;
         	}
         	
         	if(vo.getJuly()==null){
         		vo.setJuly("0");
         	}else {
-        		month_sumTime[6] = vo.month_sumWorkingTime(month_sumTime[6],vo.getJuly()); 		
+        		month_sumTime[6][0] = vo.month_sumWorkingTime(month_sumTime[6][0],vo.getJuly()); 
+        		month_sumTime[6][1] +=1;
         	}
         	
         	if(vo.getAugust()==null){
         		vo.setAugust("0");
         	}else {
-        		month_sumTime[7] = vo.month_sumWorkingTime(month_sumTime[7],vo.getAugust()); 		
+        		month_sumTime[7][0] = vo.month_sumWorkingTime(month_sumTime[7][0],vo.getAugust());
+        		month_sumTime[7][1] +=1;
         	}
         	
         	if(vo.getSeptember()==null){
         		vo.setSeptember("0");
         	}else {
-        		month_sumTime[8] = vo.month_sumWorkingTime(month_sumTime[8],vo.getSeptember()); 		
+        		month_sumTime[8][0] = vo.month_sumWorkingTime(month_sumTime[8][0],vo.getSeptember());
+        		month_sumTime[8][1] +=1;
         	}
         	
         	if(vo.getOctober()==null){
         		vo.setOctober("0");
         	}else {		
-        		month_sumTime[9] = vo.month_sumWorkingTime(month_sumTime[9],vo.getOctober()); 			
+        		month_sumTime[9][0] = vo.month_sumWorkingTime(month_sumTime[9][0],vo.getOctober()); 
+        		month_sumTime[9][1] +=1;
         	}
         	
         	if(vo.getNovember()==null){
         		vo.setNovember("0");
         	}else {
-        		month_sumTime[10] = vo.month_sumWorkingTime(month_sumTime[10],vo.getNovember()); 			
+        		month_sumTime[10][0] = vo.month_sumWorkingTime(month_sumTime[10][0],vo.getNovember());
+        		month_sumTime[10][1] +=1;
         	}
         	
         	if(vo.getDecember()==null){
         		vo.setDecember("0");
         	}else {
-        		month_sumTime[11] = vo.month_sumWorkingTime(month_sumTime[11],vo.getDecember()); 			
+        		month_sumTime[11][0] = vo.month_sumWorkingTime(month_sumTime[11][0],vo.getDecember()); 
+        		month_sumTime[11][1] +=1;
         	}
         	
         	if(vo.getYearsumtime()==null){
         		vo.setYearsumtime("0");
         	}else {
-        		month_sumTime[12] = vo.month_sumWorkingTime(month_sumTime[12],vo.getYearsumtime()); 	
+        		month_sumTime[12][0] = vo.month_sumWorkingTime(month_sumTime[12][0],vo.getYearsumtime()); 
+        		month_sumTime[12][1] +=1;
         	}
         	
         	if(vo.getYearaveragetime()==null){
         		vo.setYearaveragetime("0");
         	}else {
-        		month_sumTime[13] = vo.month_sumWorkingTime(month_sumTime[13],vo.getYearaveragetime()); 	
+        		month_sumTime[13][0] = vo.month_sumWorkingTime(month_sumTime[13][0],vo.getYearaveragetime()); 
+        		month_sumTime[13][1] +=1;
         	}
         }
         
-        for(int n : month_sumTime) {
-        	int avg = n/list.size();
-        	month_sumWorkingTime.add((n/60)+":"+(n%60));
+        for(int[] n : month_sumTime) {
+        	int avg = 0;
+        	if(n[0] != 0) {
+        		avg = n[0]/n[1];
+        	}
+			
+        	month_sumWorkingTime.add((n[0]/60)+":"+(n[0]%60));
         	month_avgWorkingTime.add((avg/60)+":"+(avg%60));
         }
         
