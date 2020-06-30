@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import project.interline.report.vo.Aggregation;
 import project.interline.report.vo.UserVO;
+import project.interline.report.vo.WorkTimeVO;
 
 public interface AdminMapper {
 
@@ -25,4 +26,6 @@ public interface AdminMapper {
 	ArrayList<Aggregation> getAggregation(HashMap<String, Object> map);
 
 	ArrayList<Aggregation> getAggregation2(HashMap<String, Object> map);
+
+	ArrayList<WorkTimeVO> getWorktimeList(int year);
 }

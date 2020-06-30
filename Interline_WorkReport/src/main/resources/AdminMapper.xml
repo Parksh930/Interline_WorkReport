@@ -162,4 +162,27 @@ delete from user_inform where userNum = #{userNum}
 	and u.userNum like #{userNum} and u.userName like #{userName}
 </select>
 
+<select id="getWorktimeList" parameterType="int" resultType="worktime">
+select 
+    usernum,
+    year,
+  GROUP_CONCAT(if(month = 1, sumWorkingTime, NULL)) AS "January",
+  GROUP_CONCAT(if(month = 2, sumWorkingTime, NULL)) as "Feburary",
+  GROUP_CONCAT(if(month = 3, sumWorkingTime, NULL)) as "March",
+  GROUP_CONCAT(if(month = 4, sumWorkingTime, NULL)) as "April",
+  GROUP_CONCAT(if(month = 5, sumWorkingTime, NULL)) as "May",
+  GROUP_CONCAT(if(month = 6, sumWorkingTime, NULL)) as "June",
+  GROUP_CONCAT(if(month = 7, sumWorkingTime, NULL)) as "July",
+  GROUP_CONCAT(if(month = 8, sumWorkingTime, NULL)) as "August",
+  GROUP_CONCAT(if(month = 9, sumWorkingTime, NULL)) as "September",
+  GROUP_CONCAT(if(month = 10, sumWorkingTime, NULL)) as "October",
+  GROUP_CONCAT(if(month = 11, sumWorkingTime, NULL)) as "November",
+  GROUP_CONCAT(if(month = 12, sumWorkingTime, NULL)) as "December",
+  time_format(SEC_TO_TIME(sum(time_to_sec(sumWorkingTime))), '%H:%i') as "yearsumtime",
+  time_format(SEC_TO_TIME(avg(time_to_sec(sumWorkingTime))), '%H:%i') as "yearaveragetime"
+from 
+    work_report where year = #{year}
+group by usernum
+</select>
+
 </mapper>

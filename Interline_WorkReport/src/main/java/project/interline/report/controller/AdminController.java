@@ -3,7 +3,9 @@ package project.interline.report.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +27,7 @@ import project.interline.report.util.ExportReport;
 import project.interline.report.util.getProperties;
 import project.interline.report.vo.Aggregation;
 import project.interline.report.vo.UserVO;
+import project.interline.report.vo.WorkTimeVO;
 
 @Controller
 public class AdminController {
@@ -237,4 +240,124 @@ public class AdminController {
 		}
 		return result;
 	}
+	
+    
+    @RequestMapping(value="/admin/statistics", method=RequestMethod.GET)
+    public String worktimeStatisticsForm() {
+        
+        return "Admin/workTimeStatistics";
+    }
+    
+    @ResponseBody
+    @RequestMapping(value="/admin/statistics", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
+    public HashMap<String,Object> WorkTimeStatistics(){
+    	
+    	HashMap<String, Object> result = new HashMap<String, Object>();
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int[] month_sumTime = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        ArrayList<String> month_sumWorkingTime = new ArrayList<>();
+        ArrayList<String> month_avgWorkingTime = new ArrayList<>();
+        
+        ArrayList<WorkTimeVO> list = dao.getWorktimeList(year);
+        
+        for(WorkTimeVO vo : list) {
+        	if(vo.getJanuary()==null){
+        		vo.setJanuary("0");
+        	}else {
+        		month_sumTime[0] = vo.month_sumWorkingTime(month_sumTime[0],vo.getJanuary()); 		
+        	}
+        	
+        	if(vo.getFeburary()==null){
+        		vo.setFeburary("0");
+        	}else {
+        		month_sumTime[1] = vo.month_sumWorkingTime(month_sumTime[1],vo.getFeburary()); 		
+        	}
+        	
+        	if(vo.getMarch()==null){
+        		vo.setMarch("0");
+        	}else {
+        		month_sumTime[2] = vo.month_sumWorkingTime(month_sumTime[2],vo.getMarch()); 		
+        	}
+        	
+        	if(vo.getApril()==null){
+        		vo.setApril("0");
+        	}else {
+        		month_sumTime[3] = vo.month_sumWorkingTime(month_sumTime[3],vo.getApril()); 		
+        	}
+        	
+        	if(vo.getMay()==null){
+        		vo.setMay("0");
+        	}else {	
+        		month_sumTime[4] = vo.month_sumWorkingTime(month_sumTime[4],vo.getMay()); 		
+        	}
+        	
+        	if(vo.getJune()==null){
+        		vo.setJune("0");
+        	}else {
+        		month_sumTime[5] = vo.month_sumWorkingTime(month_sumTime[5],vo.getJune()); 		
+        	}
+        	
+        	if(vo.getJuly()==null){
+        		vo.setJuly("0");
+        	}else {
+        		month_sumTime[6] = vo.month_sumWorkingTime(month_sumTime[6],vo.getJuly()); 		
+        	}
+        	
+        	if(vo.getAugust()==null){
+        		vo.setAugust("0");
+        	}else {
+        		month_sumTime[7] = vo.month_sumWorkingTime(month_sumTime[7],vo.getAugust()); 		
+        	}
+        	
+        	if(vo.getSeptember()==null){
+        		vo.setSeptember("0");
+        	}else {
+        		month_sumTime[8] = vo.month_sumWorkingTime(month_sumTime[8],vo.getSeptember()); 		
+        	}
+        	
+        	if(vo.getOctober()==null){
+        		vo.setOctober("0");
+        	}else {		
+        		month_sumTime[9] = vo.month_sumWorkingTime(month_sumTime[9],vo.getOctober()); 			
+        	}
+        	
+        	if(vo.getNovember()==null){
+        		vo.setNovember("0");
+        	}else {
+        		month_sumTime[10] = vo.month_sumWorkingTime(month_sumTime[10],vo.getNovember()); 			
+        	}
+        	
+        	if(vo.getDecember()==null){
+        		vo.setDecember("0");
+        	}else {
+        		month_sumTime[11] = vo.month_sumWorkingTime(month_sumTime[11],vo.getDecember()); 			
+        	}
+        	
+        	if(vo.getYearsumtime()==null){
+        		vo.setYearsumtime("0");
+        	}else {
+        		month_sumTime[12] = vo.month_sumWorkingTime(month_sumTime[12],vo.getYearsumtime()); 	
+        	}
+        	
+        	if(vo.getYearaveragetime()==null){
+        		vo.setYearaveragetime("0");
+        	}else {
+        		month_sumTime[13] = vo.month_sumWorkingTime(month_sumTime[13],vo.getYearaveragetime()); 	
+        	}
+        }
+        
+        for(int n : month_sumTime) {
+        	int avg = n/list.size();
+        	month_sumWorkingTime.add((n/60)+":"+(n%60));
+        	month_avgWorkingTime.add((avg/60)+":"+(avg%60));
+        }
+        
+        result.put("list", list);
+        result.put("month_sumTime",month_sumWorkingTime);
+        result.put("month_avgTime",month_avgWorkingTime);
+
+        return result;
+    }
+
 }
