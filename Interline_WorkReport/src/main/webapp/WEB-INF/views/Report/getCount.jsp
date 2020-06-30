@@ -176,7 +176,7 @@ function countDetail(reportNum){
 	var conText="";
 
 	var getSum2=0;
-	var getSum2=0;
+	var getSum3=0;
 	$('#Count_List3').empty(); 
 	
 	$.ajax({
