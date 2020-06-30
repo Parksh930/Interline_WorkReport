@@ -256,7 +256,14 @@
 	<select id="countOption" resultType="WorkReportVO">
 		select * from work_Report where month = #{month} 
 	</select>
-		<select id="countOption2" resultType="WorkReportVO">
+		
+	<select id="countOption2" resultType="WorkReportVO">
 		select * from work_Report
+	</select>
+	
+	<select id="selectOne" parameterType="map" resultType="WorkReportVO">
+		select * from work_Report
+		WHERE 
+		${searchKeyword1} like CONCAT('%',#{searchKeyword2},'%') order by updateDate desc limit 100
 	</select>
 </mapper>

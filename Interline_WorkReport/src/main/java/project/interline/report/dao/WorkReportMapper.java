@@ -52,5 +52,7 @@ public interface WorkReportMapper {
 
 	ArrayList<WorkReportVO> countOption2();
 
+	ArrayList<WorkReportVO> selectOne(HashMap<String, String> map);
+
 
 }

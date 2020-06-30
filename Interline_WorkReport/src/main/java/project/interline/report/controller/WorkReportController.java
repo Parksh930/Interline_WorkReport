@@ -457,4 +457,14 @@ public class WorkReportController {
 		ArrayList<WorkReportVO> List = dao.countOption2();
 		return List;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/admin/selectOne", method=RequestMethod.POST,produces="application/json;charset=UTF-8" )
+	public ArrayList<WorkReportVO> selectOne(String searchKeyword1,String searchKeyword2){
+		System.out.println("searchKeyword1:" + searchKeyword1 +" searchKeyword2:" +searchKeyword2);
+		ArrayList<WorkReportVO> List = dao.selectOne(searchKeyword1,searchKeyword2);
+		System.out.println("List:  "+List);
+		return List;
+	}
+	
 }

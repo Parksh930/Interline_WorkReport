@@ -173,5 +173,13 @@ public class WorkReportDAO {
 		return mapper.countOption2();
 	}
 
+	public ArrayList<WorkReportVO> selectOne(String searchKeyword1, String searchKeyword2) {
+		WorkReportMapper mapper = session.getMapper(WorkReportMapper.class);
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("searchKeyword1",searchKeyword1);
+		map.put("searchKeyword2",searchKeyword2);
+		return mapper.selectOne(map);
+	}
+
 
 }

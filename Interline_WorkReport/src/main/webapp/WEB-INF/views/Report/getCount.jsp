@@ -23,6 +23,7 @@ $(function(){
 	
 
 	$(document).on('click','.Countlist_sort',Count_List_Sort);
+	$('#selectOne').click(selectOne);
 	$("#searchItem").change(Count_reslut_Filter);
 	
 		
@@ -122,6 +123,27 @@ $(function(){
 
 		Count_List_Sort();
 	}
+
+
+	 function selectOne(){
+		 var searchKeyword1 = $("#searchKeyword1").val();
+		 var searchKeyword2 = $("#searchKeyword2").val();
+		 
+		 $.ajax({
+		     type:'POST',
+		     url : 'selectOne',               
+		     data: {'searchKeyword1':searchKeyword1,'searchKeyword2':searchKeyword2},
+			 async:false,
+			 traditional: true,
+		     dataType: 'json',
+		     success : function(list){
+			 	count_sort = list;
+			  }
+		  });
+		 	Count_List_Sort();
+		 	
+		 } 
+	
 
 	
 	function Count_reslut_Filter(){
@@ -280,6 +302,7 @@ function countOption(month,year){
 }
 
 
+
 </script>
 
 <style>
@@ -402,27 +425,14 @@ html { overflow-y:scroll; }
 	<h1>集計</h1>
 
 	<div>
-		<select data-trigger="" name="searchKeyword" id="searchKeyword">
+		<select data-trigger="" name="searchKeyword1" id="searchKeyword1">
 			<option value="userNum"
-				<c:if test="${'title'==searchItem}">selected</c:if>>社員番号</option>
+				<c:if test="${'userNum'==searchKeyword1}">selected</c:if>>社員番号</option>
 			<option value="userName"
-				<c:if test="${'country'==searchItem}">selected</c:if>>社員名</option>
-			<option value="year"
-				<c:if test="${'startEvent'==searchItem}">selected</c:if>>年度</option>
-		</select> <select data-trigger="" name="searchKeyword" id="searchKeyword"
-			style="display: none">
-			<option value="userNum"
-				<c:if test="${'title'==searchItem}">selected</c:if>>タイトル</option>
-			<option value="userName"
-				<c:if test="${'country'==searchItem}">selected</c:if>>国家</option>
-			<option value="year"
-				<c:if test="${'startEvent'==searchItem}">selected</c:if>>期間</option>
-			<option value="adress"
-				<c:if test="${'adress'==searchItem}">selected</c:if>>住所</option>
-			<option value="hashSearch"
-				<c:if test="${'hashSearch'==searchItem}">selected</c:if>>#HASHTAG</option>
-		</select> <input type="text"><input type="button" value="検索"
-			id="searchOne" onclick='selectOne()'>
+				<c:if test="${'userName'==searchKeyword1}">selected</c:if>>社員名</option>
+		</select>
+		<input type="text" name="searchKeyword2" id="searchKeyword2">
+		<button id="selectOne">検索</button>
 	</div>
 
 	<br>
@@ -456,7 +466,7 @@ html { overflow-y:scroll; }
 				<c:if test="${'searchItem'==searchItem}">selected</c:if>>12月勤務票</option>
 		</select>
 	</div>
-
+	<!-- <div onclick="addSearchMonth()">+</div> -->
 <div id="list">
 
 	<div id="Count_List"></div>
