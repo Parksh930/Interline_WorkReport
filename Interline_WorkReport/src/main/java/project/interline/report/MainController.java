@@ -68,9 +68,9 @@ public class MainController {
 		}
 		
 		if(user == null) {
-			result.put("error","耶섇쑉�걮�겒�걚�깳�꺖�꺂�궋�깋�꺃�궧�겎�걲��");
+			result.put("error","存在しないメールアドレスです。");
 		}else if(!user.getPassword().equals(login_pw)){
-			result.put("error","�깙�궧�꺈�꺖�깋�걣訝��눜�걮�겲�걵�굯��");
+			result.put("error","パスワードが一致しません。");
 		}
 		return result;
 	}
