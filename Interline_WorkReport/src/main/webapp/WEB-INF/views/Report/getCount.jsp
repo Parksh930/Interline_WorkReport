@@ -194,11 +194,18 @@ function countDetail(reportNum){
 			getSum3 += getSum1;
 			var getSum4 = Math.round(getSum2/getWorkingDay);
 			var getSum5 = Math.round(getSum3/getWorkingDay);
-			var averageWorkingTime = getSum4+"時間"+getSum5+"分"; 
+			var getSum6 = getSum5.toString();
 			
-			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間"+getSum[0]+"分」です。<br>";
-			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+averageWorkingTime+"」です。";
+			if(getSum6.length==1){
+			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間0"+getSum[1]+"分」です。<br>";
+			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+getSum4+"時間0"+getSum5+"分」です。";
+			}
+			else{
+			conText +=  item.userName+"社員の"+item.month+"月の総勤務時間は「"+getSum[0]+"時間"+getSum[1]+"分」です。<br>";
+			conText +=	item.userName+"社員の"+item.month+"月一日平均勤務時間は「"+getSum4+"時間"+getSum5+"分」です。";
+			}
 
+			
 			month=item.month;
 			year = item.year;
 			$('#Count_List3').append(conText); 
@@ -232,21 +239,21 @@ function countOption(month,year){
 	var monthValue = parseInt(month);
 	var yearValue=0;
 	var yearValue = parseInt(year);
-	var date = getDateNum2(yearValue,monthValue);
-	var dateNum = date-1; 
+ 	var workingDay;
+/* 	var date = getDateNum2(yearValue,monthValue);
+	var dateNum = date-1;*/ 
 	
 	$.ajax({
 		type:"post",
 		url:"countOption",
 		//async:false,
 		//traditional: true,
-		data:{"month":monthValue},
+		data:{"month":monthValue,"year":yearValue},
 		dataType:"json",
 		success:function(list){
 			console.log(list);
 			var length = list.length;
 			list.forEach(function(item){
-
 				text = item.sumWorkingTime.split(":");
 				text0 = parseInt(text[0]);
 				text1 = parseInt(text[1]);
@@ -255,8 +262,9 @@ function countOption(month,year){
 				text4 = Math.round(text2/length);
 				text5 = Math.round(text3/length);
 				text6 = text5.toString();
-				text7 = Math.round(text4/dateNum);
-				text8 = Math.round(text5/dateNum);
+				workingDay = item.workingDay;
+				text7 = Math.round(text4/workingDay);
+				text8 = Math.round(text5/workingDay);
 				text9 = text8.toString();
 
 				
