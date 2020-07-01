@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -243,117 +244,119 @@ public class AdminController {
 	
     
     @RequestMapping(value="/admin/statistics", method=RequestMethod.GET)
-    public String worktimeStatisticsForm() {
+    public String worktimeStatisticsForm(Model model) {
+    	HashMap<String, Integer> year_term = dao.getYearTerm();
         
+    	model.addAttribute("min_year",year_term.get("min_year"));
+    	model.addAttribute("max_year",year_term.get("max_year"));
         return "Admin/workTimeStatistics";
     }
     
     @ResponseBody
     @RequestMapping(value="/admin/statistics", method=RequestMethod.POST, produces="application/json;charset=UTF-8")
-    public HashMap<String,Object> WorkTimeStatistics(){
+    public HashMap<String,Object> WorkTimeStatistics(int select_year){
+    	logger.debug("year:{}",select_year);
     	
     	HashMap<String, Object> result = new HashMap<String, Object>();
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
         int[][] month_sumTime = {{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}};
         ArrayList<String> month_sumWorkingTime = new ArrayList<>();
         ArrayList<String> month_avgWorkingTime = new ArrayList<>();
         
-        ArrayList<WorkTimeVO> list = dao.getWorktimeList(year);
+        ArrayList<WorkTimeVO> list = dao.getWorktimeList(select_year);
         
         for(WorkTimeVO vo : list) {
-        	if(vo.getJanuary()==null){
+        	if(vo.getJanuary()==null || vo.getJanuary()==""){
         		vo.setJanuary("0");
         	}else {
         		month_sumTime[0][0] = vo.month_sumWorkingTime(month_sumTime[0][0],vo.getJanuary());
         		month_sumTime[0][1] +=1;
         	}
         	
-        	if(vo.getFeburary()==null){
+        	if(vo.getFeburary()==null || vo.getFeburary()==""){
         		vo.setFeburary("0");
         	}else {
         		month_sumTime[1][0] = vo.month_sumWorkingTime(month_sumTime[1][0],vo.getFeburary());
         		month_sumTime[1][1] +=1;
         	}
         	
-        	if(vo.getMarch()==null){
+        	if(vo.getMarch()==null || vo.getMarch()==""){
         		vo.setMarch("0");
         	}else {
         		month_sumTime[2][0] = vo.month_sumWorkingTime(month_sumTime[2][0],vo.getMarch()); 
         		month_sumTime[2][1] +=1;
         	}
         	
-        	if(vo.getApril()==null){
+        	if(vo.getApril()==null || vo.getApril()==""){
         		vo.setApril("0");
         	}else {
         		month_sumTime[3][0] = vo.month_sumWorkingTime(month_sumTime[3][0],vo.getApril()); 	
         		month_sumTime[3][1] +=1;
         	}
         	
-        	if(vo.getMay()==null){
+        	if(vo.getMay()==null || vo.getMay()==""){
         		vo.setMay("0");
         	}else {	
         		month_sumTime[4][0] = vo.month_sumWorkingTime(month_sumTime[4][0],vo.getMay()); 
         		month_sumTime[4][1] +=1;
         	}
         	
-        	if(vo.getJune()==null){
+        	if(vo.getJune()==null || vo.getJune()==""){
         		vo.setJune("0");
         	}else {
         		month_sumTime[5][0] = vo.month_sumWorkingTime(month_sumTime[5][0],vo.getJune()); 
         		month_sumTime[5][1] +=1;
         	}
         	
-        	if(vo.getJuly()==null){
+        	if(vo.getJuly()==null || vo.getJuly()==""){
         		vo.setJuly("0");
         	}else {
         		month_sumTime[6][0] = vo.month_sumWorkingTime(month_sumTime[6][0],vo.getJuly()); 
         		month_sumTime[6][1] +=1;
         	}
         	
-        	if(vo.getAugust()==null){
+        	if(vo.getAugust()==null || vo.getAugust()==""){
         		vo.setAugust("0");
         	}else {
         		month_sumTime[7][0] = vo.month_sumWorkingTime(month_sumTime[7][0],vo.getAugust());
         		month_sumTime[7][1] +=1;
         	}
         	
-        	if(vo.getSeptember()==null){
+        	if(vo.getSeptember()==null || vo.getSeptember()==""){
         		vo.setSeptember("0");
         	}else {
         		month_sumTime[8][0] = vo.month_sumWorkingTime(month_sumTime[8][0],vo.getSeptember());
         		month_sumTime[8][1] +=1;
         	}
         	
-        	if(vo.getOctober()==null){
+        	if(vo.getOctober()==null || vo.getOctober()==""){
         		vo.setOctober("0");
         	}else {		
         		month_sumTime[9][0] = vo.month_sumWorkingTime(month_sumTime[9][0],vo.getOctober()); 
         		month_sumTime[9][1] +=1;
         	}
         	
-        	if(vo.getNovember()==null){
+        	if(vo.getNovember()==null || vo.getNovember()==""){
         		vo.setNovember("0");
         	}else {
         		month_sumTime[10][0] = vo.month_sumWorkingTime(month_sumTime[10][0],vo.getNovember());
         		month_sumTime[10][1] +=1;
         	}
         	
-        	if(vo.getDecember()==null){
+        	if(vo.getDecember()==null || vo.getDecember()==""){
         		vo.setDecember("0");
         	}else {
         		month_sumTime[11][0] = vo.month_sumWorkingTime(month_sumTime[11][0],vo.getDecember()); 
         		month_sumTime[11][1] +=1;
         	}
         	
-        	if(vo.getYearsumtime()==null){
+        	if(vo.getYearsumtime()==null || vo.getYearsumtime()==""){
         		vo.setYearsumtime("0");
         	}else {
         		month_sumTime[12][0] = vo.month_sumWorkingTime(month_sumTime[12][0],vo.getYearsumtime()); 
         		month_sumTime[12][1] +=1;
         	}
         	
-        	if(vo.getYearaveragetime()==null){
+        	if(vo.getYearaveragetime()==null || vo.getYearaveragetime()==""){
         		vo.setYearaveragetime("0");
         	}else {
         		month_sumTime[13][0] = vo.month_sumWorkingTime(month_sumTime[13][0],vo.getYearaveragetime()); 

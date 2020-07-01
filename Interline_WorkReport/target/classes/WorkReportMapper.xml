@@ -258,7 +258,7 @@
 	</select>
 
 	<select id="countOption" resultType="WorkReportVO">
-		select * from work_Report where month = #{month} 
+		select * from work_Report where year = #{year} and month = #{month}   
 	</select>
 		
 	<select id="countOption2" resultType="WorkReportVO">
