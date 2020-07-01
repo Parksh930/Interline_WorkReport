@@ -28,4 +28,6 @@ public interface AdminMapper {
 	ArrayList<Aggregation> getAggregation2(HashMap<String, Object> map);
 
 	ArrayList<WorkTimeVO> getWorktimeList(int year);
+
+	HashMap<String, Integer> getYearTerm();
 }

@@ -35,14 +35,17 @@ $(function(){
 		}else{
 			$(this).css('height',window.innerHeight-40+'px');
 		}
+		
+		if(($(this)[0].contentWindow.location.pathname).indexOf("statistics") > -1){
+			$('#list_Box').css('width','1300px');
+		}else{
+			$('#list_Box').css('width','1100px');
+		}
 	});
 });
 </script>	
 
 <style>
-#list_Box{
-width:1100px;
-}
 
 #_iframe{
 margin:20px 0px 0px 0px;

@@ -123,4 +123,10 @@ public class AdminDAO {
         
         return list;
     }
+
+	public HashMap<String, Integer> getYearTerm() {
+		AdminMapper mapper = session.getMapper(AdminMapper.class);
+		HashMap<String, Integer> year_term = mapper.getYearTerm();
+		return year_term;
+	}
 }

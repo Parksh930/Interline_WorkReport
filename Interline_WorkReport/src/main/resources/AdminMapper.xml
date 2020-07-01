@@ -185,4 +185,8 @@ from
 group by usernum
 </select>
 
+<select id="getYearTerm" resultType="map">
+select min(year)as min_year ,max(year)as max_year from work_report
+</select>
+
 </mapper>

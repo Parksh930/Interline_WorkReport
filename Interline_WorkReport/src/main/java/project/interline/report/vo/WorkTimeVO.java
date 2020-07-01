@@ -1,7 +1,7 @@
 package project.interline.report.vo;
 
 public class WorkTimeVO {
-	private String usernum;
+	private String userNum;
 	private String January;
 	private String Feburary;
 	private String March;
@@ -21,11 +21,11 @@ public class WorkTimeVO {
 		super();
 	}
 
-	public WorkTimeVO(String usernum, String january, String feburary, String march, String april, String may,
+	public WorkTimeVO(String userNum, String january, String feburary, String march, String april, String may,
 			String june, String july, String august, String september, String october, String november, String december,
 			String yearsumtime, String yearaveragetime) {
 		super();
-		this.usernum = usernum;
+		this.userNum = userNum;
 		January = january;
 		Feburary = feburary;
 		March = march;
@@ -42,12 +42,12 @@ public class WorkTimeVO {
 		this.yearaveragetime = yearaveragetime;
 	}
 
-	public String getUsernum() {
-		return usernum;
+	public String getUserNum() {
+		return userNum;
 	}
 
-	public void setUsernum(String usernum) {
-		this.usernum = usernum;
+	public void setUserNum(String userNum) {
+		this.userNum = userNum;
 	}
 
 	public String getJanuary() {
@@ -164,7 +164,7 @@ public class WorkTimeVO {
 
 	@Override
 	public String toString() {
-		return "WorkTimeVO [usernum=" + usernum + ", January=" + January + ", Feburary=" + Feburary + ", March=" + March
+		return "WorkTimeVO [userNum=" + userNum + ", January=" + January + ", Feburary=" + Feburary + ", March=" + March
 				+ ", April=" + April + ", May=" + May + ", June=" + June + ", July=" + July + ", August=" + August
 				+ ", September=" + September + ", October=" + October + ", November=" + November + ", December="
 				+ December + ", yearsumtime=" + yearsumtime + ", yearaveragetime=" + yearaveragetime + "]";
