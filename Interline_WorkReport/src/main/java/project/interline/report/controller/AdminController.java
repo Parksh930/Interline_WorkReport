@@ -236,7 +236,7 @@ public class AdminController {
 		} catch (SchedulerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			result=e.toString();
+			result="saveError";
 		}
 		return result;
 	}

@@ -249,6 +249,10 @@ function exportReport(format){
 			$('#wrapper').css('z-index',-1);
 			$('#wrapper').css('visibility','hidden');
 			$('body').css('cursor','pointer');
+			if(s=="saveError"){
+				alert("エラー：スケジューラーサーバーが稼動中ではありません。");
+				return;
+			}
 			location.href="http://<%out.print(properties.getOzIP());%>/ozsch80/Repository/"+format+"/reportExport."+format;
 		},
 		error: function(e){
