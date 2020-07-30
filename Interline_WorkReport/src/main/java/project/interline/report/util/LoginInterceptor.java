@@ -22,14 +22,16 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		logger.debug("LoginInterceptor 実行");
 		
+		
 		//セッションのログイン情報を取得
 		HttpSession session = request.getSession();
 		String login_id = (String) session.getAttribute("login_id");
 		UserVO userVO=(UserVO)session.getAttribute("user_inform");
+		logger.debug("LoginInterceptor:{} ",login_id);
 		//ログインをしなった場合、ログインページに移動
 		if(login_id == null || userVO==null ) {
 			
-			response.sendRedirect(request.getContextPath()+"/");
+			response.sendRedirect(request.getContextPath()+"/login");
 			return false;
 		}
 		System.out.println(request.getRequestURL());

@@ -10,7 +10,6 @@
 <link href='../resources/css/Font-Style.css' rel='stylesheet'>
 <script>
 $(function(){
-
 	isMobile(); 
 		
 	function isMobile() {
@@ -29,6 +28,11 @@ $(function(){
 	$('#list_Box').attr("src","../admin/reportList");
 	
 	$('#list_Box').load(function(){
+		var box_pathname = $(this)[0].contentWindow.location.pathname;
+		
+		if(box_pathname.indexOf("login") > -1){
+			location.href = "../login";
+		}
 		
 		if($(this).contents().find('#OZViewer').html()==null){
          	$(this).css('height',($(this).contents().find('body')[0].scrollHeight)+50+'px');
@@ -36,7 +40,7 @@ $(function(){
 			$(this).css('height',window.innerHeight-40+'px');
 		}
 		
-		if(($(this)[0].contentWindow.location.pathname).indexOf("statistics") > -1){
+		if(box_pathname.indexOf("statistics") > -1){
 			$('#list_Box').css('width','1300px');
 		}else{
 			$('#list_Box').css('width','1100px');
