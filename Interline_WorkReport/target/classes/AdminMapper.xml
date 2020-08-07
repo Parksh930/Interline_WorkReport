@@ -119,7 +119,7 @@ delete from user_inform where userNum = #{userNum}
 	concat(year,'-',month) as yearMonth,
 	concat(AbsentDay,'(','0',')')as Absent, SalesDay-WorkingDay-AbsentDay as vacation , holidayWorkingDay ,sumWorkingTime,
 	concat(round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)/60,0),':',round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)%60,0)) as meanWorkingTime 
-	from user_inform as u join work_report as w on u.UserNum = w.UserNum 
+	from user_inform as u join work_Report as w on u.UserNum = w.UserNum 
 	where year=#{year} and month=#{month}
 </select>
 
@@ -128,7 +128,7 @@ delete from user_inform where userNum = #{userNum}
 	concat(year,'-',month) as yearMonth,
 	concat(AbsentDay,'(','0',')')as Absent, SalesDay-WorkingDay-AbsentDay as vacation , holidayWorkingDay ,sumWorkingTime,
 	concat(round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)/60,0),':',round(((SUBSTRING_INDEX(sumWorkingTime,':',1)*60)+SUBSTRING_INDEX(sumWorkingTime,':',-1))/(WorkingDay+HolidayWorkingDay)%60,0)) as meanWorkingTime 
-	from user_inform as u join work_report as w on u.UserNum = w.UserNum
+	from user_inform as u join work_Report as w on u.UserNum = w.UserNum
 	where (concat(year,'-',month) between #{fromYearMonth} and #{toYearMonth})
 	<choose>    
          <when test='teamArray != null and etcArray != null'>
@@ -181,12 +181,12 @@ select
   time_format(SEC_TO_TIME(sum(time_to_sec(sumWorkingTime))), '%H:%i') as "yearsumtime",
   time_format(SEC_TO_TIME(avg(time_to_sec(sumWorkingTime))), '%H:%i') as "yearaveragetime"
 from 
-    work_report where year = #{year}
+    work_Report where year = #{year}
 group by usernum
 </select>
 
 <select id="getYearTerm" resultType="map">
-select min(year)as min_year ,max(year)as max_year from work_report
+select min(year)as min_year ,max(year)as max_year from work_Report
 </select>
 
 </mapper>
