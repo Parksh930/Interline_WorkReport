@@ -78,7 +78,7 @@ private static final int pagePerGroup=10;
 		UserVO userVO=(UserVO)session.getAttribute("user_inform");
 		userVO.setPassword(password);
 		dao.changePW(userVO);
-		return "User/changePW";
+		return "User/myReportList";
 	}
 	
 	

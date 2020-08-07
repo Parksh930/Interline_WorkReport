@@ -14,20 +14,25 @@
  $(function(){
 	$("#udbtn").click(function(){
 		var user_pw = $("#Password").val();
-		
+		var user_pwCheck = $("#passwordCheck").val();
 		 if(user_pw == ""){
 			alert("PWを入力してください。");
 			$("#Password").focus();
 		}
+		
 			
 		 if(user_pw.length < 6 || user_pw.length > 10){
 			  alert("6~10文字で入力ください。");
 		return false;
 		 }
-
+		if(user_pw != user_pwCheck){
+			alert("パスワードが間違っています。");
+			return false
+		}
 		 else {
 				$("#profileUpdate").submit();
 				alert("パスワード変更できました。");
+				location.href='../user/myReportList';
 			}
 
 	});
@@ -103,7 +108,7 @@ text-align: center;
 
 
 	<tr>
-		<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn" onclick="location='../user/myReportList'">確認</button>
+		<td colspan="2"  id="ubtn"><button id ="udbtn" class="udbtn">確認</button>
 		<div align="right">
 		
 		<input type = "hidden" name="page" id="page" value="1"/>
