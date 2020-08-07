@@ -6,14 +6,14 @@
 <mapper namespace="project.interline.report.dao.WorkReportMapper">
   
   	<select id="isItNew" parameterType="hashmap" resultType="int">
-  		select reportNum from work_report where userNum=#{userNum} and year=#{year} and month=#{month}
+  		select reportNum from work_Report where userNum=#{userNum} and year=#{year} and month=#{month}
   	</select>
   	
   	<select id="checkState" parameterType="int" resultType="int">
-  		select state from work_report where reportNum=#{reportNum}
+  		select state from work_Report where reportNum=#{reportNum}
   	</select>
   	<select id="checkState2" parameterType="hashmap" resultType="WorkReportVO">
-  		select * from work_report where userNum=#{userNum} and year=#{year} and month=#{month} 
+  		select * from work_Report where userNum=#{userNum} and year=#{year} and month=#{month} 
   	</select>
   	
   	<select id="checkNewEmployee" resultType="int" parameterType="int">
@@ -22,7 +22,7 @@
   
   
 	<insert id="insertReport" parameterType="WorkReportVO">
-		insert into work_report values (
+		insert into work_Report values (
 		get_seq('seq_work_report'),
 		#{userNum},
 		#{userName},
